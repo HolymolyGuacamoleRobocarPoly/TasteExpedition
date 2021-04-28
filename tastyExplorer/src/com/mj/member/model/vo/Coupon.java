@@ -8,16 +8,16 @@ public class Coupon implements Serializable {
 	private static final long serialVersionUID = 1006;
 	
 	private int cNo;
-	private int cDuration;
+	private Date cDuration;
 	private Date cDate;
-	private Date cContent;
+	private String cContent;
 	private String cTitle;
 	private String cStatus;
-	private char mNo;
+	private int mNo;
 	
 	public Coupon() {}
 
-	public Coupon(int cNo, int cDuration, Date cDate, Date cContent, String cTitle, String cStatus, char mNo) {
+	public Coupon(int cNo, Date cDuration, Date cDate, String cContent, String cTitle, String cStatus, int mNo) {
 		super();
 		this.cNo = cNo;
 		this.cDuration = cDuration;
@@ -42,11 +42,11 @@ public class Coupon implements Serializable {
 		this.cNo = cNo;
 	}
 
-	public int getcDuration() {
+	public Date getcDuration() {
 		return cDuration;
 	}
 
-	public void setcDuration(int cDuration) {
+	public void setcDuration(Date cDuration) {
 		this.cDuration = cDuration;
 	}
 
@@ -58,11 +58,11 @@ public class Coupon implements Serializable {
 		this.cDate = cDate;
 	}
 
-	public Date getcContent() {
+	public String getcContent() {
 		return cContent;
 	}
 
-	public void setcContent(Date cContent) {
+	public void setcContent(String cContent) {
 		this.cContent = cContent;
 	}
 
@@ -82,12 +82,13 @@ public class Coupon implements Serializable {
 		this.cStatus = cStatus;
 	}
 
-	public char getmNo() {
+	public int getmNo() {
 		return mNo;
 	}
 
-	public void setmNo(char mNo) {
+	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
 
+	
 }

@@ -3,39 +3,50 @@ package com.mj.cBoardCommunity.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Comunity implements Serializable{
+public class Community implements Serializable{
 
 	private static final long serialVersionUID = 3030;
 	
 	private int cBoardNo;
 	private String cBoardTitle;
 	private String cBoardContent;
-	private int mNo;
+	private String cBoardwriter;
+	private String mNickname;
 	private int cBoardTeam;
 	private int cBoardCount;
 	private Date cBoardDate;
 	private char cBoardStatus;
 	
-	public Comunity() {}
+	public Community() {}
 
-	public Comunity(int cBoardNo, String cBoardTitle, String cBoardContent, int mNo, int cBoardTeam, int cBoardCount,
-			Date cBoardDate, char cBoardStatus) {
+	public Community(int cBoardNo, String cBoardTitle, String cBoardContent, String cBoardwriter, String mNickname,
+			int cBoardTeam, int cBoardCount, Date cBoardDate, char cBoardStatus) {
 		super();
 		this.cBoardNo = cBoardNo;
 		this.cBoardTitle = cBoardTitle;
 		this.cBoardContent = cBoardContent;
-		this.mNo = mNo;
+		this.cBoardwriter = cBoardwriter;	//작성자
+		this.mNickname = mNickname;			// 닉네임가져오기
 		this.cBoardTeam = cBoardTeam;
 		this.cBoardCount = cBoardCount;
 		this.cBoardDate = cBoardDate;
 		this.cBoardStatus = cBoardStatus;
 	}
 
+	public Community(String cBoardTitle, String cBoardContent, String mNickname) {
+		super();
+		this.cBoardTitle = cBoardTitle;
+		this.cBoardContent = cBoardContent;
+		this.mNickname = mNickname;
+	}
+
+	
 	@Override
 	public String toString() {
-		return "Comunity [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent
-				+ ", mNo=" + mNo + ", cBoardTeam=" + cBoardTeam + ", cBoardCount=" + cBoardCount + ", cBoardDate="
-				+ cBoardDate + ", cBoardStatus=" + cBoardStatus + "]";
+		return "Community [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent
+				+ ", cBoardwriter=" + cBoardwriter + ", mNickname=" + mNickname + ", cBoardTeam=" + cBoardTeam
+				+ ", cBoardCount=" + cBoardCount + ", cBoardDate=" + cBoardDate + ", cBoardStatus=" + cBoardStatus
+				+ "]";
 	}
 
 	public int getcBoardNo() {
@@ -62,12 +73,20 @@ public class Comunity implements Serializable{
 		this.cBoardContent = cBoardContent;
 	}
 
-	public int getmNo() {
-		return mNo;
+	public String getcBoardwriter() {
+		return cBoardwriter;
 	}
 
-	public void setmNo(int mNo) {
-		this.mNo = mNo;
+	public void setcBoardwriter(String cBoardwriter) {
+		this.cBoardwriter = cBoardwriter;
+	}
+
+	public String getmNickname() {
+		return mNickname;
+	}
+
+	public void setmNickname(String mNickname) {
+		this.mNickname = mNickname;
 	}
 
 	public int getcBoardTeam() {
@@ -94,7 +113,7 @@ public class Comunity implements Serializable{
 		this.cBoardDate = cBoardDate;
 	}
 
-	public int getcBoardStatus() {
+	public char getcBoardStatus() {
 		return cBoardStatus;
 	}
 
@@ -104,5 +123,5 @@ public class Comunity implements Serializable{
 	
 	
 	
-}  
-   
+	
+}
