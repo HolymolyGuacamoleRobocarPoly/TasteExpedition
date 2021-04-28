@@ -60,8 +60,13 @@
 					<li><a href="#service">Event</a></li>
 					<li><a href="#price">#소통해요</a></li>
 					<li><a href="#contact">Contact</a></li>
+
 					<li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
 					<li class="login"><a href="#">Sign In</a></li>
+
+					<li class="login"><a href="/tastyServer/views/member/login.jsp">Login</a></li>
+					<li class="joinUs"><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>
+
 				</ul>
 
 			</div>
