@@ -32,7 +32,7 @@ public class CommunitySelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 게시판 목록123
+		// 게시판 목록
 		ArrayList<Community> list = new ArrayList<>();
 		CommunityService service = new CommunityService();
 		
