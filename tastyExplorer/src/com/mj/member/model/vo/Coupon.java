@@ -33,6 +33,7 @@ public class Coupon implements Serializable {
 >>>>>>> refs/remotes/origin/gayul
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public Coupon(int cNo, Date cDuration, Date cDate, String cContent, String cTitle, String cStatus, int mNo) {
       super();
       this.cNo = cNo;
@@ -44,6 +45,8 @@ public class Coupon implements Serializable {
       this.mNo = mNo;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public Coupon(int cNo, Date cDuration, Date cDate, String cContent, String cTitle, String cStatus, int mNo) {
 		super();
 		this.cNo = cNo;
@@ -71,20 +74,26 @@ public class Coupon implements Serializable {
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public Date getcDuration() {
       return cDuration;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public Date getcDuration() {
 		return cDuration;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public void setcDuration(Date cDuration) {
       this.cDuration = cDuration;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public void setcDuration(Date cDuration) {
 		this.cDuration = cDuration;
 	}
@@ -99,20 +108,26 @@ public class Coupon implements Serializable {
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public String getcContent() {
       return cContent;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public String getcContent() {
 		return cContent;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public void setcContent(String cContent) {
       this.cContent = cContent;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public void setcContent(String cContent) {
 		this.cContent = cContent;
 	}
@@ -135,20 +150,26 @@ public class Coupon implements Serializable {
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public int getmNo() {
       return mNo;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public int getmNo() {
 		return mNo;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    public void setmNo(int mNo) {
       this.mNo = mNo;
    }
 =======
+=======
+>>>>>>> refs/remotes/origin/giwon
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
