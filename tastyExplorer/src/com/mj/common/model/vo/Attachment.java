@@ -2,6 +2,7 @@ package com.mj.common.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Attachment implements Serializable{
 
@@ -13,16 +14,20 @@ public class Attachment implements Serializable{
 	private Date attMUploadDate;
 	private int attMFlevel;
 	private char attMStatus;
+	private String attBNo;
+	
+	private ArrayList<Attachment> attList;
 	
 	public Attachment() {}
 
-	public Attachment(int attMNo, String attMFileName, Date attMUploadDate, int attMFlevel, char attMStatus) {
+	public Attachment(int attMNo, String attMFileName, Date attMUploadDate, int attMFlevel, char attMStatus, String attBNo) {
 		super();
 		this.attMNo = attMNo;
 		this.attMFileName = attMFileName;
 		this.attMUploadDate = attMUploadDate;
 		this.attMFlevel = attMFlevel;
 		this.attMStatus = attMStatus;
+		this.attBNo = attBNo;
 	}
 
 	@Override
@@ -71,5 +76,20 @@ public class Attachment implements Serializable{
 		this.attMStatus = attMStatus;
 	};
 
+	public String getAttBNo() {
+		return attBNo;
+	}
+
+	public void setAttBNo(String attBNo) {
+		this.attBNo = attBNo;
+	}
 	
+	public ArrayList<Attachment> getAttList() {
+		return attList;
+	}
+
+	public void setAttList(ArrayList<Attachment> attList) {
+		this.attList = attList;
+	}
+
 }
