@@ -29,6 +29,13 @@ public class BComment implements Serializable {
 		this.cBoardNo = cBoardNo;
 		this.mNo = mNo;
 	}
+	
+	public BComment(String commentContent, int cBoardNo, int mNo) {
+		super();
+		this.commentContent = commentContent;
+		this.cBoardNo = cBoardNo;
+		this.mNo = mNo;
+	}
 
 	// 메소드
 	
