@@ -57,7 +57,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#home">Home</a></li>
 					<li><a href="#features">Notice</a></li>
-					<li><a href="#service">Event</a></li>
+					<li><a href="/tastyServer/views/event/eventList.jsp">Event</a></li>
 					<li><a href="#price">#소통해요</a></li>
 					<li><a href="#contact">Contact</a></li>
 					<li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>

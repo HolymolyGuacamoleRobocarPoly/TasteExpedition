@@ -83,27 +83,18 @@
    justify-content: center;
 }
 
-textarea{
-   width: 1000px; 
-   border-radius: 3px; 
+.text1
+{
+   width: 500px; 
+   border-radius: 2px; 
    border-color:#c8c8c8; 
    resize: none; 
-   margin-top:50px; 
+   margin-top:10px; 
    margin-bottom: 20px;
 }
 
 textarea::placeholder {
    font-size: 18px;
-}
-
-#star a{ 
-   text-decoration: none; 
-   color: #c8c8c8; 
-   font-size: 55px;
-} 
-
-#star a.on{ 
-   color: #FFF0F0; 
 }
 
 [id*=uploadreviewImg]{
@@ -185,7 +176,7 @@ input[type=text]::placeholder{
        </div>
        <div class="mjImgArea" 
           style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 50px; ">
-          이미지
+          
        </div>
        <div></div>
     </div>
@@ -197,23 +188,18 @@ input[type=text]::placeholder{
         <div class="review_container">
         	<div class="review_writearea">
     			<div class="review_write">
-            		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
-	                <P id="star" style="text-align:center; margin-top: 40px;"> 
-		               <a href="#" value="1">★</a> <!-- 부모 -->
-		               <a href="#" value="2">★</a> <!-- 자식들-->
-		               <a href="#" value="3">★</a> 
-		               <a href="#" value="4">★</a> 
-		               <a href="#" value="5">★</a> 
-	            	<p>
+            		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">이벤트 등록</p>
+	               
 	                             
                     <div class="review_textArea">
-						<textarea class="form-control" id="rcontent" name="rcontent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!"></textarea>
+                    	<p style="font-weight: bold;"> # 이벤트 제목</p>  
+						<input type="text" name="" id="" class="text1"/>
 					</div>  
                 </div>
                  
                 <div class="review_remain">
-                	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>             
-	            	<input type="text" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+                	<p style="font-weight: bold;"> # 이벤트 유효기간</p>             
+	            	<input type="text" name="" id="" class="text1"/>
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
                     <div>
@@ -222,21 +208,11 @@ input[type=text]::placeholder{
                     <div id="contentImgArea1">
                         <img id="uploadreviewImg1" src="/tastyServer/assets/images/no-image.jpg"/>
                     </div>
-                    <div id="contentImgArea2">      
-                    	<img id="uploadreviewImg2" src="/tastyServer/assets/images/no-image.jpg"/>
-                    </div>
-                    <div id="contentImgArea3"> 
-                    	<img id="uploadreviewImg3" src="/tastyServer/assets/images/no-image.jpg"/>
-                    </div>
-                    <div id="contentImgArea4">  
-                    	<img id="uploadreviewImg4" src="/tastyServer/assets/images/no-image.jpg"/>
-                    </div>
+                    
                     
                		<div class="fileArea" id="fileArea">
                   	    <input type="file" accept="image/*" name="thumbImg1" id="thumbImg1" onchange="loadImg(this,1);" />
-                  		<input type="file" accept="image/*" name="thumbImg2" id="thumbImg2" onchange="loadImg(this,2);" />
-                  		<input type="file" accept="image/*" name="thumbImg3" id="thumbImg3" onchange="loadImg(this,3);" />
-                  		<input type="file" accept="image/*" name="thumbImg4" id="thumbImg4" onchange="loadImg(this,4);" />
+                  		
                		</div>
                            
                     <div class="wrap">
@@ -249,80 +225,14 @@ input[type=text]::placeholder{
     </form>
    
 	<script>
-	$('.bootstrap-tagsinput input').tagsinput({
-		confirmKeys: [13, 188]
-	});
-	// $function(){}으로 감싸줘야 함 -> 화면이 다 준비된 다음에 아래 코드를 실행해야 keycode 바꾸는게 적용됨
-	$(function(){
-		$('.bootstrap-tagsinput>input').on('keydown', function(event){
-			console.log('tagsinput : ' + event.keyCode);
-			if(event.keyCode == 13){
-				event.keyCode = 188;
-				event.preventDefault();
-			}
-		});
-	});
-	$('#tags').on('keydown', function(event){
-		console.log('tags : ' + event.keyCode);
-		if(event.keyCode == 13){
-			event.preventDefault();
-		}
-	});
 	
-	// 질문!
-	/*$(function(){
-	    $("#testFrm").submit(function(event){
-	        $("#testFrm input[name=mobilePhone]").val('010-1234-1235');
-	        return true;
-	    });
-	});*/
-
-	
-      /*$(function() {           
-
-    	    $("#hashTag").focus(function(){
-    	    	$(this).css("color","#red");
-    	    });
-    	    $("#hashTag").blur(function(){
-    	    	$(this).css("color","#99CCCC");
-    	  });
-    	   
-    	});*/
       
-      /*function showEvent(){
-    		//var result = document.getElementById("hashTag1");
-    		//console.log("value : " + result.value);
-    		for(i=1; i<=4; i++){
-    			var tagResult = document.getElementById("hashTag" + i).value;
-    				
-    			console.log("value : "+ tagResult);
-    				
-    			var tagArr[] = 
-    			
-    				
-    			
-    		}
-    	}*/
-      $('#star a').click(function(){ $(this).parent().children("a").removeClass("on"); 
-      
-      $(this).addClass("on").prevAll("a").addClass("on"); 
-      console.log($(this).attr("value")); });
 
       $('#contentImgArea1').on('click', function(){
          $('#thumbImg1').click();
       });
       
-      $('#contentImgArea2').on('click',function(){
-         $('#thumbImg2').click();
-      });
-      
-      $('#contentImgArea3').on('click',function(){ 
-         $('#thumbImg3').click();
-      });
-      
-      $('#contentImgArea4').on('click',function(){ 
-         $('#thumbImg4').click();
-      });
+     
       
       $('#fileArea').hide(); // 파일 선택하는 부분 숨겨짐(안보임)
       
@@ -345,12 +255,7 @@ input[type=text]::placeholder{
                switch(num) {
                case 1 : $('#uploadreviewImg1').attr('src', e.target.result);
                       break;
-               case 2 : $('#uploadreviewImg2').attr('src', e.target.result);
-                      break;
-               case 3 : $('#uploadreviewImg3').attr('src', e.target.result);
-                       break;
-               case 4 : $('#uploadreviewImg4').attr('src', e.target.result);
-                       break;
+               
                }
             }
             // input type file에 들어있던 파일을 읽어와라 / 읽어오면서 157번 아래의 코드들이 수행됨 ?? 모르겠음...
