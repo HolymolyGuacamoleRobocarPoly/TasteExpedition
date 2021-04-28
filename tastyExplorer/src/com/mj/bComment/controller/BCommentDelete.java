@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mj.bComment.model.service.BCommentService;
-import com.mj.bComment.model.vo.BComment;
 
 /**
- * Servlet implementation class BoardCommentInsert
+ * Servlet implementation class BCommentDelete
  */
-@WebServlet("/insert.bc")
-public class BCommentInsert extends HttpServlet {
+@WebServlet("/delete.bc")
+public class BCommentDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BCommentInsert() {
+    public BCommentDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +29,15 @@ public class BCommentInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		// 작성자, 게시글 번호, 댓글 내용
-		String content = request.getParameter("replyContent");			// comment 내용
-		int bno = Integer.parseInt(request.getParameter("bno"));		// comment 작성된 게시글번호(event or community)
-		int writer = Integer.parseInt(request.getParameter("writer"));	// comment 작성자 회원번호 ( mNo ) ( 연결하고 식별하기 위한 값)
-		int btype = Integer.parseInt(request.getParameter("btype"));	// 1 이면 eventMember, 2 면 community(해당 jsp 에서 btype 설정)
 		
-		BComment comment = new BComment(content, bno, writer);
+		int cno = Integer.parseInt(request.getParameter("cno"));	// 삭제할 댓글 번호 
+		
+		int bno = Integer.parseInt(request.getParameter("bno"));	// 댓글이 달린 해당 게시글
+		int btype = Integer.parseInt(request.getParameter("btype"));// 분류를 위한 게시글 type
 		
 		BCommentService service = new BCommentService();
 		
-		int result = service.insertComment(comment);
+		int result = service.deleteComment(cno);
 		
 		if( result > 0) {
 			
@@ -49,8 +45,8 @@ public class BCommentInsert extends HttpServlet {
 			else if(btype == 2) response.sendRedirect("selectOne.co?bno="+bno);	// community 로 연결
 			
 		} else {
-			request.setAttribute("error-msg", "댓글 작성중 에러 발생");
 			
+			request.setAttribute("error-msg", "댓글 수정 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
@@ -58,9 +54,7 @@ public class BCommentInsert extends HttpServlet {
 		
 		
 		
-	
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

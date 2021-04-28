@@ -12,16 +12,16 @@ import com.mj.bComment.model.service.BCommentService;
 import com.mj.bComment.model.vo.BComment;
 
 /**
- * Servlet implementation class BoardCommentInsert
+ * Servlet implementation class BCommentUpdate
  */
-@WebServlet("/insert.bc")
-public class BCommentInsert extends HttpServlet {
+@WebServlet("/update.bc")
+public class BCommentUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BCommentInsert() {
+    public BCommentUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +30,20 @@ public class BCommentInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		// 작성자, 게시글 번호, 댓글 내용
-		String content = request.getParameter("replyContent");			// comment 내용
-		int bno = Integer.parseInt(request.getParameter("bno"));		// comment 작성된 게시글번호(event or community)
-		int writer = Integer.parseInt(request.getParameter("writer"));	// comment 작성자 회원번호 ( mNo ) ( 연결하고 식별하기 위한 값)
-		int btype = Integer.parseInt(request.getParameter("btype"));	// 1 이면 eventMember, 2 면 community(해당 jsp 에서 btype 설정)
 		
-		BComment comment = new BComment(content, bno, writer);
+		
+		int cno = Integer.parseInt(request.getParameter("cno"));	// 수정할 댓글 번호		
+		String content = request.getParameter("content");			// 수정할 내용 받아온 값 
+			
+		int btype = Integer.parseInt(request.getParameter("btype"));// 해당 댓글이 달린 게시글의 타입
+		int bno = Integer.parseInt(request.getParameter("bno"));	// 해당 댓글이 달린 게시글 번호
+		
+		BComment bc = new BComment();		
+		bc.setCommentNo(cno);			
+		bc.setCommentContent(content);
 		
 		BCommentService service = new BCommentService();
-		
-		int result = service.insertComment(comment);
+		int result = service.updateComment(bc);
 		
 		if( result > 0) {
 			
@@ -49,8 +51,8 @@ public class BCommentInsert extends HttpServlet {
 			else if(btype == 2) response.sendRedirect("selectOne.co?bno="+bno);	// community 로 연결
 			
 		} else {
-			request.setAttribute("error-msg", "댓글 작성중 에러 발생");
 			
+			request.setAttribute("error-msg", "댓글 수정 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 		
@@ -58,9 +60,9 @@ public class BCommentInsert extends HttpServlet {
 		
 		
 		
-	
+		
+		
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
