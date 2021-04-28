@@ -1,5 +1,6 @@
 package com.mj.cBoardCommunity.model.service;
 
+
 import static com.common.JDBCTemplate.close;
 import static com.common.JDBCTemplate.getConnection;
 
@@ -26,31 +27,13 @@ public class CommunityService {
 		
 	}
 	
-	public int insertCommunity(Community c) {
-		con = getConnection();
-		
-		int result = dao.insertCommunity(con, c);
-		
-		//if(result > 0) commit(con);
-		//else rollback(con);
-		
-		close(con);
-		
-		return result;
-		
-	}
-	
-	
-	
 	public int getListCount() {
 		
-		con = getConnection();
 		
-//		int result = dao.getListCount(con);
-		int result = 0;
-		close(con);	
+
 		
-		return result;
+		return 0;
+
 	}
 
 	

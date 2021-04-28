@@ -56,6 +56,7 @@
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
+
 					<td width="75px;">No</td>
 					<td width="300px;">제목</td>
 					<td width="75px;">작성자</td>
@@ -100,6 +101,52 @@
 				});
 			</script>
 		} 
+
+					<td width="75px;">글번호</td>
+					<td width="300px;">제목</td>
+					<td width="75px;">팀원수</td>
+					<td width="100px;">작성자</td>
+					<td width="150px;">작성일</td>
+					<td width="70px;">조회수</td>
+				</tr>
+				<% for(Community c : list) { %>
+				<tr>
+					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
+					<td><%= c.getcBoardTitle()%></td>
+					<td><%= c.getcBoardTeam()%></td>
+					<td><%= c.getmNo() %></td>
+					<td><%= c.getcBoardDate()%></td>
+					<td><%= c.getcBoardCount() %></td>
+				</tr>
+				
+				<% } %>
+			</table>
+		</div>
+		
+		<!-- 버튼 클릭시 -->
+		<div class="btnArea" align="center">
+		<br>
+		<% if (m != null) { %> 
+		
+		<button onclick="location.href='views/community/communityInsert.jsp'">작성하기</button>
+			<script>
+				$('#listArea td').on('mouseenter'), function() {
+					$(this).parent().css({'background' : 'white',
+										  'curor' : 'porinter',
+										  'color' : 'gray'});
+				}).on('mouserout', function(){
+					$('this').parent().css({'backgrond' : 'white',
+											'color' : 'white'});
+				}).on('click', function(){
+					var nno = $('this').parent.children().first().attr('id');
+					
+					console.log(nno);
+					
+					location.href = "/tastyServer/selecOne.co?cno=" + cno;
+				});
+			</script>
+		<% } %>
+
 			
 		</div>
 

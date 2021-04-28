@@ -10,6 +10,7 @@ public class Community implements Serializable{
 	private int cBoardNo;
 	private String cBoardTitle;
 	private String cBoardContent;
+
 	private String cBoardwriter;
 	private String mNickname;
 	private int cBoardTeam;

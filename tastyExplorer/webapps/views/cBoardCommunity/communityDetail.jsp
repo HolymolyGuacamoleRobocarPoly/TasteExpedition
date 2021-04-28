@@ -3,6 +3,7 @@
 <%@ page import = "com.mj.cBoardCommunity.model.vo.*, com.mj.bComment.model.vo.*, java.util.*"%>
 <%
 	Community c = (Community)request.getAttribute("Community");
+
 	ArrayList<BComment> bclist = (ArrayList<BComment>)request.getAttribute("bclist");
 %>
 
@@ -23,10 +24,11 @@
 					<td>작성자</td>
 					<td>
 						<b>
-							<%= c.getmNickname() %>
+							<%=  %>
 						</b>
 					</td>
-					<td>작성일</td>
+					<td></td>
+
 					<td></td>
 					<td></td>
 					<td></td>

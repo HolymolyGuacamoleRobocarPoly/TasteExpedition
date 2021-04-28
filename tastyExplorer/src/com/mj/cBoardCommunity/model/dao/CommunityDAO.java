@@ -36,68 +36,16 @@ public class CommunityDAO {
 	public ArrayList<Community> selectList(Connection con, int currentPage) {
 		
 		int result = 0;
-		ArrayList<Community> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("");
 		
-		int startRow = (currentPage - 1) * 10  + 1;
-		int endRow = currentPage * 10;
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1,  endRow);
-			ps.setInt(2, startRow);
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				
-				Community c = new Community();
-				
-				c.setcBoardNo(rs.getInt("cboardno"));
-				c.setcBoardTitle(rs.getString("cobardtitle"));
-				c.setcBoardContent(rs.getString("cboardcontent"));
-				c.setcBoardwriter(rs.getString("cboardwriter"));
-				c.setmNickname(rs.getString("mnickname"));
-				c.setcBoardTeam(rs.getInt("cboardteam"));
-				c.setcBoardCount(rs.getInt("cboardcount"));
-				c.setcBoardDate(rs.getDate("cboarddate"));
-				//c.setcBoardStatus(rs.getchar("cboardstatus"));
-				
-				
-				list.add(c);
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally {
-		//	close(rs);
-		//	close(ps);
-		}
 		
 		
 		
 		return null;
-	}
 
-
-	public int insertCommunity(Connection con, Community c) {
-		PreparedStatement ps = null;
-		
-		String sql = prop.getProperty("insertCommunity");
-		
-		try {
-			ps = con.prepareStatement(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return 0;
 	}
 
 }
