@@ -115,7 +115,7 @@ textarea::placeholder {
 
 .review_remain{
    
-   margin-top: 100px;
+   margin-top: 20px;
 }
 
 input[type=text]::placeholder{
@@ -192,18 +192,18 @@ input[type=text]::placeholder{
 	               
 	                             
                     <div class="review_textArea">
-                    	<p style="font-weight: bold;"> # 이벤트 제목</p>  
+                    	<p style="font-weight: bold; "> 이벤트 제목12</p>  
 						<input type="text" name="" id="" class="text1"/>
 					</div>  
                 </div>
                  
                 <div class="review_remain">
-                	<p style="font-weight: bold;"> # 이벤트 유효기간</p>             
+                	<p style="font-weight: bold;"> 이벤트 유효기간</p>             
 	            	<input type="text" name="" id="" class="text1"/>
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
-                    <div>
-                    	<p style="font-weight: bold; margin-top: 20px; margin-bottom:-20px;" >+ 사진 추가</p>
+                    <div >
+                    	<p style="font-weight: bold; margin-top: 100px; margin-bottom:-20px;" >+ 사진 추가</p>
                     </div>
                     <div id="contentImgArea1">
                         <img id="uploadreviewImg1" src="/tastyServer/assets/images/no-image.jpg"/>
