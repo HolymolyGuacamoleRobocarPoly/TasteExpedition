@@ -34,6 +34,7 @@ public class Coupon implements Serializable {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    public Coupon(int cNo, Date cDuration, Date cDate, String cContent, String cTitle, String cStatus, int mNo) {
       super();
       this.cNo = cNo;
@@ -47,6 +48,8 @@ public class Coupon implements Serializable {
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public Coupon(int cNo, Date cDuration, Date cDate, String cContent, String cTitle, String cStatus, int mNo) {
 		super();
 		this.cNo = cNo;
@@ -75,17 +78,21 @@ public class Coupon implements Serializable {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    public Date getcDuration() {
       return cDuration;
    }
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public Date getcDuration() {
 		return cDuration;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
    public void setcDuration(Date cDuration) {
@@ -94,6 +101,8 @@ public class Coupon implements Serializable {
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public void setcDuration(Date cDuration) {
 		this.cDuration = cDuration;
 	}
@@ -109,17 +118,21 @@ public class Coupon implements Serializable {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    public String getcContent() {
       return cContent;
    }
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public String getcContent() {
 		return cContent;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
    public void setcContent(String cContent) {
@@ -128,6 +141,8 @@ public class Coupon implements Serializable {
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public void setcContent(String cContent) {
 		this.cContent = cContent;
 	}
@@ -151,17 +166,21 @@ public class Coupon implements Serializable {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    public int getmNo() {
       return mNo;
    }
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public int getmNo() {
 		return mNo;
 	}
 >>>>>>> refs/remotes/origin/gayul
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
    public void setmNo(int mNo) {
@@ -170,6 +189,8 @@ public class Coupon implements Serializable {
 =======
 =======
 >>>>>>> refs/remotes/origin/giwon
+=======
+>>>>>>> refs/remotes/origin/Moon
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}

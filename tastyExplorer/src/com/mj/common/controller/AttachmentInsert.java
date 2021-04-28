@@ -14,9 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.common.MyRenamePolicy;
+import com.mj.cBoardCommunity.model.vo.Comunity;
 import com.mj.common.model.vo.Attachment;
+import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.vo.Ticket;
 import com.mj.notice.model.vo.Notice;
+import com.mj.review.model.vo.Review;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -24,7 +27,7 @@ import com.oreilly.servlet.MultipartRequest;
  */
 @WebServlet("/insert.att")
 public class AttachmentInsert extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1211L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,7 +42,7 @@ public class AttachmentInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 3. multipart 로 전송된 것인지 확인하기
+		// multipart 로 전송된 것인지 확인하기
 		if(! ServletFileUpload.isMultipartContent(request)) {
 			
 			request.setAttribute("error-msg", "multipart 전송이 아닙니다.");
@@ -48,102 +51,151 @@ public class AttachmentInsert extends HttpServlet {
 			       .forward(request, response);
 		} else {
 			// MultipartRequest
-			// 1. 파일 저장 경로
+			// 파일 저장 경로
 			
 			String savePath = request.getServletContext()
 					          .getRealPath("/resources/temp");
 			
-			// 2. 파일 허용 용량
+			// 파일 허용 용량
 			// 1024Byte -> 1KB --> 1024KB --> 1MB
 			int maxSize = 1024 * 1024 * 100;
 			// 100MB => 보통 4k 화질 사진 1장 80MB
 			
-			// 4. MultipartRequest 작성
+			// MultipartRequest 작성
 			
 			MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, 
 					"UTF-8", new MyRenamePolicy());
 			
 			String newPath = ""; // 새로운 파일 경로
 			String fLevel = mr.getParameter("attMFlevel");
-			ArrayList<String> changeNames = new ArrayList<>();
-			Enumeration<String> tagNames = mr.getFileNames();
+			String filename = mr.getFilesystemName("attFile");
 			
-			if( fLevel.equals("1")) { // 쿠폰
+			if( fLevel.equals("1")) { // 쿠폰 생성
+				
+				Coupon c = new Coupon();
+				Attachment a = new Attachment();
 				
 				newPath = request.getServletContext()
-				          .getRealPath("/resources/coupon");
+				                 .getRealPath("/resources/coupon");
 				
-			} else if ( fLevel.equals("2")) { // 티켓
+				c.setcTitle(mr.getParameter("cTitle"));
+				c.setcContent(mr.getParameter("cContent"));
+				
+				a.setAttMFileName(filename);
+				a.setAttMFlevel(flevel);
+				
+				System.out.println("확인 : " + c.getcTitle() + ", " + c.getcContent() + ", " 
+											 + a.setAttMFileName(filename));
+				
+
+				// 파일 원하는 위치로 이동
+				File file = new File(savePath + "/" + fileName);
+				file.renameTo(new File(newPath + "/" + fileName));
+				
+				CouponService cService = new CouponService();
+				AttachmentService aService = new AttachmentService();
+				
+				int result1 = cService.insertCoupon(a);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertCouponAttachment(a);
+					
+				} else {
+					
+					
+					request.setAttribute("error-msg",  "쿠폰 내용 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+					
+				}
+				
+				if (result2 > 0) {
+					
+					response.sendRedirect("?");
+					
+				} else {
+					// 게시글 등록 실패시 저장되었던 파일 삭제
+					for (int i = 0; i < changeNames.size(); i++) {
+						
+						new File(newPath + "/" + changeNames.get(i)).delete();
+						
+					}
+					
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+				}
+				
+				
+				
+			} else if ( fLevel.equals("2")) { // 티켓 생성
 				
 				Ticket t = new Ticket();
-				
-				t.setTNo(mr.getParameter("tNo"));
-				t.setTTitle(mr.getParameter("tTitle");
+				Attachment a = new Attachment();
+
+				t.setTTitle(mr.getParameter("tTitle"));
 				t.setTContent(mr.getParameter("tContent"));
-				t.setMNo(mr.getParameter("mNo"));
+				
+				a.setAttMFileName(filename);
+				a.setAttMFlevel(flevel);
 				
 				newPath = request.getServletContext()
-				          .getRealPath("/resources/ticket");
+				                 .getRealPath("/resources/ticket");
 				
-				System.out.println("확인 : " + t.setTNo + ", " + t.setTTitle + ", " + t.setTContent + ", " + t.setMNo);
+				System.out.println("확인 : " + t.gettTitle() + ", " + t.gettContent() + ", " + t.getmNo);
 
-				while (tagNames.hasMoreElements()) {
-					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
+				
+				TicketService tService = new TicketService();
+				
+				AttachmentService aService = new AttachmentService();
+				
+				int result1 = tService.insertTeview(t);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertTicketAttachment(a);
 					
-					String tagName = tagNames.nextElement();
-					String fileName = mr.getFilesystemName(tagName);
+				} else {
 					
-					changeNames.add( fileName );
-					 // 파일 원하는 위치로 이동
-					File file = new File(savePath + "/" + fileName);
-					file.renameTo(new File(newPath + "/" + fileName));
+					
+					request.setAttribute("error-msg",  "리뷰 글 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
 					
 				}
 				
-				ArrayList<Attachment> list = new ArrayList<Attachment>();
-				
-				
-				for (int i = changeNames.size() - 1; i >= 0; i--) {
-					
-					Attachment a = new Attachment();
-					
-					a.setAttMFileName(changeNames.get(i));
-					
-					list.add(a);
-				}
-				
-				t.setAttList(list);
-				
-				TicketService service = new TicketService();
-				
-				int result = service.insertFile();
-				
-				if (result > 0) {
+				if (result2 > 0) {
 					response.sendRedirect("?");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
 						
 						new File(newPath + "/" + changeNames.get(i)).delete();
+						
 					}
 					
-					request.setAttribute("error-msg", "티켓 등록 실패!");
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
 				}
 				
+				
 			} else if ( fLevel.equals("3")) { // 공지사항
 				
 				Notice n = new Notice();
-				
-				n.setNNo(mr.getParameter("nNo"));
+				Attachment a = new Attachment();
+
 				n.setNTitle(mr.getParameter("nTitle"));
 				n.setNContent(mr.getParameter("nContent"));
 				newPath = request.getServletContext()
-				          .getRealPath("/resources/notice");  /// 나머지 스스로
+				                 .getRealPath("/resources/notice");
 				
-				System.out.println("확인 : " + nNo + ", " + nTitle + ", " + nContent);
+				System.out.println("확인 : " + n.getnTitle() + ", " + n.getnContent());
 				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
@@ -168,11 +220,27 @@ public class AttachmentInsert extends HttpServlet {
 				
 				n.setAttList(list);
 				
-				NoticeService service = new NoticeService();
+				NoticeService eService = new NoticeService();
 				
-				int result = service.insertFile();
+				AttachmentService aService = new AttachmentService();
 				
-				if (result > 0) {
+				int result1 = nService.insertNotice(n);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertNoticeAttachment(a);
+					
+				} else {
+					
+					
+					request.setAttribute("error-msg",  "리뷰 글 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+					
+				}
+				
+				if (result2 > 0) {
 					response.sendRedirect("?");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
@@ -182,21 +250,27 @@ public class AttachmentInsert extends HttpServlet {
 						
 					}
 					
-					request.setAttribute("error-msg", "공지사항 등록 실패!");
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
 				}
+				
+				
 				
 				
 			} else if ( fLevel.equals("4")) { // 이벤트
 			
-				String eNo = mr.getParameter("eNo");
+				EventAdmin e = new EventAdmin();
+				Attachment a = new Attachment();
+
 				String eTitle = mr.getParameter("eTitle");
 				String eContent = mr.getParameter("eContent");
-
-				System.out.println("확인 : " + eNo + ", " + eTitle + ", " + eContent);
-
+				newPath = request.getServletContext()
+				                 .getRealPath("/resources/event");
+				
+				System.out.println("확인 : " + e.geteTitle() + ", " + e.geteComment());
+				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
@@ -218,76 +292,124 @@ public class AttachmentInsert extends HttpServlet {
 					list.add(a);
 				}
 				
-				.setAttList(list);
+				e.setAttList(list);
 				
-				?Service service = new ?Service();
+				EventAdminService eService = new EventAdminService();
 				
-				int result = service.insertFile();
+				AttachmentService aService = new AttachmentService();
 				
-				if (result > 0) {
+				int result1 = eService.insertEventBoard(e);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertEventAttachment(a);
+					
+				} else {
+					
+					
+					request.setAttribute("error-msg",  "리뷰 글 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+					
+				}
+				
+				if (result2 > 0) {
 					response.sendRedirect("?");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
 						
-						new File(savePath + "/" + changeNames.get(i)).delete();
+						new File(newPath + "/" + changeNames.get(i)).delete();
 						
 					}
 					
-					request.setAttribute("error-msg", "이벤트 등록 실패!");
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
 				}
 				
+				
+				
 			} else if ( fLevel.equals("5")) { // 리뷰
 				
-				String rNo = mr.getParameter("rNo");
+				Review r = new Review();
+				Attachment a = new Attachment();
+
 				String rContent = mr.getParameter("rContent");
 				String hashTag = mr.getParameter("hashTag");
 				String score = mr.getParameter("score");
 				String mNo = mr.getParameter("mNo");
+				newPath = request.getServletContext()
+						         .getRealPath("/resources/review");
 				
-				System.out.println("확인 : " + rNo + ", " + rContent + ", " + hashTag + ", " + score + ", " + mNo);
+				System.out.println("확인 : " + r.getrContent() + ", 해쉬태그 : (" + r.getrHashTag() + "), " 
+											 + r.getrScore() + ", " + r.getmNo());
 				
+				r.setrContent(rContent);
+				r.setrHashTag(hashTag);
+				r.setrScore(score);
+				r.setmNo(mNo);
+				
+				ArrayList<String> changeNames = new ArrayList<>();
+				Enumeration<String> tagNames = mr.getFileNames();
+
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
 					String tagName = tagNames.nextElement();
+					fileName = mr.getFilesystemName(tagName);
 					
-					changeNames.add(mr.getFilesystemName(tagName));
+					changeNames.add(fileName);
+					// 파일 원하는 위치로 이동
+					File file = new File(savePath + "/" + fileName);
+					file.renameTo(new File(newPath + "/" + fileName));
 					
 				}
 				
 				ArrayList<Attachment> list = new ArrayList<Attachment>();
 				
-				
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
-					
-					Attachment a = new Attachment();
-					
+
 					a.setAttMFileName(changeNames.get(i));
 					
 					list.add(a);
 				}
 				
-				.setAttList(list);
+				a.setAttList(list);
 				
-				?Service service = new ?Service();
+				ReviewService rService = new ReviewService();
 				
-				int result = service.insertFile();
+				AttachmentService aService = new AttachmentService();
 				
-				if (result > 0) {
+				int result1 = rService.insertReview(r);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertReviewAttachment(a);
+					
+				} else {
+					
+					
+					request.setAttribute("error-msg",  "리뷰 글 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+					
+				}
+				
+				if (result2 > 0) {
 					response.sendRedirect("?");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
 						
-						new File(savePath + "/" + changeNames.get(i)).delete();
+						new File(newPath + "/" + changeNames.get(i)).delete();
 						
 					}
 					
-					request.setAttribute("error-msg", "리뷰 등록 실패!");
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
@@ -297,12 +419,17 @@ public class AttachmentInsert extends HttpServlet {
 				
 			} else if ( fLevel.equals("6")) { // 커뮤니티
 				
-				String cBoardNo = mr.getParameter("cBoardNo");
+				Community b = new Community();
+				Attachment a = new Attachment();
+
 				String cBoardTitle = mr.getParameter("cBoardTitle");
 				String cBoardContent = mr.getParameter("cBoardNo");
 				String mNo = mr.getParameter("mNo");
+				newPath = request.getServletContext()
+				         		 .getRealPath("/resources/community");
 				
-				System.out.println("확인 : " + cBoardNo + ", " + cBoardTitle + ", " + cBoardContent + ", " + mNo);
+				System.out.println("확인 : " + c.getcBoardTitle() 
+											 + ", " + c.getcBoardContent() + ", " + c.getmNo());
 
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
@@ -317,35 +444,50 @@ public class AttachmentInsert extends HttpServlet {
 				
 				
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
-					
-					Attachment a = new Attachment();
-					
+
 					a.setAttMFileName(changeNames.get(i));
 					
 					list.add(a);
 				}
 				
-				.setAttList(list);
+				c.setAttList(list);
 				
-				?Service service = new ?Service();
+				ComunityService bService = new ComunityService();
 				
-				int result = service.insertFile();
+				AttachmentService aService = new AttachmentService();
 				
-				if (result > 0) {
+				int result1 = cService.insertBoard(b);
+				
+				if (result1 > 0) {
+				
+					int result2 = aService.insertBoardAttachment(a);
+					
+				} else {
+					
+					
+					request.setAttribute("error-msg",  "리뷰 글 등록 실패!");
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp")
+						   .forward(request, response);
+					
+				}
+				
+				if (result2 > 0) {
 					response.sendRedirect("?");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
 						
-						new File(savePath + "/" + changeNames.get(i)).delete();
+						new File(newPath + "/" + changeNames.get(i)).delete();
 						
 					}
 					
-					request.setAttribute("error-msg", "게시글 등록 실패!");
+					request.setAttribute("error-msg",  "리뷰 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
 				}
+				
 				
 			}
 		}
