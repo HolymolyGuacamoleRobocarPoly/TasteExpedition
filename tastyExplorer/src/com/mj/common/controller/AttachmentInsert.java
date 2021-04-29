@@ -14,11 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.common.MyRenamePolicy;
-import com.mj.cBoardCommunity.model.vo.Comunity;
+import com.mj.cBoardCommunity.model.vo.Community;
+import com.mj.common.model.service.AttachmentService;
 import com.mj.common.model.vo.Attachment;
 import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.vo.Ticket;
+import com.mj.member.model.service.CouponService;
+import com.mj.member.model.vo.Coupon;
 import com.mj.notice.model.vo.Notice;
+import com.mj.review.model.service.ReviewService;
 import com.mj.review.model.vo.Review;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -68,7 +72,7 @@ public class AttachmentInsert extends HttpServlet {
 			
 			String newPath = ""; // 새로운 파일 경로
 			String fLevel = mr.getParameter("attMFlevel");
-			String filename = mr.getFilesystemName("attFile");
+			String fileName = mr.getFilesystemName("attFile");
 			
 			if( fLevel.equals("1")) { // 쿠폰 생성
 				
@@ -81,11 +85,11 @@ public class AttachmentInsert extends HttpServlet {
 				c.setcTitle(mr.getParameter("cTitle"));
 				c.setcContent(mr.getParameter("cContent"));
 				
-				a.setAttMFileName(filename);
-				a.setAttMFlevel(flevel);
+				a.setAttMFileName(fileName);
+				a.setAttMFlevel(fLevel);
 				
 				System.out.println("확인 : " + c.getcTitle() + ", " + c.getcContent() + ", " 
-											 + a.setAttMFileName(filename));
+											 + a.setAttMFileName(fileName));
 				
 
 				// 파일 원하는 위치로 이동
@@ -96,10 +100,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = cService.insertCoupon(a);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertCouponAttachment(a);
+					result2 = aService.insertCouponAttachment(a);
 					
 				} else {
 					
@@ -136,11 +141,11 @@ public class AttachmentInsert extends HttpServlet {
 				Ticket t = new Ticket();
 				Attachment a = new Attachment();
 
-				t.setTTitle(mr.getParameter("tTitle"));
-				t.setTContent(mr.getParameter("tContent"));
+				t.settTitle(mr.getParameter("tTitle"));
+				t.settContent(mr.getParameter("tContent"));
 				
-				a.setAttMFileName(filename);
-				a.setAttMFlevel(flevel);
+				a.setAttMFileName(fileName);
+				a.setAttMFLevel(fLevel);
 				
 				newPath = request.getServletContext()
 				                 .getRealPath("/resources/ticket");
@@ -153,10 +158,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = tService.insertTeview(t);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertTicketAttachment(a);
+					result2 = aService.insertTicketAttachment(a);
 					
 				} else {
 					
@@ -225,10 +231,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = nService.insertNotice(n);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertNoticeAttachment(a);
+					result2 = aService.insertNoticeAttachment(a);
 					
 				} else {
 					
@@ -299,10 +306,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = eService.insertEventBoard(e);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertEventAttachment(a);
+					result2 = aService.insertEventAttachment(a);
 					
 				} else {
 					
@@ -339,8 +347,8 @@ public class AttachmentInsert extends HttpServlet {
 
 				String rContent = mr.getParameter("rContent");
 				String hashTag = mr.getParameter("hashTag");
-				String score = mr.getParameter("score");
-				String mNo = mr.getParameter("mNo");
+				int score = Integer.parseInt(mr.getParameter("score"));
+				int mNo = Integer.parseInt(mr.getParameter("mNo"));
 				newPath = request.getServletContext()
 						         .getRealPath("/resources/review");
 				
@@ -384,10 +392,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = rService.insertReview(r);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertReviewAttachment(a);
+					result2 = aService.insertReviewAttachment(a);
 					
 				} else {
 					
@@ -457,10 +466,11 @@ public class AttachmentInsert extends HttpServlet {
 				AttachmentService aService = new AttachmentService();
 				
 				int result1 = cService.insertBoard(b);
+				int result2;
 				
 				if (result1 > 0) {
 				
-					int result2 = aService.insertBoardAttachment(a);
+					result2 = aService.insertBoardAttachment(a);
 					
 				} else {
 					

@@ -26,7 +26,7 @@ public class AttachmentService {
 		return list;
 	}
 	
-	public int insertReveiwAttachment(Attachment a) {
+	public int insertReviewAttachment(Attachment a) {
 		
 		con = getConnection();
 		ArrayList<Attachment> list = a.getAttList();
