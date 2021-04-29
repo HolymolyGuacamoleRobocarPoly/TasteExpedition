@@ -11,7 +11,6 @@
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
-
 </head>
 <body>
     <header>
@@ -23,6 +22,8 @@
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>
+ 
         </ul>
 
         <div class="action">
