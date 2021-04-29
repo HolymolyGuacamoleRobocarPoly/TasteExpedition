@@ -5,43 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰 작성 페이지</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 <script src="/tastyServer/assets/js/bootstrap-tagsinput.js"></script>
-
-
-
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Soft-Tect Free Landing Page</title>
-<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-<!--Google fonts links-->
-<link
-   href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-   rel="stylesheet">
-
-<link rel="stylesheet" href="/tastyServer/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/bootstrap-tagsinput.css" />
-
-
-<!--For Plugins external css-->
-<link rel="stylesheet" href="/tastyServer/assets/css/plugins.css" />
-<link rel="stylesheet" href="/tastyServer/assets/css/roboto-webfont.css" />
-
-<!--Theme custom css -->
-<link rel="stylesheet" href="/tastyServer/assets/css/style1.css">
-
-<!--Theme Responsive css-->
-<link rel="stylesheet" href="/tastyServer/assets/css/responsive.css" />
-
-<script src="/tastyServer/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <style>
 .header {
     text-align: center;
@@ -59,23 +28,10 @@
     border: solid 1px #c8c8c8;
     border-left: none;
     border-right: none;
+    border-top: 2px solid #c8c8c8;
+    border-bottom: 2px solid #c8c8c8;
+    margin-bottom: 50px;
 }
-
-/*#r_button {
-    padding: 0 13px;
-    height: 40px;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    background: #B4F0B4;
-    border-radius: 5px;
-    border: none;
-    display: inlne;
-    margin-bottom: 10px;
-    float: right;   
-    margin-right: 13px;
-    cursor: pointer;
-}*/
 
 .review_container{
    width: 100%; 
@@ -85,16 +41,17 @@
 
 textarea{
    width: 1000px;
-   height: 500px; 
+   height: 300px; 
    border-radius: 3px; 
    border-color:#c8c8c8; 
    resize: none; 
    margin-top:50px; 
    margin-bottom: 20px;
+
 }
 
 textarea::placeholder {
-   font-size: 18px;
+   font-size: 20px;
 }
 
 #star a{ 
@@ -104,7 +61,7 @@ textarea::placeholder {
 } 
 
 #star a.on{ 
-   color: #FFF0F0; 
+   color: #d4e157; 
 }
 
 [id*=uploadreviewImg]{
@@ -125,7 +82,7 @@ textarea::placeholder {
 
 .review_remain{
    
-   margin-top: 100px;
+   margin-top: 30px;
 }
 
 input[type=text]::placeholder{
@@ -134,11 +91,11 @@ input[type=text]::placeholder{
 
 .button {
   height: 40px;
-  font-size: 15px;
+  font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #FFF0F0;
+  background-color: #d4e157;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -147,14 +104,14 @@ input[type=text]::placeholder{
   outline: none;
   padding: 0 13px;
   display: inlne;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   float: right;   
   margin-right: 13px;
   cursor: pointer;
   }
 
 .button:hover {
-  background-color: #FFBEBE;
+  background-color: #6ED746;
   box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -166,7 +123,7 @@ input[type=text]::placeholder{
 }
 
 .label-info{
-	background-color: #FFF0F0;
+	background-color: #d4e157;
 	font-size: 15px;
 }
 
@@ -175,16 +132,12 @@ input[type=text]::placeholder{
 }
 
 
-
 </style>
 </head>
 <body>
-  
+  <%@ include file="../common/header.jsp" %>
    
-    <div class="temporary">
-       <div class="header">
-          <h1>리뷰 작성</h1> <hr>
-       </div>
+    <div class="temporary">      
        <div class="mjImgArea" 
           style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 50px; ">
           이미지
@@ -195,28 +148,34 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.rv" method="post">
+    <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
         <div class="review_container">
+        <input type="hidden" name="attMFlevel" value="5"/>
         	<div class="review_writearea">
     			<div class="review_write">
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;"> 
-		               <a href="#" value="1">★</a> <!-- 부모 -->
-		               <a href="#" value="2">★</a> <!-- 자식들-->
-		               <a href="#" value="3">★</a> 
-		               <a href="#" value="4">★</a> 
-		               <a href="#" value="5">★</a> 
+		               
+		               <input type="text" name="rScore" value="1" /> <!-- 부모 -->		             		              
+		              <!--  <a href="#" name="rScore" value="2">★</a> 자식들
+		               <a href="#" name="rScore" value="3">★</a> 
+		               <a href="#" name="rScore" value="4">★</a> 
+		               <a href="#" name="rScore" value="5">★</a>  -->
+		               
+		               
 	            	<p>
 	                             
                     <div class="review_textArea">
-						<textarea class="form-control" id="rcontent" name="rcontent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!" required="required"></textarea>
+						<textarea class="form-control" id="rContent" name="rContent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!" required="required"></textarea>
 					</div>  
                 </div>
                  
                 <div class="review_remain">
+                	
                 	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>   
                 	<!-- name만 정해주면 $('#tags').val();로 " , , " 해시태그 안의 값을 뽑을 수 있음 -->          
-	            	<input type="text" name="tags" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+	            	<input type="text" name="rHashTag" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+                	
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
                     <div>
@@ -251,9 +210,12 @@ input[type=text]::placeholder{
        	</div>
     </form>
     
-    <%@ include file="../common/footer.jsp" %>
    
-	<script>
+   
+<script>
+
+	document.getElementById("rContent").style.fontSize = '20px';
+	
 	$('.bootstrap-tagsinput input').tagsinput({
 		confirmKeys: [13, 188]
 	});
@@ -274,44 +236,10 @@ input[type=text]::placeholder{
 		}
 	});
 	
-	// 질문!
-	/*$(function(){
-	    $("#testFrm").submit(function(event){
-	        $("#testFrm input[name=mobilePhone]").val('010-1234-1235');
-	        return true;
-	    });
-	});*/
-
-	
-      /*$(function() {           
-
-    	    $("#hashTag").focus(function(){
-    	    	$(this).css("color","#red");
-    	    });
-    	    $("#hashTag").blur(function(){
-    	    	$(this).css("color","#99CCCC");
-    	  });
-    	   
-    	});*/
-      
-      /*function showEvent(){
-    		//var result = document.getElementById("hashTag1");
-    		//console.log("value : " + result.value);
-    		for(i=1; i<=4; i++){
-    			var tagResult = document.getElementById("hashTag" + i).value;
-    				
-    			console.log("value : "+ tagResult);
-    				
-    			var tagArr[] = 
-    			
-    				
-    			
-    		}
-    	}*/
       $('#star a').click(function(){ $(this).parent().children("a").removeClass("on"); 
       
       $(this).addClass("on").prevAll("a").addClass("on"); 
-      console.log($(this).attr("value")); });
+      console.log("value : " + $(this).attr("value")); });
 
       $('#contentImgArea1').on('click', function(){
          $('#thumbImg1').click();
@@ -365,7 +293,7 @@ input[type=text]::placeholder{
       }
    
    </script>
-
+	 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
 

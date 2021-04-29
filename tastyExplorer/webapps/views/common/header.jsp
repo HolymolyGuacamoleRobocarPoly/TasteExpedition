@@ -17,9 +17,9 @@
         <a href="#" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
             <li><a href="insert.co">#소통해요</a></li>
-            <li><a href="#">Portfolio</a></li>
+            <li><a href="/tastyServer/views/event/eventList.jsp">이벤트</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>

@@ -43,7 +43,7 @@ public class ReviewDAO {
 		int result = 0;
 		PreparedStatement ps = null;
 		
-		String sql = prop.getProperty("insertBoard");
+		String sql = prop.getProperty("insertReview");
 		
 		try {
 			

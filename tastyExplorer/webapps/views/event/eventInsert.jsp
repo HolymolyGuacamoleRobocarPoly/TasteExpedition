@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 작성 페이지</title>
+<title>이벤트 등록 페이지</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>이벤트 등록 페이지</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -43,22 +42,16 @@
 
 <script src="/tastyServer/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <style>
-.header {
-    text-align: center;
-    margin-right: -10%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-left: -10%;
-    border-radius: 15px;
-    border: none;
-}
-
 .event_writearea {
     display: inline;
     width: 1000px;
     border: solid 1px #c8c8c8;
     border-left: none;
     border-right: none;
+    border-top: 2px solid #c8c8c8;
+    border-bottom: 2px solid #c8c8c8;
+    margin-bottom: 50px;
+    margin-top: 8px;
     
 }
 
@@ -122,7 +115,7 @@ input[type=text]::placeholder{
   outline: none;
   padding: 0 13px;
   display: inlne;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   float: right;   
   margin-right: 13px;
   cursor: pointer;
@@ -142,10 +135,10 @@ input[type=text]::placeholder{
 </head>
 <body>
    
+   <%@ include file="../common/header.jsp" %>
+   
     <div class="temporary">
-       <div class="header">
-          <h1>Event_Admin</h1> <hr>
-       </div>
+      
        <div class="mjImgArea" 
           style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 50px; ">
           
@@ -156,11 +149,12 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.ev" method="post">
-        <div class="event_container">
+    <form action="/tastyServer/insert.att" method="post">
+    <p style="text-align:center; margin-top: 50px; font-size: 40px; font-weight: normal;">이벤트 등록</p>
+        <div class="event_container">    
         	<div class="event_writearea" >
     			<div class="event_write">
-            		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">이벤트 등록</p>
+            		
 	               
 	                             
                     <div class="event_textArea" style="margin-top:80px;">
@@ -242,6 +236,8 @@ input[type=text]::placeholder{
       }
    
    </script>
+
+	<%@ include file="../common/footer.jsp" %>
 
 </body>
 </html>

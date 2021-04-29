@@ -7,40 +7,36 @@
 <title>이벤트 상세 페이지</title>
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 <style>
-.header {
-	text-align: center;
-	margin-right: -10%;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	margin-left: -10%;
-	border-radius: 15px;
-	border: none;
-	color : #c8c8c8;
-}
+
 
 .container{
 	width: 600px;
-	height: atuo;
+	height: auto;
 	border: 1px solid  #c8c8c8;
 	border-radius: 3px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top:50px;
+	margin-top: 100px;
+	display: inline;
 	
 }
 
 .contentImgArea{
 	width: 600px;
 	height: 1000px;
-	border: 1px solid #c8c8c8;
+	margin-top: 50px;
+	border: 3px solid black;
 	border-radius: 3px;
 	margin-right: auto;
 	margin-left: auto;
+	border-left: none;
+    border-right: none;
 	
 }
 .uploadreviewImg{
+	margin-top: 30px;
 	width: 600px;
-	height: 1000px;
+	height: 800px;
 }
 
 button {
@@ -75,11 +71,12 @@ button {
 </style>
 </head>
 <body>
-
-	<div class="header">
-    	<h1>Event Detail</h1> <hr>
-    </div>
+	<%@ include file="../common/header.jsp" %>
+	
+	
      
+    
+    	<p style="text-align: center; margin-top: 60px;" >이벤트</p>
     <div class="container">
     	<div class="contentImgArea">      
         	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>
@@ -92,7 +89,7 @@ button {
     
      
      
-     
+     <%@ include file="../common/footer.jsp" %>
      
      
 

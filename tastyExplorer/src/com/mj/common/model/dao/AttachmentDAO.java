@@ -118,15 +118,59 @@ public class AttachmentDAO {
 		return result;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public int getCurrentnNo(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("currentNNo");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally { 
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getCurrenteNo(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("currentENo");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally { 
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
 	
 	public int getCurrentRNo(Connection con) {
 		int result = 0;
@@ -155,12 +199,13 @@ public class AttachmentDAO {
 		return result;
 	}
 
-	public int getCurrentnNo(Connection con) {
+
+	public int getCurrentcmNo(Connection con) {
 		int result = 0;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("currentnNo");
+		String sql = prop.getProperty("currentcmNo");
 		
 		try {
 			ps = con.prepareStatement(sql);
