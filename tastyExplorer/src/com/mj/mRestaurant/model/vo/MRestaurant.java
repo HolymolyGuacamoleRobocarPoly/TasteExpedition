@@ -13,39 +13,42 @@ public class MRestaurant implements Serializable {
 	private int mRestaurantNo;
 	private String mRestaurantTitle;
 	private String mRestaurantContent;
-	private char mRestaurantLevel;
 	private String mRestaurantAdrress;
 	private int mRestaurantTel;
 	private String mRestaurantInfo;
 	private int mRestaurantLike;
 	private char mRestaurantStatus;
+	private char mRestaurantConfirm;
+	private int mRestaurantLevel;
 	
 	// 생성자
 	public MRestaurant() {}
 	
-	public MRestaurant(int mRestaurantNo, String mRestaurantTitle, String mRestaurantContent, char mRestaurantLevel,
-			String mRestaurantAdrress, int mRestaurantTel, String mRestaurantInfo, int mRestaurantLike,
-			char mRestaurantStatus) {
+	public MRestaurant(int mRestaurantNo, String mRestaurantTitle, String mRestaurantContent, String mRestaurantAdrress,
+			int mRestaurantTel, String mRestaurantInfo, int mRestaurantLike, char mRestaurantStatus,
+			char mRestaurantConfirm, int mRestaurantLevel) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
 		this.mRestaurantTitle = mRestaurantTitle;
 		this.mRestaurantContent = mRestaurantContent;
-		this.mRestaurantLevel = mRestaurantLevel;
 		this.mRestaurantAdrress = mRestaurantAdrress;
 		this.mRestaurantTel = mRestaurantTel;
 		this.mRestaurantInfo = mRestaurantInfo;
 		this.mRestaurantLike = mRestaurantLike;
 		this.mRestaurantStatus = mRestaurantStatus;
+		this.mRestaurantConfirm = mRestaurantConfirm;
+		this.mRestaurantLevel = mRestaurantLevel;
 	}
-
-	// 메소드
+	
+	// 메소드 
+	
 	@Override
 	public String toString() {
 		return "MRestaurant [mRestaurantNo=" + mRestaurantNo + ", mRestaurantTitle=" + mRestaurantTitle
-				+ ", mRestaurantContent=" + mRestaurantContent + ", mRestaurantLevel=" + mRestaurantLevel
-				+ ", mRestaurantAdrress=" + mRestaurantAdrress + ", mRestaurantTel=" + mRestaurantTel
-				+ ", mRestaurantInfo=" + mRestaurantInfo + ", mRestaurantLike=" + mRestaurantLike
-				+ ", mRestaurantStatus=" + mRestaurantStatus + "]";
+				+ ", mRestaurantContent=" + mRestaurantContent + ", mRestaurantAdrress=" + mRestaurantAdrress
+				+ ", mRestaurantTel=" + mRestaurantTel + ", mRestaurantInfo=" + mRestaurantInfo + ", mRestaurantLike="
+				+ mRestaurantLike + ", mRestaurantStatus=" + mRestaurantStatus + ", mRestaurantConfirm="
+				+ mRestaurantConfirm + ", mRestaurantLevel=" + mRestaurantLevel + "]";
 	}
 
 	public int getmRestaurantNo() {
@@ -72,11 +75,11 @@ public class MRestaurant implements Serializable {
 		this.mRestaurantContent = mRestaurantContent;
 	}
 
-	public char getmRestaurantLevel() {
+	public int getmRestaurantLevel() {
 		return mRestaurantLevel;
 	}
 
-	public void setmRestaurantLevel(char mRestaurantLevel) {
+	public void setmRestaurantLevel(int mRestaurantLevel) {
 		this.mRestaurantLevel = mRestaurantLevel;
 	}
 
@@ -118,6 +121,14 @@ public class MRestaurant implements Serializable {
 
 	public void setmRestaurantStatus(char mRestaurantStatus) {
 		this.mRestaurantStatus = mRestaurantStatus;
+	}
+
+	public char getmRestaurantConfirm() {
+		return mRestaurantConfirm;
+	}
+
+	public void setmRestaurantConfirm(char mRestaurantConfirm) {
+		this.mRestaurantConfirm = mRestaurantConfirm;
 	}
 	
 	
