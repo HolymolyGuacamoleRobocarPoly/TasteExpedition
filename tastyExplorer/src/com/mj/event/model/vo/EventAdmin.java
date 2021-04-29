@@ -8,23 +8,23 @@ public class EventAdmin implements Serializable {
 	private static final long serialVersionUID = 1002L;
 	
 	private int eNo;
-	private String eComment;
+	private String eContent;
 	private String eTitle;
 	private Date eDuration;
 	
 	public EventAdmin() {}
 
-	public EventAdmin(int eNo, String eComment, String eTitle, Date eDuration) {
+	public EventAdmin(int eNo, String eContent, String eTitle, Date eDuration) {
 		super();
 		this.eNo = eNo;
-		this.eComment = eComment;
+		this.eContent = eContent;
 		this.eTitle = eTitle;
 		this.eDuration = eDuration;
 	}
 
 	@Override
 	public String toString() {
-		return "EventAdmin [eNo=" + eNo + ", eComment=" + eComment + ", eTitle=" + eTitle + ", eDuration=" + eDuration
+		return "EventAdmin [eNo=" + eNo + ", eComment=" + eContent + ", eTitle=" + eTitle + ", eDuration=" + eDuration
 				+ "]";
 	}
 
@@ -36,12 +36,12 @@ public class EventAdmin implements Serializable {
 		this.eNo = eNo;
 	}
 
-	public String geteComment() {
-		return eComment;
+	public String geteContent() {
+		return eContent;
 	}
 
-	public void seteComment(String eComment) {
-		this.eComment = eComment;
+	public void seteContent(String eComment) {
+		this.eContent = eComment;
 	}
 
 	public String geteTitle() {

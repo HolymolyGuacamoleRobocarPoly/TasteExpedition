@@ -3,7 +3,7 @@ package com.mj.cBoardCommunity.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Comunity implements Serializable{
+public class Community implements Serializable{
 
 	private static final long serialVersionUID = 3030;
 	
@@ -16,9 +16,9 @@ public class Comunity implements Serializable{
 	private Date cBoardDate;
 	private char cBoardStatus;
 	
-	public Comunity() {}
+	public Community() {}
 
-	public Comunity(int cBoardNo, String cBoardTitle, String cBoardContent, int mNo, int cBoardTeam, int cBoardCount,
+	public Community(int cBoardNo, String cBoardTitle, String cBoardContent, int mNo, int cBoardTeam, int cBoardCount,
 			Date cBoardDate, char cBoardStatus) {
 		super();
 		this.cBoardNo = cBoardNo;
@@ -33,7 +33,7 @@ public class Comunity implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Comunity [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent
+		return "Community [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent
 				+ ", mNo=" + mNo + ", cBoardTeam=" + cBoardTeam + ", cBoardCount=" + cBoardCount + ", cBoardDate="
 				+ cBoardDate + ", cBoardStatus=" + cBoardStatus + "]";
 	}

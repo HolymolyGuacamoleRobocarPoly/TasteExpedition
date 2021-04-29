@@ -1,4 +1,6 @@
-package com.mj.member.model.dao;
+package com.mj.notice.model.dao;
+
+import static com.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,54 +9,51 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import com.mj.common.model.dao.AttachmentDAO;
 import com.mj.member.model.vo.Coupon;
+import com.mj.notice.model.vo.Notice;
 
-import static com.common.JDBCTemplate.*;
+public class NoticeDAO {
 
-public class CouponDAO {
-	
 	private Properties prop;
 	
-	public CouponDAO() {
+	public NoticeDAO() {
 		prop = new Properties();
 		
-		String filePath = CouponDAO.class
-						           .getResource("/config/Coupon.properties")
-						           .getPath();
+		String filePath 
+			= NoticeDAO.class
+					   .getResource("/config/notice.properties")
+					   .getPath();
 		
 		try {
 			prop.load(new FileReader(filePath));
-			
 		} catch (IOException e) {
-			
 			e.printStackTrace();
 		}
 	}
 
-	public int insertCoupon(Connection con, Coupon c) {
+	public int insertNotice(Connection con, Notice n) {
+		
 		int result = 0;
 		PreparedStatement ps = null;
-		
-		String sql = prop.getProperty("insertCoupon");
+		String sql = prop.getProperty("insertNotice");
 		
 		try {
-			
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, c.getcContent());
-			ps.setString(2, c.getcTitle());
+			ps.setString(2, n.getnTitle());
+			ps.setString(3, n.getnContent());
 
-			
 			result = ps.executeUpdate();
-			
 		} catch (SQLException e) {
-		
+			
 			e.printStackTrace();
 		} finally {
 			close(ps);
 		}
-			
+		
 		return result;
+		
 	}
 
 }
