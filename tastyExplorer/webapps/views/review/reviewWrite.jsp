@@ -84,7 +84,8 @@
 }
 
 textarea{
-   width: 1000px; 
+   width: 1000px;
+   height: 500px; 
    border-radius: 3px; 
    border-color:#c8c8c8; 
    resize: none; 
@@ -178,6 +179,7 @@ input[type=text]::placeholder{
 </style>
 </head>
 <body>
+  
    
     <div class="temporary">
        <div class="header">
@@ -207,13 +209,14 @@ input[type=text]::placeholder{
 	            	<p>
 	                             
                     <div class="review_textArea">
-						<textarea class="form-control" id="rcontent" name="rcontent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!"></textarea>
+						<textarea class="form-control" id="rcontent" name="rcontent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!" required="required"></textarea>
 					</div>  
                 </div>
                  
                 <div class="review_remain">
-                	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>             
-	            	<input type="text" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+                	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>   
+                	<!-- name만 정해주면 $('#tags').val();로 " , , " 해시태그 안의 값을 뽑을 수 있음 -->          
+	            	<input type="text" name="tags" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
                     <div>
@@ -247,6 +250,8 @@ input[type=text]::placeholder{
           	</div>
        	</div>
     </form>
+    
+    <%@ include file="../common/footer.jsp" %>
    
 	<script>
 	$('.bootstrap-tagsinput input').tagsinput({

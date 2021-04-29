@@ -53,40 +53,26 @@
     border: none;
 }
 
-.review_writearea {
+.event_writearea {
     display: inline;
     width: 1000px;
     border: solid 1px #c8c8c8;
     border-left: none;
     border-right: none;
+    
 }
 
-/*#r_button {
-    padding: 0 13px;
-    height: 40px;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    background: #B4F0B4;
-    border-radius: 5px;
-    border: none;
-    display: inlne;
-    margin-bottom: 10px;
-    float: right;   
-    margin-right: 13px;
-    cursor: pointer;
-}*/
-
-.review_container{
+.event_container{
    width: 100%; 
    display: flex;
    justify-content: center;
 }
 
-.text1
+.text
 {
-   width: 500px; 
+   width: 400px; 
    border-radius: 2px; 
+   border: 2px solid #c8c8c8;
    border-color:#c8c8c8; 
    resize: none; 
    margin-top:10px; 
@@ -98,9 +84,9 @@ textarea::placeholder {
 }
 
 [id*=uploadreviewImg]{
-    width: 100px;
-    height: 100px;
-    border : solid 1px #c8c8c8;
+    width: 400px;
+    height: 400px;
+    border : 2px solid #c8c8c8;
     text-align : center;
     margin-top: 30px;
     display: inline;
@@ -110,10 +96,9 @@ textarea::placeholder {
 [id*=contentImgArea]{
    display: inline;
    margin: 2px;
-   
 }
 
-.review_remain{
+.event_remain{
    
    margin-top: 20px;
 }
@@ -150,19 +135,6 @@ input[type=text]::placeholder{
   transform: translateY(-7px);
 }
 
-.review_textArea .form-control:focus {
-    border: 1px solid #c8c8c8;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.label-info{
-	background-color: #FFF0F0;
-	font-size: 15px;
-}
-
-.bootstrap-tagsinput .tag{
-	color: black;
-}
 
 
 
@@ -172,7 +144,7 @@ input[type=text]::placeholder{
    
     <div class="temporary">
        <div class="header">
-          <h1>리뷰 작성</h1> <hr>
+          <h1>Event_Admin</h1> <hr>
        </div>
        <div class="mjImgArea" 
           style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 50px; ">
@@ -184,40 +156,45 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.rv" method="post">
-        <div class="review_container">
-        	<div class="review_writearea">
-    			<div class="review_write">
+    <form action="/tastyServer/insert.ev" method="post">
+        <div class="event_container">
+        	<div class="event_writearea" >
+    			<div class="event_write">
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">이벤트 등록</p>
 	               
 	                             
-                    <div class="review_textArea">
-                    	<p style="font-weight: bold; "> 이벤트 제목12</p>  
-						<input type="text" name="" id="" class="text1"/>
+                    <div class="event_textArea" style="margin-top:80px;">
+                    	<p style="font-weight: bold; font-size:20px;">이벤트 제목</p>  
+						<input type="text" name="e_title" class="text" required="required"/>
+						
+						<p style="font-weight: bold; margin-top: 30px; font-size:20px;" >이벤트 내용</p>             
+	            		<textarea name="e_content" cols="50" rows="10" class="text" required="required"/></textArea>
+					
+						<p style="font-weight: bold; margin-top: 30px; font-size:20px;" >이벤트 유효기간</p>             
+	            		<input type="text" name="e_duration" class="text" required="required"/>
+					
 					</div>  
                 </div>
                  
-                <div class="review_remain">
-                	<p style="font-weight: bold;"> 이벤트 유효기간</p>             
-	            	<input type="text" name="" id="" class="text1"/>
+                <div class="event_remain">
+                
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
                     <div >
-                    	<p style="font-weight: bold; margin-top: 100px; margin-bottom:-20px;" >+ 사진 추가</p>
+                    	<p style="font-weight: bold;  margin-top: 40px; margin-bottom:-20px; font-size:20px;" >+ 사진 추가</p>
                     </div>
                     <div id="contentImgArea1">
                         <img id="uploadreviewImg1" src="/tastyServer/assets/images/no-image.jpg"/>
                     </div>
-                    
-                    
+
                		<div class="fileArea" id="fileArea">
                   	    <input type="file" accept="image/*" name="thumbImg1" id="thumbImg1" onchange="loadImg(this,1);" />
                   		
                		</div>
                            
-                    <div class="wrap">
+                    <div class="button_area">
                     	<button class="button" type="reset">작성 취소</button>
-                    	<button class="button" type="submit">리뷰 등록</button>
+                    	<button class="button" type="submit">이벤트 등록</button>
                     </div>
                 </div>
           	</div>
