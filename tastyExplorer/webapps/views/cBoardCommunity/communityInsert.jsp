@@ -6,12 +6,16 @@
 <meta charset="UTF-8">
 <title>커뮤니티 게시글 작성</title>
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="/tastyServer/assets/css/heard.css" />
+<link rel="stylesheet" href="/tastyServer/assets/css/footer.css" />
 </head>
 <body>
-
+	
+	<%@ include file ="../common/header.jsp" %>
+	
 	<section>
 		<h2 algin="center">게시글 작성</h2>
-
+		
 		<div class="tableArea">
 			<form action="/tastyServer/insert.co" method="post"
 				enctype="mulipart/form-data">
@@ -23,8 +27,8 @@
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td colspan="3"><%= c.mNickname() %> <input type="hidden"
-							name="memberNickname" value="<%= c.mNickname() %>"></td>
+						<td colspan="3"><%= m.mNickname() %> <input type="hidden"
+							name="memberNickname" value="<%= m.mNickname() %>"></td>
 					</tr>
 					<tr>
 						<td>첨부파일</td>
@@ -44,7 +48,7 @@
 			</form>
 		</div>
 	</section>
-
+	<%@ include  file = "../common/footer.jsp" %>
 
 </body>
 </html>
