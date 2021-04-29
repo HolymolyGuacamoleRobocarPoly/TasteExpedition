@@ -32,11 +32,11 @@
                 <h2>Quick Links</h2>
                 <ul>
                     <li><a href="#">문의사항</a></li>
-                    <li><a href="#">이벤트</a></li>
+                    <li><a href="/tastyServer/views/event/eventList.jsp">이벤트</a></li>
                     <li><a href="#">공지사항</a></li>
                     <li><a href="#">지도</a></li>
                     <li><a href="#">#소통하기</a></li>
-                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="/tastyServer/views/review/reviewWrite.jsp">마이페이지</a></li>
                 </ul>
             </div>
             <div class="sec contact">
