@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.mj.review.model.vo.Review;
@@ -16,6 +17,7 @@ public class ReviewDAO {
 	private Properties prop;
 	
 	public ReviewDAO() {
+		
 		prop = new Properties();
 		
 		String filePath = Review.class
@@ -30,8 +32,11 @@ public class ReviewDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	public ArrayList<Review> selectList(Connection con, int currentPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public int insertReview(Connection con, Review r) {
 		
@@ -54,11 +59,15 @@ public class ReviewDAO {
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
+			
 		} finally {
+			
 			close(ps);
+			
 		}
 			
 		return result;
 	}
+
 
 }

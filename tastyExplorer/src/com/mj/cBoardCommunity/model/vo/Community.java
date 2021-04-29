@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Community implements Serializable{
 
 	private static final long serialVersionUID = 3030L;
-	
+
 	private int cBoardNo;
 	private String cBoardTitle;
 	private String cBoardContent;
@@ -21,6 +21,7 @@ public class Community implements Serializable{
 
 	public Community(int cBoardNo, String cBoardTitle, String cBoardContent, String cBoardwriter, String mNickname,
 			int cBoardTeam, int cBoardCount, Date cBoardDate) {
+
 		super();
 		this.cBoardNo = cBoardNo;
 		this.cBoardTitle = cBoardTitle;
