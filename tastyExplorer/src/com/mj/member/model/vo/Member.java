@@ -8,48 +8,54 @@ public class Member implements Serializable{
 	private static final long serialVersionUID = 1004;
 	
 	private int mNo;
-	private String mId;
-	private String mPwd;
-	private String mName;
-	private String mPhone;
-	private Date mBirth;
-	private String mAddr;
-	private Date mEnrollDate;
+	private String userId;
+	private String userPwd;
+	private String userName;
+	private String phone;
+	private Date Birthday;
+	private String address;
+	private Date EnrollDate;
 	private String mLevel;
 	private int mWarning;
 	private int mPurchase;
 	private String mProfileAtt;
-	private String mNickname;
+	private String nickName;
 	private int mLoginType;
 
 	public Member() {}
 	
-	public Member(int mNo, String mId, String mPwd, String mName, String mPhone, Date mBirth, String mAddr,
-			Date mEnrollDate, String mLevel, int mWarning, int mPurchase, String mProfileAtt, String mNickname,
+	public Member(int mNo, String userId, String userPwd, String userName, String phone, Date Birthday, String address,
+			Date EnrollDate, String mLevel, int mWarning, int mPurchase, String mProfileAtt, String nickName,
 			int mLoginType) {
 		super();
 		this.mNo = mNo;
-		this.mId = mId;
-		this.mPwd = mPwd;
-		this.mName = mName;
-		this.mPhone = mPhone;
-		this.mBirth = mBirth;
-		this.mAddr = mAddr;
-		this.mEnrollDate = mEnrollDate;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		this.Birthday = Birthday;
+		this.address = address;
+		this.EnrollDate = EnrollDate;
 		this.mLevel = mLevel;
 		this.mWarning = mWarning;
 		this.mPurchase = mPurchase;
 		this.mProfileAtt = mProfileAtt;
-		this.mNickname = mNickname;
+		this.nickName = nickName;
 		this.mLoginType = mLoginType;
+	}
+	
+	public Member(String userId, String userPwd) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
 	}
 	
 	@Override
 	public String toString() {
-		return "member [mNo=" + mNo + ", mId=" + mId + ", mPwd=" + mPwd + ", mName=" + mName + ", mPhone=" + mPhone
-				+ ", mBirth=" + mBirth + ", mAddr=" + mAddr + ", mEnrollDate=" + mEnrollDate + ", mLevel=" + mLevel
+		return "member [mNo=" + mNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", phone=" + phone
+				+ ", Birthday=" + Birthday + ", address=" + address + ", EnrollDate=" + EnrollDate + ", mLevel=" + mLevel
 				+ ", mWarning=" + mWarning + ", mPurchase=" + mPurchase + ", mProfileAtt=" + mProfileAtt
-				+ ", mNickname=" + mNickname + ", mLoginType=" + mLoginType + "]";
+				+ ", nickName=" + nickName + ", mLoginType=" + mLoginType + "]";
 	}
 
 	public int getmNo() {
@@ -60,60 +66,60 @@ public class Member implements Serializable{
 		this.mNo = mNo;
 	}
 
-	public String getmId() {
-		return mId;
+	public String getuserId() {
+		return userId;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setuserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getmPwd() {
-		return mPwd;
+	public String getuserPwd() {
+		return userPwd;
 	}
 
-	public void setmPwd(String mPwd) {
-		this.mPwd = mPwd;
+	public void setuserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getuserName() {
+		return userName;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setuserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getmPhone() {
-		return mPhone;
+	public String getphone() {
+		return phone;
 	}
 
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
+	public void setphone(String phone) {
+		this.phone = phone;
 	}
 
-	public Date getmBirth() {
-		return mBirth;
+	public Date getBirthday() {
+		return Birthday;
 	}
 
-	public void setmBirth(Date mBirth) {
-		this.mBirth = mBirth;
+	public void setBirthday(Date Birthday) {
+		this.Birthday = Birthday;
 	}
 
-	public String getmAddr() {
-		return mAddr;
+	public String getaddress() {
+		return address;
 	}
 
-	public void setmAddr(String mAddr) {
-		this.mAddr = mAddr;
+	public void setaddress(String address) {
+		this.address = address;
 	}
 
-	public Date getmEnrollDate() {
-		return mEnrollDate;
+	public Date getEnrollDate() {
+		return EnrollDate;
 	}
 
-	public void setmEnrollDate(Date mEnrollDate) {
-		this.mEnrollDate = mEnrollDate;
+	public void setEnrollDate(Date EnrollDate) {
+		this.EnrollDate = EnrollDate;
 	}
 
 	public String getmLevel() {
@@ -148,12 +154,12 @@ public class Member implements Serializable{
 		this.mProfileAtt = mProfileAtt;
 	}
 
-	public String getmNickname() {
-		return mNickname;
+	public String getnickName() {
+		return nickName;
 	}
 
-	public void setmNickname(String mNickname) {
-		this.mNickname = mNickname;
+	public void setnickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public int getmLoginType() {

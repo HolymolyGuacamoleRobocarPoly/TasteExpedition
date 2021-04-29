@@ -58,27 +58,27 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" maxlength="5" name="userName" required="required"></td>
+					<td><input type="text" maxlength="5" id="userName" name="userName" required="required"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" maxlength="5" name="nickName" required="required"></td>
+					<td><input type="text" maxlength="5" id="nickName" name="nickName" required="required"></td>
 					<td width="200px"><div id="nickCheck">중복 확인</div></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>연락처 </td>
 					<td>
-						<input type="text" maxlength="3" name="tel1" size="2">-
-						<input type="text" maxlength="4" name="tel2" size="2">-
-						<input type="text" maxlength="4" name="tel3" size="2">
+						<input type="text" maxlength="3" id="tel1" name="tel1" size="4">-
+						<input type="text" maxlength="4" id="tel2" name="tel2" size="5">-
+						<input type="text" maxlength="4" id="te13" name="tel3" size="5">
 					</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>이메일 </td>
-					<td><input type="email" name="email"></td>
+					<td><input type="email" id="email" name="email"></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -96,22 +96,10 @@
 					<td><input type="text" id="address2" name="address2"></td>
 					<td></td>
 				</tr>
-				<tr>
-					<td>상세주소</td>
-					<td><input type="text" id="address2" name="address2"></td>
-					<td></td>
-				</tr>
 			</table>
-		
-		<div id="page-wrapper" class="contact-wrap">
-		
-	<div class="container">
-		<div class="main-visual visual-contact">
-			<div class="visual">	
-				<div class="hr"></div>
-			</div>
-		</div>
-		<!-- /.main-visual -->
+			
+			<br>
+			<br>
 		
 		<div class="view-table">
 			<div class="form-group text-center pb-3 pt-3">
@@ -177,7 +165,7 @@
                                   
 			<label for="chk_all">위치기반 서비스 이용 동의(필수)</span></label>
     </span>
-	</div>
+	        </div>
 			<br>
 			<div class="btns" align="center">
 				<div id="joinBtn" onclick="insertMember();">JOIN</div>
@@ -235,40 +223,24 @@
     };
     
     function insertMember() {
-		$("#joinForm").submit();
-	}
-	
-	$("#joinForm").submit(function(event){
-		if($("#userPwd").val() == "" || $("#userId").val() == "") alert("아이디와 비밀번호를 필수로 입력해주세요.");
+    	if($("#userId").val() == "") alert("아이디를 입력해주세요.");
+		else if($("#userPwd").val() == "") alert("비밀번호를 입력해주세요.");
+		else if($("#userPwd2").val() == "") alert("비밀번호 확인값을 입력해주세요.");
+		else if($("#userName").val() == "") alert("이름을 입력해주세요.");
+		else if($("#nickName").val() == "") alert("닉네임을 입력해주세요.");
+		else if($("#te11").val() == "" || $("#te12").val() == "" || $("#te13").val() == "") alert("연락처를 입력해주세요.");
+		else if($("#email").val() == "") alert("이메일을 입력해주세요.");
+		else if($("#zipCode").val() == "") alert("우편번호를 입력해주세요.");
+		else if($("#adress1").val() == "") alert("주소를 입력해주세요.");
+		else if($("#adress2").val() == "") alert("상세주소를 입력해주세요.");
 		else if($('#userPwd').val() != $('#userPwd2').val()) alert("비밀번호 확인 값과 다릅니다.");
-		else return;
-		event.preventDefault();
-	});
-    
-    // 아이디
-		
-	$('#idCheck').on('click', function(){
-		$.ajax({
-			url : '/tastyServer/idcheck.me',
-			type : 'post',
-			data : { userId : $('#userId').val() },
-			success : function( data ) {
-				console.log(data);
-				
-				// 전달된 결과가 0이면 : 사용 가능
-				// 전달된 결과가 1이면 : 사용 불가
-				if( data == 0) {
-					alert("사용 가능한 아이디입니다.");
-				} else {
-					alert("이미 사용 중인 아이디입니다.");
-				}
-				
-			}, error : function(){
-				console.log("전송 실패!");
-			}
-		});
-	});
-	
+		else if($("#termsPrivacy").is(":checked") == false){
+			alert("개인정보 이용약관에 동의해주세요.");
+		}else if($("#chk_all").is(":checked") == false){
+			alert("위치기반 서비스 이용약관에 동의해주세요.");
+		}else $("#joinForm").submit();
+	}
+
 	</script>
 	
 	<%@ include file ="../common/footer.jsp" %>
