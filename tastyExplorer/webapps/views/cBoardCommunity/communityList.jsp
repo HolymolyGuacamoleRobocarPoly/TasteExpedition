@@ -8,15 +8,16 @@
 	int st = pi.getStartPage();
 	int ed = pi.getEndPage();
 	int mx = pi.getMaxPage();
+	int cur = pi.getCurrentPage();
 	int limit = pi.getLimit();
 	int listCount = pi.getListCount();
-	int cur = pi.getCurrentPage();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
+
 <title>#소통해요</title>
 <style>
 	section {
@@ -46,62 +47,14 @@
 </style>
 </head>
 <body>
-	
-	
-	
-	<!-- 게시글 목록 -->
+	<%@ include  file = "../common/header.jsp" %>
+	<!-- 게시글 목록임 -->
 	<section>
 		<h2 align="center">게시글 목록</h2>
-		
+
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
-
-					<td width="75px;">No</td>
-					<td width="300px;">제목</td>
-					<td width="75px;">작성자</td>
-					<td width="100px;">팀원수</td>
-					<td width="150px;">작성일</td>
-					<td width="70px;">조회수</td>
-				</tr>
-				<% for(Community c : list) { %>
-				<tr>
-					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
-					<td><%= c.getcBoardTitle()%></td>
-					<td><%= c.getcBoardwriter() %></td>
-					<td><%= c.getcBoardTeam()%></td>
-					<td><%= c.getcBoardDate()%></td>
-					<td><%= c.getcBoardCount() %></td>
-				</tr>
-				
-				<% } %>
-			</table>
-		</div>
-		
-		<!-- 버튼 클릭시 -->
-		<div class="btnArea" align="center">
-		<br>
-		<if (m != null) { %> 	
-		<!-- button 아이콘으로 들어갈거임 -->
-		<button onclick="location.href='views/community/communityInsert.jsp'">작성하기</button>
-			<script>
-				$('#listArea td').on('mouseenter'), function() {
-					$(this).parent().css({'background' : 'white',
-										  'curor' : 'porinter',
-										  'color' : 'gray'});
-				}).on('mouserout', function(){
-					$('this').parent().css({'backgrond' : 'white',
-											'color' : 'white'});
-				}).on('click', function(){
-					var nno = $('this').parent.children().first().attr('id');
-					
-					console.log(nno);
-					
-					location.href = "/tastyServer/selecOne.co?cno=" + cno;
-				});
-			</script>
-		} 
-
 					<td width="75px;">글번호</td>
 					<td width="300px;">제목</td>
 					<td width="75px;">팀원수</td>
@@ -114,7 +67,7 @@
 					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
 					<td><%= c.getcBoardTitle()%></td>
 					<td><%= c.getcBoardTeam()%></td>
-					<td><%= c.getmNo() %></td>
+					<!-- <td>c.getcBoardwriter() </td> -->
 					<td><%= c.getcBoardDate()%></td>
 					<td><%= c.getcBoardCount() %></td>
 				</tr>
@@ -122,7 +75,6 @@
 				<% } %>
 			</table>
 		</div>
-		
 		<!-- 버튼 클릭시 -->
 		<div class="btnArea" align="center">
 		<br>
@@ -142,11 +94,10 @@
 					
 					console.log(nno);
 					
-					location.href = "/tastyServer/selecOne.co?cno=" + cno;
+					location.href = "/tastyServer/selecOne.co?cboardno=" + cboardno;
 				});
 			</script>
 		<% } %>
-
 			
 		</div>
 
@@ -182,11 +133,9 @@
 	
 		</div>
 		
-		
-		
-		
-		
 	</section>
+	
+	<%@ include  file = "../common/footer.jsp" %>
 
 
 </body>

@@ -3,6 +3,7 @@ package com.mj.cBoardCommunity.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mj.cBoardCommunity.model.service.CommunityService;
 import com.mj.cBoardCommunity.model.vo.Community;
+import com.mj.cBoardCommunity.model.vo.PageInfo;
 
 
 /**
@@ -33,10 +35,11 @@ public class CommunitySelectList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		// 게시판처리
 		ArrayList<Community> list = new ArrayList<>();
 		CommunityService service = new CommunityService();
 		
+		// 10개씩 짜름
 		int startPage;
 		
 		int endPage;
@@ -54,6 +57,7 @@ public class CommunitySelectList extends HttpServlet {
 
 		}
 		
+		// 총게시글 
 		int listCount = service.getListCount();
 		
 		// 최대 페이지수
@@ -69,6 +73,20 @@ public class CommunitySelectList extends HttpServlet {
 			endPage = maxPage;
 		}
 		
+		list = service.selectList(currentPage);
+		
+		request.setAttribute("list", list);
+		PageInfo pi = new PageInfo(startPage, endPage, maxPage, currentPage, limit, listCount);
+	
+		request.setAttribute("pi", pi);
+		
+		System.out.println(pi);
+		
+		RequestDispatcher view =
+				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");
+		
+		view.forward(request, response);	
+	
 	}
 
 	/**

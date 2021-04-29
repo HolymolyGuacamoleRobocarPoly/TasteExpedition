@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class PageInfo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int startPage;  // 시작 페이지  (1), 2, 3, 4, 5 . . . . 20
 	private int endPage;    // 끝 페이지    1, 2, 3, 4, (5) . . . . 20
 	private int maxPage;   // 실제 끝 페이지 1, 2, 3, 4, 5 . . . . (20)
