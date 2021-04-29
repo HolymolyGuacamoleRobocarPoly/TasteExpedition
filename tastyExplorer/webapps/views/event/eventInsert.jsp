@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Soft-Tect Free Landing Page</title>
+<title>이벤트 등록 페이지</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
