@@ -9,19 +9,15 @@
     <title>맛좀볼래?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="../resources/css/intro.css">
-    <link rel="stylesheet" href="../resources/css/headerStyle.css">
-    <link rel="stylesheet" href="../resources/css/userprofile.css">
-    <link rel="stylesheet" href="../resources/css/footerStyle.css">
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/tastyServer/assets/css/index.css">
+    <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
+    <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
+    <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
 </head>
 <body>
-
 	
-	<%@ include file="views/common/header.jsp" %>
-	
-	
-	<%@ include file="views/common/footer.jsp" %>
-
+<%@ include file="views/common/header.jsp" %>
 
     <div class="title">
         <h1>
@@ -35,7 +31,13 @@
         </h1>
     </div>
 
-<%@ include file="../views/common/header.jsp"%>
-<%@ include file="../views/common/footer.jsp"%>  
+
+<%@ include file="views/common/map.jsp" %>
+
+
+
+<%@ include file="views/common/footer.jsp" %>
+
+
 </body>
 </html> 

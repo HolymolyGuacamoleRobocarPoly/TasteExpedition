@@ -9,8 +9,6 @@
 
 body {
     background: #fff;
-    min-height: 200vh;
-
 }
 
 header {
@@ -73,11 +71,10 @@ header ul li a{
 .banner {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 153vh;
     background-color: #d4e157;
     background-size: cover;
 }
-
 
 header.sticky .logo,
 header.sticky ul li a{
