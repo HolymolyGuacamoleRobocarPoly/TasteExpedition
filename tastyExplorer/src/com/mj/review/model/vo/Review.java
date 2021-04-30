@@ -16,11 +16,12 @@ public class Review implements Serializable {
 	private int rScore;
 	private Date rDate;
 	private int mNo;
+	private int mRestaurantNo;
 	
 	public Review() {}
 
 	public Review(int rNo, String rContent, int rLike, int rUnLike, String rHashTag, char rStatus, int rScore,
-			Date rDate, int mNo) {
+			Date rDate, int mNo, int mRestaurantNo) {
 		super();
 		this.rNo = rNo;
 		this.rContent = rContent;
@@ -31,13 +32,14 @@ public class Review implements Serializable {
 		this.rScore = rScore;
 		this.rDate = rDate;
 		this.mNo = mNo;
+		this.mRestaurantNo = mRestaurantNo;
 	}
 
 	@Override
 	public String toString() {
 		return "Review [rNo=" + rNo + ", rContent=" + rContent + ", rLike=" + rLike + ", rUnLike=" + rUnLike
 				+ ", rHashTag=" + rHashTag + ", rStatus=" + rStatus + ", rScore=" + rScore + ", rDate=" + rDate
-				+ ", mNo=" + mNo + "]";
+				+ ", mNo=" + mNo + ", mRestaurantNo=" + mRestaurantNo + "]";
 	}
 
 	public int getrNo() {
@@ -112,11 +114,13 @@ public class Review implements Serializable {
 		this.mNo = mNo;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getmRestaurantNo() {
+		return mRestaurantNo;
 	}
 
-	
+	public void setmRestaurantNo(int mRestaurantNo) {
+		this.mRestaurantNo = mRestaurantNo;
+	}
 
 	
 	

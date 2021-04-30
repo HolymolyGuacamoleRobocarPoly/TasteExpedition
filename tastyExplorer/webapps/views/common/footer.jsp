@@ -36,7 +36,7 @@
                 <div class="footer-col">
                     <h4>online shop</h4>
                         <ul>
-                            <li><a href="#">식사권 구매</a></li>
+                            <li><a href="/tastyServer/views/payment/pay.jsp">식사권 구매</a></li>
                             <li><a href="#">예약하기</a></li>
                             <li><a href="#">뭘 넣징</a></li>
                         </ul>

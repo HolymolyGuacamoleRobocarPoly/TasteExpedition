@@ -149,7 +149,7 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.att" method="post">
+    <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
     <p style="text-align:center; margin-top: 50px; font-size: 40px; font-weight: normal;">이벤트 등록</p>
         <div class="event_container">    
         	<div class="event_writearea" >
@@ -159,13 +159,13 @@ input[type=text]::placeholder{
 	                             
                     <div class="event_textArea" style="margin-top:80px;">
                     	<p style="font-weight: bold; font-size:20px;">이벤트 제목</p>  
-						<input type="text" name="e_title" class="text" required="required"/>
+						<input type="text" name="eTitle" class="text" required="required"/>
 						
 						<p style="font-weight: bold; margin-top: 30px; font-size:20px;" >이벤트 내용</p>             
-	            		<textarea name="e_content" cols="50" rows="10" class="text" required="required"/></textArea>
+	            		<textarea name="eContent" cols="50" rows="10" class="text" required="required"/></textArea>
 					
 						<p style="font-weight: bold; margin-top: 30px; font-size:20px;" >이벤트 유효기간</p>             
-	            		<input type="text" name="e_duration" class="text" required="required"/>
+	            		<input type="text" name="eDuration" class="text" required="required"/>
 					
 					</div>  
                 </div>
@@ -185,11 +185,14 @@ input[type=text]::placeholder{
                   	    <input type="file" accept="image/*" name="thumbImg1" id="thumbImg1" onchange="loadImg(this,1);" />
                   		
                		</div>
-                           
+                    <%-- 관리자가 로그인했을 경우 --%>    
+                    <%-- <% if(m.getmLoginType() == 1) { %> --%>   
                     <div class="button_area">
                     	<button class="button" type="reset">작성 취소</button>
                     	<button class="button" type="submit">이벤트 등록</button>
                     </div>
+                    <%-- <% } %> --%>
+                    <%-- else: 회원이 로그인했을 경우 -> button hidden --%>
                 </div>
           	</div>
        	</div>

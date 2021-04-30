@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>리뷰 작성 페이지</title>
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
-<script src="/tastyServer/assets/js/bootstrap-tagsinput.js"></script>
+
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -150,10 +150,12 @@ input[type=text]::placeholder{
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
     <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
         <div class="review_container">
-        <input type="hidden" name="attMFlevel" value="5"/>
+       
         	<div class="review_writearea">
-    			<div class="review_write">
-    				<input type="hidden" name="attMFlevel" value="5" />
+    			<div class="review_write">   			
+    				<input type="hidden" name="mNo" value="1" />
+            		<input type="hidden" name="attMFlevel" value="5"/>
+            		<input type="hidden" name="mRestaurantNo" value="1"/>
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;">        
 		               <a href="#" class="rScore_star" data="1">★</a> <!-- 부모 -->
@@ -178,7 +180,7 @@ input[type=text]::placeholder{
                 	
                 	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>   
                 	<!-- name만 정해주면 $('#tags').val();로 " , , " 해시태그 안의 값을 뽑을 수 있음 -->          
-	            	<input type="text" name="rHashTag" placeholder="#해시태그" value="" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+	            	<input type="text" name="rHashTag" placeholder="#해시태그" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
                 	
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            
@@ -215,7 +217,7 @@ input[type=text]::placeholder{
     </form>
     
    
-   
+<script src="/tastyServer/assets/js/bootstrap-tagsinput.js"></script>
 <script>
 
 	document.getElementById("rContent").style.fontSize = '20px';
@@ -243,7 +245,7 @@ input[type=text]::placeholder{
       $('#star a').click(function(){ $(this).parent().children("a").removeClass("on"); 
       
       $(this).addClass("on").prevAll("a").addClass("on"); 
-      console.log("value : " + $(this).attr("value")); });
+      console.log("value : " + $(this).attr("data")); });
 
       $('#contentImgArea1').on('click', function(){
          $('#thumbImg1').click();
@@ -296,7 +298,7 @@ input[type=text]::placeholder{
          }
       }
    
-      $()
+      
       
    </script>
 	 <%@ include file="../common/footer.jsp" %>

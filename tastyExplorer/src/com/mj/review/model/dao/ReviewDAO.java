@@ -53,6 +53,7 @@ public class ReviewDAO {
 			ps.setString(2, r.getrHashTag());
 			ps.setInt(3, r.getrScore());
 			ps.setInt(4, r.getmNo());
+			ps.setInt(5, r.getmRestaurantNo());
 			
 			result = ps.executeUpdate();
 			

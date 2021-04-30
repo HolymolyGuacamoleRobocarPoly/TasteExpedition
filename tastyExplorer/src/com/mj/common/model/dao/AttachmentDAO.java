@@ -20,9 +20,10 @@ public class AttachmentDAO {
 	public AttachmentDAO() {
 		prop = new Properties();
 		
+		// 210430_수정 Attachment -> attachment
 		String filePath 
 			= AttachmentDAO.class
-					  	  .getResource("/config/Attachment.properties")
+					  	  .getResource("/config/attachment.properties")
 					  	  .getPath();
 		
 		try {
@@ -50,7 +51,7 @@ public class AttachmentDAO {
 			
 			
 			ps.setString(2, attachment.getAttMFileName());
-			ps.setInt(3, attachment.getAttMFlevel());
+			ps.setInt(4, attachment.getAttMFlevel());
 			ps.setString(6, attachment.getAttBNo());
 			
 			result = ps.executeUpdate();

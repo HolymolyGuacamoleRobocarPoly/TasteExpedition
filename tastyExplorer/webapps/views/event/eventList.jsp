@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>이벤트 목록</title>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -12,6 +13,24 @@
 <style>
 p { margin:20px 0px; }
 
+.review_container{
+   width: 100%; 
+   display: flex;
+   justify-content: center;
+}
+
+.event_writearea {
+    display: inline;
+    width: 1000px;
+    border: solid 1px #c8c8c8;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #c8c8c8;
+    border-bottom: 2px solid #c8c8c8;
+    margin-bottom: 50px;
+    margin-top: 130px;
+    
+}
 
 
 button {
@@ -43,6 +62,9 @@ button:hover {
   transform: translateY(-7px);
 }
 
+.row{
+	margin-top: 20px;
+}
 
 
 </style>
@@ -51,7 +73,9 @@ button:hover {
   
    <%@ include file="../common/header.jsp" %>
     
-    <div class="container" style="background: white; margin-bottom: 70px; text-align: center; width: 1000px; margin-right: auto; margin-left: atuo;">
+    <p style="text-align:center; margin-bottom: -130px; margin-top: 60px; font-size: 40px; font-weight: normal;">Event<p>
+      <div class="review_container">
+      <div class="event_writearea" >
       <div class="row">
         
         <div class="col-4">
@@ -122,7 +146,8 @@ button:hover {
       </div>
        
     </div>
-   
+   </div>
+
     
      <%@ include file="../common/footer.jsp" %>
   

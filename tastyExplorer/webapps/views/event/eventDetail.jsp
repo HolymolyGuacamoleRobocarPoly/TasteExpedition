@@ -24,8 +24,8 @@
 .contentImgArea{
 	width: 600px;
 	height: 1000px;
-	margin-top: 50px;
-	border: 3px solid black;
+	margin-top: -10px;
+	border: 1px solid #c8c8c8;
 	border-radius: 3px;
 	margin-right: auto;
 	margin-left: auto;
@@ -34,9 +34,9 @@
 	
 }
 .uploadreviewImg{
-	margin-top: 30px;
+	margin-top: 20px;
 	width: 600px;
-	height: 800px;
+	height: 1000px;
 }
 
 button {
@@ -67,6 +67,10 @@ button {
   transform: translateY(-7px);
 }
 
+p{
+	font-size: 30px;
+}
+
 
 </style>
 </head>
@@ -74,9 +78,7 @@ button {
 	<%@ include file="../common/header.jsp" %>
 	
 	
-     
-    
-    	<p style="text-align: center; margin-top: 60px;" >이벤트</p>
+    	<p style="text-align: center; margin-top: 70px;" >이벤트</p>
     <div class="container">
     	<div class="contentImgArea">      
         	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>

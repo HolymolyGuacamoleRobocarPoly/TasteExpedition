@@ -34,13 +34,13 @@ public class EventAdminDAO {
 		
 		int result = 0;
 		PreparedStatement ps = null;
-		String sql = prop.getProperty("insertNotice");
+		String sql = prop.getProperty("insertEvent");
 		
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(2, e.geteTitle());
-			ps.setString(3, e.geteContent());
+			ps.setString(1, e.geteTitle());
+			ps.setString(2, e.geteContent());
 
 			result = ps.executeUpdate();
 		} catch (SQLException e1) {

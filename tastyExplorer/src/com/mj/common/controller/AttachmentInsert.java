@@ -2,6 +2,7 @@ package com.mj.common.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -317,11 +318,18 @@ public class AttachmentInsert extends HttpServlet {
 
 				String eTitle = mr.getParameter("eTitle");
 				String eContent = mr.getParameter("eContent");
+				String eDuration = mr.getParameter("eDuration");
 				
 				newPath = request.getServletContext()
 				                 .getRealPath("/resources/event");
 				
-				System.out.println("확인 : " + e.geteTitle() + ", " + e.geteContent());
+				System.out.println("확인 : " + eTitle + ", " + eContent + ", " + eDuration );
+				
+				e.seteTitle(eTitle);
+				e.seteContent(eContent);
+				
+			
+				
 				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
@@ -391,20 +399,24 @@ public class AttachmentInsert extends HttpServlet {
 				Enumeration<String> tagNames = mr.getFileNames();
 				
 				String rContent = mr.getParameter("rContent");
-				String hashTag = mr.getParameter("rHashTag");
-				int score = Integer.parseInt(mr.getParameter("rScore"));
+				String rHashTag = mr.getParameter("rHashTag");
+				int rScore = Integer.parseInt(mr.getParameter("rScore"));
 				int mNo = Integer.parseInt(mr.getParameter("mNo"));
+				int mRestaurantNo = Integer.parseInt(mr.getParameter("mRestaurantNo"));
 				newPath = request.getServletContext()
 						         .getRealPath("/resources/review");
 				
-				System.out.println("확인 : " + r.getrContent() + ", 해쉬태그 : (" + r.getrHashTag() + "), " 
-											 + r.getrScore() + ", " + r.getmNo());
+				System.out.println("확인 : " + rContent + ", 해쉬태그 : (" + rHashTag + "), " 
+											 + rScore + ", " + mNo + ", " + mRestaurantNo);
 				
 				r.setrContent(rContent);
-				r.setrHashTag(hashTag);
-				r.setrScore(score);
+				r.setrHashTag(rHashTag);
+				r.setrScore(rScore);
 				r.setmNo(mNo);
-
+				r.setmRestaurantNo(mRestaurantNo);
+				
+				
+				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
@@ -437,7 +449,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					/* result2 = aService.insertReviewAttachment(a); */
+					result2 = aService.insertReviewAttachment(a);
 					
 				} else {
 					
@@ -450,7 +462,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("views/mRestaurant/mRestaurantDetail.jsp");
+					response.sendRedirect("index.jsp");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
