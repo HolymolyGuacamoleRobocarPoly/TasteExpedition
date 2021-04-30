@@ -207,14 +207,6 @@ input[type=text]::placeholder{
 		               <a href="#" name="rScore" value="3">★</a> 
 		               <a href="#" name="rScore" value="4">★</a> 
 		               <a href="#" name="rScore" value="5">★</a> 
-		               
-		               <span id="star1">★</span>
-		               <span id="star2">★</span>
-		               <span id="star3">★</span>
-		               <span id="star4">★</span>
-		               <span id="star5">★</span>
-		               
-	
 	            	<p>
 	                             
                     <div class="review_textArea">
