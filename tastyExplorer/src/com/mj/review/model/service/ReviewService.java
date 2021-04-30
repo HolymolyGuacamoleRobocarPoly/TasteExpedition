@@ -20,7 +20,7 @@ public class ReviewService {
 	public ArrayList<Review> selectList(int currentPage) {
 		con = getConnection();
 		
-		ArrayList<Review> list = dao.selectList(con, currentPage);
+		ArrayList<Review> list = dao.selectList(con, currentPage); // 기원 :   이부분 (con, mjNo) 로 변경 ? 
 		
 		close(con);
 		

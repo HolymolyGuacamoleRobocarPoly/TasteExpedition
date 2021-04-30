@@ -1,16 +1,19 @@
 package com.mj.mRestaurant.model.dao;
 
+import static com.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
+import com.mj.common.model.vo.Attachment;
 import com.mj.mRestaurant.model.vo.MRestaurant;
-
-import static com.common.JDBCTemplate.*;
 
 public class MRestaurantDAO {
 	
@@ -48,15 +51,17 @@ public class MRestaurantDAO {
 			if(rs.next()) {
 				mj = new MRestaurant();
 				
-				// status, confirm 은 db query 에서 사용할 변수
 				mj.setmRestaurantNo(mjNo);
-				mj.setmRestaurantTitle(rs.getString("mjTitle"));
-				mj.setmRestaurantContent(rs.getString("mjContent"));
-				mj.setmRestaurantAdrress(rs.getString("mjAddress"));
-				mj.setmRestaurantTel(rs.getInt("mjTel"));
-				mj.setmRestaurantInfo(rs.getString("mjInfo"));
-				mj.setmRestaurantLike(rs.getInt("mjLike"));
-				mj.setmRestaurantLevel(rs.getInt("mjLevel"));
+				mj.setmRestaurantTitle(rs.getString("M_RESTAURANT_TITLE"));
+				mj.setmRestaurantContent(rs.getString("M_RESTAURANT_CONTENT"));
+				mj.setmRestaurantAdrress(rs.getString("M_RESTAURANT_ADRRESS"));
+				mj.setmRestaurantInfo(rs.getString("M_RESTAURANT_INFO"));
+				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
+				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
+				mj.setmRestaurantTel(rs.getInt("M_RESTAURANT_TEL"));
+				
+				
+				
 				
 			}
 			
@@ -92,6 +97,45 @@ public class MRestaurantDAO {
 		}
 		
 		return result;
+	}
+
+	public ArrayList<MRestaurant> selectList(Connection con) {
+		ArrayList<MRestaurant> mjList = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next()) {
+				MRestaurant mj = new MRestaurant();
+				
+				mj.setmRestaurantNo(rs.getInt("M_RESTAURANT_NO"));
+				mj.setmRestaurantTitle(rs.getString("M_RESTAURANT_TITLE"));
+				mj.setmRestaurantContent(rs.getString("M_RESTAURANT_CONTENT"));
+				mj.setmRestaurantAdrress(rs.getString("M_RESTAURANT_ADRRESS"));
+				mj.setmRestaurantInfo(rs.getString("M_RESTAURANT_INFO"));
+				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
+				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
+				mj.setmRestaurantTel(rs.getInt("M_RESTAURANT_TEL"));
+				
+				mjList.add(mj);
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return mjList;
 	}
 
 	

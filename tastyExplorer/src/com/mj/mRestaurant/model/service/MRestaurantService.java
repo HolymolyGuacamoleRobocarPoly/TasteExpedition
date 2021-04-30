@@ -3,6 +3,8 @@ package com.mj.mRestaurant.model.service;
 import static com.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.mj.mRestaurant.model.dao.MRestaurantDAO;
 import com.mj.mRestaurant.model.vo.MRestaurant;
@@ -33,6 +35,16 @@ public class MRestaurantService {
 		close(con);
 		
 		return result;
+	}
+
+	public ArrayList<MRestaurant> selectList() {
+		con = getConnection();
+		
+		ArrayList<MRestaurant> mjList = dao.selectList(con);
+		
+		close(con);
+		
+		return mjList;
 	} 
 	
 	

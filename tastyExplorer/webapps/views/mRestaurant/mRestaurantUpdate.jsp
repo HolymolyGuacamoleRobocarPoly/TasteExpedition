@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>식당 등록</title>
+<title>식당 수정</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 <style>
