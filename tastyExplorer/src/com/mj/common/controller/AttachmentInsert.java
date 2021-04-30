@@ -76,6 +76,8 @@ public class AttachmentInsert extends HttpServlet {
 					"UTF-8", new MyRenamePolicy());
 			
 			String newPath = ""; // 새로운 파일 경로
+			
+			
 			int fLevel = Integer.parseInt(mr.getParameter("attMFlevel"));
 
 			
@@ -86,8 +88,7 @@ public class AttachmentInsert extends HttpServlet {
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
 				
-				newPath = request.getServletContext()
-				                 .getRealPath("/resources/coupon");
+				newPath = "/resources/coupon";
 				
 				c.setcTitle(mr.getParameter("cTitle"));
 				c.setcContent(mr.getParameter("cContent"));
@@ -394,17 +395,18 @@ public class AttachmentInsert extends HttpServlet {
 				String hashTag = mr.getParameter("rHashTag");
 				int score = Integer.parseInt(mr.getParameter("rScore"));
 				int mNo = Integer.parseInt(mr.getParameter("mNo"));
-				newPath = request.getServletContext()
-						         .getRealPath("/resources/review");
+				int mRestaurantNo = Integer.parseInt(mr.getParameter("mRestaurantNo"));
+				newPath = "resources/review";
 				
-				System.out.println("확인 : " + r.getrContent() + ", 해쉬태그 : (" + r.getrHashTag() + "), " 
-											 + r.getrScore() + ", " + r.getmNo());
+				System.out.println("확인 : " + rContent + ", 해쉬태그 : (" + hashTag + "), " 
+											 + score + ", " + mNo + mRestaurantNo );
 				
 				r.setrContent(rContent);
 				r.setrHashTag(hashTag);
 				r.setrScore(score);
 				r.setmNo(mNo);
-
+				r.setmRestaurantNo(mRestaurantNo);
+				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
@@ -437,7 +439,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					/* result2 = aService.insertReviewAttachment(a); */
+					result2 = aService.insertReviewAttachment(a);
 					
 				} else {
 					
@@ -450,7 +452,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("views/mRestaurant/mRestaurantDetail.jsp");
+					response.sendRedirect("index.jsp");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {

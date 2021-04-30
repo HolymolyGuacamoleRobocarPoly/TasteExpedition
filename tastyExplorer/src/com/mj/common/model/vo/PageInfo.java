@@ -1,8 +1,13 @@
-package com.mj.common.model.vo;
+package com.mj.cBoardCommunity.model.vo;
 
 import java.io.Serializable;
 
 public class PageInfo implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private int startPage;  // 시작 페이지  (1), 2, 3, 4, 5 . . . . 20
 	private int endPage;    // 끝 페이지    1, 2, 3, 4, (5) . . . . 20
@@ -11,8 +16,8 @@ public class PageInfo implements Serializable {
 	private int limit = 10;      // 한번에 보여줄 페이지 수
 	private int listCount; // 총 게시글 수
 	
-	public PageInfo() { }
-
+	public PageInfo() {}
+	
 	public PageInfo(int startPage, int endPage, int maxPage, int currentPage, int limit, int listCount) {
 		super();
 		this.startPage = startPage;
@@ -76,4 +81,7 @@ public class PageInfo implements Serializable {
 	public void setListCount(int listCount) {
 		this.listCount = listCount;
 	}
+	
+	
+	
 }

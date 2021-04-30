@@ -42,5 +42,37 @@ public class ReviewService {
 		
 		return result;
 	}
+
+
+
+
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+
+	public int deleteReview(int rNo) {
+		con = getConnection();
+		
+		int result = dao.deleteReview(con,rNo);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
 	
 }

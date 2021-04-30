@@ -38,15 +38,11 @@ public class CouponSelectList extends HttpServlet {
 				CouponService service = new CouponService();
 				
 				// 10개 씩 자르기 위한 변수들
-				int startPage;  // 시작 페이지  (1), 2, 3, 4, 5 . . . . 20
-				
-				int endPage;    // 끝 페이지    1, 2, 3, 4, (5) . . . . 20
-				
-				int maxPage;   // 실제 끝 페이지 1, 2, 3, 4, 5 . . . . (20)
-				
-				int currentPage;  // 현재 페이지
-				
-				int limit = 10; 	// 한 번에 보여줄 페이지 수
+				int startPage;
+				int endPage;
+				int maxPage;
+				int currentPage;
+				int limit = 10;
 				
 				currentPage = 1;
 				
@@ -58,21 +54,10 @@ public class CouponSelectList extends HttpServlet {
 				// 총 게시글 확인
 				int listCount = service.getListCount();
 				
-				// 한 페이지당 게시글 10개
-				// 게시글 5개 --> 1 페이지
-				// 게시글 102개 --> 11 페이지
-				// => 남은 올림을 하게 된다.
-				
-				// maxPage 206 / 10 => 21.8 --> 21
 				maxPage = (int)(((double)listCount)/10 + 0.9);
-				// 따라서 0.9를 더하기 해준다.
-				
-				// 한 번에 보일 페이지 수
-				// 시작 페이지 
+
 				startPage = (int)(((double)currentPage)/10 + 0.9 -1) * limit + 1;
 				
-				// 끝 페이지
-				// endPage = startPage + limit - 1;
 				endPage = startPage + 9;
 				
 				// 만약 최종 페이지가 끝페이지보다 작다면

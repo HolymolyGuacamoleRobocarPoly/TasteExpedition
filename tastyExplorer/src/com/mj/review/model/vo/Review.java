@@ -16,6 +16,7 @@ public class Review implements Serializable {
 	private int rScore;
 	private Date rDate;
 	private int mNo;
+	private int mRestaurantNo;
 	
 	public Review() {}
 
@@ -110,6 +111,14 @@ public class Review implements Serializable {
 
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
+	}
+	
+	public int getmRestaurantNo() {
+		return mRestaurantNo;
+	}
+
+	public void setmRestaurantNo(int mRestaurantNo) {
+		this.mRestaurantNo = mRestaurantNo;
 	}
 
 	public static long getSerialversionuid() {

@@ -13,13 +13,13 @@ public class Notice implements Serializable{
 	private String nContent;
 	private Date nDate;
 	private int nCount;
-	private char nStatus;
+	private String nStatus; // 홍석 수정 String으로 변환 -> DB에서 넘어올 땐 String으로만 넘어와서
 	
 	// 생성자
 	public Notice()	{}
 	
 	
-	public Notice(int nNo, String nTitle, String nContent, Date nDate, int nCount, char nStatus) {
+	public Notice(int nNo, String nTitle, String nContent, Date nDate, int nCount, String nStatus) {
 		super();
 		this.nNo = nNo;
 		this.nTitle = nTitle;
@@ -86,21 +86,13 @@ public class Notice implements Serializable{
 		this.nCount = nCount;
 	}
 
-
-	public int getnStatus() {
+	public String getnStatus() {
 		return nStatus;
 	}
 
-
-	public void setnStatus(char nStatus) {
+	public void setnStatus(String nStatus) {
 		this.nStatus = nStatus;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

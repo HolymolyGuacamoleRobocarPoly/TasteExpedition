@@ -22,8 +22,8 @@ public class AttachmentDAO {
 		
 		String filePath 
 			= AttachmentDAO.class
-					  	  .getResource("/config/Attachment.properties")
-					  	  .getPath();
+					  	   .getResource("/config/attachment.properties")
+					  	   .getPath();
 		
 		try {
 			prop.load(new FileReader(filePath));
@@ -49,9 +49,9 @@ public class AttachmentDAO {
 			ps = con.prepareStatement(sql);
 			
 			
-			ps.setString(2, attachment.getAttMFileName());
-			ps.setInt(3, attachment.getAttMFlevel());
-			ps.setString(6, attachment.getAttBNo());
+			ps.setString(1, attachment.getAttMFileName());
+			ps.setInt(2, attachment.getAttMFlevel());
+			ps.setString(3, attachment.getAttBNo());
 			
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
