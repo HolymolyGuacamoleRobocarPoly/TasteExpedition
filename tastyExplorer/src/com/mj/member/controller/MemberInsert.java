@@ -1,6 +1,11 @@
 package com.mj.member.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +39,7 @@ public class MemberInsert extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		String nickName = request.getParameter("nickName");
-		String birthday = request.getParameter("birthday");
+		String birthday = request.getParameter("birth_year") + request.getParameter("birth_month") + request.getParameter("birth_day");
 		String phone = request.getParameter("tel1") + "-"
 				     + request.getParameter("tel2") + "-"
 				     + request.getParameter("tel3");
@@ -45,11 +50,33 @@ public class MemberInsert extends HttpServlet {
 					   + request.getParameter("address1") + ", "
 					   + request.getParameter("address2");
 		
-		Member m = new Member(0, userId, userPwd, userName, nickName, null, birthday, null, phone, 0, 0, email, address, 0);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyymmDD");
+
+		Member m = null;
+		try {
+			m = new Member(userId, userPwd, userName, nickName, new Date(sdf.parse(birthday).getTime()), phone, email, address);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		MemberService service = new MemberService();
 		
-		service.insertMember(m);
+		int result = service.insertMember(m);
+		
+		if(result >0) {
+			//회원 가입 성공
+			response.sendRedirect("index.jsp");
+		} else {
+			//회원 가입 실패
+			RequestDispatcher view =
+					request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			request.setAttribute("error-msg", "회원 가입 실패");
+			
+			view.forward(request, response);
+			
+		}
 	}
 
 	/**

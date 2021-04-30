@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.mj.member.model.vo.*" %>
+    <%@ page import="com.mj.member.model.vo.Member" %>
 <%
 	Member m = (Member)session.getAttribute("member");
 %>
@@ -32,16 +32,16 @@
             <li><a href="/tastyServer/views/member/login.jsp">Login</a></li>
  
         </ul>
-
         <div class="action">
             <div class="profile" onclick="menuToggle();">
                 <img src="/tastyServer/assets/images/no-image.jpg">
             </div>
+            <div id="loginBtn" onclick='login()'>Login</div>
             <div class="menu">
                 <h3>Youngman<br><span>초보 탐험가</span></h3>
                 <ul>
                     <li><img src="/tastyServer/assets/images/user.png" /><a href="#">Profile</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">Logout</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -56,6 +56,19 @@
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')
         }
+         
+        function logout(){
+        	location.href="/tastyServer/logout.me";
+        }
+        
+        function memberJoin(){
+        	location.href="/tastyServer/views/member/join.jsp";
+        }
+        
+        function changeInfo(){
+        	location.href="/tastyServer/views/member/memberUpdate.jsp";
+        }
+        
     </script>
 </body>
 </html>
