@@ -51,13 +51,17 @@
 #reviewImgPack #reviewHash {
 	display: inline-block;
 }
+.bdiv {
+	
+}
+
 </style>
 </head>
 <body>
 
 	<%@ include file="../common/header.jsp"%>
 
-	<header>
+	
 		<table id="MJName">
 			<tr>
 				<th>
@@ -68,7 +72,8 @@
 				</th>
 			</tr>
 		</table>
-	</header>
+	
+	<div class="bdiv">	
 	<section>
 		<table id="MJImg">
 			<tr>
@@ -175,38 +180,41 @@
 	<aside>
 		<!-- 오른쪽에 최근본 목록 구현 or 광고-->
 	</aside>
-	<footer>
+	
 		<div class="rh" id="foot">
 			<h2 id="reviewHead" style="width: 1100px;">리뷰 페이지</h2>
 		</div>
 		&nbsp;
+		
+		
 		<div class="rh">
 			<!-- review 연결 -->
 			<button onclick="goReview();">리뷰 쓰기</button>
 		</div>
 
+		<!-- 첨부파일 연결해서 사진 불러오기  -->
 		<div id="reviewImgPack">
 			<div class="imgArea">
-				<img src="../resources/images/item.jpg" alt="식당 사진입니다."
+				<img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="100px" height="60px">
 			</div>
 			<div class="imgArea">
-				<img src="../resources/images/item.jpg" alt="식당 사진입니다."
+				<img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="100px" height="60px">
 			</div>
 			<div class="imgArea">
-				<img src="../resources/images/item.jpg" alt="식당 사진입니다."
+				<img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="100px" height="60px">
 			</div>
 			<div class="imgArea">
-				<img src="../resources/images/item.jpg" alt="식당 사진입니다."
+				<img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="100px" height="60px">
 			</div>
 		</div>
 
 
-
-
+	
+		<!--  리뷰 페이지 연결해서 list 받아오기  -->
 		<div id="reviewHash">
 			<div class="reviewHashTag" id="hash1">#연어맛집</div>
 			&nbsp;
@@ -224,10 +232,13 @@
             연어가 정말 맛있고 싱싱합니다. 노르웨이 강에서 먹던 그 맛이 납니다. 
             둘이 먹다 하나 죽어도 모를 맛입니다. 잘 먹고 잘~ 놀다 갑니다.  
         </textarea>
+	
+	
+	</div>
 
 
 
-	</footer>
+
 
 	<%@ include file="../common/footer.jsp"%>
 

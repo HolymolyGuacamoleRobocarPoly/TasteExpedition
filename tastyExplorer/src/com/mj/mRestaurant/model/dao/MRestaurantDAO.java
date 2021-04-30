@@ -71,6 +71,29 @@ public class MRestaurantDAO {
 		return mj;
 	}
 
+	public int deleteMRestaurant(Connection con, int mjNo) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteMRestaurant");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, mjNo);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
 	
 	
 	
