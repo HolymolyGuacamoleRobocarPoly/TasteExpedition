@@ -5,7 +5,7 @@
 	Member m = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,10 +40,15 @@
             <div class="menu">
                 <h3>Youngman<br><span>초보 탐험가</span></h3>
                 <ul>
-                    <li><img src="/tastyServer/assets/images/user.png" /><a href="#">Profile</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">Logout</a></li>
+                    <li><img src="/tastyServer/assets/images/user.png" />
+                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">회원가입</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">로그인</a></li>
                 </ul>
             </div>
+        </div>
+        
+        <div class="sidebanner">
+        <img src="" alt="" />
         </div>
     </header>
     <section class="banner"></section>
