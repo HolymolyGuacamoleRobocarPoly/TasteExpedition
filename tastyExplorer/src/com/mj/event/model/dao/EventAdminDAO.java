@@ -20,7 +20,7 @@ public class EventAdminDAO {
 		
 		String filePath 
 			= EventAdminDAO.class
-					  	   .getResource("/config/notice.properties")
+					  	   .getResource("/config/event.properties")
 					  	   .getPath();
 		
 		try {
@@ -43,9 +43,9 @@ public class EventAdminDAO {
 			ps.setString(3, e.geteContent());
 
 			result = ps.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			
-			e.printStackTrace();
+			e1.printStackTrace();
 		} finally {
 			close(ps);
 		}

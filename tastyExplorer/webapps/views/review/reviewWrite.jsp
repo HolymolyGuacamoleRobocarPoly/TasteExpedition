@@ -153,9 +153,9 @@ input[type=text]::placeholder{
         <input type="hidden" name="attMFlevel" value="5"/>
         	<div class="review_writearea">
     			<div class="review_write">
+    				<input type="hidden" name="attMFlevel" value="5" />
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
-	                <P id="star" style="text-align:center; margin-top: 40px;"> 
-		               
+	                <P id="star" style="text-align:center; margin-top: 40px;">        
 		               <a href="#" class="rScore_star" data="1">★</a> <!-- 부모 -->
 		               <a href="#" class="rScore_star" data="2">★</a> <!-- 자식들-->
 		               <a href="#" class="rScore_star" data="3">★</a> 
@@ -169,7 +169,6 @@ input[type=text]::placeholder{
 	                			$('#scoreStar').val($(this).attr('data'));
 	                	});
 	                </script>
-	                        
                     <div class="review_textArea">
 						<textarea class="form-control" id="rContent" name="rContent" cols="95" rows="10" placeholder="주문하신 메뉴 어떠셨나요? 다양한 리뷰로 식당을 소개해주세요!" required="required"></textarea>
 					</div>  
@@ -297,6 +296,8 @@ input[type=text]::placeholder{
          }
       }
    
+      $()
+      
    </script>
 	 <%@ include file="../common/footer.jsp" %>
 </body>
