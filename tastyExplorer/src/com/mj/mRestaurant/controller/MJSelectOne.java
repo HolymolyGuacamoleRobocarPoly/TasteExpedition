@@ -2,6 +2,7 @@ package com.mj.mRestaurant.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,19 +34,20 @@ public class MJSelectOne extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		// 식당 번호
 		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
 		
 		MRestaurantService service = new MRestaurantService();
 		 
-		// 리뷰 조회 서비스 입력 
-		ReviewService mjReview = new ReviewService();
-		
 		// 조회한 식당 한개 정보 
 		MRestaurant mj = service.selectOne(mjNo);
 		
-		ArrayList<Review> rlist = mjReview.selectList(mjNo/*뭐가 들어가야 하지? */);
+		// 리뷰 조회 서비스 입력 
+		ReviewService reviewService = new ReviewService();
+		
+		// 해당 식당의 리뷰 리스트 불러오기
+		ArrayList<Review> rlist = reviewService.selectList(mjNo);
 		
 		String page = "";
 		
