@@ -19,6 +19,8 @@
 	
 <%@ include file="views/common/header.jsp" %>
 
+<div class="mapbox">
+	
     <div class="title">
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
@@ -30,10 +32,22 @@
             </form>
         </h1>
     </div>
-
-
-<%@ include file="views/common/map.jsp" %>
-
+	
+	<!-- 지도를 표시할 div 입니다 -->
+	<div id="map" style="width:100%;height:500px;"></div>
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=145829b4f38274b6165d84e3615be1bf"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.510935, 126.981733), // 지도의 중심좌표
+	        level: 6 // 지도의 확대 레벨
+	    };
+	
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	</script>
+</div>
 
 
 <%@ include file="views/common/footer.jsp" %>
