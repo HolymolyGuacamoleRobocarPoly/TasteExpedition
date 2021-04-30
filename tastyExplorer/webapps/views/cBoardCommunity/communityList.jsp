@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.cBoardCommunity.model.vo.*, java.util.*" %>
 <%
-	ArrayList<Community> list = (ArrayList<Community>)request.getAttribute("list");
+	ArrayList<Community>  list = (ArrayList<Community>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
 	int st = pi.getStartPage();
@@ -18,7 +18,65 @@
 <head>
 <meta charset="UTF-8">
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
+<style>
+.banner {
+margin-top: 0px;
+}
 
+.main-div {
+	width : 230px;
+	height : 100vh;
+	padding : 10px;
+	align-items : center;
+	margin : 0 auto;
+}
+
+.search-form {
+	border : 4px solid black;
+	border-radius : 24px;
+	position : relative;
+ }
+
+.search-input {
+	width : all;
+	height : 40px;
+	font-size : 15px;
+	padding-left :  38px;
+	border : none;
+	border-radius : 20px;
+	
+}
+
+.search-history {
+	border-radius : 10px;
+	display : none;
+}
+
+.search-history a {
+	display : inline-block;
+	border-radius : 20px;
+	width: 274px;
+	padding : 10px 10px;
+	color : black;
+}
+
+.search-history a:hover {
+	background-color : orange;
+} 
+
+.search-input:focus ~ .search-history {
+	display : block;
+}
+
+.search-history a:focus {
+	display : block;
+}
+
+search-input:focus {
+	outline : none;
+}
+
+</style>
 <title>#소통해요</title>
 <style>
 	section {
@@ -27,10 +85,10 @@
 		/* 좌우 가운데 정렬 */
 		margin-left : auto;
 		margin-right: auto;
-		margin-top : 50px;
+		margin-top: 50px;
 		padding : 30px;
-		background : black;
-		color : white;
+		background : lightblue;
+		color : black;
 	}
 	.tableArea {
 		width : 800px;
@@ -45,19 +103,52 @@
 		text-align : center; 
 	}
 	
+	.btnArea {
+		margin-left : 700px;
+		margin-top : 40px;
+		height: 10px;
+	}
+	
+	
+	
 </style>
 </head>
 <body>
 	<%@ include  file = "../common/header.jsp" %>
 	<!-- 게시글 목록임 -->
 	<section>
-		<h2 align="center">게시글 목록</h2>
-
+		<h2 align="center">#소통해요</h2>
+		
+		<!-- 버튼 클릭시  -->
+		<div class="btnArea" align="center">
+		<br>
+		<button onclick="location.href='views/cBoardCommunity/communityInsert.jsp'">작성하기</button>
+		<% if (m != null) { %> 
+			<script>
+				$('#listArea td').on('mouseenter'), function() {
+					$(this).parent().css({'background' : 'white',
+										  'curor' : 'porinter',
+										  'color' : 'gray'});
+				}).on('mouserout', function(){
+					$('this').parent().css({'backgrond' : 'white',
+											'color' : 'white'});
+				}).on('click', function(){
+					var nno = $('this').parent.children().first().attr('id');
+					
+					console.log(nno);
+					
+					location.href = "/tastyServer/selecOne.co?cboardno=" + cboardno;
+				});
+			</script>
+		<% } %>
+			
+		</div>
+		<br><br>
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
-					<td width="75px;">글번호</td>
-					<td width="300px;">제목</td>
+					<td width="75px;">No</td>
+					<td width="400px;">제목</td>
 					<td width="75px;">팀원수</td>
 					<td width="100px;">작성자</td>
 					<td width="150px;">작성일</td>
@@ -133,6 +224,38 @@
 			</button>
 	
 		</div>
+		
+		<!-- 검색창 -->
+		<div class="main-div">
+			<form action="" class="search-form">
+				<input type="text" value="" class="search-input" 
+				placeholder="search"/>
+				<div class="search-history">
+				</div>
+			</form>
+			
+		</div>
+		<script>
+			
+			const searchForm = document.querySelector('.search-form')
+			const searchBox = document.querySelector('.search-input')
+			const searchHistory = document.querySelector('.search-history')
+			
+			// var searchHistoryList = 
+		
+			function handleSearch(event) {
+				event.preventDefault();
+				const sValue = searchBox.value;	
+			}
+			
+			function search(){
+				searchForm.addEventListener("submit", handleSearch)
+			}
+			
+			
+			
+		</script>
+		
 		
 	</section>
 	

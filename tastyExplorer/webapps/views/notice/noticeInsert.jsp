@@ -10,10 +10,10 @@
 <meta charset="UTF-8">
 <title>커뮤니티 게시글 작성</title>
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 	
-
 	
 	<section>
 		<h2 algin="center">게시글 작성</h2>
@@ -29,10 +29,8 @@
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td colspan="3">
-							<%= m.getnickName() %> 
-							<input type="hidden" name="nickName" value="<%= m.getnickName() %>">
-						</td>
+						<td colspan="3"><%= m.getnickName() %> <input type="hidden"
+							name="memberNickname" value="<%= m.getnickName() %>"></td>
 					</tr>
 					<tr>
 						<td>첨부파일</td>
@@ -43,7 +41,7 @@
 						<td>내용</td>
 						<td colspan="3"><textarea name="Ccontent" cols="50" rows="20"
 								style="resize: none;"></textarea></td>
-			 		</tr>
+					</tr>
 				</table>
 				<div align="center">
 					<button>작성 완료</button>

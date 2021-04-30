@@ -82,7 +82,7 @@ public class NoticeSelectList extends HttpServlet {
 		System.out.println(pi);
 		
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/Notice/noticeList.jsp");
+				request.getRequestDispatcher("views/notice/noticeList.jsp");
 		
 		view.forward(request, response);	
 		

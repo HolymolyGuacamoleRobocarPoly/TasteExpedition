@@ -21,8 +21,7 @@
 <title>공지사항</title>
 </head>
 <body>
-	<!-- <%@ include file = "" %> -->
-	
+
 	
 	<!-- 게시글 목록 -->
 	<section>
@@ -31,8 +30,9 @@
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
-					<td >글번호</td>
+					<td>글번호</td>
 					<td>제목</td>
+					<td>작성자</td>
 					<td>작성일</td>
 					<td>조회수</td>
 					<td>첨부파일</td>
@@ -41,6 +41,7 @@
 				<tr>
 					<td id="<%= n.getnNo() %>"><%= n.getnNo() %></td>
 					<td><%= n.getnTitle()%></td>
+					<td><%= n.getnWriter() %></td>
 					<td><%= n.getnDate()%></td>
 					<td><%= n.getnCount()%></td>
 				</tr>

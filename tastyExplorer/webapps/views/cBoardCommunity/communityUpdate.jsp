@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.mj.cBoardCommunity.model.vo.*"%>
 <%
-	Community c = (Community)request.getAttribute("communuity");
+	Community c = (Community)request.getAttribute("Communuity");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@
 					<td>작성자</td>
 					<td colspan="3">
 						<%= m.getnickName() %>
-						<input type="hidden" name="nickName" value="<%= m.getnickName %>" />
+						<input type="hidden" name="nickName" value="<%= m.getnickName()%>" />
 					</td>
 				</tr>
 				<tr>
@@ -50,9 +50,9 @@
 	</div>
 	<script>
 		function deleteCommunityBoard() {
-			var cboardno = '<%= c.getcBoardNo() %>';
+			var cboardno = '  <%= c.getcBoardNo() %>  ';
 			
-			location.href = '/tastyServer/delete.co=cboardno=' + cboardno;
+			location.href = '/tastyServer/delete.co?cBoardNo=' + cBoardNo;
 		}
 	</script>
 	

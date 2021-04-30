@@ -1,4 +1,4 @@
-package com.mj.cBoardCommunity.controller;
+package com.mj.notice.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mj.cBoardCommunity.model.service.CommunityService;
-import com.mj.cBoardCommunity.model.vo.Community;
+import com.mj.notice.model.service.NoticeService;
 
 /**
- * Servlet implementation class CommunityUpdateView
+ * Servlet implementation class NoticeDelete
  */
-@WebServlet("/updateView.co")
-public class CommunityUpdateView extends HttpServlet {
+@WebServlet("/delete.no")
+public class NoticeDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityUpdateView() {
+    public NoticeDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +30,19 @@ public class CommunityUpdateView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int nNo = Integer.parseInt(request.getParameter("nNo"));
 		
-		CommunityService service = new CommunityService();
+		NoticeService service = new NoticeService();
 		
-		Community c = service.updateView(cboardno);
+		int result = service.deleteNotice(nNo);
 		
-		String page = "";
-		
-		if (c != null) {
-			request.setAttribute("Community", c);
-			
-			page = "views/cBoardCommunityy/communityUpdate.jsp";
+		if (result > 0) {
+			response.sendRedirect("selectList.no");
 		} else {
+			request.setAttribute("error-msg", "게시글 삭제를 실패했습니다.");
 			
-			request.setAttribute("error-msg", "게시글 수정화면 접근 불가");
-			
-			page = "views/common/errorPage.jsp";
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 		
 		
 	}
