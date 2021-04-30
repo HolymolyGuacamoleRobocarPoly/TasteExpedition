@@ -156,13 +156,11 @@ input[type=text]::placeholder{
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;"> 
 		               
-		               <input type="text" name="rScore" value="1" /> <!-- 부모 -->		             		              
-		              <!--  <a href="#" name="rScore" value="2">★</a> 자식들
-		               <a href="#" name="rScore" value="3">★</a> 
-		               <a href="#" name="rScore" value="4">★</a> 
-		               <a href="#" name="rScore" value="5">★</a>  -->
-		               
-		               
+		               <a href="#" value="1">★</a> <!-- 부모 -->
+		               <a href="#" value="2">★</a> <!-- 자식들-->
+		               <a href="#" value="3">★</a> 
+		               <a href="#" value="4">★</a> 
+		               <a href="#" value="5">★</a>  
 	            	<p>
 	                             
                     <div class="review_textArea">
