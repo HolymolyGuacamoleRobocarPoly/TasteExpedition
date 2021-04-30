@@ -1,26 +1,26 @@
-package com.mj.notice.controller;
+package com.mj.event.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mj.notice.model.service.NoticeService;
+import com.mj.event.model.service.EventAdminService;
+import com.mj.mRestaurant.model.service.TicketService;
 
 /**
- * Servlet implementation class NoticeDelete
+ * Servlet implementation class EventDelete
  */
-@WebServlet("/delete.no")
-public class NoticeDelete extends HttpServlet {
+@WebServlet("/delete.ev")
+public class EventDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDelete() {
+    public EventDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +29,21 @@ public class NoticeDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int eNo = Integer.parseInt(request.getParameter("eNo"));
 
+		EventAdminService service = new EventAdminService();
 		
-		int nNo = Integer.parseInt(request.getParameter("nNo"));
+		int result = service.deleteEvent(eNo);
 		
-		NoticeService service = new NoticeService();
-		
-		int result = service.deleteNotice(nNo);
-		
-		if (result > 0) {
-			response.sendRedirect("SelectList.no");
-		} else {
-			request.setAttribute("error-msg", "공지사항 삭제를 실패했습니다.");
+		if( result > 0) {
 			
+			response.sendRedirect("views/event/eventList.jsp");
+
+		} else {
+			
+			request.setAttribute("error-msg", "이벤트 삭제 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-
-		
 	}
 
 	/**

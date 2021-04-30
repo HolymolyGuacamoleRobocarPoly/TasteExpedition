@@ -307,23 +307,3 @@ input[type=text]::placeholder{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

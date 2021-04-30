@@ -118,5 +118,31 @@ public class NoticeService {
 
 	
 
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
+		
+		close(con);
+		
+		return result;
+	}
+	
+	public int deleteNotice(int nNo) {
+		con = getConnection();
+		
+		int result = dao.deleteNotice(con,nNo);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 	
 }

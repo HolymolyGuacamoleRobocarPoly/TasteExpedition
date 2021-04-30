@@ -1,4 +1,4 @@
-package com.mj.notice.controller;
+package com.mj.member.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mj.notice.model.service.NoticeService;
+import com.mj.bComment.model.service.BCommentService;
+import com.mj.member.model.service.CouponService;
 
 /**
- * Servlet implementation class NoticeDelete
+ * Servlet implementation class BCommentDelete
  */
-@WebServlet("/delete.no")
-public class NoticeDelete extends HttpServlet {
+@WebServlet("/delete.cp")
+public class CouponDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDelete() {
+    public CouponDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +30,26 @@ public class NoticeDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int cNo = Integer.parseInt(request.getParameter("cNo"));
 
+		CouponService service = new CouponService();
 		
-		int nNo = Integer.parseInt(request.getParameter("nNo"));
+		int result = service.deleteCoupon(cNo);
 		
-		NoticeService service = new NoticeService();
-		
-		int result = service.deleteNotice(nNo);
-		
-		if (result > 0) {
-			response.sendRedirect("SelectList.no");
-		} else {
-			request.setAttribute("error-msg", "공지사항 삭제를 실패했습니다.");
+		if( result > 0) {
 			
+			response.sendRedirect("?");
+
+		} else {
+			
+			request.setAttribute("error-msg", "쿠폰 삭제 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-
+		
+		
+		
+		
 		
 	}
 

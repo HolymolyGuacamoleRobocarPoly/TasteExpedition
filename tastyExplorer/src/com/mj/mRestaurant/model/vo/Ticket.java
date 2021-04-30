@@ -16,13 +16,13 @@ public class Ticket implements Serializable{
 	private Date tDate;
 	private String tContent;
 	private String tTitle;
-	private char tStatus;
+	private String tStatus; // 홍석 수정 String으로 변환 -> DB에서 넘어올 땐 String으로만 넘어와서
 	private int mNo;
 	
 	// 생성자
 	public Ticket() {}
 	
-	public Ticket(int tNo, Date tDuration, Date tDate, String tContent, String tTitle, char tStatus, int mNo) {
+	public Ticket(int tNo, Date tDuration, Date tDate, String tContent, String tTitle, String tStatus, int mNo) {
 		super();
 		this.tNo = tNo;
 		this.tDuration = tDuration;
@@ -80,11 +80,11 @@ public class Ticket implements Serializable{
 		this.tTitle = tTitle;
 	}
 
-	public char gettStatus() {
+	public String gettStatus() {
 		return tStatus;
 	}
 
-	public void settStatus(char tStatus) {
+	public void settStatus(String tStatus) {
 		this.tStatus = tStatus;
 	}
 

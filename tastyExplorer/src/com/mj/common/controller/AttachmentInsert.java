@@ -77,6 +77,8 @@ public class AttachmentInsert extends HttpServlet {
 					"UTF-8", new MyRenamePolicy());
 			
 			String newPath = ""; // 새로운 파일 경로
+			
+			
 			int fLevel = Integer.parseInt(mr.getParameter("attMFlevel"));
 
 			
@@ -87,8 +89,7 @@ public class AttachmentInsert extends HttpServlet {
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
 				
-				newPath = request.getServletContext()
-				                 .getRealPath("/resources/coupon");
+				newPath = "/resources/coupon";
 				
 				c.setcTitle(mr.getParameter("cTitle"));
 				c.setcContent(mr.getParameter("cContent"));
@@ -403,19 +404,19 @@ public class AttachmentInsert extends HttpServlet {
 				int rScore = Integer.parseInt(mr.getParameter("rScore"));
 				int mNo = Integer.parseInt(mr.getParameter("mNo"));
 				int mRestaurantNo = Integer.parseInt(mr.getParameter("mRestaurantNo"));
+
 				newPath = request.getServletContext()
 						         .getRealPath("/resources/review");
-				
+
+
 				System.out.println("확인 : " + rContent + ", 해쉬태그 : (" + rHashTag + "), " 
 											 + rScore + ", " + mNo + ", " + mRestaurantNo);
-				
+
 				r.setrContent(rContent);
 				r.setrHashTag(rHashTag);
 				r.setrScore(rScore);
 				r.setmNo(mNo);
 				r.setmRestaurantNo(mRestaurantNo);
-				
-				
 				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
