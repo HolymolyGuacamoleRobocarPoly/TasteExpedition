@@ -44,12 +44,19 @@ public class Member implements Serializable{
 		this.mLoginType = mLoginType;
 	}
 	
-	public Member(String userId, String userPwd) {
+	public Member(String userId, String userPwd, String userName, String phone, Date birthday, String address,
+			Date enrollDate, String nickName) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		Birthday = birthday;
+		this.address = address;
+		EnrollDate = enrollDate;
+		this.nickName = nickName;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "member [mNo=" + mNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", phone=" + phone

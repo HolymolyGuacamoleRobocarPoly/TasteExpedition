@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mj.member.model.service.MemberService;
 import com.mj.member.model.vo.Member;
 
 /**
@@ -33,6 +34,7 @@ public class MemberInsert extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		String nickName = request.getParameter("nickName");
+		String birthday = request.getParameter("birthday");
 		String phone = request.getParameter("tel1") + "-"
 				     + request.getParameter("tel2") + "-"
 				     + request.getParameter("tel3");
@@ -43,7 +45,11 @@ public class MemberInsert extends HttpServlet {
 					   + request.getParameter("address1") + ", "
 					   + request.getParameter("address2");
 		
+		Member m = new Member(0, userId, userPwd, userName, nickName, null, birthday, null, phone, 0, 0, email, address, 0);
 		
+		MemberService service = new MemberService();
+		
+		service.insertMember(m);
 	}
 
 	/**
