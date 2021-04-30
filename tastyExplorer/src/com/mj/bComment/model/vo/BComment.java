@@ -30,8 +30,16 @@ public class BComment implements Serializable {
 		this.mNo = mNo;
 	}
 
+	
 	// 메소드
 	
+	public BComment(String commentContent, int cBoardNo, int mNo) {
+		super();
+		this.commentContent = commentContent;
+		this.cBoardNo = cBoardNo;
+		this.mNo = mNo;
+	}
+
 	// toString
 	@Override
 	public String toString() {

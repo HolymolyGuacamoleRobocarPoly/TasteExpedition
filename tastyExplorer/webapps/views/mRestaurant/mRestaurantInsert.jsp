@@ -62,9 +62,10 @@
 
 	<%@ include file="../common/header.jsp"%>
 
-	<form action="">
+	<!--  로그인 시 식당 등록 화면이 보일 수 있도록 if else 사용하기  -->
 
-		<header>
+	<form action="/tastyServer/insert.mj" method="get" enctype="multipartform-data">
+		<input type="hidden" name="userId" value="<%=m.getMno() %>" />
 			<table id="MJName">
 				<tr>
 					<th>
@@ -74,7 +75,7 @@
 					</th>
 				</tr>
 			</table>
-		</header>
+
 		<section>
 			<div id="insertArea">
 				<%--   <!-- <input type="hidden" name="userId" value="<%=m.getUserId() %>" /> --> --%>
@@ -82,25 +83,25 @@
 					<tr>
 						<th>
 							<div id="contentImgArea1">
-								<img src="../resources/images/no-image.png" id="contentImg1"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg1"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea2">
-								<img src="../resources/images/no-image.png" id="contentImg2"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg2"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea3">
-								<img src="../resources/images/no-image.png" id="contentImg3"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg3"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea4">
-								<img src="../resources/images/no-image.png" id="contentImg4"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg4"
 									width="200" height="150" />
 							</div>
 						</th>
@@ -147,28 +148,28 @@
 						<!-- ul or table choice-->
 						<tr>
 							<td>주소 :</td>
-							<td><input type="text" id="address"></td>
+							<td><input type="text" name="address" id="address"></td>
 							<!-- 맛집 주소 입력-->
 						</tr>
 						<tr>
 							<td>전화번호 :</td>
-							<td><input type="tel" id="tel"></td>
+							<td><input type="tel" name="tel" id="tel"></td>
 							<!-- 맛집 전화번호 입력-->
 						</tr>
 						<tr>
 							<td>영업시간 :</td>
 							<!-- 맛집 영업시간 입력-->
-							<td><input type="datetime" id="openTime"></td>
+							<td><input type="datetime" name="openTime" id="openTime"></td>
 						</tr>
 						<tr>
 							<td>Break Time :</td>
-							<td><input type="datetime" id="brTime"></td>
+							<td><input type="datetime" name="brTime" id="brTime"></td>
 							<!-- 맛집 break time 입력-->
 						</tr>
 						<tr>
 							<td>휴무일 :</td>
 							<!-- 맛집 영업시간 입력-->
-							<td><input type="text" id="holiday"></td>
+							<td><input type="text" name="holiday" id="holiday"></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -177,7 +178,7 @@
 			&nbsp;&nbsp;&nbsp;
 
 
-			<!-- 절대 위치 설정 -->
+			<!-- 메뉴 전용 servlet 으로 따로 전송하기    값을 한번에 입력받고 한번에 어떻게 보내는가  ajax?  -->
 			<div class="infor">
 				<table id="menu" border="1">
 					<caption style="font-weight: bold;">메뉴 입력</caption>
@@ -221,16 +222,16 @@
 		</section>
 		<br>
 		<br>
-		<button type="submit">전송</button>
+		<button type="submit">전송 완료</button>
 		&nbsp;
-		<button type="reset">취소</button>
+		<button type="reset">작성 취소</button>
 	</form>
 	<aside>
 		<!-- 오른쪽에 최근본 목록 구현 or 광고-->
 	</aside>
-	<footer> </footer>
+	
 
-	<%@ include file="../common/header.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 
 
 

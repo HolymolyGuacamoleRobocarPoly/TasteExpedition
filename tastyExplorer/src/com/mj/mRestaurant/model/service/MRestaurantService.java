@@ -20,6 +20,19 @@ public class MRestaurantService {
 		close(con);
 		
 		return mj;
+	}
+
+	public int deleteMRestaurant(int mjNo) {
+		con = getConnection();
+		
+		int result = dao.deleteMRestaurant(con, mjNo);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
 	} 
 	
 	
