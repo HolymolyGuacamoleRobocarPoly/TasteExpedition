@@ -6,6 +6,7 @@ import static com.common.JDBCTemplate.getConnection;
 import static com.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.mj.bComment.model.dao.BCommentDAO;
 import com.mj.bComment.model.vo.BComment;
@@ -53,6 +54,16 @@ public class BCommentService {
 		close(con);
 		
 		return result;
+	}
+
+	public ArrayList<BComment> selectList(int cboardno) {
+		con = getConnection();
+		
+		ArrayList<BComment> clist = dao.selectList(con,cboardno);
+		
+		close(con);
+		
+		return clist;
 	}
 	
 	

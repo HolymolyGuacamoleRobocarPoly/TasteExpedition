@@ -2,7 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.notice.model.vo.*, java.util.*" %>
 <%
-	
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int st = pi.getStartPage();
+	int ed = pi.getEndPage();
+	int mx = pi.getMaxPage();
+	int limit = pi.getLimit();
+	int listCount = pi.getListCount();
+	int cur = pi.getCurrentPage();
 %>
 
 <!DOCTYPE html>
@@ -29,13 +37,14 @@
 					<td>조회수</td>
 					<td>첨부파일</td>
 				</tr>
+				<% for (Notice n : list) { %>
 				<tr>
-					<!--<td><%= n.getNno() %></td> -->
-					<!-- <td><%= n.getNtitle()%></td> -->
-					<!-- <td><%= n.getNdate()%></td> -->
-					<!--<td><%= n.getNcount()%></td> -->
-					<!-- <td><%= %></td> -->
+					<td id="<%= n.getnNo() %>"><%= n.getnNo() %></td>
+					<td><%= n.getnTitle()%></td>
+					<td><%= n.getnDate()%></td>
+					<td><%= n.getnCount()%></td>
 				</tr>
+				<% } %>
 			</table>
 		</div>
 		
@@ -56,7 +65,7 @@
 					
 					console.log(nno);
 					
-					location.href = "/tastyExplorer/select"
+					location.href = "/tastyExplorer/selectOne.no?nno=" + nno;
 				});
 			</script>
 			
@@ -64,7 +73,7 @@
 		</div>
 		
 		<div class="pagingArea" align="center">
-			<button onclick="location.href='/tastyExplorer/NoticeSelectList.bo?currentPage=1'">
+			<button onclick="location.href='/tastyExplorer/NoticeSelectList.no?currentPage=1'">
 			&lt;&lt;
 			</button>
 			

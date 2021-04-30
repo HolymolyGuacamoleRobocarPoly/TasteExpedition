@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
-import com.mj.common.model.dao.AttachmentDAO;
-import com.mj.member.model.vo.Coupon;
 import com.mj.notice.model.vo.Notice;
 
 public class NoticeDAO {
@@ -32,6 +32,19 @@ public class NoticeDAO {
 		}
 	}
 
+
+	public ArrayList<Notice> selectList(Connection con, int currentPage) {
+		 
+		ArrayList<Notice> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		
+		return null;
+	}
+	
 	public int insertNotice(Connection con, Notice n) {
 		
 		int result = 0;
@@ -56,4 +69,5 @@ public class NoticeDAO {
 		
 	}
 
+	
 }
