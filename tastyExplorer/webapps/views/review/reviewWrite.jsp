@@ -195,17 +195,26 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.rv" method="post">
+    <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
         <div class="review_container">
         	<div class="review_writearea">
     			<div class="review_write">
+    				<input type="hidden" name="attMFlevel" value="5" />
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;"> 
-		               <a href="#" value="1">★</a> <!-- 부모 -->
-		               <a href="#" value="2">★</a> <!-- 자식들-->
-		               <a href="#" value="3">★</a> 
-		               <a href="#" value="4">★</a> 
-		               <a href="#" value="5">★</a> 
+		               <a href="#" name="rScore" value="1">★</a> <!-- 부모 -->
+		               <a href="#" name="rScore" value="2">★</a> <!-- 자식들-->
+		               <a href="#" name="rScore" value="3">★</a> 
+		               <a href="#" name="rScore" value="4">★</a> 
+		               <a href="#" name="rScore" value="5">★</a> 
+		               
+		               <span id="star1">★</span>
+		               <span id="star2">★</span>
+		               <span id="star3">★</span>
+		               <span id="star4">★</span>
+		               <span id="star5">★</span>
+		               
+	
 	            	<p>
 	                             
                     <div class="review_textArea">
@@ -364,6 +373,8 @@ input[type=text]::placeholder{
          }
       }
    
+      $()
+      
    </script>
 
 </body>

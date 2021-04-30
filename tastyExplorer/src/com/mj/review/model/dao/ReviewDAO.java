@@ -21,7 +21,7 @@ public class ReviewDAO {
 		prop = new Properties();
 		
 		String filePath = Review.class
-						  .getResource("/config/board.properties")
+						  .getResource("/config/review.properties")
 						  .getPath();
 		
 		try {
