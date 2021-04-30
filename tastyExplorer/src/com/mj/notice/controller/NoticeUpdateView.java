@@ -1,4 +1,4 @@
-package com.mj.cBoardCommunity.controller;
+package com.mj.notice.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mj.cBoardCommunity.model.service.CommunityService;
-import com.mj.cBoardCommunity.model.vo.Community;
+import com.mj.notice.model.service.NoticeService;
+import com.mj.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class CommunityUpdateView
+ * Servlet implementation class NoticeUpdateView
  */
-@WebServlet("/updateView.co")
-public class CommunityUpdateView extends HttpServlet {
+@WebServlet("/updateView.no")
+public class NoticeUpdateView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityUpdateView() {
+    public NoticeUpdateView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +31,28 @@ public class CommunityUpdateView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int nNo = Integer.parseInt(request.getParameter("nNo"));
 		
-		CommunityService service = new CommunityService();
+		NoticeService service = new NoticeService();
 		
-		Community c = service.updateView(cboardno);
+		Notice n = service.updateView(nNo);
 		
 		String page = "";
 		
-		if (c != null) {
-			request.setAttribute("Community", c);
+		if (n != null) {
+			request.setAttribute("Notice", n);
 			
-			page = "views/cBoardCommunityy/communityUpdate.jsp";
+			page ="views/noitce/noticeUpdate.jsp";
 		} else {
 			
-			request.setAttribute("error-msg", "게시글 수정화면 접근 불가");
+			request.setAttribute("error-msg", "게시글 수정화면을 접근할 수 없습니다.");
 			
 			page = "views/common/errorPage.jsp";
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
+		
+		
 		
 		
 	}

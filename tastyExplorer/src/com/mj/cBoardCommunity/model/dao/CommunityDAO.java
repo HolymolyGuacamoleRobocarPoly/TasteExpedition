@@ -1,6 +1,6 @@
 package com.mj.cBoardCommunity.model.dao;
 
-import static com.common.JDBCTemplate.close;
+import static com.common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -55,14 +55,14 @@ public class CommunityDAO {
 				
 				Community c = new Community();
 				
-				c.setcBoardNo( rs.getInt("cboardno") );
-				c.setcBoardTitle( rs.getString("cboardtitle"));
+				c.setcBoardNo( rs.getInt("c_board_no") );
+				c.setcBoardTitle( rs.getString("c_board_title"));
 				c.setcBoardContent(rs.getString("cboardcontent"));
-				c.setcBoardwriter(rs.getString("cboardwriter"));
+				c.setcBoardwriter(rs.getString("c_board_writer"));
 				c.setmNickname( rs.getString("mnickname"));
-				c.setcBoardTeam( rs.getInt("cboardteam"));
-				c.setcBoardCount( rs.getInt("cboardcount"));
-				c.setcBoardDate( rs.getDate("cboarddate"));
+				c.setcBoardTeam( rs.getInt("c_board_team"));
+				c.setcBoardCount( rs.getInt("c_board_count"));
+				c.setcBoardDate( rs.getDate("c_board_date"));
 				
 				
 				list.add(c);
@@ -126,15 +126,15 @@ public class CommunityDAO {
 			if(rs.next()) {
 				
 				c = new Community();
-				
+			
 				c.setcBoardNo(cboardno);
-				c.setcBoardTitle( rs.getString("cboardtitle"));
-				c.setcBoardContent(rs.getString("cboardcontent"));
-				c.setcBoardwriter(rs.getString("cboardwriter"));
+				c.setcBoardTitle( rs.getString("c_board_title"));
+				c.setcBoardContent(rs.getString("c_board_content"));
+				c.setcBoardwriter(rs.getString("c_board_writer"));
 				c.setmNickname( rs.getString("mnickname"));
-				c.setcBoardTeam( rs.getInt("cboardteam"));
-				c.setcBoardCount( rs.getInt("cboardcount"));
-				c.setcBoardDate( rs.getDate("cboarddate"));
+				c.setcBoardTeam( rs.getInt("c_board_team"));
+				c.setcBoardCount( rs.getInt("c_board_count"));
+				c.setcBoardDate( rs.getDate("c_board_date"));
 				
 			}
 			
@@ -186,7 +186,7 @@ public class CommunityDAO {
 			
 			ps.setString(1, c.getcBoardTitle());
 			ps.setString(2, c.getcBoardContent());
-			ps.setInt(3,c.getcBoardNo());
+			ps.setInt(3, c.getcBoardNo());
 			
 			result = ps.executeUpdate();
 			
