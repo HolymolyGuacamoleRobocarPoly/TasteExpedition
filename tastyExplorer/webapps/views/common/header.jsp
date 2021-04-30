@@ -23,6 +23,7 @@
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>
+            <li><a href="/tastyServer/views/member/login.jsp">Login</a></li>
  
         </ul>
 
