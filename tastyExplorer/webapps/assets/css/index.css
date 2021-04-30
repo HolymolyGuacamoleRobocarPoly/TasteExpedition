@@ -5,6 +5,18 @@
 	font-family: 'Jua', sans-serif;
 }
 
+body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #d4e157;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .btn-outline-secondary {
     color: #111;
     border-color: #111;

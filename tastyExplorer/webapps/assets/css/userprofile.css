@@ -84,6 +84,7 @@
     direction: flex;
     align-items: center;
     justify-content: center;
+    width: 70px;
 }
 
 .action .menu ul li img {
@@ -102,6 +103,7 @@
     color: #555;
     font-weight: 500;
     transition: 0.5s;
+    line-height: 1;
 }
 
 .action .menu ul li:hover a {
