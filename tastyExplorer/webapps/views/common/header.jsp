@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mj.member.model.vo.*" %>
+<%
+	Member m = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +22,10 @@
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
-            <li><a href="insert.co">#소통해요</a></li>
             <li><a href="/tastyServer/views/event/eventList.jsp">이벤트</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/tastyServer/views/cBoardCommunity/communityList.jsp">#소통해요</a></li>
+            <li><a href="#">Portfolio</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>

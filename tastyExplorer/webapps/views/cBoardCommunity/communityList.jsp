@@ -11,6 +11,7 @@
 	int cur = pi.getCurrentPage();
 	int limit = pi.getLimit();
 	int listCount = pi.getListCount();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -67,7 +68,7 @@
 					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
 					<td><%= c.getcBoardTitle()%></td>
 					<td><%= c.getcBoardTeam()%></td>
-					<!-- <td>c.getcBoardwriter() </td> -->
+					<td><%= c.getcBoardwriter()%></td>
 					<td><%= c.getcBoardDate()%></td>
 					<td><%= c.getcBoardCount() %></td>
 				</tr>

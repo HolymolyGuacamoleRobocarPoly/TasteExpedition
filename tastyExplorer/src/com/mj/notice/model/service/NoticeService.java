@@ -6,7 +6,9 @@ import static com.common.JDBCTemplate.getConnection;
 import static com.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import com.mj.cBoardCommunity.model.vo.Community;
 import com.mj.member.model.dao.CouponDAO;
 import com.mj.member.model.vo.Coupon;
 import com.mj.notice.model.dao.NoticeDAO;
@@ -16,6 +18,17 @@ public class NoticeService {
 
 	private Connection con;
 	private NoticeDAO dao = new NoticeDAO();
+	
+	public ArrayList<Notice> selectList(int currentPage) {
+		
+		con = getConnection();
+		
+		ArrayList<Notice> list = dao.selectList(con, currentPage);
+		
+		close(con);
+	
+		return list;
+	}
 	
 	public int insertNotice(Notice n) {
 		
@@ -30,4 +43,6 @@ public class NoticeService {
 		
 		return result;
 	}
+
+	
 }
