@@ -11,58 +11,69 @@ public class Member implements Serializable{
 	private String userId;
 	private String userPwd;
 	private String userName;
-	private String phone;
+	private String nickName;
 	private Date Birthday;
+	private String phone;
 	private String address;
+	private String email;
+	
 	private Date EnrollDate;
 	private String mLevel;
 	private int mWarning;
 	private int mPurchase;
 	private String mProfileAtt;
-	private String nickName;
 	private int mLoginType;
 
 	public Member() {}
-	
-	public Member(int mNo, String userId, String userPwd, String userName, String phone, Date Birthday, String address,
-			Date EnrollDate, String mLevel, int mWarning, int mPurchase, String mProfileAtt, String nickName,
-			int mLoginType) {
+
+	public Member(int mNo, String userId, String userPwd, String userName, String nickName, Date birthday, String phone,
+			String address, String email, Date enrollDate, String mLevel, int mWarning, int mPurchase,
+			String mProfileAtt, int mLoginType) {
 		super();
 		this.mNo = mNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
+		this.nickName = nickName;
+		Birthday = birthday;
 		this.phone = phone;
-		this.Birthday = Birthday;
 		this.address = address;
-		this.EnrollDate = EnrollDate;
+		this.email = email;
+		EnrollDate = enrollDate;
 		this.mLevel = mLevel;
 		this.mWarning = mWarning;
 		this.mPurchase = mPurchase;
 		this.mProfileAtt = mProfileAtt;
-		this.nickName = nickName;
 		this.mLoginType = mLoginType;
 	}
-	
-	public Member(String userId, String userPwd, String userName, String phone, Date birthday, String address,
-			Date enrollDate, String nickName) {
+
+	public Member(String userId, String userPwd, String userName, String nickName, Date birthday, String phone,
+			String address, String email) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.phone = phone;
-		Birthday = birthday;
-		this.address = address;
-		EnrollDate = enrollDate;
 		this.nickName = nickName;
+		Birthday = birthday;
+		this.phone = phone;
+		this.address = address;
+		this.email = email;
+	}
+
+	
+
+	public Member(String userId, String userPwd) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
 	}
 
 	@Override
 	public String toString() {
-		return "member [mNo=" + mNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", phone=" + phone
-				+ ", Birthday=" + Birthday + ", address=" + address + ", EnrollDate=" + EnrollDate + ", mLevel=" + mLevel
-				+ ", mWarning=" + mWarning + ", mPurchase=" + mPurchase + ", mProfileAtt=" + mProfileAtt
-				+ ", nickName=" + nickName + ", mLoginType=" + mLoginType + "]";
+		return "Member [mNo=" + mNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
+				+ ", nickName=" + nickName + ", Birthday=" + Birthday + ", phone=" + phone + ", address=" + address
+				+ ", email=" + email + ", EnrollDate=" + EnrollDate + ", mLevel=" + mLevel + ", mWarning=" + mWarning
+				+ ", mPurchase=" + mPurchase + ", mProfileAtt=" + mProfileAtt + ", mLoginType=" + mLoginType + "]";
 	}
 
 	public int getmNo() {
@@ -73,60 +84,76 @@ public class Member implements Serializable{
 		this.mNo = mNo;
 	}
 
-	public String getuserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setuserId(String userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public String getuserPwd() {
+	public String getUserPwd() {
 		return userPwd;
 	}
 
-	public void setuserPwd(String userPwd) {
+	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
 
-	public String getuserName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setuserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	public String getphone() {
-		return phone;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setphone(String phone) {
-		this.phone = phone;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public Date getBirthday() {
 		return Birthday;
 	}
 
-	public void setBirthday(Date Birthday) {
-		this.Birthday = Birthday;
+	public void setBirthday(Date birthday) {
+		Birthday = birthday;
 	}
 
-	public String getaddress() {
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
 		return address;
 	}
 
-	public void setaddress(String address) {
+	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Date getEnrollDate() {
 		return EnrollDate;
 	}
 
-	public void setEnrollDate(Date EnrollDate) {
-		this.EnrollDate = EnrollDate;
+	public void setEnrollDate(Date enrollDate) {
+		EnrollDate = enrollDate;
 	}
 
 	public String getmLevel() {
@@ -161,14 +188,6 @@ public class Member implements Serializable{
 		this.mProfileAtt = mProfileAtt;
 	}
 
-	public String getnickName() {
-		return nickName;
-	}
-
-	public void setnickName(String nickName) {
-		this.nickName = nickName;
-	}
-
 	public int getmLoginType() {
 		return mLoginType;
 	}
@@ -176,6 +195,8 @@ public class Member implements Serializable{
 	public void setmLoginType(int mLoginType) {
 		this.mLoginType = mLoginType;
 	}
+
+	
 	
 }
 
