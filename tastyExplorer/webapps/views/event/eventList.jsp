@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ page import="com.mj.event.model.vo.*, java.util.*"  %>	
+<%
+				// Object --> Board
+	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
+%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +27,7 @@ p { margin:20px 0px; }
 .event_writearea {
     display: inline;
     width: 1000px;
+    height: 1000px;
     border: solid 1px #c8c8c8;
     border-left: none;
     border-right: none;
@@ -53,6 +59,7 @@ button {
   float: right;   
   margin-right: 13px;
   cursor: pointer;
+  margin-top: 850px;
   }
 
 button:hover {
@@ -66,6 +73,9 @@ button:hover {
 	margin-top: 20px;
 }
 
+.footer-col .social-links a {
+	padding: 10px;
+}
 
 </style>
 </head>
@@ -81,60 +91,19 @@ button:hover {
         <div class="col-4">
         <!-- 시퀀스 이벤트 번호 가져오기 -->
           <p>이벤트 번호</p>
+          
+          <% for(EventAdmin e : elist) { %>
+         	
           <div class="card">
           <!-- 관리자가 등록한 사진 가져오기 -->
             <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
             <div class="card-body">
-              <h5 class="card-title">관리자가 등록한 유효기간</h5>
-              <p class="card-text">관리자가 작성한 이벤트 내용</p>
+              <h5 class="card-title"><%= e.geteDuration() %></h5>
+              <p class="card-text"><%= e.geteContent() %></p>
               <a href="/tastyServer/views/event/eventDetail.jsp" class="btn btn-primary">자세히 보기</a>
             </div>
           </div>
-        </div>
-        <div class="col-4">
-          <p>Card</p>
-          <div class="card">
-            <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title">Lorem</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-              <a href="#" class="btn btn-primary">More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <p>Card</p>
-          <div class="card">
-            <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title">Lorem</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-              <a href="#" class="btn btn-primary">More</a>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="col-4">
-          <p>Card</p>
-          <div class="card">
-            <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title">Lorem</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-              <a href="#" class="btn btn-primary">More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <p>Card</p>
-          <div class="card">
-            <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title">Lorem</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-              <a href="#" class="btn btn-primary">More</a>
-            </div>
-          </div>
+          <% } %>
         </div>
 
 		
@@ -142,7 +111,7 @@ button:hover {
       </div>
       <div>
       	<button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">등록하기</button>
-        <button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">수정하기</button>
+        <button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">삭제하기</button>
       </div>
        
     </div>

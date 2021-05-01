@@ -17,10 +17,10 @@ public class ReviewService {
 	private ReviewDAO dao = new ReviewDAO();
 	
 	
-	public ArrayList<Review> selectList(int currentPage) {
+	public ArrayList<Review> selectList() {
 		con = getConnection();
 		
-		ArrayList<Review> list = dao.selectList(con, currentPage); // 기원 :   이부분 (con, mjNo) 로 변경 ? 
+		ArrayList<Review> list = dao.selectList(con); // 기원 :   이부분 (con, mjNo) 로 변경 ? 
 		
 		close(con);
 		
@@ -31,10 +31,11 @@ public class ReviewService {
 	
 	
 	public int insertReview(Review r) {
+		
 		con = getConnection();
 		
 		int result = dao.insertReview(con, r);
-		
+		System.out.println("result" +result);
 		if( result > 0) commit(con);
 		else rollback(con);
 		

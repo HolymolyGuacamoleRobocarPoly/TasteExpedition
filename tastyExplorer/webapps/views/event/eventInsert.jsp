@@ -43,7 +43,7 @@
 <script src="/tastyServer/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <style>
 .event_writearea {
-    display: inline;
+    display: inline-block;
     width: 1000px;
     border: solid 1px #c8c8c8;
     border-left: none;
@@ -153,6 +153,7 @@ input[type=text]::placeholder{
     <p style="text-align:center; margin-top: 50px; font-size: 40px; font-weight: normal;">이벤트 등록</p>
         <div class="event_container">    
         	<div class="event_writearea" >
+        	<input type="hidden" name="attMFlevel" value="4">
     			<div class="event_write">
             		
 	               
@@ -188,7 +189,7 @@ input[type=text]::placeholder{
                     <%-- 관리자가 로그인했을 경우 --%>    
                     <%-- <% if(m.getmLoginType() == 1) { %> --%>   
                     <div class="button_area">
-                    	<button class="button" type="reset">작성 취소</button>
+                    	<button class="button" type="reset">작성 취소</button>	
                     	<button class="button" type="submit">이벤트 등록</button>
                     </div>
                     <%-- <% } %> --%>
@@ -200,7 +201,7 @@ input[type=text]::placeholder{
    
 	<script>
 	
-      
+	
 
       $('#contentImgArea1').on('click', function(){
          $('#thumbImg1').click();

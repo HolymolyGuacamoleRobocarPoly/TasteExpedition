@@ -22,8 +22,8 @@
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
-            <li><a href="/tastyServer/views/event/eventList.jsp">이벤트</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#" onclick="goEvent()">이벤트</a></li>
+            <li><a href="#" onclick="goMrestaurant()">맛집</a></li>
             <li><a href="/tastyServer/views/cBoardCommunity/communityList.jsp">#소통해요</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Team</a></li>
@@ -78,6 +78,14 @@
         	location.href="/tastyServer/views/member/memberUpdate.jsp";
         }
         
+        function goEvent(){
+    		location.href="/tastyServer/selectList.ev";
+    	}
+        
+        function goMrestaurant(){
+    		location.href="/tastyServer/selectList.rv";
+    	}
+
     </script>
 </body>
 </html>

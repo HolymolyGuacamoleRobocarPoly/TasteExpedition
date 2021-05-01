@@ -245,13 +245,15 @@
 
 	
 		<!--  리뷰 페이지 연결해서 list 받아오기  -->
-		<%-- 
-		<% for ( int i = 0; i < rlist.size(); i++) { %>
+		 
+		<% for(Review r : rlist) { %>
 		
-		<% } %>
-		--%>
+		
+		
+		
+		
 		<div id="reviewHash">
-			<div class="reviewHashTag" id="hash1">#연어맛집</div>
+			<div class="reviewHashTag" id="hash1">#<%= r.getrHashTag() %></div>
 		
 			
 			<!-- 
@@ -268,14 +270,13 @@
 		</div>
 
 		<textarea name="" id="" cols="80" rows="10" style="resize: none;">
-           <%--= rlist.getrContent() --%>
-            연어가 정말 맛있고 싱싱합니다. 노르웨이 강에서 먹던 그 맛이 납니다. 
-            둘이 먹다 하나 죽어도 모를 맛입니다. 잘 먹고 잘~ 놀다 갑니다.  
+         <%= r.getrContent() %>
+     
         </textarea>
 	
 	</div>
 
-
+<% } %>
 
 	<%@ include file="../common/footer.jsp"%>
 

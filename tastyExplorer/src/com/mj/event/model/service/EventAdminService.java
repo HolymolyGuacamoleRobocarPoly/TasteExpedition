@@ -18,18 +18,18 @@ public class EventAdminService {
 	private Connection con;
 	private EventAdminDAO dao = new EventAdminDAO();
 
-	public ArrayList<EventAdmin> selectList(int currentPage) {
+	public ArrayList<EventAdmin> selectList() {
 		con = getConnection();
-		
-		ArrayList<EventAdmin> list = dao.selectList(con, currentPage);
+		System.out.println("서비스까진 오나요");
+		ArrayList<EventAdmin> list = dao.selectList(con);
 		
 		close(con);
-		
+		System.out.println("list?" + list);
 		return list;
 	}
 	
 	public int insertEventBoard(EventAdmin e) {
-		
+		System.out.println("eDurtaion2" );
 		con = getConnection();
 		
 		int result = dao.insertEventBoard(con, e);

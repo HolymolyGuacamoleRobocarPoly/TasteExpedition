@@ -34,13 +34,55 @@ public class ReviewDAO {
 		}
 	}
 
-	public ArrayList<Review> selectList(Connection con, int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Review> selectList(Connection con) {
+		ArrayList<Review> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+try {
+			
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			// 몇개 있는지 모르니 있는거 다 가져와라
+			// 게시글은 몇개 있는지 모르니 while문 사용!
+			// 로그인 회원가입은 if문을 썼었음
+			while(rs.next()) {
+				
+				Review r = new Review();
+				
+				r.setrNo( rs.getInt("r_no") );
+				r.setrContent( rs.getString("r_content"));
+				r.setrLike(rs.getInt("r_Like"));
+				r.setrUnLike(rs.getInt("r_Unlike"));
+				// 닉네임이나 이름
+				r.setrHashTag(rs.getString("r_hashtag"));
+				// 아이디  데이터베이스의 컬럼이름과 자바의 변수이름이 같을 필요가 없다...?
+				r.setrScore( rs.getInt("r_Score"));
+				r.setrDate( rs.getDate("r_Date"));
+				r.setmNo( rs.getInt("m_no"));
+				r.setmRestaurantNo(rs.getInt("m_restaurant_no"));
+				
+				// 주어진 list에 하나하나씩 차곡차곡 다음
+				list.add(r);
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rs); // close도 위에 import static~을 해주어야 함
+			close(ps);
+		}
+		
+		return list;
 	}
 
 	public int insertReview(Connection con, Review r) {
-		
+		System.out.println("여기까진오나요");
 		int result = 0;
 		PreparedStatement ps = null;
 		
@@ -52,12 +94,16 @@ public class ReviewDAO {
 			
 			ps.setString(1, r.getrContent());
 			ps.setString(2, r.getrHashTag());
+			System.out.println("2" + r.getrHashTag());
 			ps.setInt(3, r.getrScore());
+			System.out.println("3" + r.getrScore());
 			ps.setInt(4, r.getmNo());
+			System.out.println("4" + r.getmNo());
 			ps.setInt(5, r.getmRestaurantNo());
+			System.out.println("5" + r.getmRestaurantNo());
 			
 			result = ps.executeUpdate();
-			
+			System.out.println("result값ㅇㅇㅇ"+result);
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
@@ -67,7 +113,7 @@ public class ReviewDAO {
 			close(ps);
 			
 		}
-			
+			System.out.println("result dao" + result);
 		return result;
 	}
 

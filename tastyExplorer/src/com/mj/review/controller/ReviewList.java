@@ -1,4 +1,4 @@
-package com.mj.event.controller;
+package com.mj.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mj.common.model.vo.PageInfo;
-import com.mj.event.model.service.EventAdminService;
-import com.mj.event.model.vo.EventAdmin;
 import com.mj.member.model.vo.Coupon;
+import com.mj.review.model.service.ReviewService;
+import com.mj.review.model.vo.Review;
 
 /**
- * Servlet implementation class EventSelectList
+ * Servlet implementation class ReviewSelectList
  */
-@WebServlet("/selectList.ev")
-public class EventSelectList extends HttpServlet {
+@WebServlet("/selectList.rv")
+public class ReviewList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventSelectList() {
+    public ReviewList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +35,20 @@ public class EventSelectList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 게시판 목록 처리하는 변수
-		ArrayList<EventAdmin> list = new ArrayList<>(); 
-		EventAdminService service = new EventAdminService();
+		ArrayList<Review> list = new ArrayList<>(); 
+		ReviewService service = new ReviewService();
 		
+	
 		list = service.selectList();
 		
 		// System.out.println("list : " + list);
-		System.out.println("elist가 잘 왔나" +list);
-		request.setAttribute("elist", list);
+		System.out.println("rlist가 잘 왔나" +list);
+		request.setAttribute("rlist", list);
 
 		
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/event/eventList.jsp");
-	
+				request.getRequestDispatcher("views/mRestaurant/mRestaurantDetail.jsp");
+		
 		view.forward(request, response);	
 	}
 

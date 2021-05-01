@@ -34,22 +34,19 @@ public class EventAdminDAO {
 	}
 
 
-	public ArrayList<EventAdmin> selectList(Connection con, int currentPage) {
+	public ArrayList<EventAdmin> selectList(Connection con) {
 		ArrayList<EventAdmin> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectList");
 
-		int startRow = (currentPage - 1) * 10 + 1;
-		int endRow = currentPage * 10;
+		//int startRow = (currentPage - 1) * 10 + 1;
+		//int endRow = currentPage * 10;
 		
 		try {
 			
 			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, endRow);
-			ps.setInt(2, startRow);
 			
 			rs = ps.executeQuery();
 			
@@ -72,7 +69,7 @@ public class EventAdminDAO {
 			close(rs);
 			close(ps);
 		}
-		
+		System.out.println("list2?" + list);
 		return list;
 	}
 	
@@ -86,8 +83,11 @@ public class EventAdminDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, e.geteTitle());
+			
 			ps.setString(2, e.geteContent());
+			ps.setDate(3, e.geteDuration());
 
+			System.out.println("result :" + e.geteDuration());
 			result = ps.executeUpdate();
 		} catch (SQLException e1) {
 			

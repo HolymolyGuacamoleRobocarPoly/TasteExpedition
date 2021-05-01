@@ -2,8 +2,10 @@ package com.mj.common.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -316,10 +318,24 @@ public class AttachmentInsert extends HttpServlet {
 				Attachment a = new Attachment();
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
+				
+				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 
 				String eTitle = mr.getParameter("eTitle");
 				String eContent = mr.getParameter("eContent");
-				String eDuration = mr.getParameter("eDuration");
+				String stringDate = mr.getParameter("eDuration");
+				
+				Date eDuration = null;
+				try {
+					eDuration = (Date) transFormat.parse(stringDate);
+					
+					System.out.println("eDuration : "+eDuration);
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+
+
 				
 				newPath = request.getServletContext()
 				                 .getRealPath("/resources/event");
@@ -375,7 +391,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("/selectList.ev");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -463,7 +479,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("selectList.rv");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
