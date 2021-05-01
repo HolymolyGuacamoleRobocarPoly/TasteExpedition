@@ -41,20 +41,14 @@ public class CommunitySelectList extends HttpServlet {
 		
 		// 10개씩 짜름
 		int startPage;
-		
 		int endPage;
-		
 		int maxPage;
-		
 		int currentPage;
-		
 		int limit = 10;
 		
 		currentPage = 1;
-		
-		if (request.getParameter("currentPage") != null ) {
+		if (request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-
 		}
 		
 		// 총게시글 
@@ -75,12 +69,14 @@ public class CommunitySelectList extends HttpServlet {
 		
 		list = service.selectList(currentPage);
 		
+		System.out.println(list);
+		
 		request.setAttribute("list", list);
-		PageInfo pi = new PageInfo(startPage, endPage, maxPage, currentPage, limit, listCount);
-	
+		PageInfo pi = new PageInfo(startPage, endPage, maxPage,
+								   currentPage, limit, listCount);
 		request.setAttribute("pi", pi);
 		
-		//System.out.println(pi);
+		System.out.println(pi);
 		
 		RequestDispatcher view =
 				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");

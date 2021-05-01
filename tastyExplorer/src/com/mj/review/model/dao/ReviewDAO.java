@@ -46,9 +46,14 @@ public class ReviewDAO {
 		
 		String sql = prop.getProperty("insertReview");
 		
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
 		try {
 			
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
 			
 			ps.setString(1, r.getrContent());
 			ps.setString(2, r.getrHashTag());

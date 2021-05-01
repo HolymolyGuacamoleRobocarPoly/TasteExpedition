@@ -10,41 +10,35 @@ public class Community implements Serializable{
 	private int cBoardNo;
 	private String cBoardTitle;
 	private String cBoardContent;
-	private String cBoardwriter; // 게시글 작성자
-	private String mNickname; 	 // 작성자 닉네임
 	private int cBoardTeam;
 	private int cBoardCount;
 	private Date cBoardDate;
-	// private char cBoardStatus; 첨부파일 안함
+	private String cBoardStatus;
+	private String cBoardWriter; 	// 게시글 작성자
+	private String mNickname;		// 게시글 닉네임
 	
 	public Community() {}
 
-	public Community(int cBoardNo, String cBoardTitle, String cBoardContent, String cBoardwriter, String mNickname,
-			int cBoardTeam, int cBoardCount, Date cBoardDate) {
-
+	public Community(int cBoardNo, String cBoardTitle, String cBoardContent, int cBoardTeam, int cBoardCount,
+			Date cBoardDate, String cBoardStatus, String cBoardWriter, String mNickname) {
 		super();
 		this.cBoardNo = cBoardNo;
 		this.cBoardTitle = cBoardTitle;
 		this.cBoardContent = cBoardContent;
-		this.cBoardwriter = cBoardwriter;
-		this.mNickname = mNickname;
 		this.cBoardTeam = cBoardTeam;
 		this.cBoardCount = cBoardCount;
 		this.cBoardDate = cBoardDate;
-	}
-
-	public Community(String cBoardTitle, String cBoardContent, String mNickname) {
-		super();
-		this.cBoardTitle = cBoardTitle;
-		this.cBoardContent = cBoardContent;
+		this.cBoardStatus = cBoardStatus;
+		this.cBoardWriter = cBoardWriter;
 		this.mNickname = mNickname;
 	}
 
 	@Override
 	public String toString() {
 		return "Community [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent
-				+ ", cBoardwriter=" + cBoardwriter + ", mNickname=" + mNickname + ", cBoardTeam=" + cBoardTeam
-				+ ", cBoardCount=" + cBoardCount + ", cBoardDate=" + cBoardDate + "]";
+				+ ", cBoardTeam=" + cBoardTeam + ", cBoardCount=" + cBoardCount + ", cBoardDate=" + cBoardDate
+				+ ", cBoardStatus=" + cBoardStatus + ", cBoardWriter=" + cBoardWriter + ", mNickname=" + mNickname
+				+ "]";
 	}
 
 	public int getcBoardNo() {
@@ -71,22 +65,6 @@ public class Community implements Serializable{
 		this.cBoardContent = cBoardContent;
 	}
 
-	public String getcBoardwriter() {
-		return cBoardwriter;
-	}
-
-	public void setcBoardwriter(String cBoardwriter) {
-		this.cBoardwriter = cBoardwriter;
-	}
-
-	public String getmNickname() {
-		return mNickname;
-	}
-
-	public void setmNickname(String mNickname) {
-		this.mNickname = mNickname;
-	}
-
 	public int getcBoardTeam() {
 		return cBoardTeam;
 	}
@@ -109,6 +87,30 @@ public class Community implements Serializable{
 
 	public void setcBoardDate(Date cBoardDate) {
 		this.cBoardDate = cBoardDate;
+	}
+
+	public String getcBoardStatus() {
+		return cBoardStatus;
+	}
+
+	public void setcBoardStatus(String cBoardStatus) {
+		this.cBoardStatus = cBoardStatus;
+	}
+
+	public String getcBoardWriter() {
+		return cBoardWriter;
+	}
+
+	public void setcBoardWriter(String cBoardWriter) {
+		this.cBoardWriter = cBoardWriter;
+	}
+
+	public String getmNickname() {
+		return mNickname;
+	}
+
+	public void setmNickname(String mNickname) {
+		this.mNickname = mNickname;
 	}
 
 	

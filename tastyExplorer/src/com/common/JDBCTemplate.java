@@ -38,9 +38,9 @@ public class JDBCTemplate {
 		}
 	}
 	
-	public static void close(ResultSet rset) {
+	public static void close(ResultSet rs) {
 		try {
-			rset.close();
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

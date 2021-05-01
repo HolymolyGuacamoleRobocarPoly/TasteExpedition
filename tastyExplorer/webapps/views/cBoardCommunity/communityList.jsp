@@ -17,6 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 <style>
 .banner {
@@ -75,43 +76,39 @@ margin-top: 0px;
 search-input:focus {
 	outline : none;
 }
+section {
+	width : 900px;
+	height : auto;
+	/* 좌우 가운데 정렬 */
+	margin-left : auto;
+	margin-right: auto;
+	margin-top: 50px;
+	padding : 30px;
+	background : lightblue;
+	color : black;
+}
+.tableArea {
+	width : 800px;
+	height: auto;
+	margin-left : auto;
+	margin-right : auto;
+}
+
+table {
+	padding : 15px;
+	border: 1px solid yellow;
+	text-align : center; 
+}
+
+.btnArea {
+	margin-left : 700px;
+	margin-top : 40px;
+		height: 10px;
+}
 
 </style>
 <title>#소통해요</title>
-<style>
-	section {
-		width : 900px;
-		height : auto;
-		/* 좌우 가운데 정렬 */
-		margin-left : auto;
-		margin-right: auto;
-		margin-top: 50px;
-		padding : 30px;
-		background : lightblue;
-		color : black;
-	}
-	.tableArea {
-		width : 800px;
-		height: auto;
-		margin-left : auto;
-		margin-right : auto;
-	}
-	
-	table {
-		padding : 15px;
-		border: 1px solid yellow;
-		text-align : center; 
-	}
-	
-	.btnArea {
-		margin-left : 700px;
-		margin-top : 40px;
-		height: 10px;
-	}
-	
-	
-	
-</style>
+
 </head>
 <body>
 	<%@ include  file = "../common/header.jsp" %>
@@ -122,7 +119,7 @@ search-input:focus {
 		<!-- 버튼 클릭시  -->
 		<div class="btnArea" align="center">
 		<br>
-		<button onclick="location.href='views/cBoardCommunity/communityInsert.jsp'">작성하기</button>
+		<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>
 		<% if (m != null) { %> 
 			<script>
 				$('#listArea td').on('mouseenter'), function() {
@@ -159,11 +156,10 @@ search-input:focus {
 					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
 					<td><%= c.getcBoardTitle()%></td>
 					<td><%= c.getcBoardTeam()%></td>
-					<td><%= c.getcBoardwriter()%></td>
+					<td><%= c.getcBoardWriter()%></td>
 					<td><%= c.getcBoardDate()%></td>
 					<td><%= c.getcBoardCount() %></td>
-				</tr>
-				
+				</tr>				
 				<% } %>
 			</table>
 		</div>
@@ -186,7 +182,7 @@ search-input:focus {
 					
 					console.log(nno);
 					
-					location.href = "/tastyServer/selecOne.co?cboardno=" + cboardno;
+					location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
 				});
 			</script>
 		<% } %>
