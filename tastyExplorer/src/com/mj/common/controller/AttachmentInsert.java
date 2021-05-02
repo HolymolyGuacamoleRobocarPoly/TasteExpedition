@@ -2,10 +2,10 @@ package com.mj.common.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.common.MyRenamePolicy;
-import com.common.EncodingFilter;
 import com.mj.cBoardCommunity.model.service.CommunityService;
 import com.mj.cBoardCommunity.model.vo.Community;
 import com.mj.common.model.service.AttachmentService;
@@ -79,8 +78,6 @@ public class AttachmentInsert extends HttpServlet {
 					"UTF-8", new MyRenamePolicy());
 			
 			String newPath = ""; // 새로운 파일 경로
-			
-			
 			int fLevel = Integer.parseInt(mr.getParameter("attMFlevel"));
 
 			
@@ -91,7 +88,8 @@ public class AttachmentInsert extends HttpServlet {
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
 				
-				newPath = "/resources/coupon";
+				newPath = request.getServletContext()
+				                 .getRealPath("/resources/coupon");
 				
 				c.setcTitle(mr.getParameter("cTitle"));
 				c.setcContent(mr.getParameter("cContent"));
@@ -130,7 +128,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertCouponAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					
@@ -208,7 +206,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertTicketAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					
@@ -281,7 +279,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertNoticeAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					
@@ -314,39 +312,53 @@ public class AttachmentInsert extends HttpServlet {
 				
 			} else if (fLevel == 4) { // 이벤트
 			
+				// Date sql? java.util? 해결 안됨 => 해결 완료
 				EventAdmin e = new EventAdmin();
 				Attachment a = new Attachment();
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
+				SimpleDateFormat sFormat = new SimpleDateFormat("yyyyMMdd");
 				
-				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-
 				String eTitle = mr.getParameter("eTitle");
 				String eContent = mr.getParameter("eContent");
 				String stringDate = mr.getParameter("eDuration");
-				
 				Date eDuration = null;
+				
+				/*
+				SimpleDateFormat startFormat = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat endFormat = new SimpleDateFormat("yyyy-MM-dd");
+				
+				String [] eDurationArray = stringDate.split("~");
+				Date eDurationStart = (Date) startFormat.parse(eDurationArray[1]);
+				Date eDurationEnd = (Date) endFormat.parse(eDurationArray[1]);
+				*/
+				
+				java.util.Date uFormat = null;
 				try {
-					eDuration = (Date) transFormat.parse(stringDate);
-					
-					System.out.println("eDuration : "+eDuration);
+					uFormat = sFormat.parse(stringDate);
 				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
-
 				
-				newPath = request.getServletContext()
-				                 .getRealPath("/resources/event");
-				
-				System.out.println("확인 : " + eTitle + ", " + eContent + ", " + eDuration );
+			
+				eDuration = new java.sql.Date(uFormat.getTime());
 				
 				e.seteTitle(eTitle);
 				e.seteContent(eContent);
+				e.seteDuration(eDuration);
 				
-			
+				/*
+				try {
+					eDuration = new java.sql.Date(uFormat.getTime());
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+				*/
+				newPath = request.getServletContext()
+				                 .getRealPath("/resources/event");
 				
+				System.out.println("확인 : " + e.geteTitle() + ", " + e.geteContent());
 				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
@@ -373,12 +385,12 @@ public class AttachmentInsert extends HttpServlet {
 				
 				AttachmentService aService = new AttachmentService();
 				
-				int result1 = eService.insertEventBoard(e);
-				int result2 = 0;
+				int result1 = eService.insertEventBoard(e); // 작성 내용 결과
+				int result2 = 0; 							// 첨부 파일 결과
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertEventAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					
@@ -391,7 +403,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("selectList.ev");
+					response.sendRedirect("index.jsp");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -419,21 +431,20 @@ public class AttachmentInsert extends HttpServlet {
 				String rHashTag = mr.getParameter("rHashTag");
 				int rScore = Integer.parseInt(mr.getParameter("rScore"));
 				int mNo = Integer.parseInt(mr.getParameter("mNo"));
-				int mRestaurantNo = Integer.parseInt(mr.getParameter("mRestaurantNo"));
-
+				int mjNo =Integer.parseInt(mr.getParameter("mRestaurantNo")); 
+				
 				newPath = request.getServletContext()
 						         .getRealPath("/resources/review");
-
-
+				
 				System.out.println("확인 : " + rContent + ", 해쉬태그 : (" + rHashTag + "), " 
-											 + rScore + ", " + mNo + ", " + mRestaurantNo);
-
+											 + rScore + ", " + mNo + mjNo);
+				
 				r.setrContent(rContent);
 				r.setrHashTag(rHashTag);
 				r.setrScore(rScore);
 				r.setmNo(mNo);
-				r.setmRestaurantNo(mRestaurantNo);
-				
+				r.setmRestaurantNo(mjNo);
+
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
@@ -466,7 +477,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertReviewAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					
@@ -479,7 +490,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("selectList.rv");
+					response.sendRedirect("views/mRestaurant/mRestaurantDetail.jsp");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -542,7 +553,7 @@ public class AttachmentInsert extends HttpServlet {
 				
 				if (result1 > 0) {
 				
-					result2 = aService.insertCommunityAttachment(a);
+					result2 = aService.insertAttachment(a, fLevel);
 					
 				} else {
 					

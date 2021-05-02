@@ -77,12 +77,11 @@ public class CommunitySelectList extends HttpServlet {
 		request.setAttribute("pi", pi);
 		
 		//System.out.println(pi);
-		
+
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");
+				request.getRequestDispatcher("/tastyServer/views/cBoardCommunity/communityList.jsp");
 		
 		view.forward(request, response);	
-	
 	}
 
 	/**

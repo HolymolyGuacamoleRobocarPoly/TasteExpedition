@@ -7,6 +7,7 @@
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("rlist"); // 서블릿이 보낸 ReviewList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
 	Menu menu = (Menu)request.getAttribute("menu");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -192,14 +193,16 @@
 	<div class="bdiv">	
 	<section>
 		<table id="MJImg">
-			<tr>
-				<%-- 
+			<tr><%-- 
 				<% for ( int i = 0; i < mjAttList.size(); i++) { %>
                    	<th><img src="/tastyServer/assets/images/<%= mjAttList.get(i).getAttMFileName() %>" 
                    	alt="식당 사진입니다." width="300px" height="200px"></th>
                	<% } %>
 				--%>
-				
+
+				<!-- 식당 첨부파일 불러오는 코드 작성  -->
+
+
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="300px" height="200px"></th>
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
@@ -208,6 +211,8 @@
 					width="300px" height="200px"></th>
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="300px" height="200px"></th>
+
+				 
 			</tr>
 		</table>
 		<table id="overview">

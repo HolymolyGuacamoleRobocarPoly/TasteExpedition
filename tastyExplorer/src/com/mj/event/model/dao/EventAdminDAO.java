@@ -89,6 +89,7 @@ public class EventAdminDAO {
 			ps.setDate(3, e.geteDuration());
 
 			System.out.println("result :" + e.geteDuration());
+
 			result = ps.executeUpdate();
 		} catch (SQLException e1) {
 			

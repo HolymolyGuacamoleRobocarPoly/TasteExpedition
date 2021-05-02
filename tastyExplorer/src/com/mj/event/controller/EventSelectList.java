@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mj.common.model.vo.PageInfo;
 import com.mj.event.model.service.EventAdminService;
 import com.mj.event.model.vo.EventAdmin;
+
 import com.mj.member.model.vo.Coupon;
 
 /**
@@ -34,7 +35,7 @@ public class EventSelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// 1. 게시판 목록 처리하는 변수
 		ArrayList<EventAdmin> list = new ArrayList<>(); 
 		EventAdminService service = new EventAdminService();
 		
