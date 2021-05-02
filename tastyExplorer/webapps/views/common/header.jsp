@@ -18,9 +18,9 @@
 </head>
 <body>
     <header>
-        <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="http://localhost:8088/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="http://localhost:8088/tastyServer/">Home</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
             <li><a href="#" onclick="goEvent()">이벤트</a></li>
             <li><a href="#" onclick="goMrestaurant()">맛집</a></li>
