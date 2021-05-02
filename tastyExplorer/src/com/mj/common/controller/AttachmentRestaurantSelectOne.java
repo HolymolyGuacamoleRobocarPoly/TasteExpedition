@@ -15,7 +15,7 @@ import com.mj.common.model.vo.Attachment;
 /**
  * Servlet implementation class AttachmentRestaurantSelectOne
  */
-@WebServlet("/selectOne.mj")
+@WebServlet("/selectOne.mjAtt")
 public class AttachmentRestaurantSelectOne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

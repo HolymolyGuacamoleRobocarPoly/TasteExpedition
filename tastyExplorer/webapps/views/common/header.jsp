@@ -37,7 +37,6 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">로그인</a></li>
                 <% if ( m== null) { %>
                 <li><img src="/tastyServer/assets/images/user.png" />
                     <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Join Us</a></li>
