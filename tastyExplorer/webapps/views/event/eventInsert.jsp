@@ -153,6 +153,7 @@ input[type=text]::placeholder{
     <p style="text-align:center; margin-top: 50px; font-size: 40px; font-weight: normal;">이벤트 등록</p>
         <div class="event_container">    
         	<div class="event_writearea" >
+        		<input type="hidden" name="attMFlevel" value="4" />
     			<div class="event_write">
             		
 	               

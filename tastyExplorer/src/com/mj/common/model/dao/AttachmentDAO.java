@@ -23,8 +23,7 @@ public class AttachmentDAO {
 		// 210430_수정 Attachment -> attachment
 		String filePath 
 			= AttachmentDAO.class
-
-					  	   .getResource("/config/attachment.properties")
+						   .getResource("/config/attachment.properties")
 					  	   .getPath();
 
 		try {
@@ -34,14 +33,101 @@ public class AttachmentDAO {
 		}
 	}
 	
-	// ?? 필요한 가?
-	public ArrayList<Attachment> selectList(Connection con) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public ArrayList<Attachment> selectList(Connection con, int bNo, int fLevel) {
+		ArrayList<Attachment> attList = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		String name = "";
+		
+		if (fLevel == 1) {
+			sql = prop.getProperty("selectCouponAttachment");
+			name = "cp";
+		} else if (fLevel == 2) {
+			sql = prop.getProperty("selectTicketAttachment");
+			name = "t";
+		} else if (fLevel == 3) {
+			sql = prop.getProperty("selectNoticeAttachment");
+			name = "n";
+		} else if (fLevel == 4) {
+			sql = prop.getProperty("selectEventAttachment");
+			name = "e";
+		} else if (fLevel == 5) {
+			sql = prop.getProperty("selectReviewAttachment");
+			name = "r";
+		} else if (fLevel == 6) {
+			sql = prop.getProperty("selectCommunityAttachment");
+			name = "cm";
+		} else if (fLevel == 7) {
+			sql = prop.getProperty("selectRestaurantAttachment");
+			name = "mj";
+		}
+
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, name+bNo);
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next()) {
+				Attachment a = new Attachment();
+				
+				a.setAttMNo(rs.getInt("ATT_M_NO"));          
+				a.setAttMFileName(rs.getString("ATT_M_FILENAME"));
+				a.setAttBNo(rs.getString("ATT_M_BNO"));
+				
+				attList.add(a);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return attList;
 	}
 	
-	
 
+	public ArrayList<Attachment> selectOne(Connection con, int bNo, int fLevel) {
+		ArrayList<Attachment> attList = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectOneRestaurantAttachment");
+		String name = "mj";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, name+bNo);
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next()) {
+				Attachment a = new Attachment();
+				
+				a.setAttMNo(rs.getInt("ATT_M_NO"));          
+				a.setAttMFileName(rs.getString("ATT_M_FILENAME"));
+				a.setAttBNo(rs.getString("ATT_M_BNO"));
+				
+				attList.add(a);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return attList;
+	}
+
+	
 	public int insertAttachment(Connection con, Attachment attachment) {
 		int result = 0;
 		PreparedStatement ps = null;
@@ -66,149 +152,56 @@ public class AttachmentDAO {
 		return result;
 	}
 
-	public int getCurrentcNo(Connection con) {
+	public int deleteAttachment(Connection con, String attBNo) {
+		
 		int result = 0;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		
-		String sql = prop.getProperty("currentCNo");
-		
+		String sql = prop.getProperty("deleteAttachment");
+			
 		try {
+			
 			ps = con.prepareStatement(sql);
 			
-			rs = ps.executeQuery();
+			ps.setString(1, attBNo);
 			
-			if( rs.next()) {
-				result = rs.getInt(1);
-			}
+			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		} finally { 
-			close(rs);
+			
+		} finally {
 			close(ps);
 		}
-		
-		return result;
-	}
 
-	public int getCurrentTNo(Connection con) {
-		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("currentTNo");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			if( rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally { 
-			close(rs);
-			close(ps);
-		}
-		
 		return result;
 	}
 	
-	public int getCurrentnNo(Connection con) {
-		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("currentNNo");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			if( rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally { 
-			close(rs);
-			close(ps);
-		}
-		
-		return result;
-	}
-
-	public int getCurrenteNo(Connection con) {
-		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("currentENo");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			if( rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally { 
-			close(rs);
-			close(ps);
-		}
-		
-		return result;
-	}
-	
-	public int getCurrentRNo(Connection con) {
-		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("currentRNo");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			if( rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally { 
-			close(rs);
-			close(ps);
-		}
-		
-		return result;
-	}
-
-
-	public int getCurrentcmNo(Connection con) {
+	public int getCurrentNo(Connection con, int fLevel) {
 		int result = 0;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("currentcmNo");
 		
+		if (fLevel == 1) {
+			sql = prop.getProperty("currentCNo");
+		} else if (fLevel == 2) {
+			sql = prop.getProperty("currentTNo");
+		} else if (fLevel == 3) {
+			sql = prop.getProperty("currentNNo");
+		} else if (fLevel == 4) {
+			sql = prop.getProperty("currentENo");
+		} else if (fLevel == 5) {
+			sql = prop.getProperty("currentRNo");
+		} else if (fLevel == 6) {
+			sql = prop.getProperty("currentcmNo");
+		} else if (fLevel == 7) {
+			sql = prop.getProperty("currentmjNo");
+		}
+		
+		
 		try {
 			ps = con.prepareStatement(sql);
 			
@@ -228,5 +221,4 @@ public class AttachmentDAO {
 		
 		return result;
 	}
-
 }

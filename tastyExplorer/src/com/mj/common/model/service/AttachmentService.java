@@ -15,152 +15,88 @@ public class AttachmentService {
 	private Connection con;
 	private AttachmentDAO dao = new AttachmentDAO();
 	
-	public ArrayList<Attachment> selectList() {//?
+	public ArrayList<Attachment> selectList(int bNo, int fLevel) {
 		
 		con = getConnection();
 		
-		ArrayList<Attachment> list = dao.selectList(con);
+		ArrayList<Attachment> list = dao.selectList(con, bNo, fLevel);
 		
 		close(con);
 		
 		return list;
 	}
 	
-	public int insertCouponAttachment(Attachment a) {
-		
+
+	public ArrayList<Attachment> selectOne(int bNo, int fLevel) {
 		con = getConnection();
-		ArrayList<Attachment> list = a.getAttList();
-		int result = 0;
 		
+		ArrayList<Attachment> list = dao.selectOne(con, bNo, fLevel);
 		
-		int cNo = dao.getCurrentcNo(con);
+		close(con);
 		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('c'+ String.valueOf(cNo));
+		return list;
+	}
+	
+
+	public int deleteAttachmentDelete(int attBNo, int fLevel) {
+		con = getConnection();
+		String realAttBNo = "";
+		
+		if (fLevel == 1) {
+			realAttBNo = "cp" + attBNo;
+		} else if (fLevel == 2) {
+			realAttBNo = "t" + attBNo;
+		} else if (fLevel == 3) {
+			realAttBNo = "n" + attBNo;
+		} else if (fLevel == 4) {
+			realAttBNo = "e" + attBNo;
+		} else if (fLevel == 5) {
+			realAttBNo = "r" + attBNo;
+		} else if (fLevel == 6) {
+			realAttBNo = "cm" + attBNo;
+		} else if (fLevel == 7) {
+			realAttBNo = "mj" + attBNo;
 		}
 		
+		int	result = dao.deleteAttachment(con, realAttBNo);
+			
 		
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null &&
-					list.get(i).getAttMFileName() != null) {
-				// 해당 파일이 null 이 아니거나
-				// 파일 이름이 null 이 아닐 때
-				// => 파일을 알맞게 추가했다면
-				
-				result = dao.insertAttachment(con, list.get(i));
-				if(result == 0) break; 
-				// 중간에 잘못 처리된 첨부 파일이 있다면 반복 중지 
-			} else {
-				result = 1; // 정상으로 변경
-			}
-		}
-		
-		if (result > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		
+		if (result > 0) commit(con);
+		else rollback(con);
+	
 		close(con);
 		
 		return result;
 	}
 
-	public int insertTicketAttachment(Attachment a) {
-		
+	
+	
+	public int insertAttachment(Attachment a, int fLevel) {
 		con = getConnection();
 		ArrayList<Attachment> list = a.getAttList();
 		int result = 0;
 		
-		
-		int tNo = dao.getCurrentTNo(con);
-		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('t'+ String.valueOf(tNo));
-		}
-		
-		
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null &&
-					list.get(i).getAttMFileName() != null) {
-				// 해당 파일이 null 이 아니거나
-				// 파일 이름이 null 이 아닐 때
-				// => 파일을 알맞게 추가했다면
-				
-				result = dao.insertAttachment(con, list.get(i));
-				if(result == 0) break; 
-				// 중간에 잘못 처리된 첨부 파일이 있다면 반복 중지 
-			} else {
-				result = 1; // 정상으로 변경
-			}
-		}
-		
-		if (result > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result;
-	}
+		int bNo = dao.getCurrentNo(con, fLevel);
+		String name = "";
 
-	public int insertReviewAttachment(Attachment a) {
-		
-		con = getConnection();
-		ArrayList<Attachment> list = a.getAttList();
-
-		int result = 0;
-
-		int rNo = dao.getCurrentRNo(con);
-		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('r'+ String.valueOf(rNo));
+		if (fLevel == 1) {
+			name = "cp";
+		} else if (fLevel == 2) {
+			name = "t";
+		} else if (fLevel == 3) {
+			name = "n";
+		} else if (fLevel == 4) {
+			name = "e";
+		} else if (fLevel == 5) {
+			name = "r";
+		} else if (fLevel == 6) {
+			name = "cm";
+		} else if (fLevel == 7) {
+			name = "mj";
 		}
 		
-		// 4개 이하로 올릴 수도 있으므로 
 		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null &&
-					list.get(i).getAttMFileName() != null) {
-				// 해당 파일이 null 이 아니거나
-				// 파일 이름이 null 이 아닐 때
-				// => 파일을 알맞게 추가했다면
-				
-				result = dao.insertAttachment(con, list.get(i));
-				if(result == 0) break; 
-				// 중간에 잘못 처리된 첨부 파일이 있다면 반복 중지 
-			} else {
-				result = 1; // 정상으로 변경
-			}
-		}
-		
-		if (result > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result;
-		
-	}
-
-	public int insertNoticeAttachment(Attachment a) {
-		
-		con = getConnection();
-		ArrayList<Attachment> list = a.getAttList();
-		int result = 0;
-		
-		
-		int nNo = dao.getCurrentnNo(con);
-		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('n'+ String.valueOf(nNo));
+			list.get(i).setAttBNo(name + String.valueOf(bNo));
 		}
 		
 		
@@ -189,84 +125,4 @@ public class AttachmentService {
 		close(con);
 		return result;
 	}
-
-	public int insertEventAttachment(Attachment a) {
-
-		con = getConnection();
-		ArrayList<Attachment> list = a.getAttList();
-		int result = 0;
-		
-		
-		int eNo = dao.getCurrenteNo(con);
-		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('e'+ String.valueOf(eNo));
-		}
-		
-		
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null &&
-					list.get(i).getAttMFileName() != null) {
-				// 해당 파일이 null 이 아니거나
-				// 파일 이름이 null 이 아닐 때
-				// => 파일을 알맞게 추가했다면
-				
-				result = dao.insertAttachment(con, list.get(i));
-				if(result == 0) break; 
-				// 중간에 잘못 처리된 첨부 파일이 있다면 반복 중지 
-			} else {
-				result = 1; // 정상으로 변경
-			}
-		}
-		
-		if (result > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		
-		close(con);
-		return result;
-	}
-
-	public int insertCommunityAttachment(Attachment a) {
-		con = getConnection();
-		ArrayList<Attachment> list = a.getAttList();
-		int result = 0;
-		
-		
-		int cmNo = dao.getCurrentcmNo(con);
-		
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setAttBNo('b'+ String.valueOf(cmNo));
-		}
-		
-		
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null &&
-					list.get(i).getAttMFileName() != null) {
-				// 해당 파일이 null 이 아니거나
-				// 파일 이름이 null 이 아닐 때
-				// => 파일을 알맞게 추가했다면
-				
-				result = dao.insertAttachment(con, list.get(i));
-				if(result == 0) break; 
-				// 중간에 잘못 처리된 첨부 파일이 있다면 반복 중지 
-			} else {
-				result = 1; // 정상으로 변경
-			}
-		}
-		
-		if (result > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		
-		close(con);
-		return result;
-	}
-
 }

@@ -1,4 +1,4 @@
-package com.mj.mRestaurant.controller;
+package com.mj.common.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,20 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mj.common.model.service.AttachmentService;
 import com.mj.common.model.vo.Attachment;
-import com.mj.mRestaurant.model.service.MRestaurantService;
-import com.mj.mRestaurant.model.vo.MRestaurant;
 
 /**
- * Servlet implementation class MJSelectList
+ * Servlet implementation class AttachmentRestaurantSelectOne
  */
-@WebServlet("/selectList.mj")
-public class MJSelectList extends HttpServlet {
+@WebServlet("/selectOne.mj")
+public class AttachmentRestaurantSelectOne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MJSelectList() {
+    public AttachmentRestaurantSelectOne() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +31,20 @@ public class MJSelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int mjNo = Integer.parseInt(request.getParameter("mRestaurantNo"));
+		int fLevel = Integer.parseInt(request.getParameter("fLevel"));
 		
+		ArrayList<Attachment> attList = new ArrayList<>();
 		
-		ArrayList<MRestaurant> mjList = new ArrayList<>();
-		MRestaurantService Service = new MRestaurantService();
-
-		mjList = Service.selectList();
-
-		request.setAttribute("mjList", mjList);
+		AttachmentService service = new AttachmentService();
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);;
-				
+		attList = service.selectOne(mjNo, fLevel);
+		// 각각의 영역 안에서 import 를 해야하는 지?
+		
+		request.setAttribute("attList", attList);
+		
+		request.getRequestDispatcher("views/thumb/thumbList.jsp")
+			   .forward(request, response);
 	}
 
 	/**

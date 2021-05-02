@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.review.model.vo.*, java.util.*"  %>	
+<%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.review.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
 <%
 				// Object --> Board
 	MRestaurant mj = (MRestaurant)request.getAttribute("mj"); // 서블릿이 보낸 MRestaurant 받아오기
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("rlist"); // 서블릿이 보낸 ReviewList 받아오기 
 	Menu menu = (Menu)request.getAttribute("menu");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -96,7 +97,7 @@
 		<table id="MJImg">
 			<tr>
 				<!-- 식당 첨부파일 불러오는 코드 작성  -->
-				
+
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="300px" height="200px"></th>
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
@@ -105,6 +106,8 @@
 					width="300px" height="200px"></th>
 				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
 					width="300px" height="200px"></th>
+
+				 
 			</tr>
 		</table>
 		<table id="overview">
