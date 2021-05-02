@@ -68,4 +68,14 @@ public class EventAdminService {
 		return result;
 	}
 
+	public EventAdmin selectOne(int eNo) {
+		con = getConnection();
+		
+		EventAdmin ev = dao.selectOne(con, eNo);
+				
+		close(con);
+		
+		return ev;
+	}
+
 }

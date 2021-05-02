@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.mj.event.model.vo.EventAdmin;
+import com.mj.mRestaurant.model.vo.MRestaurant;
 import com.mj.mRestaurant.model.vo.Ticket;
 
 public class EventAdminDAO {
@@ -155,6 +156,43 @@ public class EventAdminDAO {
 		}
 		
 		return result;
+	}
+
+
+	public EventAdmin selectOne(Connection con, int eNo) {
+		EventAdmin ev = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, eNo);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				ev = new EventAdmin();
+				
+				ev.seteNo(eNo);
+				ev.seteContent(rs.getString("E_CONTENT"));
+				ev.seteTitle(rs.getString("E_TITLE"));
+				ev.seteDuration(rs.getDate("E_DURATION"));
+
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return ev;
 	}
 
 }

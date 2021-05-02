@@ -2,7 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ page import="com.mj.event.model.vo.*, java.util.*"  %>	
 <%
-				// Object --> Board
 	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
 %>
 <head>
@@ -20,7 +19,7 @@ p { margin:20px 0px; }
 
 .review_container{
    width: 100%; 
-   display: flex;
+   display: block;
    justify-content: center;
 }
 
@@ -59,7 +58,7 @@ button {
   float: right;   
   margin-right: 13px;
   cursor: pointer;
-  margin-top: 850px;
+ 
   }
 
 button:hover {
@@ -77,6 +76,8 @@ button:hover {
 	padding: 10px;
 }
 
+
+
 </style>
 </head>
 <body>
@@ -90,17 +91,19 @@ button:hover {
         
         <div class="col-4">
         <!-- 시퀀스 이벤트 번호 가져오기 -->
-          <p>이벤트 번호</p>
+          
           
           <% for(EventAdmin e : elist) { %>
-         	
-          <div class="card">
+         
+          <div class="card" id="<%= e.geteNo() %>">
           <!-- 관리자가 등록한 사진 가져오기 -->
+            <p><%= e.geteNo() %></p>
             <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
             <div class="card-body">
-              <h5 class="card-title"><%= e.geteDuration() %></h5>
-              <p class="card-text"><%= e.geteContent() %></p>
-              <a href="/tastyServer/views/event/eventDetail.jsp" class="btn btn-primary">자세히 보기</a>
+            	<h5 class="card-title"><%= e.geteDuration() %></h5> 
+            	<p class="card-text"><%= e.geteContent() %></p>
+            	<button onclick="location.href='views/event/eventDetail.jsp'">자세히 보기2</button>
+            	<a href="/tastyServer/views/event/eventDetail.jsp" class="btn btn-primary">자세히 보기</a>
             </div>
           </div>
           <% } %>
@@ -110,20 +113,31 @@ button:hover {
 
       </div>
       <div>
+      <!-- 관리자인 경우, 버튼 2개 보임-->
       	<button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">등록하기</button>
         <button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">삭제하기</button>
+  
       </div>
        
+    	</div>
     </div>
-   </div>
 
     
-     <%@ include file="../common/footer.jsp" %>
+	
+	
+	<script>
+  	 
+	$('.card').on('click', function(){
+		var eNo = $(this).attr('id');
+		
+		location.href = '/tastyServer/selectOne.ev?eNo=' + eNo;
+  		 
+  	 });
+  	 
+  	 
+  	</script>
+  
+	<%@ include file="../common/footer.jsp" %>
   
   </body>
-  
-  
-  
-  
- 
 </html>
