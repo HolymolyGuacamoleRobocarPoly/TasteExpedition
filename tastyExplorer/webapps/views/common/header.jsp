@@ -18,9 +18,9 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="http://localhost:8088/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="http://localhost:8088/tastyServer/">Home</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
             <li><a href="/tastyServer/views/event/eventList.jsp">이벤트</a></li>
             <li><a href="#">About</a></li>
@@ -44,8 +44,9 @@
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="">Logout</a></li>
 
                     <li><img src="/tastyServer/assets/images/user.png" />
-                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">회원가입</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">로그인</a></li>
+                    <a href="http://localhost:8088/tastyServer/views/member/join.jsp">회원가입</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png" />
+                    <a href="http://localhost:8088/tastyServer/views/member/login.jsp">로그인</a></li>
 
                 </ul>
             </div>

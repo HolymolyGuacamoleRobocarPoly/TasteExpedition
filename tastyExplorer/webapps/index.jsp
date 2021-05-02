@@ -24,35 +24,78 @@
 	
 <%@ include file="views/common/header.jsp" %>
 
-<div class="mapbox">
-	
-    <div class="title">
-        <h1>
-            오늘 무엇을 먹을지 고민하는 여러분을 위해
-            <form action="">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">맛좀볼래?</button>
-                </div>
-            </form>
-        </h1>
-    </div>
-	
-	<!-- 지도를 표시할 div 입니다 -->
-	<div id="map" style="width:100%;height:500px;"></div>
-	
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=145829b4f38274b6165d84e3615be1bf"></script>
-	<script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(37.510935, 126.981733), // 지도의 중심좌표
-	        level: 6 // 지도의 확대 레벨
-	    };
-	
-	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	</script>
+<div class="title">
+	<h1> 오늘 무엇을 먹을지 고민하는 여러분을 위해
+      <form action="">
+      	<div class="input-group mb-3">
+           <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+           <button class="btn btn-outline-secondary" type="button" id="button-addon2">맛좀볼래?</button>
+        </div>
+      </form>
+   	</h1>
 </div>
+	
+<div class="mapbox" id="map" style="width:80%;height:700px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=145829b4f38274b6165d84e3615be1bf"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.510935, 126.981733), // 지도의 중심좌표
+        level: 6 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+ 
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var positions = [
+    {
+        title: '연어롭다', 
+        latlng: new kakao.maps.LatLng(37.561052, 126.925684)
+    },
+    {
+        title: '바스버거', 
+        latlng: new kakao.maps.LatLng(37.559067, 126.924849)
+    },
+    {
+        title: '오레노라멘', 
+        latlng: new kakao.maps.LatLng(37.546163, 126.919767)
+    },
+    {
+        title: '후라토식당',
+        latlng: new kakao.maps.LatLng(37.548588, 126.921391)
+    },
+    {
+        title: '카페게이트', 
+        latlng: new kakao.maps.LatLng(37.548351, 126.920596)
+    },
+    {
+        title: '구르미산도', 
+        latlng: new kakao.maps.LatLng(37.560252, 126.925431)
+    }
+];
+
+// 마커 이미지의 이미지 주소입니다
+//var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+    
+for (var i = 0; i < positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    //var imageSize = new kakao.maps.Size(24, 35); 
+    
+    // 마커 이미지를 생성합니다    
+   // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        //image : markerImage // 마커 이미지 
+    });
+}
+</script>
+
 <div class="container"> <h2>추천 맛집</h2>
     <div class="row">
         <div class="col-md-12">
@@ -140,8 +183,8 @@
                                 <div class="single-box">
                                     <div class="img-area"><img src="/tastyServer/assets/images/8_듁스커피 커피.JPG" alt=""></div>
                                     <div class="img-text">
-                                        <h2>듁스커피</h2>
-                                        <p>성수 - 카페</p>
+                                        <h2>듀스커피</h2>
+                                        <p>상수 - 카페</p>
                                     </div>
                                 </div>
                             </div>
