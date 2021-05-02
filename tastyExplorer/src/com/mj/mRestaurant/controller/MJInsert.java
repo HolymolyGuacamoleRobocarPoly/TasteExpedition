@@ -46,16 +46,21 @@ public class MJInsert extends HttpServlet {
 		
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		
+		// 식당 요청자 정보 받아오기 ( 쿠폰 적용 ? ) 
+		int mNo = Integer.parseInt(mr.getParameter("mNo"));
+		
 		// 식당 정보 받아오기 
 		String mjName = mr.getParameter("mjName");		// 식당 이름
 		String mjAddress = mr.getParameter("address");	// 식당 주소
 		String mjTel = mr.getParameter("tel");			// 식당 전화번호
+		
+		// 여기꺼는 db 안거치고 바로 값을 담아 그냥 전달 
 		String openTime = mr.getParameter("openTime");	// 식당 영업시간
 		String brTime = mr.getParameter("brTime");		// 식당 브레이크 타임
 		String holiday = mr.getParameter("holiday");	// 식당 휴무일 
 		
 		// 식당 편의시설 받아오기 
-		
+		String mjInfo = String.join(", ", request.getParameterValues("Convenience"));
 		
 		// 식당 사진 받아오기 
 		

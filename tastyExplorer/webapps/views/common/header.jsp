@@ -18,7 +18,7 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
@@ -26,6 +26,7 @@
             <li><a href="#" onclick="goMrestaurant()">맛집</a></li>
             <li><a href="/tastyServer/views/cBoardCommunity/communityList.jsp">#소통해요</a></li>
             <li><a href="#">Portfolio</a></li>
+            <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>

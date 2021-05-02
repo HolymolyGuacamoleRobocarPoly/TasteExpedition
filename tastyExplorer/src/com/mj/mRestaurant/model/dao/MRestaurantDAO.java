@@ -60,9 +60,6 @@ public class MRestaurantDAO {
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
 				mj.setmRestaurantTel(rs.getInt("M_RESTAURANT_TEL"));
 				
-				
-				
-				
 			}
 			
 		} catch (SQLException e) {
@@ -99,7 +96,7 @@ public class MRestaurantDAO {
 		return result;
 	}
 
-	public ArrayList<MRestaurant> selectList(Connection con) {
+	public ArrayList<MRestaurant> selectList(Connection con, String keyword) {
 		ArrayList<MRestaurant> mjList = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -108,6 +105,8 @@ public class MRestaurantDAO {
 		
 		try {
 			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, keyword);
 			
 			rs = ps.executeQuery();
 			

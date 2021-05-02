@@ -2,7 +2,6 @@ package com.mj.mRestaurant.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
 import com.mj.mRestaurant.model.service.MRestaurantService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
 import com.mj.review.model.service.ReviewService;
@@ -37,17 +38,19 @@ public class MJSelectOne extends HttpServlet {
 		
 		// 식당 번호
 		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
+		int fLevel = 7;
 		
+		// 조회한 식당 한개 정보
 		MRestaurantService service = new MRestaurantService();
-		 
-		// 조회한 식당 한개 정보 
 		MRestaurant mj = service.selectOne(mjNo);
 		
-		// 리뷰 조회 서비스 입력 
+		// 해당 식당의 리뷰 리스트 불러오기 
 		ReviewService reviewService = new ReviewService();
-		
-		// 해당 식당의 리뷰 리스트 불러오기
 		ArrayList<Review> rlist = reviewService.selectList(mjNo);
+		
+		// 해당 식당 Attachment 불러오기 
+		AttachmentService aService = new AttachmentService();
+		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, fLevel);
 		
 		String page = "";
 		
@@ -55,6 +58,7 @@ public class MJSelectOne extends HttpServlet {
 			
 			request.setAttribute("mj", mj);
 			request.setAttribute("rlist", rlist);
+			request.setAttribute("mjAttList", mjAttList);
 			
 			page = "views/mRestaurant/mRestaurantDetail.jsp";
 			

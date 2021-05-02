@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
 import com.mj.mRestaurant.model.service.MRestaurantService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
 
@@ -32,12 +34,36 @@ public class MJSelectList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+//		getParameter 로 index 에서 지도 주변 맛집의 주소 받아와서 dao 까지 넘기고 properties 의 ? 에 address 넣어주면 주변 맛집 list 출력 가능 
+		String keyword = request.getParameter("keyword");
+		int fLevel = 7;
+		
+
+		// 맛집 List 불러오기 
 		ArrayList<MRestaurant> mjList = new ArrayList<>();
 		MRestaurantService service = new MRestaurantService();
 		
-		mjList = service.selectList();
+		// 해당 맛집 Attachment List 불러오기
+		ArrayList<Attachment> mjAttList = new ArrayList<>();
+		AttachmentService aservice = new AttachmentService();
 		
+		// 맛집 List service 로 
+		mjList = service.selectList(keyword);
+		
+		// 해당 맛집별로 Attachment 불러오는 반복문 
+		for(int i = 0; i < mjList.size(); i ++) {
+			int mjNo = mjList.get(i).getmRestaurantNo();
+			
+			mjAttList = aservice.selectList(mjNo, fLevel);
+			
+		}
+		
+		
+		// 맛집 리스트 
 		request.setAttribute("mjList", mjList);
+		request.setAttribute("mjAttList", mjAttList);
+		// 해당 맛집 첨부파일 리스트 
+		
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);;
 				
