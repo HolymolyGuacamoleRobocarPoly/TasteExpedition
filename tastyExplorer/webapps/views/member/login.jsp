@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,13 @@ section {
 		padding : 5px;
 		}
 
+#loginBtn {
+		background:#d4e157;
+		border-radius:5px;
+		width:130px;
+		height:25px;
+		text-align:center;
+	}
 </style>
 <body>
 
@@ -32,6 +40,7 @@ section {
 	
 	<section>
 	<div class="loginbox" style="display: block;">
+
 		<form action="/tastyServer/login.me" method="post" id="loginForm" autocomplete="off">
 			<fieldset>
 								<ul align="center" class="inform">
@@ -44,15 +53,23 @@ section {
 										<input type="password" name="userPwd" id="userPwd" class="placeholder" autocomplete='new-password'>
 									</li>
 								</ul>
-								<ul class="option">
+								<ul align="center" class="option">
 <!-- 									<li><input type="checkbox" id="auto" name="auto" checked><label for="auto">자동 로그인</label></li> -->
-									<li><input type="checkbox" id="save" name="save" ><label for="save">아이디 저장</label></li>
-									<li><input type="checkbox" id="auto" name="auto" checked><label for="auto">로그인 상태 유지</label></li>
+									<li><input type="checkbox" id="save" name="save" ><label for="save">아이디 저장</label>
 								</ul>
-								<div id="loginBtn" class="btn" onclick='login()'><button type="submit" class="btn-l-black" ><span>로그인</span></button></div>
+								<ul align="center" class="linkbox">
+								<a href="/tastyServer/views/member/findId.jsp">아이디찾기</a>
+						
+								<a hrdf="">비밀번호찾기</a>
+								
+								</ul>
+						
+								<div align="center" id="loginBtn" class="btn" onclick='login()'>로그인</div>
 							</fieldset>
 						</form>
+					
 						</div>
+					
 	
 	
 	</section>
@@ -60,9 +77,11 @@ section {
 	<script>
 	
 	 function login(){
-     	$('#loginForm').submit();
+		 if($("#userId").val() == "") alert("아이디를 입력해주세요.");
+		 else if($("#userPwd").val() == "") alert("비밀번호를 입력해주세요.");
+		 else $('#loginForm').submit();
      }
-	
+	 
 	</script>
 
 <%@ include file ="../common/footer.jsp" %>

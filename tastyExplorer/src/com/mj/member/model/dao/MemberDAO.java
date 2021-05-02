@@ -11,6 +11,7 @@ import com.mj.member.model.vo.Member;
 public class MemberDAO {
 	
 	private Properties prop;
+	private PreparedStatement pstmt;
 	
 	public MemberDAO() {
 		prop = new Properties();
@@ -99,5 +100,38 @@ public class MemberDAO {
 		return result;
 		
 	}
+	
+	public String findIdbyEmail(Connection con, String email) {
+		
+		Member result = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String id=null;
+		String sql = "SELECT id FROM member WHERE email =?";
+			try {
+				ps=con.prepareStatement(sql);
+				ps.setNString(1, email);
+				rs=ps.executeQuery();
+				if(rs.next()) {
+					id = rs.getString("id");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(ps!=null) ps.close();
+					if(rs!=null) rs.close();
+					if(con!=null) con.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			return id;
+			}
+
+	
+	
+
 
 }
