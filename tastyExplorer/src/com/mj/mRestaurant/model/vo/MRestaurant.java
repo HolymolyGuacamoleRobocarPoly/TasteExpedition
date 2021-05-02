@@ -21,12 +21,18 @@ public class MRestaurant implements Serializable {
 	private char mRestaurantConfirm;
 	private int mRestaurantLevel;
 	
+	// 추가 변수 
+	private String openTime;
+	private String brTime;
+	private String holiday;
+	
+	
 	// 생성자
 	public MRestaurant() {}
 	
 	public MRestaurant(int mRestaurantNo, String mRestaurantTitle, String mRestaurantContent, String mRestaurantAdrress,
 			int mRestaurantTel, String mRestaurantInfo, int mRestaurantLike, char mRestaurantStatus,
-			char mRestaurantConfirm, int mRestaurantLevel) {
+			char mRestaurantConfirm, int mRestaurantLevel, String openTime, String brTime, String holiday) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
 		this.mRestaurantTitle = mRestaurantTitle;
@@ -38,10 +44,15 @@ public class MRestaurant implements Serializable {
 		this.mRestaurantStatus = mRestaurantStatus;
 		this.mRestaurantConfirm = mRestaurantConfirm;
 		this.mRestaurantLevel = mRestaurantLevel;
+		this.openTime = openTime;
+		this.brTime = brTime;
+		this.holiday = holiday;
 	}
 	
-	// 메소드 
 	
+
+	// 메소드 
+
 	@Override
 	public String toString() {
 		return "MRestaurant [mRestaurantNo=" + mRestaurantNo + ", mRestaurantTitle=" + mRestaurantTitle

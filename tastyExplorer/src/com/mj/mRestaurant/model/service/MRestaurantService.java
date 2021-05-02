@@ -37,10 +37,10 @@ public class MRestaurantService {
 		return result;
 	}
 
-	public ArrayList<MRestaurant> selectList() {
+	public ArrayList<MRestaurant> selectList(String keyword) {
 		con = getConnection();
 		
-		ArrayList<MRestaurant> mjList = dao.selectList(con);
+		ArrayList<MRestaurant> mjList = dao.selectList(con, keyword);
 		
 		close(con);
 		

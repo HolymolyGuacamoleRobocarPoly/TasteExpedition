@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!--  기원 수정  ok  -->
+<%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
+<%
+				// Object --> Board
+	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
+%>  
+<!--  기원 수정  ok  -->    
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +37,12 @@
     <div class="title">
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
-            <form action="">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">맛좀볼래?</button>
+            <!--  기원 수정 ok  -->
+            <form action="/tastyServer/insert.mj">
+            <!--  기원 수정 ok  -->
+                <div class="input-group mb-3">																											<!--  기원 수정 ok -->
+                    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
                 </div>
             </form>
         </h1>
@@ -65,15 +75,36 @@
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="single-box">
-                                    <div class="img-area"><img src="/tastyServer/assets/images/연어롭다.jpg" alt=""></div>
-                                    <div class="img-text">
-                                        <h2>연어롭다</h2>
-                                        <p>홍대 - 일식</p>
-                                    </div>
-                                </div>
-                            </div>
+                        
+				<!--  기원 수정중  삭제 No  -->   
+                        	<!--  반복문 사용해서 mjList 의 값들 출력하기  ( 사진은 첫번째 사진 뽑아내기  )  -->
+                        	<%-- 
+                        	<% for( int i = 0; i < mjList.size(); i ++) { %>
+	                            <div class="col-md-4" id="<%= mjList.get(i).getmRestaurantNo() %>">
+	                                <div class="single-box">
+	                                	<% for ( int j = 0; j < 1; ) { %>
+	                                    	<div class="img-area"><img src="/tastyServer/assets/images/
+	                                    	<%= mjAttList.get(i).getAttMFileName() %>" alt="식당사진"></div>
+	                                	<% } %>
+	                                    <div class="img-text">
+	                                        <h2><%= mjList.get(i).getmRestaurantTitle() %></h2>
+	                                        <p><%= mjList.get(i).getmRestaurantContent() %></p>
+	                                    </div>
+	                                </div>
+	                            </div>
+                            <% } %>
+                           --%>
+				<!--  기원 수정중  삭제 No  -->    	
+
+							<div class="col-md-4">
+	                                <div class="single-box">
+	                                    <div class="img-area"><img src="/tastyServer/assets/images/연어롭다.jpg" alt=""></div>
+	                                    <div class="img-text">
+	                                        <h2>연어롭다</h2>
+	                                        <p>홍대 - 일식</p>
+	                                    </div>
+	                                </div>
+	                            </div>
                             <div class="col-md-4">
                                 <div class="single-box">
                                     <div class="img-area"><img src="/tastyServer/assets/images/10_소녀방앗간 백반.JPG" alt=""></div>
@@ -164,7 +195,14 @@
 
 
 <%@ include file="views/common/footer.jsp" %>
-
-
+<!--  기원 수정중 ok  -->
+	<script>
+		$('.col-md-4').on('click', function(){
+			var mNo = $(this).attr('id');
+			
+			location.href = '/tastyServer/selectOne.mj?mNo=' + mNo + '&replyContent=' + content;
+		});
+	</script>
+<!--  기원 수정중 ok  -->
 </body>
 </html> 
