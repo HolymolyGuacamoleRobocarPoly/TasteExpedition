@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>커뮤니티 게시글 작성</title>
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 </head>
@@ -30,8 +30,8 @@
 					<tr>
 						<td>작성자</td>
 						<td colspan="3">
-							<%= m.getnickName() %> 
-							<input type="hidden" name="nickName" value="<%= m.getnickName() %>">
+							<%= m.getNickName() %> 
+							<input type="hidden" name="nickName" value="<%= m.getNickName() %>">
 						</td>
 					</tr>
 					<tr>

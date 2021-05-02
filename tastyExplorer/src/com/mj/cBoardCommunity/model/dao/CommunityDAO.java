@@ -57,15 +57,16 @@ public class CommunityDAO {
 				
 				c.setcBoardNo( rs.getInt("c_board_no") );
 				c.setcBoardTitle( rs.getString("c_board_title"));
-				c.setcBoardContent(rs.getString("cboardcontent"));
-				c.setcBoardwriter(rs.getString("c_board_writer"));
-				c.setmNickname( rs.getString("mnickname"));
+				c.setcBoardContent(rs.getString("c_board_content"));
 				c.setcBoardTeam( rs.getInt("c_board_team"));
 				c.setcBoardCount( rs.getInt("c_board_count"));
 				c.setcBoardDate( rs.getDate("c_board_date"));
+				c.setcBoardWriter(rs.getString("c_board_writer"));
+				c.setmNickname( rs.getString("m_nickname"));
 				
 				
 				list.add(c);
+				//System.out.println(list);
 			}
 		} catch (SQLException e) {
 			
@@ -75,9 +76,9 @@ public class CommunityDAO {
 			close(ps);
 		}
 		return list;
-
+		
 	}
-
+	
 	// 게시글 작성
 	public int insertCommunity(Connection con, Community c) {
 		
@@ -92,8 +93,7 @@ public class CommunityDAO {
 			ps.setString(1, c.getcBoardTitle());
 			ps.setString(2, c.getcBoardContent());
 			ps.setString(3, c.getmNickname());
-			ps.setInt(4, c.getcBoardTeam());
-			ps.setInt(5, c.getcBoardCount());
+			
 			
 			result = ps.executeUpdate();
 		
@@ -130,8 +130,8 @@ public class CommunityDAO {
 				c.setcBoardNo(cboardno);
 				c.setcBoardTitle( rs.getString("c_board_title"));
 				c.setcBoardContent(rs.getString("c_board_content"));
-				c.setcBoardwriter(rs.getString("c_board_writer"));
-				c.setmNickname( rs.getString("mnickname"));
+				c.setcBoardWriter(rs.getString("c_board_writer"));
+				c.setmNickname( rs.getString("m_nickname"));
 				c.setcBoardTeam( rs.getInt("c_board_team"));
 				c.setcBoardCount( rs.getInt("c_board_count"));
 				c.setcBoardDate( rs.getDate("c_board_date"));
