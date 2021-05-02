@@ -29,8 +29,6 @@
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="/tastyServer/views/member/join.jsp">Join Us</a></li>
-            <li><a href="/tastyServer/views/member/login.jsp">Login</a></li>
  
         </ul>
         <div class="action">
@@ -38,18 +36,20 @@
                 <img src="/tastyServer/assets/images/no-image.jpg">
             </div>
             <div class="menu">
-                <h3>Youngman<br><span>초보 탐험가</span></h3>
                 <ul>
-
-                    <li><img src="/tastyServer/assets/images/user.png" /><a href="#">Profile</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="">Logout</a></li>
-
-                    <li><img src="/tastyServer/assets/images/user.png" />
-                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">회원가입</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="#">로그인</a></li>
-
+                <% if ( m== null) { %>
+                <li><img src="/tastyServer/assets/images/user.png" />
+                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Join Us</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Login</a></li>
+				<% } else { %>
+				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>
+                    <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/views/member/mypage.jsp">Profile</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div></a>
+                    </li>
                 </ul>
             </div>
+            <% } %>
         </div>
         
         <div class="sidebanner">
