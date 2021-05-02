@@ -32,6 +32,13 @@ public class Community implements Serializable{
 		this.cBoardWriter = cBoardWriter;
 		this.mNickname = mNickname;
 	}
+	
+	public Community(String cBoardTitle, String cBoardContent, String mNickname) {
+		super();
+		this.cBoardTitle = cBoardTitle;
+		this.cBoardContent = cBoardContent;
+		this.mNickname = mNickname;
+	}
 
 	@Override
 	public String toString() {

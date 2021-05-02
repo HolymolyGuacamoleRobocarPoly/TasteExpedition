@@ -69,14 +69,14 @@ public class CommunitySelectList extends HttpServlet {
 		
 		list = service.selectList(currentPage);
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		request.setAttribute("list", list);
 		PageInfo pi = new PageInfo(startPage, endPage, maxPage,
 								   currentPage, limit, listCount);
 		request.setAttribute("pi", pi);
 		
-		System.out.println(pi);
+		//System.out.println(pi);
 		
 		RequestDispatcher view =
 				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");

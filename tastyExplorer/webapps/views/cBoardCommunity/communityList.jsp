@@ -1,146 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.mj.cBoardCommunity.model.vo.*, java.util.*" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.mj.cBoardCommunity.model.vo.*, java.util.*"%>
 <%
-	ArrayList<Community>  list = (ArrayList<Community>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int st = pi.getStartPage();
-	int ed = pi.getEndPage();
-	int mx = pi.getMaxPage();
-	int cur = pi.getCurrentPage();
-	int limit = pi.getLimit();
-	int listCount = pi.getListCount();
-	
+ArrayList<Community> list = (ArrayList<Community>) request.getAttribute("list");
+PageInfo pi = (PageInfo) request.getAttribute("pi");
+
+int st = pi.getStartPage();
+int ed = pi.getEndPage();
+int mx = pi.getMaxPage();
+int cur = pi.getCurrentPage();
+int limit = pi.getLimit();
+int listCount = pi.getListCount();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
+<link rel="stylesheet" href="/tastyServer/assets/css/community.css" />
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
-<style>
-.banner {
-margin-top: 0px;
-}
 
-.main-div {
-	width : 230px;
-	height : 100vh;
-	padding : 10px;
-	align-items : center;
-	margin : 0 auto;
-}
-
-.search-form {
-	border : 4px solid black;
-	border-radius : 24px;
-	position : relative;
- }
-
-.search-input {
-	width : all;
-	height : 40px;
-	font-size : 15px;
-	padding-left :  38px;
-	border : none;
-	border-radius : 20px;
-	
-}
-
-.search-history {
-	border-radius : 10px;
-	display : none;
-}
-
-.search-history a {
-	display : inline-block;
-	border-radius : 20px;
-	width: 274px;
-	padding : 10px 10px;
-	color : black;
-}
-
-.search-history a:hover {
-	background-color : orange;
-} 
-
-.search-input:focus ~ .search-history {
-	display : block;
-}
-
-.search-history a:focus {
-	display : block;
-}
-
-search-input:focus {
-	outline : none;
-}
-section {
-	width : 900px;
-	height : auto;
-	/* 좌우 가운데 정렬 */
-	margin-left : auto;
-	margin-right: auto;
-	margin-top: 50px;
-	padding : 30px;
-	background : lightblue;
-	color : black;
-}
-.tableArea {
-	width : 800px;
-	height: auto;
-	margin-left : auto;
-	margin-right : auto;
-}
-
-table {
-	padding : 15px;
-	border: 1px solid yellow;
-	text-align : center; 
-}
-
-.btnArea {
-	margin-left : 700px;
-	margin-top : 40px;
-		height: 10px;
-}
-
-</style>
 <title>#소통해요</title>
 
 </head>
 <body>
-	<%@ include  file = "../common/header.jsp" %>
+	<%@ include file="../common/header.jsp"%>
 	<!-- 게시글 목록임 -->
 	<section>
 		<h2 align="center">#소통해요</h2>
-		
+
 		<!-- 버튼 클릭시  -->
 		<div class="btnArea" align="center">
-		<br>
-		<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>
-		<% if (m != null) { %> 
-			<script>
-				$('#listArea td').on('mouseenter'), function() {
-					$(this).parent().css({'background' : 'white',
-										  'curor' : 'porinter',
-										  'color' : 'gray'});
-				}).on('mouserout', function(){
-					$('this').parent().css({'backgrond' : 'white',
-											'color' : 'white'});
-				}).on('click', function(){
-					var nno = $('this').parent.children().first().attr('id');
-					
-					console.log(nno);
-					
-					location.href = "/tastyServer/selecOne.co?cboardno=" + cboardno;
-				});
-			</script>
-		<% } %>
-			
+			<br>
+			<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>
+
 		</div>
-		<br><br>
+		<br> <br>
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
@@ -151,85 +46,148 @@ table {
 					<td width="150px;">작성일</td>
 					<td width="70px;">조회수</td>
 				</tr>
-				<% for(Community c : list) { %>
+				<%
+				for (Community c : list) {
+				%>
 				<tr>
-					<td id="<%= c.getcBoardNo() %>"><%= c.getcBoardNo() %></td>
-					<td><%= c.getcBoardTitle()%></td>
-					<td><%= c.getcBoardTeam()%></td>
-					<td><%= c.getcBoardWriter()%></td>
-					<td><%= c.getcBoardDate()%></td>
-					<td><%= c.getcBoardCount() %></td>
-				</tr>				
-				<% } %>
+					<td id="<%=c.getcBoardNo()%>"><%=c.getcBoardNo()%></td>
+					<td><%=c.getcBoardTitle()%></td>
+					<td><%=c.getcBoardTeam()%></td>
+					<td><%=c.getcBoardWriter()%></td>
+					<td><%=c.getcBoardDate()%></td>
+					<td><%=c.getcBoardCount()%></td>
+				</tr>
+				<%
+				}
+				%>
 			</table>
 		</div>
 		<!-- 버튼 클릭시 -->
 		<div class="btnArea" align="center">
-		<br>
-		<% if (m != null) { %> 
-		
-		<button onclick="location.href='views/community/communityInsert.jsp'">작성하기</button>
+			<br>
+			<%
+			if (m != null) {
+			%>
+
+			<button onclick="location.href='views/community/communityInsert.jsp'">작성하기</button>
 			<script>
 				$('#listArea td').on('mouseenter'), function() {
 					$(this).parent().css({'background' : 'white',
 										  'curor' : 'porinter',
-										  'color' : 'gray'});
+										  'color' : 'gray'});  
 				}).on('mouserout', function(){
 					$('this').parent().css({'backgrond' : 'white',
 											'color' : 'white'});
 				}).on('click', function(){
 					var nno = $('this').parent.children().first().attr('id');
 					
-					console.log(nno);
+					console.log(cboardno);
 					
 					location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
 				});
 			</script>
-		<% } %>
-			
+			<%
+			}
+			%>
+
 		</div>
 
 		<!-- 페이지 부분 -->
 		<div class="pagingArea" align="center">
-			<button onclick="location.href='/tastyServer/selectList.co?currentPage=1'">
-			&lt;&lt;
+			<button
+				onclick="location.href='/tastyServer/selectList.co?currentPage=1'">
+				&lt;&lt;</button>
+			<%
+			if (cur <= 1) {
+			%>
+			<button disabled>&lt;</button>
+			<%
+			} else {
+			%>
+			<button
+				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=cur - 1%>'">
+				&lt;</button>
+			<%
+			}
+			%>
+
+			<%
+			for (int p = st; p <= ed; p++) {
+			%>
+
+			<%
+			if (p == cur) {
+			%>
+			<button disabled>
+				<%=p%>
 			</button>
-				<% if (cur <= 1) { %>
-				<button disabled> &lt; </button>
-			<% } else { %>
-				<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= cur - 1 %>'"> &lt;</button>
-			<% } %>
-			
-			<% for(int p = st ; p <= ed ; p++)  { %>
-			
-				<% if( p == cur) { %>
-					<button disabled> <%= p %> </button>
-				<% } else { %>
-					<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= p %>'"> <%= p %> </button>
-				<% } %>
-			<% } %>
-			
-			<% if (cur >= mx) { %>
-				<button disabled> &gt; </button>
-			<% } else { %>
-				<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= cur + 1 %>'"> &gt;</button>
-			<% } %>
-			
-			<button onclick="location.href='/tastyServery/selectList.co?currentPage=<%= mx %>'">
-				&gt;&gt;
+			<%
+			} else {
+			%>
+			<button
+				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=p%>'">
+				<%=p%>
 			</button>
-	
+			<%
+			}
+			%>
+			<%
+			}
+			%>
+
+			<%
+			if (cur >= mx) {
+			%>
+			<button disabled>&gt;</button>
+			<%
+			} else {
+			%>
+			<button
+				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=cur + 1%>'">
+				&gt;</button>
+			<%
+			}
+			%>
+
+			<button
+				onclick="location.href='/tastyServery/selectList.co?currentPage=<%=mx%>'">
+				&gt;&gt;</button>
+
 		</div>
-		
+
 		<!-- 검색창 -->
 		<div class="main-div">
 			<form action="" class="search-form">
-				<input type="text" value="" class="search-input" 
-				placeholder="search"/>
-				<div class="search-history">
-				</div>
+				<input type="text" value="" class="search-input"
+					placeholder="search" />
+				<div class="search-history"></div>
 			</form>
-			
+
+		</div>
+
+		<!-- 프로필 -->
+		<div class="card">
+			<div class="card-container">
+				<div class="upper-container">
+					<div class="image-container">
+						<img src="/tastyServer/assets/images/boo.png">
+					</div>
+				</div>
+				<div class="lower-container">
+					<div>
+						<h3>효자동불효자</h3>
+						<br>
+						<h4>Lv.금수저</h4>
+					</div>
+					<div>
+						<p>냠냠쩝쩝</p>
+					</div>
+					<div>
+						<a href="#" class="btn">view profile</a>
+					</div>
+				</div>
+
+			</div>
 		</div>
 		<script>
 			
@@ -251,11 +209,11 @@ table {
 			
 			
 		</script>
-		
-		
+
+
 	</section>
-	
-	<%@ include  file = "../common/footer.jsp" %>
+
+	<%@ include file="../common/footer.jsp"%>
 
 
 </body>
