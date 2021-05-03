@@ -46,7 +46,7 @@ public class CommunityInsert extends HttpServlet {
 			       .forward(request, response);
 		}
 		
-		System.out.println(request);
+		//System.out.println(request);
 		
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, 
 				   "UTF-8", new DefaultFileRenamePolicy());

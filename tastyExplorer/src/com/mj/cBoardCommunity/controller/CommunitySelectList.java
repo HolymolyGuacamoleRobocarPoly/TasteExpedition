@@ -36,8 +36,9 @@ public class CommunitySelectList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 게시판처리
-		ArrayList<Community> list = new ArrayList<>();
 		CommunityService service = new CommunityService();
+		ArrayList<Community> list = new ArrayList<>();
+
 		
 		// 10개씩 짜름
 		int startPage;
@@ -67,7 +68,29 @@ public class CommunitySelectList extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		list = service.selectList(currentPage);
+		// 검색테스트
+		
+		
+		//임시변수
+		String field_ = request.getParameter("f");
+		String query_ = request.getParameter("q");
+
+		//기본값
+		String field = "cBoardTitle";
+		if(field_ != null) {
+			field = field_;
+		}
+		
+		String query = "";
+		if (query_ != null) {
+			query = query_;
+		}
+		
+		
+		list = service.selectList(currentPage, field, query, 1);
+		
+		
+		//System.out.println(startPage);
 		
 		//System.out.println(list);
 		
@@ -79,7 +102,7 @@ public class CommunitySelectList extends HttpServlet {
 		//System.out.println(pi);
 
 		RequestDispatcher view =
-				request.getRequestDispatcher("/tastyServer/views/cBoardCommunity/communityList.jsp");
+				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");
 		
 		view.forward(request, response);	
 	}
