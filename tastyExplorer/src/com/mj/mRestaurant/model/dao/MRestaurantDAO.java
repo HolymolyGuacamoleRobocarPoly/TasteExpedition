@@ -58,7 +58,7 @@ public class MRestaurantDAO {
 				mj.setmRestaurantInfo(rs.getString("M_RESTAURANT_INFO"));
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
-				mj.setmRestaurantTel(rs.getInt("M_RESTAURANT_TEL"));
+				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
 				
 			}
 			
@@ -72,29 +72,8 @@ public class MRestaurantDAO {
 		
 		return mj;
 	}
-
-	public int deleteMRestaurant(Connection con, int mjNo) {
-		int result = 0;
-		PreparedStatement ps = null;
-		
-		String sql = prop.getProperty("deleteMRestaurant");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, mjNo);
-			
-			result = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		} finally {
-			close(ps);
-		}
-		
-		return result;
-	}
+	
+	
 
 	public ArrayList<MRestaurant> selectList(Connection con, String keyword) {
 		ArrayList<MRestaurant> mjList = new ArrayList<>();
@@ -120,7 +99,7 @@ public class MRestaurantDAO {
 				mj.setmRestaurantInfo(rs.getString("M_RESTAURANT_INFO"));
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
-				mj.setmRestaurantTel(rs.getInt("M_RESTAURANT_TEL"));
+				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
 				
 				mjList.add(mj);
 			}
@@ -139,6 +118,67 @@ public class MRestaurantDAO {
 
 	
 	
+	
+	
+
+	public int insertMRestaurant(Connection con) {
+		MRestaurant mj = null;
+		PreparedStatement ps = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("insertMRestaurant");
+		
+		try {
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, mj.getmRestaurantTitle());
+			ps.setString(2, mj.getmRestaurantContent());
+			ps.setString(3, mj.getmRestaurantAdrress());
+			ps.setString(4, mj.getmRestaurantInfo());
+			ps.setInt(5, mj.getmRestaurantLevel());
+			ps.setString(6, mj.getmRestaurantTel());
+			ps.setString(7, mj.getOpenTime());
+			ps.setString(8, mj.getBrTime());
+			ps.setString(9, mj.getHoliday());
+			
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+
+	public int deleteMRestaurant(Connection con, int mjNo) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteMRestaurant");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, mjNo);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
 	
 	
 	

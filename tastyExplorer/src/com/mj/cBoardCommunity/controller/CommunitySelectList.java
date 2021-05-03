@@ -79,7 +79,7 @@ public class CommunitySelectList extends HttpServlet {
 		//System.out.println(pi);
 
 		RequestDispatcher view =
-				request.getRequestDispatcher("/tastyServer/views/cBoardCommunity/communityList.jsp");
+				request.getRequestDispatcher("/views/cBoardCommunity/communityList.jsp");
 		
 		view.forward(request, response);	
 	}

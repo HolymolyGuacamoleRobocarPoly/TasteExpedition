@@ -23,6 +23,31 @@ public class MRestaurantService {
 		
 		return mj;
 	}
+	
+	public ArrayList<MRestaurant> selectList(String keyword) {
+		con = getConnection();
+		
+		ArrayList<MRestaurant> mjList = dao.selectList(con, keyword);
+		
+		close(con);
+		
+		return mjList;
+	}
+
+
+	public int insertMRestaurant(MRestaurant mj) {
+		con = getConnection();
+		
+		int result = dao.insertMRestaurant(con);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	} 
+	
 
 	public int deleteMRestaurant(int mjNo) {
 		con = getConnection();
@@ -37,16 +62,7 @@ public class MRestaurantService {
 		return result;
 	}
 
-	public ArrayList<MRestaurant> selectList(String keyword) {
-		con = getConnection();
-		
-		ArrayList<MRestaurant> mjList = dao.selectList(con, keyword);
-		
-		close(con);
-		
-		return mjList;
-	} 
-	
+
 	
 	
 	

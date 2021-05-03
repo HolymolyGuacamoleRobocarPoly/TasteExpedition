@@ -5,7 +5,7 @@
 <%
 				// Object --> Board
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
-	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("selectOne"); // 서블릿이 보낸 mjAttList 받아오기
 %>  
 <!--  기원 수정  ok  -->    
 <!DOCTYPE html>
