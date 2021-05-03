@@ -50,6 +50,7 @@ public class AttachmentRestaurantSelectOne extends HttpServlet {
 		
 		request.setAttribute("selectOne", selectOne);
 		
+
 		// if 문을 통해서 경로를 재지정 => AttachmentSelectList 와 같은 형식으로
 		/*
 		if (fLevel == 4) {
@@ -57,7 +58,8 @@ public class AttachmentRestaurantSelectOne extends HttpServlet {
 		} else if (fLevel == 7) {
 			path = "index.jsp";
 		*/
-		request.getRequestDispatcher("index.jsp") // + path
+		request.getRequestDispatcher("index.jsp") 
+
 			   .forward(request, response);
 	}
 

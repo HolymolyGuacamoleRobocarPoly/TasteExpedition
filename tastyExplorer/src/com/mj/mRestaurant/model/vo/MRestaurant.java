@@ -165,6 +165,30 @@ public class MRestaurant implements Serializable {
 	public void setmRestaurantConfirm(char mRestaurantConfirm) {
 		this.mRestaurantConfirm = mRestaurantConfirm;
 	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getBrTime() {
+		return brTime;
+	}
+
+	public void setBrTime(String brTime) {
+		this.brTime = brTime;
+	}
+
+	public String getHoliday() {
+		return holiday;
+	}
+
+	public void setHoliday(String holiday) {
+		this.holiday = holiday;
+	}
 	
 	
 }

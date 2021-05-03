@@ -41,8 +41,9 @@ public class ReviewDAO {
 		
 		String sql = prop.getProperty("selectList");
 		
-try {
-	
+
+		try {
+			
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, mjNo);

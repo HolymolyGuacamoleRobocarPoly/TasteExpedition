@@ -1,6 +1,7 @@
 package com.mj.mRestaurant.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.common.MyRenamePolicy;
+import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.mRestaurant.model.vo.Menu;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class MJInsert
@@ -44,25 +47,44 @@ public class MJInsert extends HttpServlet {
 		
 		} 
 		
-		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyRenamePolicy());
 		
 		// 식당 요청자 정보 받아오기 ( 쿠폰 적용 ? ) 
-		int mNo = Integer.parseInt(mr.getParameter("mNo"));
+		int mjNo = Integer.parseInt(mr.getParameter("mjNo"));
 		
 		// 식당 정보 받아오기 
 		String mjName = mr.getParameter("mjName");		// 식당 이름
-		String mjAddress = mr.getParameter("address");	// 식당 주소
+		String mjAddress = request.getParameter("zipCode") + ", "	// 식당 주소 
+				   + request.getParameter("address1") + ", "
+				   + request.getParameter("address2");
 		String mjTel = mr.getParameter("tel");			// 식당 전화번호
-		
-		// 여기꺼는 db 안거치고 바로 값을 담아 그냥 전달 
+
 		String openTime = mr.getParameter("openTime");	// 식당 영업시간
 		String brTime = mr.getParameter("brTime");		// 식당 브레이크 타임
 		String holiday = mr.getParameter("holiday");	// 식당 휴무일 
+		 
+		String mjInfo = String.join(", ", request.getParameterValues("Convenience"));	// 식당 편의시설 받아오기
 		
-		// 식당 편의시설 받아오기 
-		String mjInfo = String.join(", ", request.getParameterValues("Convenience"));
+		String mjContent = mr.getParameter("mjContent"); 			// 식당 소개(keyword) 받아오기 
+		
+		int mjLevel = Integer.parseInt(mr.getParameter("mjLevel")); // 식당 분류번호 받아오기
+		
+		MRestaurant mj = new MRestaurant(mjNo, mjName, mjContent, mjAddress, mjTel, 
+										 mjInfo, null, null, mjLevel, openTime, brTime, holiday);
+		
+		
+		
+		Menu menu = new Menu();
+		
+		
+		
 		
 		// 식당 사진 받아오기 
+		
+		
+		
+		
+		// 메뉴 받기 
 		
 		
 		

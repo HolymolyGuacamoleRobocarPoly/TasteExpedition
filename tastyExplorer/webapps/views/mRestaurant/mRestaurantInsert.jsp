@@ -64,7 +64,7 @@
 }
 
 .info {
-	margin-left : 100px;
+	margin-left : 70px;
 	display : inline-block;
 }
 
@@ -95,15 +95,14 @@
 	<%@ include file="../common/header.jsp"%>
 
 	<!--  로그인 시 식당 등록 화면이 보일 수 있도록 if else 사용하기  -->
+	<form action="/tastyServer/insert.mj" method="post" enctype="multipartform-data"> 
 
-	<form action="/tastyServer/insert.mj" method="post" enctype="multipartform-data">
-		  <input type="hidden" name="mNo" value="<%=m.getmNo()%>" /> <!-- <%--m.getMno() --%> 변경 -->
 			<table id="MJName">
 				<tr>
 					<th>
 						<h2>
 							<input type="text" id="mjName" placeholder="식당 이름 작성">
-						</h2> <!-- 맛집 이름 -->
+						</h2> 
 					</th>
 				</tr>
 			</table>
@@ -170,51 +169,39 @@
 			</div>
 
 			<div class="info">
-				<!-- 오른쪽으로 절대 위치 설정 -->
 				<fieldset>
 					<legend>식당 정보 입력</legend>
 					<table id="address">
-						<!-- ul or table choice-->
-						
-						
-						<!--  수정중 -->
 						<tr>
 							<td>우편번호 : </td>
-							<td><input type="text" id="zipCode" name="zipCode" class="inin" required></td>
+							<td><input type="text" id="zipCode" name="zipCode" class="inin" required size="30"></td>
 							<td><div id="ckZip" onclick="addrSearch();"> 검색</div></td>
 						</tr>
 						<tr>
-							<td>주소</td>
-							<td><input type="text" id="address1" name="address1" class="inin" required></td>
+							<td style="text-align : center;">주소</td>
+							<td><input type="text" id="address1" name="address1" class="inin" required size="30"></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td>상세주소</td>
-							<td><input type="text" id="address2" name="address2" class="inin" required></td>
+							<td style="text-align : center;">상세주소</td>
+							<td><input type="text" id="address2" name="address2" class="inin" required size="30"></td>
 							<td></td>
 						</tr>
-						
-						
-						<!--  수정중 -->
 						<tr>
 							<td>전화번호 :</td>
-							<td><input type="tel" name="tel" id="tel" class="inin"></td>
-							<!-- 맛집 전화번호 입력-->
+							<td><input type="tel" name="tel" id="tel" class="inin" size="30"></td>
 						</tr>
 						<tr>
 							<td>영업시간 :</td>
-							<!-- 맛집 영업시간 입력-->
-							<td><input type="datetime" name="openTime" id="openTime" class="inin"></td>
+							<td><input type="datetime" name="openTime" id="openTime" class="inin" size="30"></td>
 						</tr>
 						<tr>
 							<td>Break Time :</td>
-							<td><input type="datetime" name="brTime" id="brTime" class="inin"></td>
-							<!-- 맛집 break time 입력-->
+							<td><input type="datetime" name="brTime" id="brTime" class="inin" size="30"></td>
 						</tr>
 						<tr>
 							<td>휴무일 :</td>
-							<!-- 맛집 영업시간 입력-->
-							<td><input type="text" name="holiday" id="holiday" class="inin"></td>
+							<td><input type="text" name="holiday" id="holiday" class="inin" size="30"></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -223,6 +210,17 @@
 			<div class="info">
 				<fieldset>
 					<legend>식당 간단한 소개 입력</legend>
+								식당분류 :
+								<select name="mjLevel">
+				                     <option value="1">한식</option>
+				                     <option value="2">중식</option>
+				                     <option value="3">일식</option>
+				                     <option value="4">양식</option>
+				                     <option value="5">베트남식</option>
+				                     <option value="6">카페/디저트</option>
+				                     <option value="7">기타</option>
+				                 </select> <br /><br />
+				                 
 					<textarea rows="8" cols="18" name="mjContent" placeholder="식당의 이름 및 지역, 음식명 등 식당의 소개를 간략하게 적어주세요 ~ 
 							ex) 연어롭다, 이태원, 연어맛집, 혼술 등등" style="resize:none;"></textarea>
 				</fieldset>
@@ -239,31 +237,31 @@
 						<th></th>
 					</tr>
 					<tr>
-						<td><input type="text" class="meenuName" placeholder="메뉴명 입력"></td>
+						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
 						<td><input type="number" class="menuPrice"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="meenuName" placeholder="메뉴명 입력"></td>
+						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
 						<td><input type="number" class="menuPrice"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="meenuName" placeholder="메뉴명 입력"></td>
+						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
 						<td><input type="number" class="menuPrice"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="meenuName" placeholder="메뉴명 입력"></td>
+						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
 						<td><input type="number" class="menuPrice"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="meenuName" placeholder="메뉴명 입력"></td>
+						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
 						<td><input type="number" class="menuPrice"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
@@ -273,9 +271,9 @@
 		</section>
 		<br>
 		<br>
-		<button type="submit" id="submitbt">전송 완료</button>
+		<button type="submit" id="submitbt"> 입력 완료 </button>
 		&nbsp;
-		<button type="reset">작성 취소</button>
+		<button type="reset"> 작성 취소 </button>
 	</form>
 	<aside>
 		<!-- 오른쪽에 최근본 목록 구현 or 광고-->
@@ -289,7 +287,7 @@
 	<script>
 	
 		function menuInsert() {
-			location.href = "/tastyServer/insert.mn"; // 리뷰작성 페이지로 이동
+			location.href = "/tastyServer/insert.mn"; // 메뉴작성 페이지로 이동
 		};
 	
 	

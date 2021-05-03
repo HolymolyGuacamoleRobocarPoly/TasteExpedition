@@ -1,6 +1,6 @@
 package com.mj.mRestaurant.model.dao;
 
-import static com.common.JDBCTemplate.close;
+import static com.common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,10 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
-import com.mj.common.model.vo.Attachment;
+
 import com.mj.mRestaurant.model.vo.MRestaurant;
 
 public class MRestaurantDAO {
@@ -59,6 +58,10 @@ public class MRestaurantDAO {
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
 				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
+				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
+				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
+				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
+
 				
 			}
 			
@@ -100,6 +103,10 @@ public class MRestaurantDAO {
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
 				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
+				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
+				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
+				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
+
 				
 				mjList.add(mj);
 			}
