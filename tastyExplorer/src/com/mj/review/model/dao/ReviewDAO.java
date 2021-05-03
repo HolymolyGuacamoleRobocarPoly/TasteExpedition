@@ -34,7 +34,7 @@ public class ReviewDAO {
 		}
 	}
 
-	public ArrayList<Review> selectList(Connection con) {
+	public ArrayList<Review> selectList(Connection con, int mjNo) {
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -42,8 +42,10 @@ public class ReviewDAO {
 		String sql = prop.getProperty("selectList");
 		
 try {
-			
+	
 			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, mjNo);
 			
 			rs = ps.executeQuery();
 			
@@ -82,33 +84,23 @@ try {
 	}
 
 	public int insertReview(Connection con, Review r) {
-		System.out.println("여기까진오나요");
 		int result = 0;
 		PreparedStatement ps = null;
 		
 		String sql = prop.getProperty("insertReview");
 		
-		int startRow = (currentPage - 1) * 10 + 1;
-		int endRow = currentPage * 10;
-		
 		try {
 			
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, endRow);
-			ps.setInt(2, startRow);
 			
 			ps.setString(1, r.getrContent());
 			ps.setString(2, r.getrHashTag());
-			System.out.println("2" + r.getrHashTag());
 			ps.setInt(3, r.getrScore());
-			System.out.println("3" + r.getrScore());
 			ps.setInt(4, r.getmNo());
-			System.out.println("4" + r.getmNo());
 			ps.setInt(5, r.getmRestaurantNo());
-			System.out.println("5" + r.getmRestaurantNo());
 			
 			result = ps.executeUpdate();
-			System.out.println("result값ㅇㅇㅇ"+result);
+			
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
@@ -118,7 +110,7 @@ try {
 			close(ps);
 			
 		}
-			System.out.println("result dao" + result);
+			
 		return result;
 	}
 

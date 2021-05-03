@@ -42,14 +42,16 @@ public class AttachmentDAO {
 		
 		String sql = "";
 		String name = "";
-		
+		/*
 		if (fLevel == 1) {
 			sql = prop.getProperty("selectCouponAttachment");
 			name = "cp";
 		} else if (fLevel == 2) {
 			sql = prop.getProperty("selectTicketAttachment");
 			name = "t";
-		} else if (fLevel == 3) {
+		} else 
+		*/
+		if (fLevel == 3) {
 			sql = prop.getProperty("selectNoticeAttachment");
 			name = "n";
 		} else if (fLevel == 4) {
@@ -101,8 +103,16 @@ public class AttachmentDAO {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectOneRestaurantAttachment");
-		String name = "mj";
-		
+		String name = "";
+		/*
+		 if (fLevel == 4) {
+		 	sql = prop.getProperty("selectOneEventAttachment");
+		 	name = "e"
+		 } else if (fLevel == 7) {
+		 	sql = prop.getProperty("selectOneRestaurantAttachment");
+		 	name = "mj";
+		 }
+		*/
 		try {
 			ps = con.prepareStatement(sql);
 			
@@ -134,7 +144,7 @@ public class AttachmentDAO {
 		int result = 0;
 		PreparedStatement ps = null;
 		String sql = prop.getProperty("insertAttachment");
-		
+		System.out.println("DAO 넘어 온 값 : " + attachment);
 		try {
 			ps = con.prepareStatement(sql);
 		
@@ -186,12 +196,14 @@ public class AttachmentDAO {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("currentcmNo");
-		
+		/*
 		if (fLevel == 1) {
 			sql = prop.getProperty("currentCNo");
 		} else if (fLevel == 2) {
 			sql = prop.getProperty("currentTNo");
-		} else if (fLevel == 3) {
+		} else 
+		*/
+		if (fLevel == 3) {
 			sql = prop.getProperty("currentNNo");
 		} else if (fLevel == 4) {
 			sql = prop.getProperty("currentENo");

@@ -31,7 +31,7 @@ public class MemberService {
 
 	public Member selectMember(Member loginMember) {
 		con = getConnection();
-		
+		System.out.println("Service : " + loginMember.toString());
 		Member result = dao.selectMember(con, loginMember);
 		
 		close(con);

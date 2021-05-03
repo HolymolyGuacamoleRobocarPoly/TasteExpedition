@@ -122,14 +122,6 @@ public class Review implements Serializable {
 		this.mRestaurantNo = mRestaurantNo;
 	}
 
-	public int getmRestaurantNo() {
-		return mRestaurantNo;
-	}
-
-	public void setmRestaurantNo(int mRestaurantNo) {
-		this.mRestaurantNo = mRestaurantNo;
-	}
-
 	
 	
 }

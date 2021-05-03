@@ -14,7 +14,7 @@ public class MRestaurant implements Serializable {
 	private String mRestaurantTitle;
 	private String mRestaurantContent;
 	private String mRestaurantAdrress;
-	private int mRestaurantTel;
+	private String mRestaurantTel;
 	private String mRestaurantInfo;
 	private int mRestaurantLike;
 	private char mRestaurantStatus;
@@ -31,7 +31,7 @@ public class MRestaurant implements Serializable {
 	public MRestaurant() {}
 	
 	public MRestaurant(int mRestaurantNo, String mRestaurantTitle, String mRestaurantContent, String mRestaurantAdrress,
-			int mRestaurantTel, String mRestaurantInfo, int mRestaurantLike, char mRestaurantStatus,
+			String mRestaurantTel, String mRestaurantInfo, int mRestaurantLike, char mRestaurantStatus,
 			char mRestaurantConfirm, int mRestaurantLevel, String openTime, String brTime, String holiday) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
@@ -102,12 +102,36 @@ public class MRestaurant implements Serializable {
 		this.mRestaurantAdrress = mRestaurantAdrress;
 	}
 
-	public int getmRestaurantTel() {
+	public String getmRestaurantTel() {
 		return mRestaurantTel;
 	}
 
-	public void setmRestaurantTel(int mRestaurantTel) {
+	public void setmRestaurantTel(String mRestaurantTel) {
 		this.mRestaurantTel = mRestaurantTel;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getBrTime() {
+		return brTime;
+	}
+
+	public void setBrTime(String brTime) {
+		this.brTime = brTime;
+	}
+
+	public String getHoliday() {
+		return holiday;
+	}
+
+	public void setHoliday(String holiday) {
+		this.holiday = holiday;
 	}
 
 	public String getmRestaurantInfo() {

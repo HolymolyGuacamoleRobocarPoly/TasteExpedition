@@ -32,19 +32,37 @@ public class AttachmentSelectList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int mjNo = Integer.parseInt(request.getParameter("mRestaurantNo"));
+		int bNo = Integer.parseInt(request.getParameter("Att_M_no"));
 		int fLevel = Integer.parseInt(request.getParameter("fLevel"));
+		String path = "";
 		
 		ArrayList<Attachment> attList = new ArrayList<>();
 		
 		AttachmentService service = new AttachmentService();
 		
-		attList = service.selectList(mjNo, fLevel);
-		// 각각의 영역 안에서 import 를 해야하는 지?
+		attList = service.selectList(bNo, fLevel);
 		
 		request.setAttribute("attList", attList);
-		
-		request.getRequestDispatcher("views/thumb/thumbList.jsp")
+		/*
+		if (fLevel == 1) {
+			path = "?";
+		} else if (fLevel == 2) {
+			path = "?";
+		} else
+		*/
+		if (fLevel == 3) {
+			path = "notice/noticeDetail.jsp";
+		} else if (fLevel == 4) {
+			path = "event/eventDetail.jsp";
+		} else if (fLevel == 5) {
+			path = "mRestaurant/mRestaurantDetail.jsp";
+		} else if (fLevel == 6) {
+			path = "cBoardCommunity/communityDetail.jsp";
+		} else if (fLevel == 7) {
+			path = "mRestaurant/mRestaurantDetail.jsp";
+		}
+			
+		request.getRequestDispatcher("views/" + path)
 			   .forward(request, response);
 		
 	}

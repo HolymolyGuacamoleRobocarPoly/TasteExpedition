@@ -6,7 +6,10 @@
 	MRestaurant mj = (MRestaurant)request.getAttribute("mj"); // 서블릿이 보낸 MRestaurant 받아오기
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("rlist"); // 서블릿이 보낸 ReviewList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
+	ArrayList<Attachment> reviewAttList = (ArrayList<Attachment>)request.getAttribute("attList");
 	Menu menu = (Menu)request.getAttribute("menu");
+	
+
 	
 %>
 <!DOCTYPE html>
@@ -141,8 +144,10 @@
 		<table id="MJName">
 			<tr>
 				<th>
-					<h1 id="mjName"><%--= mj.getmRestaurantTitle() --%>연어롭다</h1> <!-- 맛집 이름 -->
+					<h1 id="mjName"><%--= mj.getmRestaurantTitle() --%> 연어롭다</h1> <!-- 맛집 이름 -->
 				</th>
+				<%-- if 문 추가? 단, rlist 에서 getmRestaurantNo() 사용 가능 한지? --%>
+				<%-- 불가능하다면 review 를 새로 선언 해야하는지? --%> 
 				<%--
 				<!-- 별점 평균 -->
 				<% int sum = 0; 

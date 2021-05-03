@@ -97,7 +97,7 @@
 	<!--  로그인 시 식당 등록 화면이 보일 수 있도록 if else 사용하기  -->
 
 	<form action="/tastyServer/insert.mj" method="post" enctype="multipartform-data">
-		  <input type="hidden" name="mNo" value="<%--m.getMno() --%>" /> 
+		  <input type="hidden" name="mNo" value="<%=m.getmNo()%>" /> <!-- <%--m.getMno() --%> 변경 -->
 			<table id="MJName">
 				<tr>
 					<th>

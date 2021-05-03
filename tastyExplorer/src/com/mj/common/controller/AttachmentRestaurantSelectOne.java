@@ -33,17 +33,31 @@ public class AttachmentRestaurantSelectOne extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mjNo = Integer.parseInt(request.getParameter("mRestaurantNo"));
 		int fLevel = Integer.parseInt(request.getParameter("fLevel"));
+		// mjNo 를 bNo로, request.getParameter("mRestaurantNo)); 값을 bNo로
+		// fLevel 과 복합키처럼 사용 가능?
+		// => 이벤트도 대표 이미지 표시가 필요하다.
+		/*
+		 	int bNo = Integer.parseInt(request.getParameter("bNo")); // Name 을 전부 bNo 통일
+			int fLevel = Integer.parseInt(request.getParameter("fLevel")); // fLevel 로 구분
+			String path = "";
+		 */
 		
-		ArrayList<Attachment> attList = new ArrayList<>();
+		ArrayList<Attachment> selectOne = new ArrayList<>();
 		
 		AttachmentService service = new AttachmentService();
 		
-		attList = service.selectOne(mjNo, fLevel);
-		// 각각의 영역 안에서 import 를 해야하는 지?
+		selectOne = service.selectOne(mjNo, fLevel);
 		
-		request.setAttribute("attList", attList);
+		request.setAttribute("selectOne", selectOne);
 		
-		request.getRequestDispatcher("views/thumb/thumbList.jsp")
+		// if 문을 통해서 경로를 재지정 => AttachmentSelectList 와 같은 형식으로
+		/*
+		if (fLevel == 4) {
+			path = "views/event/eventSelectList.jsp";
+		} else if (fLevel == 7) {
+			path = "index.jsp";
+		*/
+		request.getRequestDispatcher("index.jsp") // + path
 			   .forward(request, response);
 	}
 

@@ -37,9 +37,9 @@ public class ReviewList extends HttpServlet {
 		// 1. 게시판 목록 처리하는 변수
 		ArrayList<Review> list = new ArrayList<>(); 
 		ReviewService service = new ReviewService();
-		
+		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
 	
-		list = service.selectList();
+		list = service.selectList(mjNo);
 		
 		// System.out.println("list : " + list);
 		System.out.println("rlist가 잘 왔나" +list);

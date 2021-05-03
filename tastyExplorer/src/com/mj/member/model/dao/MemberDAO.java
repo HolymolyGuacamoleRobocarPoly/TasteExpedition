@@ -74,7 +74,7 @@ public class MemberDAO {
 			ps.setString(2, loginMember.getUserPwd());
 			
 			rs = ps.executeQuery();
-			
+			System.out.println(rs);
 			if(rs.next()){
 				result = new Member();
 				
