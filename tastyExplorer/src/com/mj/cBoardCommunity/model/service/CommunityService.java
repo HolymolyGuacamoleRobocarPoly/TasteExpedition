@@ -15,7 +15,7 @@ public class CommunityService {
 	private Connection con;
 	private CommunityDAO dao = new CommunityDAO();
 	
-	public ArrayList<Community> selectList(int currentPage) {
+	public ArrayList<Community> selectList(int currentPage, String field, String query, int i) {
 		con = getConnection();
 		
 		ArrayList<Community> list = dao.selectList(con, currentPage);
@@ -106,7 +106,6 @@ public class CommunityService {
 		
 		return result;
 	}
-	
-	
+
 	
 }

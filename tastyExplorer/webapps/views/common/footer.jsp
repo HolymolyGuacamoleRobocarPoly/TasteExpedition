@@ -26,9 +26,9 @@
                 <div class="footer-col">
                     <h4>바로가기</h4>
                         <ul>
-                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#" onclick="goNotice();">공지사항</a></li>
                             <li><a href="#">문의하기</a></li>
-                            <li><a href="#">#소통하기</a></li>
+                            <li><a href="#" onclick="goCommunity();">#소통하기</a></li>
                             <li><a href="#">맛집검색</a></li>
                             <li><a href="#">지도</a></li>
                         </ul>
@@ -53,6 +53,16 @@
     	</div>
     </div>
     </footer>
+    <script type="text/javascript">
+		function goCommunity() {
+    		location.href="/tastyServer/selectList.co"
+   		}
+    	
+		function goNotice() {
+    		location.href="/tastyServer/notice.co"
+   		}
+		
+    </script>
     <div class="copyrightText">
         <p>copyright © 2021 Online Tutorials. All Rights Reserved</p>
     </div>

@@ -26,16 +26,13 @@ int listCount = pi.getListCount();
 <body>
 	<%@ include file="../common/header.jsp"%>
 	<!-- 게시글 목록임 -->
+	
 	<section>
 		<h2 align="center">#소통해요</h2>
-
-		<!-- 버튼 클릭시  -->
-		<div class="btnArea" align="center">
-			<br>
-			<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>
-
-		</div>
-		<br> <br>
+		<button class="button" onclick="location.href='views/cBoardCommunity/communityInsert.jsp'">
+			<h3 class="button-text">작성하기</h3>
+		</button>
+		<!-- 게시판 목록 -->
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
@@ -62,14 +59,13 @@ int listCount = pi.getListCount();
 				%>
 			</table>
 		</div>
-		<!-- 버튼 클릭시 -->
+		<!-- 게시판 목록끝 -->
+
+		<!-- 작성하기 버튼 클릭 -->
+		<% if (m != null) { %>	
 		<div class="btnArea" align="center">
 			<br>
-			<%
-			if (m != null) {
-			%>
-
-			<button onclick="location.href='views/community/communityInsert.jsp'">작성하기</button>
+			<!--<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>-->
 			<script>
 				$('#listArea td').on('mouseenter'), function() {
 					$(this).parent().css({'background' : 'white',
@@ -89,82 +85,71 @@ int listCount = pi.getListCount();
 			<%
 			}
 			%>
-
 		</div>
+		<!-- 작성하기 버튼 끝 -->
 
 		<!-- 페이지 부분 -->
 		<div class="pagingArea" align="center">
 			<button
 				onclick="location.href='/tastyServer/selectList.co?currentPage=1'">
 				&lt;&lt;</button>
-			<%
-			if (cur <= 1) {
-			%>
-			<button disabled>&lt;</button>
-			<%
-			} else {
-			%>
-			<button
-				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=cur - 1%>'">
-				&lt;</button>
-			<%
-			}
-			%>
-
-			<%
-			for (int p = st; p <= ed; p++) {
-			%>
-
-			<%
-			if (p == cur) {
-			%>
-			<button disabled>
-				<%=p%>
-			</button>
-			<%
-			} else {
-			%>
-			<button
-				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=p%>'">
-				<%=p%>
-			</button>
-			<%
-			}
-			%>
-			<%
-			}
-			%>
-
-			<%
-			if (cur >= mx) {
-			%>
-			<button disabled>&gt;</button>
-			<%
-			} else {
-			%>
-			<button
-				onclick="location.href='/tastyServer/selectList.co?currentPage=<%=cur + 1%>'">
-				&gt;</button>
-			<%
-			}
-			%>
-
+			<% if (cur <= 1) { %>
+				<button disabled> &lt; </button>
+			<% } else { %>
+				<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= cur - 1 %>'"> &lt;</button>
+			<% } %>
+			
+			<% for(int p = st ; p <= ed ; p++)  { %>
+			
+				<% if( p == cur) { %>
+					<button disabled> <%= p %> </button>
+				<% } else { %>
+					<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= p %>'"> <%= p %> </button>
+				<% } %>
+			<% } %>
+			
+			<% if (cur >= mx) { %>
+				<button disabled> &gt; </button>
+			<% } else { %>
+				<button onclick="location.href='/tastyServer/selectList.co?currentPage=<%= cur + 1 %>'"> &gt;</button>
+			<% } %>
 			<button
 				onclick="location.href='/tastyServery/selectList.co?currentPage=<%=mx%>'">
 				&gt;&gt;</button>
 
 		</div>
-
+		<!-- 페이지 부분끝 -->
+		
+		
 		<!-- 검색창 -->
 		<div class="main-div">
 			<form action="" class="search-form">
-				<input type="text" value="" class="search-input"
+				<input type="text" value="검색" class="search-input"
 					placeholder="search" />
 				<div class="search-history"></div>
 			</form>
 
 		</div>
-
+		<!-- 검색창끝-->
+		
+		<!-- 검색창 테스트 -->
+		<form action="" class="table-form">
+			<fieldset>
+				<legend class="hidden">#소통해요 검색필드</legend>
+				<label class="hidden">검색 분류</label>
+				<select name="f" >
+					<option ${(param.f == "cBoardTitle")?"selected":"" }selected value="cBoardNo">제목</option>
+					<option ${(param.f == "cBoardWriter")?"selected":"" } value="cBoardWriter">작성자</option>
+				</select>
+				<label class="hidden">검색어</label>
+				<!-- 파라미터에 q가 있으면 출력해달라 -->
+				<input type="text" name="q" value="${param.q}" />
+				<input class="btn btn-search" type="submit" value="검색"  />
+			</fieldset>
+		</form>
+		
+		
+		
 		<!-- 프로필 -->
 		<div class="card">
 			<div class="card-container">
@@ -183,34 +168,34 @@ int listCount = pi.getListCount();
 						<p>냠냠쩝쩝</p>
 					</div>
 					<div>
-						<a href="#" class="btn">view profile</a>
+						<a href="#" onclick="goProfile();" class="btn">view profile</a> 
 					</div>
-				</div>
 
+				</div>
 			</div>
 		</div>
+		<!-- 프로필 끝 -->
+	
+		<!--script 부분 -->
 		<script>
-			
-			const searchForm = document.querySelector('.search-form')
-			const searchBox = document.querySelector('.search-input')
-			const searchHistory = document.querySelector('.search-history')
-			
-			// var searchHistoryList = 
-		
-			function handleSearch(event) {
-				event.preventDefault();
-				const sValue = searchBox.value;	
+			//작성하기로 이동하는 함수
+			function goInsert() {
+				location.href="/tastyServer/Insert.co";
 			}
 			
-			function search(){
-				searchForm.addEventListener("submit", handleSearch)
+			// 프로필 마이페이지 누르면 이동하는 함수
+			function goProfile() {
+				
 			}
 			
 			
+			// 프로필 예약 내역 누르면 예약페이지로 이동하는 함수
+			
+			
+			//btn 함수
 			
 		</script>
-
-
+		<!-- 이script 부분 끝-->
 	</section>
 
 	<%@ include file="../common/footer.jsp"%>

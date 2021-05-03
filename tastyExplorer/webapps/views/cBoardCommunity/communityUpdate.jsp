@@ -28,8 +28,8 @@
 				<tr>
 					<td>작성자</td>
 					<td colspan="3">
-						<%= m.getnickName() %>
-						<input type="hidden" name="nickName" value="<%= m.getnickName()%>" />
+						<%= c.getmNickname() %>
+						<input type="hidden" name="nickName" value="<%= c.getmNickname()%>" />
 					</td>
 				</tr>
 				<tr>
