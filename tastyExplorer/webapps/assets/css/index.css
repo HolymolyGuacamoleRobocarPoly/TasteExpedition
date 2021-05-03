@@ -48,6 +48,7 @@ h1 {
 	text-align: right;
 }
 
-.mapbox {
-	margin: 150px 200px 50px 200px;
+section {
+	width: 100%;
+	height: 100%;
 }
