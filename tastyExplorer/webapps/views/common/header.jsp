@@ -21,14 +21,14 @@
         <a href="http://localhost:8088/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="http://localhost:8088/tastyServer/">Home</a></li>
-            <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li>
+            <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li> <!--  삭제 ??  -->
             <li><a href="#" onclick="goEvent()">이벤트</a></li>
             <li><a href="#" onclick="goMrestaurant()">맛집</a></li>
             <li><a href="/tastyServer/views/cBoardCommunity/communityList.jsp">#소통해요</a></li>
-            <li><a href="#">Portfolio</a></li>
+            <% if( m != null) { %>
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Contact</a></li>
+            <% } %>
+
  
         </ul>
         <div class="action">

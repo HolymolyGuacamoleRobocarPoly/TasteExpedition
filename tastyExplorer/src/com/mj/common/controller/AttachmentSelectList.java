@@ -32,15 +32,14 @@ public class AttachmentSelectList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int mjNo = Integer.parseInt(request.getParameter("mRestaurantNo"));
+		int bNo = Integer.parseInt(request.getParameter("Att_M_no"));
 		int fLevel = Integer.parseInt(request.getParameter("fLevel"));
 		
 		ArrayList<Attachment> attList = new ArrayList<>();
 		
 		AttachmentService service = new AttachmentService();
 		
-		attList = service.selectList(mjNo, fLevel);
-		// 각각의 영역 안에서 import 를 해야하는 지?
+		attList = service.selectList(bNo, fLevel);
 		
 		request.setAttribute("attList", attList);
 		

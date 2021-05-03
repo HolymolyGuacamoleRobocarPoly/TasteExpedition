@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.mj.common.model.service.AttachmentService;
 import com.mj.common.model.vo.Attachment;
 import com.mj.mRestaurant.model.service.MRestaurantService;
+import com.mj.mRestaurant.model.service.MenuService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.mRestaurant.model.vo.Menu;
 import com.mj.review.model.service.ReviewService;
 import com.mj.review.model.vo.Review;
 
@@ -52,6 +54,10 @@ public class MJSelectOne extends HttpServlet {
 		AttachmentService aService = new AttachmentService();
 		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, fLevel);
 		
+		// 해당 식당 MenuList 불러오기 
+		MenuService mService = new MenuService();
+		ArrayList<Menu> menuList = mService.selectList(mjNo);
+		
 		String page = "";
 		
 		if( mj != null ) {
@@ -59,6 +65,7 @@ public class MJSelectOne extends HttpServlet {
 			request.setAttribute("mj", mj);
 			request.setAttribute("rlist", rlist);
 			request.setAttribute("mjAttList", mjAttList);
+			request.setAttribute("menuList", menuList);
 			
 			page = "views/mRestaurant/mRestaurantDetail.jsp";
 			

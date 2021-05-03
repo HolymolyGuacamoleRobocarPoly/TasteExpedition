@@ -5,7 +5,7 @@
 <%
 				// Object --> Board
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
-	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("selectOne"); // 서블릿이 보낸 mjAttList 받아오기
 %>  
 <!--  기원 수정  ok  -->    
 <!DOCTYPE html>
@@ -36,9 +36,7 @@
     <div class="title">
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
-            <!--  기원 수정 ok  -->
             <form action="/tastyServer/insert.mj">
-            <!--  기원 수정 ok  -->
                 <div class="input-group mb-3">																											<!--  기원 수정 ok -->
                     <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
@@ -241,14 +239,12 @@ for (var i = 0; i < positions.length; i ++) {
 
 
 <%@ include file="views/common/footer.jsp" %>
-<!--  기원 수정중 ok  -->
 	<script>
 		$('.col-md-4').on('click', function(){
-			var mNo = $(this).attr('id');
+			var mjNo = $(this).attr('id');
 			
-			location.href = '/tastyServer/selectOne.mj?mNo=' + mNo + '&replyContent=' + content;
+			location.href = '/tastyServer/selectOne.mj?mjNo=' + mjNo;
 		});
 	</script>
-<!--  기원 수정중 ok  -->
 </body>
 </html> 

@@ -17,10 +17,10 @@ public class ReviewService {
 	private ReviewDAO dao = new ReviewDAO();
 	
 	
-	public ArrayList<Review> selectList() {
+	public ArrayList<Review> selectList(int mjNo) {
 		con = getConnection();
 		
-		ArrayList<Review> list = dao.selectList(con); // 기원 :   이부분 (con, mjNo) 로 변경 ? 
+		ArrayList<Review> list = dao.selectList(con, mjNo); 
 		
 		close(con);
 		

@@ -43,7 +43,7 @@ public class AttachmentRestaurantSelectOne extends HttpServlet {
 		
 		request.setAttribute("attList", attList);
 		
-		request.getRequestDispatcher("views/thumb/thumbList.jsp")
+		request.getRequestDispatcher("views/index.jsp")
 			   .forward(request, response);
 	}
 

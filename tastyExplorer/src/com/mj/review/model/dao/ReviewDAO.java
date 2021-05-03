@@ -34,16 +34,18 @@ public class ReviewDAO {
 		}
 	}
 
-	public ArrayList<Review> selectList(Connection con) {
+	public ArrayList<Review> selectList(Connection con, int mjNo) {
 		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectList");
 		
-try {
+		try {
 			
 			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, mjNo);
 			
 			rs = ps.executeQuery();
 			

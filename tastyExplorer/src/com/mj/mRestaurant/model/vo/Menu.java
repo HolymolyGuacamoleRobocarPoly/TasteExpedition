@@ -11,14 +11,14 @@ public class Menu implements Serializable {
 
 	// 필드 변수
 	private int mRestaurantNo;
-	private int menuName;
+	private String menuName;
 	private int menuPrice;
 
 	// 생성자
 	public Menu() {
 	}
 
-	public Menu(int mRestaurantNo, int menuName, int menuPrice) {
+	public Menu(int mRestaurantNo, String menuName, int menuPrice) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
 		this.menuName = menuName;
@@ -42,11 +42,11 @@ public class Menu implements Serializable {
 		this.mRestaurantNo = mRestaurantNo;
 	}
 
-	public int getMenuName() {
+	public String getMenuName() {
 		return menuName;
 	}
 
-	public void setMenuName(int menuName) {
+	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
 
