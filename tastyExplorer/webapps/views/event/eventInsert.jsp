@@ -106,7 +106,7 @@ input[type=text]::placeholder{
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #FFF0F0;
+  background-color: #d4e157;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -122,7 +122,7 @@ input[type=text]::placeholder{
   }
 
 .button:hover {
-  background-color: #FFBEBE;
+  background-color: #8AE634;
   box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -149,15 +149,14 @@ input[type=text]::placeholder{
 	<!-- onsubmit false 추가 -->
 	<!-- 위의 코드를 추가하게되면 엔터키로 submit 되는것을 막을 수 있음 
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
-    <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
+    <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">   
     <p style="text-align:center; margin-top: 50px; font-size: 40px; font-weight: normal;">이벤트 등록</p>
         <div class="event_container">    
         	<div class="event_writearea" >
         	<input type="hidden" name="attMFlevel" value="4">
     			<div class="event_write">
             		
-	               
-	                             
+                        
                     <div class="event_textArea" style="margin-top:80px;">
                     	<p style="font-weight: bold; font-size:20px;">이벤트 제목</p>  
 						<input type="text" name="eTitle" class="text" required="required"/>

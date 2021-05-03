@@ -49,14 +49,6 @@
         </div>
     </div>
 
-
-
-
-	
-
-
-
-
 <div class="container"> <h2>추천 맛집</h2>
     <div class="row">
         <div class="col-md-12">

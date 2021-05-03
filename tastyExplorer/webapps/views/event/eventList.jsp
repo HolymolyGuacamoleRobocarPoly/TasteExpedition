@@ -38,13 +38,13 @@ p { margin:20px 0px; }
 }
 
 
-button {
+.button1 {
   height: 40px;
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #FFF0F0;
+  background-color: #d4e157;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -61,22 +61,48 @@ button {
  
   }
 
+.button2 {
+  height: 40px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600; 
+  background-color: #d4e157;
+  border: none;
+  border-radius: 5px;
+  /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  padding: 0 13px;
+  display: inline;
+  margin-bottom: -5px;  
+  cursor: pointer;
+  float: right;   
+  margin-right: -13px;
+  cursor: pointer;
+}
+
 button:hover {
-  background-color: #FFBEBE;
+  background-color: #8AE634;
   box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
   color: #fff;
   transform: translateY(-7px);
-}
-
-.row{
-	margin-top: 20px;
 }
 
 .footer-col .social-links a {
 	padding: 10px;
 }
 
-
+#row1{
+	margin-top: 200px;
+	margin-bottom: 200px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 1000px;
+	height: 1000px;
+	
+}
 
 </style>
 </head>
@@ -85,42 +111,41 @@ button:hover {
    <%@ include file="../common/header.jsp" %>
     
     <p style="text-align:center; margin-bottom: -130px; margin-top: 60px; font-size: 40px; font-weight: normal;">Event<p>
-      <div class="review_container">
-      <div class="event_writearea" >
-      <div class="row">
+    
+       
         
-        <div class="col-4">
+        <div class="row" id="row1">
         <!-- 시퀀스 이벤트 번호 가져오기 -->
           
           
           <% for(EventAdmin e : elist) { %>
          
-          <div class="card" id="<%= e.geteNo() %>">
+          <div class="card col-4" id="<%= e.geteNo() %>">
           <!-- 관리자가 등록한 사진 가져오기 -->
-            <p><%= e.geteNo() %></p>
+            <p><%= e.geteNo() %> <%= e.geteTitle() %></p>
             <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
             <div class="card-body">
-            	<h5 class="card-title"><%= e.geteDuration() %></h5> 
+            	<h5 class="card-title">기간 : <%= e.geteDuration() %></h5>             	
             	<p class="card-text"><%= e.geteContent() %></p>
-            	<button onclick="location.href='views/event/eventDetail.jsp'">자세히 보기2</button>
-            	<a href="/tastyServer/views/event/eventDetail.jsp" class="btn btn-primary">자세히 보기</a>
+            	<button class="button2" onclick="location.href='views/event/eventDetail.jsp'">자세히 보기</button>
             </div>
           </div>
           <% } %>
+        
+        
         </div>
-
-		
-
-      </div>
-      <div>
+	
+		<button class="button1" type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">등록하기</button>
+       	<button class="button1" type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">삭제하기</button>
+      
+     
       <!-- 관리자인 경우, 버튼 2개 보임-->
-      	<button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">등록하기</button>
-        <button type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">삭제하기</button>
   
-      </div>
+      	
+
+     
        
-    	</div>
-    </div>
+    	
 
     
 	

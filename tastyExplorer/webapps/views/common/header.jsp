@@ -29,8 +29,9 @@
             <% if( m != null) { %>
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
             <% } %>
+            <li><a href="/tastyServer/views/member/mypage.jsp">마이페이지</a></li>
 
-
+ 
         </ul>
         <div class="action">
             <div class="profile" onclick="menuToggle();">

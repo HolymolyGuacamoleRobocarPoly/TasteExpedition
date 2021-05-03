@@ -425,7 +425,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("selectList.ev");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {

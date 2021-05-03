@@ -57,7 +57,7 @@ public class EventAdminDAO {
 				
 				ad.seteNo( rs.getInt("E_NO") );
 				ad.seteContent( rs.getString("E_CONTENT"));
-				ad.seteTitle(rs.getString("E_CONTENT"));
+				ad.seteTitle(rs.getString("E_TITLE"));
 				ad.seteDuration(rs.getDate("E_DURATION"));
 
 				list.add(ad);
@@ -83,9 +83,8 @@ public class EventAdminDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, e.geteTitle());
-			
-			ps.setString(2, e.geteContent());
+			ps.setString(1, e.geteContent());			
+			ps.setString(2, e.geteTitle());
 			ps.setDate(3, e.geteDuration());
 
 			System.out.println("result :" + e.geteDuration());
