@@ -27,7 +27,7 @@
             <li><a href="/tastyServer/views/cBoardCommunity/communityList.jsp">#소통해요</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a href="/tastyServer/views/member/mypage.jsp">마이페이지</a></li>
             <li><a href="#">Contact</a></li>
  
         </ul>

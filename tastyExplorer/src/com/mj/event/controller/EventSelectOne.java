@@ -38,7 +38,7 @@ public class EventSelectOne extends HttpServlet {
 		EventAdminService eService = new EventAdminService();
 			
 		EventAdmin ev = eService.selectOne(eNo);
-
+		System.out.println("잘받아왔나요" + ev.geteNo());
 		String page ="";
 		
 		if( ev != null ) {

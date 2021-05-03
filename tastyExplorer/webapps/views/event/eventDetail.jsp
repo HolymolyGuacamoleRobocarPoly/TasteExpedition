@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.mj.event.model.vo.*, java.util.*"%>	
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<% 
-	Date date = new Date();
-	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
-	String strdate = simpleDate.format(date);
-%>
+<%@ page import="com.mj.event.model.vo.*, java.util.*, com.mj.member.model.vo.*" %>	
 <%
-	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
+	EventAdmin ev = (EventAdmin)request.getAttribute("event"); // 서블릿이 보낸 ReviewList 받아오기 
+	
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +41,6 @@
 	
 }
 .uploadreviewImg{
-	margin-top: 20px;
 	width: 600px;
 	height: 1000px;
 }
@@ -96,9 +91,9 @@ p{
 	       	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>
 	    </div> 
 	<form action="/tastyServer/insert.ev" method="post">
-		<input type="hidden" name="eNo" value=<%= e.geteNo() %> />
-		<input type="hidden" name="mNo" value=<%= m.getmNo() %>/>
-		<input type="hidden" name="eDate" value="<%= strdate %>" />    
+		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />
+		<!-- m.getmNo로 보내면 에러!!! 왜? -->
+		<input type="hidden" name="mNo" value="1"/>
 		<div class="button_area" style="margin-top:50px;">     
 	      	<button class="button" onclick="showPopup();">참여하기</button>
 	   	</div>

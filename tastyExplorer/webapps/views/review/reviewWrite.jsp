@@ -150,7 +150,7 @@ input[type=text]::placeholder{
 	     그러나, onsubmit을 막으면 버튼이 작동하지 않게되므로, js에서 form.submit()을 따로 처리해주어야 함 -->
     <form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data">
         <div class="review_container">
-       
+
         	<div class="review_writearea">
     			<div class="review_write">   			
     				<input type="hidden" name="mNo" value="1" />

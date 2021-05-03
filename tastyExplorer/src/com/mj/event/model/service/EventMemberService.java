@@ -31,4 +31,13 @@ public class EventMemberService {
 		return result;
 	}
 
+	public ArrayList<EventAdmin> selectList(int mNo) {
+		con = getConnection();
+		ArrayList<EventAdmin> list = dao.selectList(con, mNo);
+		
+		close(con);
+
+		return list;
+	}
+
 }
