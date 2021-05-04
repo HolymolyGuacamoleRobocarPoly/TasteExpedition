@@ -100,10 +100,12 @@ button:hover {
 	margin-right: auto;
 	margin-left: auto;
 	width: 1000px;
-	height: 1000px;
 	
 }
 
+.card{
+	padding: 10px;
+}
 </style>
 </head>
 <body>
@@ -119,16 +121,17 @@ button:hover {
           
           
           <% for(EventAdmin e : elist) { %>
-         
-          <div class="card col-4" id="<%= e.geteNo() %>">
+         <div class="col-4" style="padding: 10px;">
+          <div class="card">
           <!-- 관리자가 등록한 사진 가져오기 -->
             <p><%= e.geteNo() %> <%= e.geteTitle() %></p>
             <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
             <div class="card-body">
             	<h5 class="card-title">기간 : <%= e.geteDuration() %></h5>             	
             	<p class="card-text"><%= e.geteContent() %></p>
-            	<button class="button2" onclick="location.href='views/event/eventDetail.jsp'">자세히 보기</button>
+            	<button class="button2" id="<%= e.geteNo() %>">자세히 보기</button>
             </div>
+          </div>
           </div>
           <% } %>
         
@@ -152,7 +155,7 @@ button:hover {
 	
 	<script>
   	 
-	$('.card').on('click', function(){
+	$('.button2').on('click', function(){
 		var eNo = $(this).attr('id');
 		
 		location.href = '/tastyServer/selectOne.ev?eNo=' + eNo;

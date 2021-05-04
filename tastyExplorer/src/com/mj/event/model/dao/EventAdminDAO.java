@@ -195,4 +195,33 @@ public class EventAdminDAO {
 		return ev;
 	}
 
+
+	public int selectCheck(Connection con, int eNo, int mNo) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectCheck");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, eNo);
+			ps.setInt(2, mNo);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
 }

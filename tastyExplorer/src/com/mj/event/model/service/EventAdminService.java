@@ -68,11 +68,21 @@ public class EventAdminService {
 		return result;
 	}
 
-	public EventAdmin selectOne(int eNo) {
+	public EventAdmin selectOne(int eNo, int mNo) {
 		con = getConnection();
 		
 		EventAdmin ev = dao.selectOne(con, eNo);
-				
+		
+		// 이벤트에 참여한 회원인지 아닌지 구분하기 위한 구문
+		// 이미 참여한 이벤트인 경우 다시 참여할 수 없기때문에 필요!
+		int check = dao.selectCheck(con, eNo, mNo);
+		
+		if(check == 1) {
+			ev.setCheck("N"); // 참여 불가
+		} else {
+			ev.setCheck("Y"); // 참여 가능
+		}
+		
 		close(con);
 		
 		return ev;

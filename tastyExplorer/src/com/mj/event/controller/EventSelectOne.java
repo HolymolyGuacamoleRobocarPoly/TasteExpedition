@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mj.event.model.service.EventAdminService;
 import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.member.model.vo.Member;
 
 /**
  * Servlet implementation class EventSelectOne
@@ -34,13 +35,16 @@ public class EventSelectOne extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int eNo = Integer.parseInt(request.getParameter("eNo"));
-		
+		// 세션에 저장된 회원 정보(로그인 했을 때)
+		int mNo = ((Member)request.getSession().getAttribute("member")).getmNo();
+				
 		EventAdminService eService = new EventAdminService();
 			
-		EventAdmin ev = eService.selectOne(eNo);
+		EventAdmin ev = eService.selectOne(eNo, mNo);
+		
 		System.out.println("잘받아왔나요" + ev.geteNo());
 		String page ="";
-		
+
 		if( ev != null ) {
 			
 			request.setAttribute("event", ev);

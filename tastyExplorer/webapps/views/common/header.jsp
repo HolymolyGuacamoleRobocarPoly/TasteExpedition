@@ -30,6 +30,7 @@
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
             <% } %>
             <li><a href="/tastyServer/views/member/mypage.jsp">마이페이지</a></li>
+            
 
  
         </ul>
@@ -41,7 +42,7 @@
                 <ul>
                 <% if ( m== null) { %>
                 <li><img src="/tastyServer/assets/images/user.png" />
-                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Join Us</a></li>
+                    <a href="http://localhost:8088/tastyServer/views/member/join.jsp">Join Us</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Login</a></li>
 				<% } else { %>
 				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>

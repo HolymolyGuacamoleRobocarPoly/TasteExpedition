@@ -36,8 +36,8 @@ public class EventInsert extends HttpServlet {
 		
 		int eNo = Integer.parseInt(request.getParameter("eNo"));
 		int mNo = Integer.parseInt(request.getParameter("mNo"));
-		System.out.println("eNo, " +eNo);
-		System.out.println(" mNo" +mNo);
+		System.out.println("eNo" + eNo);
+		System.out.println("mNo" + mNo);
 
 		EventMember em = new EventMember();
 		
@@ -57,6 +57,7 @@ public class EventInsert extends HttpServlet {
 			// 왜 get방식으로 해야 잘 전달되고 아래처럼 작성하면 왜 안되는지?
 			// response.sendRedirect("list.ev"); // EventList.java
 			response.sendRedirect("list.ev?mNo=" + mNo);
+			
 		} else {
 			request.setAttribute("error-msg",  "이벤트 참여 실패");
 			

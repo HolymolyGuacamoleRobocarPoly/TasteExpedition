@@ -11,6 +11,7 @@ public class EventAdmin implements Serializable {
 	private String eContent;
 	private String eTitle;
 	private Date eDuration;
+	private String check; // 이미 참여했는지 확인하는 참여 여부 Y/N
 	
 	public EventAdmin() {}
 
@@ -63,6 +64,15 @@ public class EventAdmin implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+	
 	
 	
 	

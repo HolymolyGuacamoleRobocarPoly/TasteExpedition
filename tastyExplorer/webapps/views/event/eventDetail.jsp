@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.event.model.vo.*, java.util.*, com.mj.member.model.vo.*" %>	
 <%
-	EventAdmin ev = (EventAdmin)request.getAttribute("event"); // 서블릿이 보낸 ReviewList 받아오기 
+	EventAdmin ev = (EventAdmin)request.getAttribute("event"); 
 	
 %>
 
@@ -91,11 +91,14 @@ p{
 	       	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>
 	    </div> 
 	<form action="/tastyServer/insert.ev" method="post">
-		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />
-		<!-- m.getmNo로 보내면 에러!!! 왜? -->
-		<input type="hidden" name="mNo" value="1"/>
+		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />		
+		<input type="hidden" name="mNo" value="<%= m.getmNo() %>"/>
 		<div class="button_area" style="margin-top:50px;">     
-	      	<button class="button" onclick="showPopup();">참여하기</button>
+		<% if ( ev.getCheck().equals("Y")) { %>
+	      	<button class="button" onclick="showPopup(true);">참여하기</button>
+	    <% } else { %>
+	        <button type="button" class="button" onclick="alert('이미 참여 하셨습니다.');">참여하기</button>
+	    <% } %>
 	   	</div>
     </form>
      
@@ -111,13 +114,13 @@ p{
 </body>
 
 <script>
-	function showPopup() { 
+	function showPopup() {
 		var windowW = 700;  // 창의 가로 길이
 	    var windowH = 700;  // 창의 세로 길이
 	    var left = Math.ceil((window.screen.width - windowW)/2);
 	    var top = Math.ceil((window.screen.height - windowH)/2);
 		window.open("/tastyServer/views/event/eventPopUp.jsp", "이벤트 참여 완료","l top="+top+", left="+left+", height="+windowH+", width="+windowW);
-		}
+	}
 	
 	
 	

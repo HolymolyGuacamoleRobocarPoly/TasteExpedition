@@ -24,6 +24,7 @@ public class JDBCTemplate {
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
+		
 		}
 		
 		return con;
@@ -35,6 +36,7 @@ public class JDBCTemplate {
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}
 	}
 	
