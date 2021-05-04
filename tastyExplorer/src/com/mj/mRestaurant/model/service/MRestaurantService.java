@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import com.mj.mRestaurant.model.dao.MRestaurantDAO;
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.mRestaurant.model.vo.Menu;
 
 public class MRestaurantService {
 
@@ -38,7 +39,7 @@ public class MRestaurantService {
 	public int insertMRestaurant(MRestaurant mj) {
 		con = getConnection();
 		
-		int result = dao.insertMRestaurant(con);
+		int result = dao.insertMRestaurant(con, mj);
 		
 		if( result > 0) commit(con);
 		else rollback(con);
@@ -62,8 +63,6 @@ public class MRestaurantService {
 		return result;
 	}
 
-
-	
 	
 	
 	

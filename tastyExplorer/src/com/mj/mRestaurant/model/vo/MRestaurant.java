@@ -14,13 +14,12 @@ public class MRestaurant implements Serializable {
 	private String mRestaurantTitle;
 	private String mRestaurantContent;
 	private String mRestaurantAdrress;
-	private String mRestaurantTel;
 	private String mRestaurantInfo;
-	private int mRestaurantLike;
 	private char mRestaurantStatus;
 	private char mRestaurantConfirm;
 	private int mRestaurantLevel;
-	
+	private int mRestaurantLike;
+	private String mRestaurantTel;
 	// 추가 변수 
 	private String openTime;
 	private String brTime;
@@ -31,27 +30,26 @@ public class MRestaurant implements Serializable {
 	public MRestaurant() {}
 	
 	public MRestaurant(int mRestaurantNo, String mRestaurantTitle, String mRestaurantContent, String mRestaurantAdrress,
-			String mRestaurantTel, String mRestaurantInfo, int mRestaurantLike, char mRestaurantStatus,
-			char mRestaurantConfirm, int mRestaurantLevel, String openTime, String brTime, String holiday) {
+			String mRestaurantInfo, char mRestaurantStatus, char mRestaurantConfirm, int mRestaurantLevel,
+			int mRestaurantLike, String mRestaurantTel, String openTime, String brTime, String holiday) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
 		this.mRestaurantTitle = mRestaurantTitle;
 		this.mRestaurantContent = mRestaurantContent;
 		this.mRestaurantAdrress = mRestaurantAdrress;
-		this.mRestaurantTel = mRestaurantTel;
 		this.mRestaurantInfo = mRestaurantInfo;
-		this.mRestaurantLike = mRestaurantLike;
 		this.mRestaurantStatus = mRestaurantStatus;
 		this.mRestaurantConfirm = mRestaurantConfirm;
 		this.mRestaurantLevel = mRestaurantLevel;
+		this.mRestaurantLike = mRestaurantLike;
+		this.mRestaurantTel = mRestaurantTel;
 		this.openTime = openTime;
 		this.brTime = brTime;
 		this.holiday = holiday;
 	}
-	
-	
 
 	// 메소드 
+
 
 	@Override
 	public String toString() {
@@ -108,30 +106,6 @@ public class MRestaurant implements Serializable {
 
 	public void setmRestaurantTel(String mRestaurantTel) {
 		this.mRestaurantTel = mRestaurantTel;
-	}
-
-	public String getOpenTime() {
-		return openTime;
-	}
-
-	public void setOpenTime(String openTime) {
-		this.openTime = openTime;
-	}
-
-	public String getBrTime() {
-		return brTime;
-	}
-
-	public void setBrTime(String brTime) {
-		this.brTime = brTime;
-	}
-
-	public String getHoliday() {
-		return holiday;
-	}
-
-	public void setHoliday(String holiday) {
-		this.holiday = holiday;
 	}
 
 	public String getmRestaurantInfo() {

@@ -41,13 +41,7 @@ public class AttachmentService {
 	public int deleteAttachmentDelete(int attBNo, int fLevel) {
 		con = getConnection();
 		String realAttBNo = "";
-		/*
-		if (fLevel == 1) {
-			realAttBNo = "cp" + attBNo;
-		} else if (fLevel == 2) {
-			realAttBNo = "t" + attBNo;
-		} else 
-		*/
+
 		if (fLevel == 3) {
 			realAttBNo = "n" + attBNo;
 		} else if (fLevel == 4) {
@@ -81,13 +75,7 @@ public class AttachmentService {
 		
 		int bNo = dao.getCurrentNo(con, fLevel);
 		String name = "";
-		/*
-		if (fLevel == 1) {
-			name = "cp";
-		} else if (fLevel == 2) {
-			name = "t";
-		} else 
-		*/
+
 		if (fLevel == 3) {
 			name = "n";
 		} else if (fLevel == 4) {
@@ -111,7 +99,6 @@ public class AttachmentService {
 				// 해당 파일이 null 이 아니거나
 				// 파일 이름이 null 이 아닐 때
 				// => 파일을 알맞게 추가했다면
-				System.out.println("Service => DAO : " + list.get(i));
 				result = dao.insertAttachment(con, list.get(i));
 
 				if(result == 0) break; 

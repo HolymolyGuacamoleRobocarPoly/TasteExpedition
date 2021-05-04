@@ -24,7 +24,9 @@ import com.mj.common.model.vo.Attachment;
 import com.mj.event.model.service.EventAdminService;
 import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.service.MRestaurantService;
+import com.mj.mRestaurant.model.service.MenuService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.mRestaurant.model.vo.Menu;
 import com.mj.notice.model.service.NoticeService;
 import com.mj.notice.model.vo.Notice;
 import com.mj.review.model.service.ReviewService;
@@ -78,167 +80,7 @@ public class AttachmentInsert extends HttpServlet {
 			String newPath = ""; // 새로운 파일 경로
 			int fLevel = Integer.parseInt(mr.getParameter("attMFlevel"));
 
-//			
-//			if (fLevel == 1) { // 쿠폰 생성
-//				
-//				Coupon c = new Coupon();
-//				Attachment a = new Attachment();
-//				ArrayList<String> changeNames = new ArrayList<>();
-//				Enumeration<String> tagNames = mr.getFileNames();
-//				
-//				newPath = request.getServletContext()
-//				                 .getRealPath("/resources/coupon");
-//				
-//				c.setcTitle(mr.getParameter("cTitle"));
-//				c.setcContent(mr.getParameter("cContent"));
-//				
-//				System.out.println("확인 : " + c.getcTitle() + ", " + c.getcContent() + ", " 
-//											 + a.getAttMFileName() + ", " + a.getAttMFlevel());
-//				
-//				while (tagNames.hasMoreElements()) {
-//					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
-//					
-//					String tagName = tagNames.nextElement();
-//					
-//					changeNames.add(tagName);
-//					
-//				}
-//				
-//				ArrayList<Attachment> list = new ArrayList<Attachment>();
-//				
-//				for (int i = changeNames.size() - 1; i >= 0; i--) {
-//					Attachment add = new Attachment();
-//					add.setAttMFileName(changeNames.get(i));
-//					
-//					// 파일 원하는 위치로 이동
-//					File file = new File(savePath + "/" + changeNames.get(i));
-//					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
-//					
-//					list.add(add);
-//					// System.out.println("for 문 : " + list);
-//				}
-//				
-//				a.setAttList(list);
-//				
-//				CouponService cService = new CouponService();
-//				AttachmentService aService = new AttachmentService();
-//				
-//				int result1 = cService.insertCoupon(c);
-//				int result2 = 0;
-//				
-//				if (result1 > 0) {
-//				
-//					result2 = aService.insertAttachment(a, fLevel);
-//					
-//				} else {
-//					
-//					
-//					request.setAttribute("error-msg",  "쿠폰 내용 등록 실패!");
-//					
-//					request.getRequestDispatcher("views/common/errorPage.jsp")
-//						   .forward(request, response);
-//					
-//				}
-//				
-//				if (result2 > 0) {
-//					
-//					response.sendRedirect("index.jsp");
-//					
-//				} else {
-//					// 게시글 등록 실패시 저장되었던 파일 삭제
-//					for (int i = 0; i < changeNames.size(); i++) {
-//						
-//						new File(newPath + "/" + changeNames.get(i)).delete();
-//										
-//						request.setAttribute("error-msg",  "쿠폰 등록 실패!");
-//					
-//						request.getRequestDispatcher("views/common/errorPage.jsp")
-//						       .forward(request, response);
-//					}
-//					// 게시글 삭제는 어떻게 해야할까?
-//					// delete 메소드에서 return 으로 해당 bNo 값을  
-//					
-//				}
-//				
-//			} else if (fLevel == 2) { // 티켓 생성
-//				
-//				Ticket t = new Ticket();
-//				Attachment a = new Attachment();
-//				ArrayList<String> changeNames = new ArrayList<>();
-//				Enumeration<String> tagNames = mr.getFileNames();
-//
-//				t.settTitle(mr.getParameter("tTitle"));
-//				t.settContent(mr.getParameter("tContent"));
-//
-//				newPath = request.getServletContext()
-//				                 .getRealPath("/resources/ticket");
-//				
-//				System.out.println("확인 : " + t.gettTitle() + ", " + t.gettContent() + ", " + t.getmNo());
-//
-//				
-//				while (tagNames.hasMoreElements()) {
-//					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
-//					
-//					String tagName = tagNames.nextElement();
-//					
-//					changeNames.add(tagName);
-//					
-//				}
-//				
-//				ArrayList<Attachment> list = new ArrayList<Attachment>();
-//				
-//				for (int i = changeNames.size() - 1; i >= 0; i--) {
-//					Attachment add = new Attachment();
-//					add.setAttMFileName(changeNames.get(i));
-//					
-//					// 파일 원하는 위치로 이동
-//					File file = new File(savePath + "/" + changeNames.get(i));
-//					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
-//					
-//					list.add(add);
-//					// System.out.println("for 문 : " + list);
-//				}
-//				
-//				a.setAttList(list);
-//				
-//				TicketService tService = new TicketService();
-//				
-//				AttachmentService aService = new AttachmentService();
-//				
-//				int result1 = tService.insertTicket(t);
-//				int result2 = 0;
-//				
-//				if (result1 > 0) {
-//				
-//					result2 = aService.insertAttachment(a, fLevel);
-//					
-//				} else {
-//					
-//					
-//					request.setAttribute("error-msg",  "티켓 내용 등록 실패!");
-//					
-//					request.getRequestDispatcher("views/common/errorPage.jsp")
-//						   .forward(request, response);
-//					
-//				}
-//				
-//				if (result2 > 0) {
-//					response.sendRedirect("index.jsp");
-//				} else {
-//					// 게시글 등록 실패시 저장되었던 파일 삭제
-//					for (int i = 0; i < changeNames.size(); i++) {
-//						
-//						new File(newPath + "/" + changeNames.get(i)).delete();
-//						
-//					}
-//					
-//					request.setAttribute("error-msg",  "티켓 등록 실패!");
-//					
-//					request.getRequestDispatcher("views/common/errorPage.jsp")
-//						   .forward(request, response);
-//				}
-//				
-//				
+
 			if (fLevel == 3) { // 공지사항
 				
 				Notice n = new Notice();
@@ -614,27 +456,33 @@ public class AttachmentInsert extends HttpServlet {
 			} else if (fLevel == 7) {
 				
 				MRestaurant mj = new MRestaurant();
+				// Menu menu = new Menu();
 				Attachment a = new Attachment();
+				
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
-				
-				// 식당 요청자 정보 받아오기 => 필요한가?
-				int mNo = Integer.parseInt(mr.getParameter("mNo"));
-				
+
 				// 식당 정보 받아오기 
 				String mjTitle = mr.getParameter("mjName");						// 식당 이름
 				String mjContent = mr.getParameter("mjContent"); 				// 식당 소개
-				String mjAddress = request.getParameter("zipCode") + ", "		// 식당 주소 
-						   		 + request.getParameter("address1") + ", "
-						   		 + request.getParameter("address2");
-				// 식당 편의시설 받아오기 
-				String mjInfo = String.join(", ", request.getParameterValues("Convenience"));
-				int mjLevel = Integer.parseInt(request.getParameter("mjLevel"));// 식당 분류
+				String mjAddress = mr.getParameter("zipCode") + ", "		// 식당 주소 
+						   		 + mr.getParameter("address1") + ", "
+						   		 + mr.getParameter("address2");
+				// 식당 편의시설 받아오기
+				String mjInfo = String.join(", ", mr.getParameterValues("Convenience"));
+				int mjLevel = Integer.parseInt(mr.getParameter("mjLevel"));// 식당 분류
 				String mjTel = mr.getParameter("tel");							// 식당 전화번호
 				String openTime = mr.getParameter("openTime");					// 식당 영업시간
 				String brTime = mr.getParameter("brTime");						// 식당 브레이크 타임
 				String holiday = mr.getParameter("holiday");					// 식당 휴무일 
 				
+				// 식당 메뉴 받아오기
+				/*
+				String Names = String.join(", ", mr.getParameterValues("menuNames"));
+				String [] menuNames = Names.split(", ");
+				String Prices = String.join(", ", mr.getParameterValues("menuPrices"));
+				String [] menuPrices = Prices.split(", ");
+				*/
 
 				mj.setmRestaurantTitle(mjTitle);
 				mj.setmRestaurantContent(mjContent);
@@ -645,8 +493,15 @@ public class AttachmentInsert extends HttpServlet {
 				mj.setOpenTime(openTime);
 				mj.setBrTime(brTime);
 				mj.setHoliday(holiday);
-				
+
 				System.out.println("mj.toString : " + mj.toString());
+				
+				/*
+				menu.setMenuNames(menuNames);
+				menu.setMenuPrices(menuPrices);
+				
+				System.out.println(menu.toString());
+				*/
 				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
@@ -676,19 +531,25 @@ public class AttachmentInsert extends HttpServlet {
 				
 				MRestaurantService mjService = new MRestaurantService();
 				
-				AttachmentService aService = new AttachmentService();
 				
-				int result1 = mjService.insertMRestaurant(mj);
-				int result2 = 0;
+				AttachmentService aService = new AttachmentService();
+				int result1 = mjService.insertMRestaurant(mj); // 맛집 내용 입력 확인
+				int result2 = 0;							   // 첨부 파일 입력 확인
 				
 				if (result1 > 0) {
-				
+					
 					result2 = aService.insertAttachment(a, fLevel);
 					
+
 				} else {
 					
+					for (int i = 0; i < changeNames.size(); i++) {
+						
+						new File(newPath + "/" + changeNames.get(i)).delete();
+						
+					}
 					
-					request.setAttribute("error-msg",  "게시글 내용 등록 실패!");
+					request.setAttribute("error-msg", "맛집 내용 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
@@ -696,7 +557,9 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
+					
 					response.sendRedirect("index.jsp");
+					
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -705,13 +568,12 @@ public class AttachmentInsert extends HttpServlet {
 						
 					}
 					
-					request.setAttribute("error-msg",  "게시글 등록 실패!");
+					request.setAttribute("error-msg",  "첨부파일 등록 실패!");
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp")
 						   .forward(request, response);
 				}
-				
-				
+
 			}
 		}
 		

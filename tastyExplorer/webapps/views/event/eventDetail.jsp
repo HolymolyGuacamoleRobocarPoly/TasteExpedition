@@ -93,7 +93,7 @@ p{
 	<form action="/tastyServer/insert.ev" method="post">
 		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />
 		<!-- m.getmNo로 보내면 에러!!! 왜? -->
-		<input type="hidden" name="mNo" value="1"/>
+		<input type="hidden" name="mNo" value=<%= m.getmNo() %>>
 		<div class="button_area" style="margin-top:50px;">     
 	      	<button class="button" onclick="showPopup();">참여하기</button>
 	   	</div>
