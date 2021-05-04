@@ -37,16 +37,16 @@
 
     <div class="title">
         <div class="background-video">
-        <video width="1000px"heigth="600px"src="/tastyServer/assets/video/backgroundVideo.mp4" autoplay muted></video>
+        <video width="1000px"height="600px"src="/tastyServer/assets/video/backgroundVideo.mp4" autoplay muted></video>
+            <form action="/tastyServer/insert.mj" method="post">
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
-            <form action="/tastyServer/insert.mj">
                 <div class="input-group mb-3">																											<!--  기원 수정 ok -->
                     <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
                 </div>
-            </form>
         </h1>
+            </form>
         </div>
     </div>
 

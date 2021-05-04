@@ -41,8 +41,8 @@
                 <ul>
                 <% if ( m== null) { %>
                 <li><img src="/tastyServer/assets/images/user.png" />
-                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Join Us</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Login</a></li>
+                    <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Sign Up</a></li>
+                    <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 				<% } else { %>
 				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>
                     <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/views/member/mypage.jsp">Profile</a></li>
