@@ -19,7 +19,7 @@
 		padding : 5px;
 		}
 		
-		#ckZip, #updateBtn, #deleteBtn {
+		#ckZip, #updateBtn {
 		background:#d4e157;
 		border-radius:5px;
 		width:130px;
@@ -34,7 +34,7 @@
 
 	<%@ include file="../common/header.jsp" %>
 	
-	<h1 align="center" style="color:#d4e157;">Join Us</h1>
+	<h1 align="center" style="color:#d4e157;">회원 정보 수정</h1>
 	<br>
 	
 	<section>
@@ -270,7 +270,6 @@
 		<br>
 			<div class="btns" align="center">
 				<div id="updateBtn" onclick="updateMember();">수정하기</div> <br>
-				<div id="deleteBtn" onclick="deleteMember();">탈퇴하기</div>
 			</div>
 		</form>
 		

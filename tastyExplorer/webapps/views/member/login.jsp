@@ -53,10 +53,18 @@ section {
 										<input type="password" name="userPwd" id="userPwd" class="placeholder" autocomplete='new-password'>
 									</li>
 								</ul>
-								<ul align="center" class="option">
-<!-- 									<li><input type="checkbox" id="auto" name="auto" checked><label for="auto">자동 로그인</label></li> -->
-									<li><input type="checkbox" id="save" name="save" ><label for="save">아이디 저장</label>
-								</ul>
+								
+								<div align="center" class="savebtn">
+									<input type="checkbox" id="save" name="save">
+									<label for="save">아이디 저장</label>
+								
+								
+								
+									<input type="checkbox" id="auto" name="auto" checked>
+									<label for="auto">로그인 상태 유지</label>
+								</div>
+								
+							
 								<ul align="center" class="linkbox">
 								<a href="/tastyServer/views/member/findId.jsp">아이디찾기</a>
 						

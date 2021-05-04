@@ -101,35 +101,115 @@ public class MemberDAO {
 		
 	}
 	
-	public String findIdbyEmail(Connection con, String email) {
+	public int updateMember(Connection con, Member m) {
+		int result = 0;
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("updateMember");
 		
-		Member result = null;
+		try {
+		
+			ps = con.prepareStatement(sql);
+		
+			ps.setString(1, m.getUserPwd() );
+			ps.setString(2, m.getEmail() );
+			ps.setString(3, m.getPhone() );
+			ps.setString(4, m.getAddress() );
+			ps.setString(5, m.getUserId() );
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+				
+		return result;
+	}
+
+	public int deleteMember(Connection con, String userId) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, userId);
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+	
+	public String findIdbyEmail(Connection con, String email) {
+		String id = null;
+		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String sql = prop.getProperty("findIdbyEmail");
 		
-		String id=null;
-		String sql = "SELECT id FROM member WHERE email =?";
-			try {
-				ps=con.prepareStatement(sql);
-				ps.setNString(1, email);
-				rs=ps.executeQuery();
-				if(rs.next()) {
-					id = rs.getString("id");
-				}
-			} catch (Exception e) {
+		try {
+		ps = con.prepareStatement(sql);
+		ps.setNString(1, email);
+		rs=ps.executeQuery();
+		if(rs.next()) {
+			id = rs.getString("id");
+			} 
+		}catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				try {
 					if(ps!=null) ps.close();
 					if(rs!=null) rs.close();
 					if(con!=null) con.close();
-				}catch(Exception e){
+				} catch(Exception e) {
 					e.printStackTrace();
 				}
 			}
-			return id;
-			}
+	
+		return id;
+		
+		}
 
+	public int idcheck(Connection con, String userId) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("idcheck");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+	
 	
 	
 

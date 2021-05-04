@@ -7,6 +7,7 @@ import com.mj.member.model.dao.MemberDAO;
 import com.mj.member.model.vo.Member;
 import static com.common.JDBCTemplate.*;
 
+
 public class MemberService {
 	
 	private Connection con;
@@ -37,6 +38,44 @@ public class MemberService {
 		close(con);
 		
 		return result;
-	} 
+	}
+
+
+	public int updateMember(Member m) {
+		con = getConnection();
+		
+		int result = dao.updateMember(con, m);
+		
+		if (result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int deleteMember(String userId) {
+		con = getConnection();
+		
+		int result = dao.deleteMember(con, userId);
+		
+		if (result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int idcheck(String userId) {
+		con = getConnection();
+		
+		int result = dao.idcheck(con, userId);
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }
