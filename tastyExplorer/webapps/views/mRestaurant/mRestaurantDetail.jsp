@@ -158,13 +158,15 @@
 					<h1 id="mjName"><%--= mj.getmRestaurantTitle() --%> 연어롭다</h1> <!-- 맛집 이름 -->
 				</th>
 
+				<%-- 
+
 				<!-- 별점 평균 -->
 				<% int sum = 0; 
 				   double avr = 0;
 					for (int i = 0; i < rlist.size(); i++ ) {
 						sum += rlist.get(i).getrScore(); 
 					} 	avr = sum / rlist.size(); int star = (int)avr;%>
-			
+				--%>
 				<th >
 				<%-- 
 					<!-- 별점이 1 아래 일 때 -->

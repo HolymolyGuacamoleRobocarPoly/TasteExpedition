@@ -38,7 +38,7 @@ public class MJSelectList extends HttpServlet {
 //		getParameter 로 index 에서 지도 주변 맛집의 주소 받아와서 dao 까지 넘기고 properties 의 ? 에 address 넣어주면 주변 맛집 list 출력 가능 
 		String keyword = request.getParameter("keyword");
 		int fLevel = 7;
-		
+		System.out.println("keyword 결과 확인 : " + keyword);
 
 		// 맛집 List 불러오기 
 
@@ -55,11 +55,12 @@ public class MJSelectList extends HttpServlet {
 		
 		// 해당 맛집별로 Attachment 불러오는 반복문 
 		for(int i = 0; i < mjList.size(); i ++) {
-			int mjNo = mjList.get(i).getmRestaurantNo();
+			int mjNo = mjList.get(i).getmRestaurantNo();  
 			
-			mjAttList = aservice.selectList(mjNo, fLevel);
+			mjAttList.add(aservice.selectOne(mjNo, fLevel));
 			
 		}
+
 		
 		
 		// 맛집 리스트 

@@ -97,46 +97,36 @@ public class AttachmentDAO {
 	}
 	
 
-	public ArrayList<Attachment> selectOne(Connection con, int bNo, int fLevel) {
-		ArrayList<Attachment> attList = new ArrayList<>();
+	public Attachment selectOne(Connection con, int bNo, int fLevel) {
+		Attachment att = new Attachment();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectOneRestaurantAttachment");
-		String name = "";
-		/*
-		 if (fLevel == 4) {
-		 	sql = prop.getProperty("selectOneEventAttachment");
-		 	name = "e"
-		 } else if (fLevel == 7) {
-		 	sql = prop.getProperty("selectOneRestaurantAttachment");
-		 	name = "mj";
-		 }
-		*/
+		
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, name+bNo);
+			ps.setString(1, "MJ"+bNo);
 			
 			rs = ps.executeQuery();
-			
-			while ( rs.next()) {
-				Attachment a = new Attachment();
-				
-				a.setAttMNo(rs.getInt("ATT_M_NO"));          
-				a.setAttMFileName(rs.getString("ATT_M_FILENAME"));
-				a.setAttBNo(rs.getString("ATT_M_BNO"));
-				
-				attList.add(a);
+			if ( rs.next()) {
+				att.setAttMNo(rs.getInt("ATT_M_NO"));          
+				att.setAttMFileName(rs.getString("ATT_M_FILENAME"));
+				att.setAttBNo(rs.getString("ATT_M_BNO"));
 				
 			}
+			
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
 		}
 		
-		return attList;
+		return att;
 	}
 
 	
