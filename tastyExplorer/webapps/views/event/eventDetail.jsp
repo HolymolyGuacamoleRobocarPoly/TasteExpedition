@@ -91,8 +91,10 @@ p{
 	       	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>
 	    </div> 
 	<form action="/tastyServer/insert.ev" method="post">
+
 		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />		
 		<input type="hidden" name="mNo" value="<%= m.getmNo() %>"/>
+
 		<div class="button_area" style="margin-top:50px;">     
 		<% if ( ev.getCheck().equals("Y")) { %>
 	      	<button class="button" onclick="showPopup(true);">참여하기</button>

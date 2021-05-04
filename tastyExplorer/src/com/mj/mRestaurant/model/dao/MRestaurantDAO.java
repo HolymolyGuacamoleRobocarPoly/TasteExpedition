@@ -1,6 +1,6 @@
 package com.mj.mRestaurant.model.dao;
 
-import static com.common.JDBCTemplate.*;
+import static com.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.mRestaurant.model.vo.Menu;
 
 public class MRestaurantDAO {
 	
@@ -130,12 +130,12 @@ public class MRestaurantDAO {
 	
 	
 
-	public int insertMRestaurant(Connection con) {
-		MRestaurant mj = null;
+	public int insertMRestaurant(Connection con, MRestaurant mj) {
+		
 		PreparedStatement ps = null;
 		
 		int result = 0;
-		
+		System.out.println("DAO : " + mj.toString());
 		String sql = prop.getProperty("insertMRestaurant");
 		
 		try {
@@ -188,11 +188,6 @@ public class MRestaurantDAO {
 		return result;
 	}
 
-	
-	
-	
-	
-	
 	
 	
 	

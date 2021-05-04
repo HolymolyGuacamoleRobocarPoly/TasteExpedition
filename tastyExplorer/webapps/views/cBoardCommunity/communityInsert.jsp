@@ -22,7 +22,9 @@
 		<div class="tableArea">
 			<form action="/tastyServer/insert.co" method="post"
 				enctype="multipart/form-data">
+
 				<input type="hidden" name="attMFlevel" value="6">
+
 				<table>
 					<tr>
 						<td>제목</td>

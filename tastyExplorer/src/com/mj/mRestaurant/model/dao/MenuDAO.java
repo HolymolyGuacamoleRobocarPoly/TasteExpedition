@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.mj.mRestaurant.model.vo.MRestaurant;
 import com.mj.mRestaurant.model.vo.Menu;
 
 import static com.common.JDBCTemplate.*;
@@ -20,7 +21,7 @@ private Properties prop;
 	public MenuDAO() {
 		prop = new Properties();
 		
-		String filePath = Menu.class.getResource("/config/Menu.properties").getPath();
+		String filePath = Menu.class.getResource("/config/menu.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(filePath));
@@ -50,7 +51,7 @@ private Properties prop;
 				
 				menu.setmRestaurantNo(rs.getInt("M_RESTAURANT_NO"));
 				menu.setMenuName(rs.getString("MENU_NAME"));
-				menu.setMenuPrice(rs.getInt("MENU_PRICE"));
+				menu.setMenuPrice(rs.getString("MENU_PRICE"));
 				
 				menuList.add(menu);
 			}
@@ -64,6 +65,28 @@ private Properties prop;
 		}
 
 		return menuList;
+	}
+
+
+	public int insertMenu(Connection con, int mjNo, String name, String price) {
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("insertMenu");;
+		int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, mjNo);
+			ps.setString(2, name);
+			ps.setString(3, price);
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 	}
 
 	

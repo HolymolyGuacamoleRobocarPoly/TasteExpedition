@@ -239,32 +239,32 @@
 						<th></th>
 					</tr>
 					<tr>
-						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
-						<td><input type="number" class="menuPrice"
+						<td><input type="text" class="menuName" name="menuNames" placeholder="메뉴명 입력"></td>
+						<td><input type="number" class="menuPrice" name="menuPrices"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
-						<td><input type="number" class="menuPrice"
+						<td><input type="text" class="menuName" name="menuNames" placeholder="메뉴명 입력"></td>
+						<td><input type="number" class="menuPrice" name="menuPrices"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
-						<td><input type="number" class="menuPrice"
+						<td><input type="text" class="menuName" name="menuNames" placeholder="메뉴명 입력"></td>
+						<td><input type="number" class="menuPrice" name="menuPrices"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
-						<td><input type="number" class="menuPrice"
+						<td><input type="text" class="menuName" name="menuNames" placeholder="메뉴명 입력"></td>
+						<td><input type="number" class="menuPrice" name="menuPrices"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>
 					<tr>
-						<td><input type="text" class="menuName" placeholder="메뉴명 입력"></td>
-						<td><input type="number" class="menuPrice"
+						<td><input type="text" class="menuName" name="menuNames" placeholder="메뉴명 입력"></td>
+						<td><input type="number" class="menuPrice" name="menuPrices"
 							placeholder="가격 입력"></td>
 						<td><button onclick="menuInsert();" style="width: 26px;">+</button></td>
 					</tr>

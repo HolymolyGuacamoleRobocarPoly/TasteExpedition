@@ -40,7 +40,7 @@ public class AttachmentDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "";
+		String sql = prop.getProperty("selectAttachment");
 		String name = "";
 		/*
 		if (fLevel == 1) {
@@ -52,19 +52,14 @@ public class AttachmentDAO {
 		} else 
 		*/
 		if (fLevel == 3) {
-			sql = prop.getProperty("selectNoticeAttachment");
 			name = "n";
 		} else if (fLevel == 4) {
-			sql = prop.getProperty("selectEventAttachment");
 			name = "e";
 		} else if (fLevel == 5) {
-			sql = prop.getProperty("selectReviewAttachment");
 			name = "r";
 		} else if (fLevel == 6) {
-			sql = prop.getProperty("selectCommunityAttachment");
 			name = "cm";
 		} else if (fLevel == 7) {
-			sql = prop.getProperty("selectRestaurantAttachment");
 			name = "mj";
 		}
 
@@ -103,11 +98,12 @@ public class AttachmentDAO {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectOneRestaurantAttachment");
-		
+
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, "MJ"+bNo);
+			ps.setString(1, "mj"+bNo);
+
 			
 			rs = ps.executeQuery();
 			if ( rs.next()) {

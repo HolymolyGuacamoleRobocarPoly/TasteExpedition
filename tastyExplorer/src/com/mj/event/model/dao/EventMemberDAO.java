@@ -38,13 +38,13 @@ public class EventMemberDAO {
 		int result = 0;
 		PreparedStatement ps = null;
 		String sql = prop.getProperty("insertEventMember");
-		
+		System.out.println("em : " + em);
 		try {
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, em.geteNo());
 			ps.setInt(2, em.getmNo());
-
+			
 			result = ps.executeUpdate();
 		} catch (SQLException e1) {
 			
@@ -52,7 +52,7 @@ public class EventMemberDAO {
 		} finally {
 			close(ps);
 		}
-		
+		System.out.println("result : " + result);
 		return result;
 	}
 

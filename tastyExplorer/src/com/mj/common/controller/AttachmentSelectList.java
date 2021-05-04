@@ -43,13 +43,8 @@ public class AttachmentSelectList extends HttpServlet {
 		attList = service.selectList(bNo, fLevel);
 		
 		request.setAttribute("attList", attList);
-		/*
-		if (fLevel == 1) {
-			path = "?";
-		} else if (fLevel == 2) {
-			path = "?";
-		} else
-		*/
+
+		
 		if (fLevel == 3) {
 			path = "notice/noticeDetail.jsp";
 		} else if (fLevel == 4) {
