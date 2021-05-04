@@ -27,14 +27,14 @@ public class AttachmentService {
 	}
 	
 
-	public ArrayList<Attachment> selectOne(int bNo, int fLevel) {
+	public Attachment selectOne(int bNo, int fLevel) {
 		con = getConnection();
 		
-		ArrayList<Attachment> list = dao.selectOne(con, bNo, fLevel);
+		Attachment a = dao.selectOne(con, bNo, fLevel);
 		
 		close(con);
 		
-		return list;
+		return a;
 	}
 	
 

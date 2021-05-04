@@ -95,13 +95,13 @@
 	<%@ include file="../common/header.jsp"%>
 
 	<!--  로그인 시 식당 등록 화면이 보일 수 있도록 if else 사용하기  -->
-	<form action="/tastyServer/insert.mj" method="post" enctype="multipartform-data"> 
-
+	<form action="/tastyServer/insert.att" method="post" enctype="multipart/form-data"> <!-- form 앞에 / 추가 -->
+		<input type="hidden" name="attMFlevel" value="7" />
 			<table id="MJName">
 				<tr>
 					<th>
 						<h2>
-							<input type="text" id="mjName" placeholder="식당 이름 작성">
+							<input type="text" name="mjName" placeholder="식당 이름 작성">
 						</h2> 
 					</th>
 				</tr>
@@ -113,25 +113,25 @@
 					<tr>
 						<th>
 							<div id="contentImgArea1">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg1" class="inImg"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="titleImg" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea2">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg2" class="inImg"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg1" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea3">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg3" class="inImg"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg2" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
 							<div id="contentImgArea4">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg4" class="inImg"
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg3" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>

@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>에러 페이지</title>
-	<link rel="stylesheet" href="/myWeb/assets/css/header.css" />
+	<link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 	<style>
 		section {
 			width : 600px;
@@ -33,7 +33,7 @@
 		
 		<br>
 		<br>
-		<a href="/myWeb/index.jsp">홈 화면으로 돌아가기....</a>
+		<a href="/tastyServer/index.jsp">홈 화면으로 돌아가기....</a>
 		
 		</p>
 	</section>

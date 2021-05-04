@@ -50,9 +50,24 @@ public class MRestaurant implements Serializable {
 	}
 	
 	
+	public MRestaurant(String mRestaurantTitle, String mRestaurantContent, String mRestaurantAdrress,
+			String mRestaurantTel, String mRestaurantInfo, int mRestaurantLevel, String openTime, String brTime,
+			String holiday) {
+		super();
+		this.mRestaurantTitle = mRestaurantTitle;
+		this.mRestaurantContent = mRestaurantContent;
+		this.mRestaurantAdrress = mRestaurantAdrress;
+		this.mRestaurantTel = mRestaurantTel;
+		this.mRestaurantInfo = mRestaurantInfo;
+		this.mRestaurantLevel = mRestaurantLevel;
+		this.openTime = openTime;
+		this.brTime = brTime;
+		this.holiday = holiday;
+	}
+	
 
 	// 메소드 
-
+	
 	@Override
 	public String toString() {
 		return "MRestaurant [mRestaurantNo=" + mRestaurantNo + ", mRestaurantTitle=" + mRestaurantTitle

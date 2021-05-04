@@ -58,9 +58,9 @@ public class MRestaurantDAO {
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
 				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
 				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
-				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
-				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
-				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
+//				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
+//				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
+//				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
 
 				
 			}
@@ -101,11 +101,11 @@ public class MRestaurantDAO {
 				mj.setmRestaurantAdrress(rs.getString("M_RESTAURANT_ADRRESS"));
 				mj.setmRestaurantInfo(rs.getString("M_RESTAURANT_INFO"));
 				mj.setmRestaurantLevel(rs.getInt("M_RESTAURANT_LEVEL"));
-				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
-				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
-				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
-				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
-				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
+//				mj.setmRestaurantLike(rs.getInt("M_RESTAURANT_LIKE"));
+//				mj.setmRestaurantTel(rs.getString("M_RESTAURANT_TEL"));
+//				mj.setOpenTime(rs.getString("M_RESTAURANT_OPEN_TIME"));
+//				mj.setBrTime(rs.getString("M_RESTAURANT_BR_TIME"));
+//				mj.setHoliday(rs.getString("M_RESTAURANT_HOLIDAY"));
 
 				
 				mjList.add(mj);

@@ -5,7 +5,7 @@
 <%
 				// Object --> Board
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
-	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("selectOne"); // 서블릿이 보낸 mjAttList 받아오기
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
 %>  
 <!--  기원 수정  ok  -->    
 <!DOCTYPE html>
@@ -37,15 +37,15 @@
     <div class="title">
         <div class="background-video">
         <video src="/tastyServer/assets/video/backgroundVideo.mp4"></video>
+            <form action="/tastyServer/selectList.mj" method="post">
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
-            <form action="/tastyServer/insert.mj">
-                <div class="input-group mb-3">																											<!--  기원 수정 ok -->
+                <div class="input-group mb-3">																											
                     <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
                 </div>
-            </form>
         </h1>
+            </form>
         </div>
     </div>
 
@@ -59,13 +59,17 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                        
+                
 				<!--  기원 수정중  삭제 No  -->   
-                        	<!--  반복문 사용해서 mjList 의 값들 출력하기  ( 사진은 첫번째 사진 뽑아내기  )  -->
-                        	<%-- 
-                        	<% for( int i = 0; i < mjList.size(); i ++) { %>
+                        	
+                        	<%--  --%>
+                       
+                        
+					<% if (mjList != null) { %>	
+						
+					<div class="carousel-item active">
+                        <div class="row">
+							<% for( int i = 0; i < mjList.size(); i ++) { %>
 	                            <div class="col-md-4" id="<%= mjList.get(i).getmRestaurantNo() %>">
 	                                <div class="single-box">
 	                                	<% for ( int j = 0; j < 1; ) { %>
@@ -78,10 +82,14 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-                            <% } %>
-                           --%>
-				<!--  기원 수정중  삭제 No  -->    	
-
+                            <% } %>       
+                        </div>
+                    </div>
+					<% } else { %>   
+				<!--  기원 수정중  삭제 No  -->    
+				
+                    <div class="carousel-item active">
+                        <div class="row">
 							<div class="col-md-4">
 	                                <div class="single-box">
 	                                    <div class="img-area"><img src="/tastyServer/assets/images/연어롭다.jpg" alt=""></div>
@@ -173,6 +181,8 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
+                    
                   </div>
             </div>
         </div>
@@ -182,11 +192,20 @@
 
 <%@ include file="views/common/footer.jsp" %>
 	<script>
+	
+	<% if (mjList != null ) {%>
 		$('.col-md-4').on('click', function(){
 			var mjNo = $(this).attr('id');
 			
 			location.href = '/tastyServer/selectOne.mj?mjNo=' + mjNo;
+			
+
 		});
+	<% } %>	
+	
 	</script>
 </body>
 </html> 
+
+
+
