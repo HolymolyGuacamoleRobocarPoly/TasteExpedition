@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.event.model.vo.*, java.util.*" %>	
 <%
-	EventAdmin ev = (EventAdmin)request.getAttribute("event"); // 서블릿이 보낸 ReviewList 받아오기 
+	//EventAdmin ev = (EventAdmin)request.getAttribute("event"); // 서블릿이 보낸 ReviewList 받아오기 
 
-	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
+	//ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
 
 %>
 <!DOCTYPE html>
@@ -95,6 +95,7 @@ h5{
 
 <%@ include file ="../common/header.jsp" %>
 
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 col-sm-4 sidebar1">
@@ -114,7 +115,47 @@ h5{
                         </div>
                     </ul>
 
+	<br>
+	
+	<section>
+	<form action="/tastyServer/update.me" method="post" id="updateForm">
+	
+			
+<aside>
+<div id="main_cont">
+	<div id=mypage>
+	<ul class="mypagelist">
+	<li id="mypage1">
+	<a href="/tastyServer/views/member/memberUpdate.jsp">
+	<span>정보수정</span>
+	</a>
+	</li>
+		<li id="mypage2">
+		<a href="/tastyServer/list.ev" class>
+		<span>이벤트 내역</span>
+		</a>
+		</li>
+		<li id="mypage4">
+		<a href="" class>
+		<span>찜하기</span>
+		</a>
+		</li>
+		<li>
+		<li id="mypage5">
+		<a href="/tastyServer/views/member/memberDelete.jsp" class>
+		<span>회원탈퇴</span>
+		</a>
+		</li>
+	</ul>
+	</div>
+</aside>
+	
+	
+	
+
+
                     <br>
+
 
                    
                 </div>
@@ -123,15 +164,21 @@ h5{
     </div>
     </div>
 
+
+
+<%-- 
+>>>>>>> refs/remotes/origin/subin
 <br>
    <% for(EventAdmin e : elist) { %>
 	<div>이벤트 번호: <%= e.geteNo() %></div>
 	<div>이벤트 제목: <%= e.geteTitle() %></div>
 	<div>이벤트 내용: <%= e.geteContent() %></div>
 	<div>이벤트 기간: <%= e.geteDuration() %></div>
-	<% } %>
+	<% } %> --%>
 	
+
 	
+
 
 <%@ include file ="../common/footer.jsp" %>
 

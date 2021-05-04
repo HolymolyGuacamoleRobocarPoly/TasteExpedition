@@ -64,7 +64,7 @@
 				<tr>
 					<td>닉네임</td>
 					<td><input type="text" maxlength="5" id="nickName" name="nickName" required="required"></td>
-					<td width="200px"><div id="nickCheck">중복 확인</div></td>
+
 					<td></td>
 				</tr>
 				<tr>
@@ -411,6 +411,32 @@
 			alert("위치기반 서비스 이용약관에 동의해주세요.");
 		}else $("#joinForm").submit();
 	}
+    
+    $('#idCheck').on('click', function(){
+    	$.ajax({
+    		url : '/tastyServer/idcheck.me',
+    		type : 'post',
+    		data : { userId : $('#userId').val() },
+    		success : function( data ) {
+    			console.log(data);
+    			
+    			if(data == 0){
+    				alert ("사용 가능한 아이디입니다.");
+    			} else {
+    				alert ("이미 사용 중인 아이디입니다.");
+    			}
+    		}, error : function() {
+    			console.log("전송 실패!");
+    		}
+    	});
+    });
+    
+    
+    
+    
+    
+  
+    
 
 	</script>
 	
