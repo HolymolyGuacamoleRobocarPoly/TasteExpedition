@@ -70,7 +70,6 @@
 
 
 
-=======
 <br>
    <% for(EventAdmin e : elist) { %>
 	<div>이벤트 번호: <%= e.geteNo() %></div>
@@ -80,7 +79,7 @@
 	<% } %>
 	
 	
->>>>>>> refs/remotes/origin/dev_dain
+
 <%@ include file ="../common/footer.jsp" %>
 
 </body>
