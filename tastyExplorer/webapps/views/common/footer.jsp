@@ -11,6 +11,7 @@
 
 </head>
 <body>
+  <div class="footwrap">
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -65,6 +66,7 @@
     </script>
     <div class="copyrightText">
         <p>copyright © 2021 Online Tutorials. All Rights Reserved</p>
+    </div>
     </div>
 </body>
 </html>

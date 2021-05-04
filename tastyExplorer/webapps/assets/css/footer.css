@@ -5,6 +5,11 @@ body {
     font-family: 'Jua', sans-serif;
 }
 
+.footerwrap {
+	height: auto;
+	min-height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +19,8 @@ body {
 .container {
     max-width: 1170px;
     padding: 0px 0px 20px 100px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .row {
@@ -42,7 +49,7 @@ ul {
     margin-bottom: 30px;
     font-weight: 500;
     position: relative;
-    left: 30px;
+    left: 0;
 }
 
 .footer-col h4::before {
@@ -54,6 +61,10 @@ ul {
     height: 2px;
     box-sizing: border-box;
     width: 50px;
+}
+
+.footer-col ul {
+	padding-left: 0px;
 }
 
 .footer-col ul li:not(:last-child){

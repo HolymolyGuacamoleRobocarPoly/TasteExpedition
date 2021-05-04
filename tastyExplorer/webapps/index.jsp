@@ -22,6 +22,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
+	<link rel="stylesheet" href="/tastyServer/assets/css/intro.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/index.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
@@ -36,7 +37,7 @@
 
     <div class="title">
         <div class="background-video">
-        <video src="/tastyServer/assets/video/backgroundVideo.mp4"></video>
+        <video width="1000px"heigth="600px"src="/tastyServer/assets/video/backgroundVideo.mp4" autoplay muted></video>
         <h1>
             오늘 무엇을 먹을지 고민하는 여러분을 위해
             <form action="/tastyServer/insert.mj">
