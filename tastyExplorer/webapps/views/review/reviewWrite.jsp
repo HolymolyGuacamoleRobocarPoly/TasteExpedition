@@ -111,7 +111,7 @@ input[type=text]::placeholder{
   }
 
 .button:hover {
-  background-color: #6ED746;
+  background-color: #a0af22;
   box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -180,7 +180,7 @@ input[type=text]::placeholder{
                 	
                 	<p style="font-weight: bold;"> # 해시태그를 추가해주세요</p>   
                 	<!-- name만 정해주면 $('#tags').val();로 " , , " 해시태그 안의 값을 뽑을 수 있음 -->          
-	            	<input type="text" name="rHashTag" placeholder="#해시태그" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag"> <br> <br>     
+	            	<input type="text" name="rHashTag" placeholder="#해시태그" data-role="tagsinput" id="tags" class="form-control label-info bootstrap-tagsinput tag	rounded-pill"> <br> <br>     
                 	
                 <!-- review_remain : 첨부파일, 미리보기 이미지, 버튼있는 영역 -->
                 <!-- input type="text" id="tagInsert" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 300px; height: 30px"/> <button type="button" id=tagButton onclick="showEvent()" style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height: 30px;">태그 추가하기</button> &nbsp;<button id=tagButton style="border : solid 1px #c8c8c8; border-radius: 2px; width: 140px; height:30px;">태그 삭제하기</button> -->            

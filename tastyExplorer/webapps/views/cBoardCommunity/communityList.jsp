@@ -36,16 +36,14 @@ int listCount = pi.getListCount();
 		<div class="tableArea">
 			<table align="center" id="listArea">
 				<tr>
-					<td width="75px;">No</td>
-					<td width="400px;">제목</td>
-					<td width="75px;">팀원수</td>
-					<td width="100px;">작성자</td>
-					<td width="150px;">작성일</td>
-					<td width="70px;">조회수</td>
+					<th width="75px;">No</th>
+					<th width="400px;">제목</th>
+					<th width="75px;">팀원수</th>
+					<th width="100px;">작성자</th>
+					<th width="150px;">작성일</th>
+					<th width="70px;">조회수</th>
 				</tr>
-				<%
-				for (Community c : list) {
-				%>
+				<% for (Community c : list) { %>
 				<tr>
 					<td id="<%=c.getcBoardNo()%>"><%=c.getcBoardNo()%></td>
 					<td><%=c.getcBoardTitle()%></td>
@@ -54,39 +52,35 @@ int listCount = pi.getListCount();
 					<td><%=c.getcBoardDate()%></td>
 					<td><%=c.getcBoardCount()%></td>
 				</tr>
-				<%
-				}
-				%>
+				<% } %>
 			</table>
 		</div>
 		<!-- 게시판 목록끝 -->
 
-		<!-- 작성하기 버튼 클릭 -->
+		<!-- 게시물 클릭시 -->
 		<% if (m != null) { %>	
 		<div class="btnArea" align="center">
 			<br>
 			<!--<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>-->
 			<script>
-				$('#listArea td').on('mouseenter'), function() {
+				$('#listArea td').on('mouseenter', function() {
 					$(this).parent().css({'background' : 'white',
-										  'curor' : 'porinter',
+										  'cursor' : 'pointer',
 										  'color' : 'gray'});  
-				}).on('mouserout', function(){
-					$('this').parent().css({'backgrond' : 'white',
-											'color' : 'white'});
+				}).on('mouseout', function(){
+					$(this).parent().css({'background' : 'white',
+											'color' : 'black'});
 				}).on('click', function(){
-					var nno = $('this').parent.children().first().attr('id');
+					var cboardno = $(this).parent().children().first().attr('id');
 					
 					console.log(cboardno);
 					
-					location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
+					location.href = "/tastyServer/selectOne.co?cBoardNo=" + cboardno;
 				});
 			</script>
-			<%
-			}
-			%>
+			<%	} %>
 		</div>
-		<!-- 작성하기 버튼 끝 -->
+		<!-- 게시물 클릭 끝 -->
 
 		<!-- 페이지 부분 -->
 		<div class="pagingArea" align="center">
@@ -132,6 +126,7 @@ int listCount = pi.getListCount();
 		</div>
 		<!-- 검색창끝-->
 		
+		
 		<!-- 검색창 테스트 -->
 		<form action="" class="table-form">
 			<fieldset>
@@ -168,7 +163,7 @@ int listCount = pi.getListCount();
 						<p>냠냠쩝쩝</p>
 					</div>
 					<div>
-						<a href="#" onclick="goProfile();" class="btn">view profile</a> 
+						<a href="/tastyServer/views/member/mypage.jsp"  class="btn">view profile</a> 
 					</div>
 
 				</div>
@@ -185,7 +180,7 @@ int listCount = pi.getListCount();
 			
 			// 프로필 마이페이지 누르면 이동하는 함수
 			function goProfile() {
-				
+				loaction.href="tastyServer/views/member/mypage.jsp"
 			}
 			
 			

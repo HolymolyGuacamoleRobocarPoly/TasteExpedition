@@ -95,7 +95,6 @@ h5{
 
 <%@ include file ="../common/header.jsp" %>
 
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 col-sm-4 sidebar1">
@@ -123,6 +122,17 @@ h5{
             
     </div>
     </div>
+
+<br>
+   <% for(EventAdmin e : elist) { %>
+	<div>이벤트 번호: <%= e.geteNo() %></div>
+	<div>이벤트 제목: <%= e.geteTitle() %></div>
+	<div>이벤트 내용: <%= e.geteContent() %></div>
+	<div>이벤트 기간: <%= e.geteDuration() %></div>
+	<% } %>
+	
+	
+
 <%@ include file ="../common/footer.jsp" %>
 
 </body>

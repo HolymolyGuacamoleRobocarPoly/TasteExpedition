@@ -21,7 +21,8 @@
 		<!-- 게시글 작성 틀 -->
 		<div class="tableArea">
 			<form action="/tastyServer/insert.co" method="post"
-				enctype="mulipart/form-data">
+				enctype="multipart/form-data">
+				<input type="hidden" name="attMFlevel" value="6">
 				<table>
 					<tr>
 						<td>제목</td>
@@ -48,10 +49,10 @@
 			 		</tr>
 				</table>
 				<br />
-				<div align="center">
-					<button class="buttn-base ripple" type="submit">작성 완료</button>
+				<div>
+					<button class="button-base ripple" type="submit">작성 완료</button>
 					&nbsp;
-					<button type="reset">작성 취소</button>
+					<button class="button-base ripple" type="reset">작성 취소</button>
 				</div>
 			</form>
 		</div>

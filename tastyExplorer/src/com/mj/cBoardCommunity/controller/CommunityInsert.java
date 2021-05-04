@@ -35,6 +35,7 @@ public class CommunityInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 파일저장 경로 
 		String savePath = request.getServletContext().getRealPath("/resources/temp");
 		
 		int maxSize = 1024 * 1024* 10;
@@ -51,10 +52,10 @@ public class CommunityInsert extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, 
 				   "UTF-8", new DefaultFileRenamePolicy());
 		
-		// 5. 전송값 처리
-		String title = mr.getParameter("c_board_title");
-		String content = mr.getParameter("c_board_content");
-		String mNickname = mr.getParameter("m_nickname");
+		// 5. 가져오기 (제목, 내용, 닉네임)
+		String title = mr.getParameter("ctitle");
+		String content = mr.getParameter("Ccontent");
+		String mNickname = mr.getParameter("nickName");
 		
 		System.out.println("확인 : " +title + ", " + content + ", " + mNickname);
 		
@@ -72,7 +73,7 @@ public class CommunityInsert extends HttpServlet {
     	if( result > 0 ) {
     		response.sendRedirect("selectList.co");
     	} else {
-    		request.setAttribute("error-msg", "게시글 작성 실패!");
+    		request.setAttribute("error-msg", "게시글 작성을 실패했습니다.");
     		
     		request.getRequestDispatcher("views/common/errorPage.jsp")
     		       .forward(request, response);

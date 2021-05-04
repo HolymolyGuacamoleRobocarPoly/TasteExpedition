@@ -67,39 +67,36 @@ public class CommunitySelectList extends HttpServlet {
 		if( maxPage < endPage) {
 			endPage = maxPage;
 		}
-		
-		// 검색테스트
-		
-		
-		//임시변수
-		String field_ = request.getParameter("f");
-		String query_ = request.getParameter("q");
-
-		//기본값
-		String field = "cBoardTitle";
-		if(field_ != null) {
-			field = field_;
-		}
-		
-		String query = "";
-		if (query_ != null) {
-			query = query_;
-		}
-		
-		
-		list = service.selectList(currentPage, field, query, 1);
-		
-		
+			
 		//System.out.println(startPage);
 		
 		//System.out.println(list);
+		
+		// 검색테스트
+		//임시변수
+				String field_ = request.getParameter("f");
+				String query_ = request.getParameter("q");
+
+				//기본값
+				String field = "cBoardTitle";
+				if(field_ != null) {
+					field = field_;
+				}
+				
+				String query = "";
+				if (query_ != null) {
+					query = query_;
+				}
+				
+				
+				list = service.selectList(currentPage, field, query, 1);
 		
 		request.setAttribute("list", list);
 		PageInfo pi = new PageInfo(startPage, endPage, maxPage,
 								   currentPage, limit, listCount);
 		request.setAttribute("pi", pi);
 		
-		//System.out.println(pi);
+		System.out.println(pi);
 
 		RequestDispatcher view =
 				request.getRequestDispatcher("views/cBoardCommunity/communityList.jsp");

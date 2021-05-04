@@ -46,6 +46,7 @@ public class CommunitySelectOne extends HttpServlet {
 		// 게시글 조회서비스 시작
 		Community c = service.selectOne(cboardno);
 		
+		// 댓글 리스트
 		ArrayList<BComment> clist = commentService.selectList(cboardno);
 		
 		String page = "";
