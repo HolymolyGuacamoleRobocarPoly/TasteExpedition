@@ -64,7 +64,7 @@
 				<tr>
 					<td>닉네임</td>
 					<td><input type="text" maxlength="5" id="nickName" name="nickName" required="required"></td>
-					<td width="200px"><div id="nickCheck">중복 확인</div></td>
+
 					<td></td>
 				</tr>
 				<tr>
@@ -429,7 +429,9 @@
     			console.log("전송 실패!");
     		}
     	});
-    };
+    });
+    
+    
     
     
     
