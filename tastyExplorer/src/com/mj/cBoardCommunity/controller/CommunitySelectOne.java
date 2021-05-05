@@ -13,6 +13,8 @@ import com.mj.bComment.model.service.BCommentService;
 import com.mj.bComment.model.vo.BComment;
 import com.mj.cBoardCommunity.model.service.CommunityService;
 import com.mj.cBoardCommunity.model.vo.Community;
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
 
 /**
  * Servlet implementation class CommunitySelectOne
@@ -36,7 +38,11 @@ public class CommunitySelectOne extends HttpServlet {
 		
 		//조회
 		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int fLevel = 6;
 		
+		//System.out.println(cboardno);
+		
+	
 		// 게시글 서비스 객체 생성
 		CommunityService service = new CommunityService();
 		
@@ -49,13 +55,26 @@ public class CommunitySelectOne extends HttpServlet {
 		// 댓글 리스트
 		ArrayList<BComment> clist = commentService.selectList(cboardno);
 		
+		// 커뮤니티 파일ATT 불러오기
+		AttachmentService aService = new AttachmentService();
+		ArrayList<Attachment> cAttList = aService.selectList(cboardno, fLevel);
+		
+		System.out.println("cboardno : " + cboardno);
 		String page = "";
+		
+		
+		System.out.println("c : " + c);
+		System.out.println("clist : " + clist);
+		System.out.println("cAttList : " + cAttList);
 		
 		if (c != null) {
 			request.setAttribute("Community", c);
 			request.setAttribute("clist", clist);
+			request.setAttribute("cAttList", cAttList);
 			
 			page = "views/cBoardCommunity/communityDetail.jsp";
+			
+			//System.out.println(page);
 			
 		} else {
 			request.setAttribute("error-msg",  "게시물 조회 실패");

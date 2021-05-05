@@ -52,15 +52,15 @@ public class AttachmentDAO {
 		} else 
 		*/
 		if (fLevel == 3) {
-			name = "n";
+			name = "N";
 		} else if (fLevel == 4) {
-			name = "e";
+			name = "E";
 		} else if (fLevel == 5) {
-			name = "r";
+			name = "R";
 		} else if (fLevel == 6) {
-			name = "cm";
+			name = "CM";
 		} else if (fLevel == 7) {
-			name = "mj";
+			name = "MJ";
 		}
 
 		
@@ -81,7 +81,8 @@ public class AttachmentDAO {
 				attList.add(a);
 				
 			}
-			
+			// System.out.println("attList : " + attList);
+		
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

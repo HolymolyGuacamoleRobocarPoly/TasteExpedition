@@ -1,3 +1,4 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.mj.cBoardCommunity.model.vo.*, java.util.*"%>
@@ -74,8 +75,9 @@ int listCount = pi.getListCount();
 					var cboardno = $(this).parent().children().first().attr('id');
 					
 					console.log(cboardno);
+					location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
 					
-					location.href = "/tastyServer/selectOne.co?cBoardNo=" + cboardno;
+					
 				});
 			</script>
 			<%	} %>

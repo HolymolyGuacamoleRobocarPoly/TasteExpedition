@@ -118,17 +118,17 @@ public class BCommentDAO {
 			
 			while(rs.next()) {
 				BComment bco = new BComment();
+		
+				bco.setCommentNo(   rs.getInt("COMMENT_NO") );
+				bco.setCommentContent( rs.getString("COMMENT_CONTENT"));
+				bco.setCommentDate( rs.getDate("COMMENT_DATE"));
+				bco.setcBoardNo(rs.getInt("C_BOARD_NO"));
+				bco.setmNo(rs.getInt("M_NO"));
 				
-				bco.setCommentNo(   rs.getInt(1) );
-				bco.setcBoardNo(rs.getInt(2));
-				bco.setCommentContent( rs.getString(3));
-				bco.setmNo(rs.getInt("cwriter"));
-				bco.setCommentDate( rs.getDate("commentDate"));
-	
-				
+				System.out.println("bco : " + bco);
 				clist.add(bco);				
 			}
-			
+			System.out.println("clist : " + clist);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

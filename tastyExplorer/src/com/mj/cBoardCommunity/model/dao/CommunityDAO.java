@@ -66,7 +66,7 @@ public class CommunityDAO {
 				
 				
 				list.add(c);
-				System.out.println(list);
+				//System.out.println(list);
 			}
 		} catch (SQLException e) {
 			
@@ -130,11 +130,11 @@ public class CommunityDAO {
 				c.setcBoardNo(cboardno);
 				c.setcBoardTitle( rs.getString("c_board_title"));
 				c.setcBoardContent(rs.getString("c_board_content"));
-				c.setcBoardWriter(rs.getString("c_board_writer"));
-				c.setmNickname( rs.getString("m_nickname"));
 				c.setcBoardTeam( rs.getInt("c_board_team"));
 				c.setcBoardCount( rs.getInt("c_board_count"));
 				c.setcBoardDate( rs.getDate("c_board_date"));
+				c.setcBoardWriter(rs.getString("c_board_writer"));
+				c.setmNickname( rs.getString("m_nickname"));
 				
 			}
 			
@@ -143,7 +143,7 @@ public class CommunityDAO {
 			e.printStackTrace();
 		} finally {
 			close(rs);
-			System.out.println(rs);
+			//System.out.println(rs);
 			close(ps);
 		}
 		
