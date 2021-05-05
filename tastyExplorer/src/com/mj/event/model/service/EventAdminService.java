@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import com.mj.event.model.dao.EventAdminDAO;
 import com.mj.event.model.vo.EventAdmin;
-import com.mj.mRestaurant.model.vo.Ticket;
-import com.mj.member.model.vo.Coupon;
 
 public class EventAdminService {
 	

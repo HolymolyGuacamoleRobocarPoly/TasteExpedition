@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.vo.MRestaurant;
-import com.mj.mRestaurant.model.vo.Ticket;
+
 
 public class EventAdminDAO {
 

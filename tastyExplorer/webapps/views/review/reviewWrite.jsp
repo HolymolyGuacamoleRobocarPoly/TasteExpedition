@@ -153,9 +153,9 @@ input[type=text]::placeholder{
 
         	<div class="review_writearea">
     			<div class="review_write">   			
-    				<input type="hidden" name="mNo" value="1" />
+    				<input type="hidden" name="mNo" value="<%= m.getmNo() %>" />
             		<input type="hidden" name="attMFlevel" value="5"/>
-            		<input type="hidden" name="mRestaurantNo" value="1"/>
+            		<input type="hidden" name="mRestaurantNo" value="7"/>
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;">        
 		               <a href="#" class="rScore_star" data="1">★</a> <!-- 부모 -->
