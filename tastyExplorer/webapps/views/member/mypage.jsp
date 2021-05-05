@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.event.model.vo.*, java.util.*" %>	
-<%
-	//EventAdmin ev = (EventAdmin)request.getAttribute("event"); // 서블릿이 보낸 ReviewList 받아오기 
 
-	//ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,24 +101,9 @@ h5{
                 <br>
                 <div class="left-navigation">
                     <ul class="list">
-                        <h5><strong>김영인 님</strong></h5>
+                        <h5><strong><%= m.getNickName() %> 님</strong></h5>
                         
-                        <div>
-                        <li>Home</li>
-                        <li>Office</li>
-                        <li>School</li>
-                        <li>Gym</li>
-                        </div>
-                    </ul>
-
-	<br>
-	
-	<section>
-	<form action="/tastyServer/update.me" method="post" id="updateForm">
-	
-			
-<aside>
-<div id="main_cont">
+                        <div id="main_cont">
 	<div id=mypage>
 	<ul class="mypagelist">
 	<li id="mypage1">
@@ -148,19 +129,16 @@ h5{
 		</li>
 	</ul>
 	</div>
-</aside>
+                    </ul>
+
+	<br>
 	
-	
-	
+	<section>
+	<form action="/tastyServer/update.me" method="post" id="updateForm">
 
-
-                    <br>
-
-
-                   
+                    <br>    
                 </div>
-            </div>
-            
+            </div>   
     </div>
     </div>
 

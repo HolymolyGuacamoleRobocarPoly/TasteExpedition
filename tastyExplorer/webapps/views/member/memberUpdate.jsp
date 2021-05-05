@@ -25,6 +25,7 @@
 		width:130px;
 		height:25px;
 		text-align:center;
+		cursor:pointer;
 	}
 
 		
@@ -39,8 +40,9 @@
 	
 	<section>
 	
-	<form action="/tastyServer/update.me" method="post" id="updateForm">
-		 			
+	<form action="/tastyServer/update.me" method="post" id="updateForm" enctype="multipart/form-data">
+		 	
+		 	
 			<table align="center">
 				<tr>
 					<td width="200px">아이디 </td>
@@ -264,6 +266,11 @@
 					<td>상세주소</td>
 					<td><input type="text" id="address2" name="address2"></td>
 					<td></td>
+				</tr>
+				<tr>
+					<td>프로필사진 첨부</td>
+					<td><input type="file" accept="image/*" name="thumbImg1" id="thumbImg1" onchange="loadImg(this,1);" />
+				</td>
 				</tr>
 			</table>
 			
