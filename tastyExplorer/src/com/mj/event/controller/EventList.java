@@ -47,7 +47,7 @@ public class EventList extends HttpServlet {
 		request.setAttribute("elist", list);
 
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/member/mypage.jsp"); // 마이페이지 경로, 마이페이지 jsp에서 for문
+				request.getRequestDispatcher("views/member/mypage1.jsp"); // 마이페이지 경로, 마이페이지 jsp에서 for문
 	
 		view.forward(request, response);	
 	}
