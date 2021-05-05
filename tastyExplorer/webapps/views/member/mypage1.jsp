@@ -101,7 +101,7 @@ font-size: 20px;
                         <li><a href="/tastyServer/views/member/memberUpdate.jsp">정보수정</a></li>
                         <li>찜하기</li>
                         <li>이벤트 내역</li>
-                        <li>회원 탈퇴</li>
+                        <li><a href="/tastyServer/views/member/memberDelete.jsp">회원탈퇴</a></li>
                     </ul>
 
                     <br>
