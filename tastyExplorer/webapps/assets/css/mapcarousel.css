@@ -17,13 +17,8 @@ body {
 }
 	
 .caro-container {
-    max-width: 1170px;
-    padding: 0px 0px 20px 100px;
-    margin-top: 2%;
-	margin-right: auto;
-	margin-left: auto;
+    margin-top: 30%;
 }
-
 
 .caro-container h2 {
     color: #d4e157;
