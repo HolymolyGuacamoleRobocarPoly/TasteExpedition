@@ -23,9 +23,8 @@ margin-top: 0px;
 }
 
 .table-form {
-	border : 4px solid black;
-	border-radius : 24px;
 	position : relative;
+	float: right;
  }
 
 .search-input {
@@ -66,13 +65,14 @@ margin-top: 0px;
 search-input:focus {
 	outline : none;
 }
-section {
+.boardlist {
 	width : 900px;
 	height : auto;
 	/* 좌우 가운데 정렬 */
 	margin-left : auto;
 	margin-right: auto;
 	margin-top: 50px;
+	margin-bottom: 120px;
 	padding : 30px;
 	background : #fff;
 	color : black;
@@ -114,18 +114,19 @@ body {
   position: relative;
   width: 90px;
   height: 30px;
-  border: 2px solid #d4e157;
+  border: 2px solid #839903;
   border-radius: 10px;
   background-color: #fff;
   cursor: pointer;
   overflow: hidden;
+  margin: 0 17px 4px;
 }
 .button::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #d4e157;
+  background-color: #839903;
   width: 100%;
   height: 100%;
   z-index: 1;

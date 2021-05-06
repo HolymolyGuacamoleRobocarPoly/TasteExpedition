@@ -15,8 +15,8 @@
 	
 	<%@ include file="../common/header.jsp" %>
 	
-	<section>
-		<h2 algin="center">게시글 작성</h2>
+	<section class="boardwrite">
+		<h2 align="center">게시글 작성</h2>
 		
 		<!-- 게시글 작성 틀 -->
 		<div class="tableArea">
@@ -51,7 +51,7 @@
 			 		</tr>
 				</table>
 				<br />
-				<div>
+				<div class="cInsultBtn">
 					<button class="button-base ripple" type="submit">작성 완료</button>
 					&nbsp;
 					<button class="button-base ripple" type="reset">작성 취소</button>
