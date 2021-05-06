@@ -8,6 +8,7 @@ body {
 #keyword {
 	border: 2px solid #66bb6a;
 }
+
 .map_wrap, .map_wrap * {
 	margin:0;
 	padding:0;
