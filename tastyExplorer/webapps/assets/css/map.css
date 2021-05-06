@@ -5,6 +5,9 @@ body {
 	width: 100%;
 }
 
+#keyword {
+	border: 2px solid #66bb6a;
+}
 .map_wrap, .map_wrap * {
 	margin:0;
 	padding:0;
@@ -60,7 +63,9 @@ body {
 }
 
 #menu_wrap .option button {
-	margin-left:5px;
+	margin-left: 0;
+	background: #66bb6a;
+	border: none;
 }
 
 #placesList li {

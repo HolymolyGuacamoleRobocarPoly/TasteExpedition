@@ -20,7 +20,7 @@
 
 <body>
     <header>
-        <a href="http://localhost:8086/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="http://localhost:8088/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="/tastyServer/views/map/map.jsp">지도</a></li>
             <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li> <!--  삭제 ??  -->
@@ -52,7 +52,7 @@
 				<% } else { %>
 				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>
                     <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/views/member/mypage.jsp">Profile</a></li>
-                    <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div>
+                    <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div></a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +63,6 @@
         <img src="" alt="" />
         </div>
     </header>
-    <section class="banner"></section>
     <script type="text/javascript">
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
