@@ -40,6 +40,7 @@ public class MJSelectList extends HttpServlet {
 		int fLevel = 7;
 		System.out.println("keyword 결과 확인 : " + keyword);
 
+		
 		// 맛집 List 불러오기 
 		ArrayList<MRestaurant> mjList = new ArrayList<>();
 		MRestaurantService service = new MRestaurantService();
@@ -63,11 +64,11 @@ public class MJSelectList extends HttpServlet {
 		System.out.println("mjList 결과 확인 : " + mjList);
 		System.out.println("mjAttList 결과 확인 : " + mjAttList);
 		
-		// 맛집 리스트 
-
-		request.setAttribute("mjList", mjList);
-		request.setAttribute("mjAttList", mjAttList);
-		// 해당 맛집 첨부파일 리스트 
+		
+		
+		request.setAttribute("mjList", mjList);			// 맛집 리스트 보내기
+		request.setAttribute("mjAttList", mjAttList);	// 맛집 첨부파일 보내기
+		request.setAttribute("keyword", keyword);		// 검색 키워드값 보내기 
 		
 		
 		request.getRequestDispatcher("views/map/map.jsp").forward(request, response);;

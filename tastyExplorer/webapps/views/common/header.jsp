@@ -16,10 +16,11 @@
     <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
+
 </head>
 <body>
     <header>
-        <a href="http://localhost:8086/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="/tastyServer/views/map/map.jsp">지도</a></li>
             <li><a href="#" onclick="goEvent()">이벤트</a></li>
@@ -43,7 +44,7 @@
                 <% if ( m== null) { %>
                 <li><img src="/tastyServer/assets/images/user.png" />
 
-     				 <a href="http://localhost:8088/tastyServer/views/member/join.jsp">Sign Up</a></li>
+     				 <a href="/tastyServer/views/member/join.jsp">Sign Up</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 
 				<% } else { %>

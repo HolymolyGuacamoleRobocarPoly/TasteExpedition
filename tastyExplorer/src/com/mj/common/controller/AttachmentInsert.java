@@ -247,6 +247,7 @@ public class AttachmentInsert extends HttpServlet {
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
 					Attachment add = new Attachment();
 					add.setAttMFileName(changeNames.get(i));
+					add.setAttMFlevel(fLevel);
 					
 					// 파일 원하는 위치로 이동
 					File file = new File(savePath + "/" + changeNames.get(i));
@@ -280,7 +281,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("views/mRestaurant/selectList.rv?mjNo"+mjNo);
+					response.sendRedirect("/tastyServer/selectOne.mj?mjNo="+mjNo);
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {

@@ -67,11 +67,11 @@ public class MJSelectOne extends HttpServlet {
 		
 		String page = "";
 		
-		System.out.println("mj 결과 확인 : " + mj);
-		System.out.println("rlist 결과 확인 : " + rlist);
-		System.out.println("mjAttList 결과 확인 : " + mjAttList);
-		System.out.println("reviewAttList 결과 확인 : " + reviewAttList);
-		System.out.println("menuList 결과 확인 : " + menuList);
+		System.out.println("mj 결과 확인 ::: " + mj);
+		System.out.println("rlist 결과 확인 ::: " + rlist);
+		System.out.println("mjAttList 결과 확인 ::: " + mjAttList);
+		System.out.println("reviewAttList 결과 확인 ::: " + reviewAttList);
+		System.out.println("menuList 결과 확인 ::: " + menuList);
 		
 		
 		if( mj != null ) {

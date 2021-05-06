@@ -5,7 +5,7 @@
 	MRestaurant mj = (MRestaurant)request.getAttribute("mj"); // 서블릿이 보낸 MRestaurant 받아오기
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("rlist"); // 서블릿이 보낸 ReviewList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
-	ArrayList<Attachment> reviewAttList = (ArrayList<Attachment>)request.getAttribute("attList"); // 서블릿이 보낸 리뷰AttList 받아오기 
+	ArrayList<Attachment> reviewAttList = (ArrayList<Attachment>)request.getAttribute("reviewAttList"); // 서블릿이 보낸 리뷰AttList 받아오기 
 	ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menuList");	// 메뉴 List 받아오기
 
 %>
@@ -106,6 +106,9 @@
     height: 35px;
     background: mintcream;
 }
+#rebtn:hover {
+	cursor: pointer;
+}
 
 .rImg {
 	margin-left : 50px;
@@ -162,9 +165,15 @@
 				<!-- 별점 평균 -->
 				<% int sum = 0; 
 				   double avr = 0;
-					for (int i = 0; i < rlist.size(); i++ ) {
+				   int star = 0;
+				   for(int i = 0; i < rlist.size(); i++ ) {
 						sum += rlist.get(i).getrScore(); 
-					} 	avr = sum / rlist.size(); int star = (int)avr;%>
+				   }
+				   if( sum != 0) {
+					   avr = sum / rlist.size(); 
+					   star = (int)avr;
+				   }
+				   %>
 				
 				<th >
 					<!-- 별점이 1 아래 일 때 -->
@@ -241,7 +250,7 @@
 		<table id="MJImg">
 			<tr>
 				<% for ( int i = 0; i < mjAttList.size(); i++) { %>
-                   	<th><img src="/tastyServer/assets/images/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
+                   	<th><img src="/tastyServer/resources/mjAtt/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
                    	alt="식당 사진입니다." width="300px" height="200px"></th>
                	<% } %>
 
@@ -286,24 +295,24 @@
 		<div class="info">
 			<table id="infoDetail">
 				<tr>
-					<td>주소 :</td>
-					<td><%= mj.getmRestaurantAdrress() %></td>
+					<td>주소</td>
+					<td> &nbsp;:&nbsp; <%= mj.getmRestaurantAdrress() %></td>
 				</tr>
 				<tr>
-					<td>전화번호 :</td>
-					<td><%= mj.getmRestaurantTel() %></td>
+					<td>전화번호</td>
+					<td> &nbsp;:&nbsp; <%= mj.getmRestaurantTel() %></td>
 				</tr>
 				<tr>
-					<td>영업시간 :</td>
-					<td><%= mj.getOpenTime()%></td>
+					<td>영업시간</td>
+					<td> &nbsp;:&nbsp; <%= mj.getOpenTime()%></td>
 				</tr>
 				<tr>
-					<td>Break Time : </td>
-					<td><%= mj.getBrTime() %></td>
+					<td>Break Time</td>
+					<td> &nbsp;:&nbsp; <%= mj.getBrTime() %></td>
 				</tr>
 				<tr>
-					<td>휴무일 :</td>
-					<td><%= mj.getHoliday() %></td>
+					<td>휴무일</td>
+					<td> &nbsp;:&nbsp; <%= mj.getHoliday() %></td>
 				</tr>
 			</table>
 		</div>
@@ -323,8 +332,11 @@
 					<td><%= menu.get(i).getMenuName() %></td>
 					<td><%= menu.get(i).getMenuPrice() %></td>
 				</tr>
-				<% } %>
+				<% System.out.println(menu.get(i).getMenuName()); %>
+				<% System.out.println(menu.get(i).getMenuPrice()); %>
 				
+				<% } %>
+				<!-- 
 				<tr>
 					<td>생연어 모듬</td>
 					<td>33,000원</td>
@@ -345,6 +357,7 @@
 					<td>명란 로제 파스타</td>
 					<td>18,000원</td>
 				</tr>
+				 -->
 			</table>
 		</div>
 
@@ -362,20 +375,15 @@
 		
 		<div class="rh">
 			<!-- review 연결 -->
-			input:hi
-			<button onclick="reviewGo()" id="rebtn">리뷰 쓰기</button>
+			
+			<button id="rebtn">리뷰 쓰기</button>
 		</div>
 	
 	
 		<div id="reviewImgPack">
 		
-		<%-- --%> 
-		<% for ( int i = 0; i < reviewAttList.size(); i ++) { %>
-			<div class="imgArea">
-			<img src="/tastyServer/resources/review/<%=reviewAttList.get(i).getAttMFileName()%>.jpg" alt="리뷰 첨부파일"
-				width="150px" height="90px" class="rImg">
-			</div>	
-		<% } %>
+		
+		
 		
 		<!--  
 			<div class="imgArea">
@@ -402,7 +410,12 @@
 	<!--  리뷰 페이지 연결해서 list 받아오기  -->
 	 
 	<% for(Review r : rlist) { %>
-	
+		<% for ( int i = 0; i < reviewAttList.size(); i ++) { %>
+			<div class="imgArea">
+			<img src="/tastyServer/resources/review/<%=reviewAttList.get(i).getAttMFileName()%>" alt="리뷰 첨부파일"
+				width="150px" height="90px" class="rImg">
+			</div>	
+		<% } %>
 		<div id="reviewHash">
 			<div class="reviewHashTag" id="hash1">#<%= r.getrHashTag() %></div>
 			
@@ -421,29 +434,38 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
+	
+	<% System.out.println( "::::::::" +mj.getmRestaurantNo()); %>
 
 	<script>
 	
-		function reviewGo() {
-<<<<<<< HEAD
+	
+		$('#rebtn').on('click', function(){
+			var mjNo = <%=mj.getmRestaurantNo()%>;
 			
-			location.href = '/tastyServer/views/review/reviewWrite.jsp' + &mjNo= + <%= mj.getmRestaurantNo() %>;
-=======
+			location.href = '/tastyServer/insert.review?mjNo=' + mjNo;
+		});
+	
+	
+	
+		function reviewGo() {
 
-			location.href = '/tastyServer/insert.review?mjNo=7' <%--= + "&mjNo=" +  mj.getmRestaurantNo() --%>;
+			var mjNo = <%=mj.getmRestaurantNo()%>;
+				
+			location.href = '/tastyServer/insert.review?mjNo=' + mjNo;
 
->>>>>>> refs/remotes/origin/Moon_Home
+			
 		}
 	
 		function mjUpdateGo() {
 					
-			location.href = '/tastyServer/updateview.mj?mjNo='  <%= mj.getmRestaurantNo() %>;
+			location.href = '/tastyServer/updateview.mj?mjNo=' + <%= mj.getmRestaurantNo() %>;
 			
 		}
 		
 		function mjDeleteGo() {
 			
-			location.href = '/tastyServer/delete.mj?mjNo='  <%= mj.getmRestaurantNo() %>;
+			location.href = '/tastyServer/delete.mj?mjNo=' + <%= mj.getmRestaurantNo() %>;
 			
 		}
 		

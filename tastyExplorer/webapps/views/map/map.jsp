@@ -1,16 +1,16 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
-<%
+<% 
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
-%>
+	String keyword = (String)request.getAttribute("keyword");
+%>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>맛좀볼래 지도</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
@@ -22,11 +22,6 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/searchbar.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/carousel.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-
 <style>
 .mjList {
 	width: 270px;
@@ -42,7 +37,6 @@
 .mjList:hover {
 	cursor: pointer;
 }
-	
 </style>
 </head>
 <body>
@@ -67,7 +61,16 @@
         <div id="pagination"></div>
     </div>
 </div>
-
+	<form action="/tastyServer/selectList.mj" method="post">
+		<div>
+			<h1> 오늘 무엇을 먹을지 고민하는 여러분을 위해
+			  <div class="input-group mb-3">																											<!--  기원 수정 ok -->
+			    <input type="text" class="form-control" placeholder="키워드로 맛집 검색하기" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+			    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
+			  </div>
+			</h1>
+		</div>
+	</form>		
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=145829b4f38274b6165d84e3615be1bf&libraries=services"></script>
 <script>
 // 마커를 담을 배열입니다
@@ -96,10 +99,7 @@ function searchPlaces() {
 
     var keyword = document.getElementById('keyword').value;
 
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('원하는 맛집을 검색해주세요');
-        return false;
-    }
+   
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB); 
@@ -288,14 +288,27 @@ function removeAllChildNods(el) {
 }
 </script>
 
-<h1> 오늘 무엇을 먹을지 고민하는 여러분을 위해
-  <div class="input-group mb-3">																											<!--  기원 수정 ok -->
-    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
-    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
-  </div>
-</h1>
 
-<div class="caro-container"> <h2>키워드 맛집</h2>
+			
+<% if (mjList != null) { %>
+
+				<!--  기원 수정중  삭제 No  -->   
+<h2 style="text-align:center;"> '<%= keyword %>' 검색 결과 </h2>     <br /><br /><br />       
+    
+		<% for( int i = 0; i < mjList.size(); i ++) { %>
+	        <div class="mjList" id="<%= mjList.get(i).getmRestaurantNo() %>">
+                	<div class="imgArea">
+                		<img src="/tastyServer/resources/mjAtt/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
+                		alt="식당사진" style="width:400px; height:300px;">
+                	</div>
+	                <div class="textArea">
+	                    <h2><%= mjList.get(i).getmRestaurantTitle() %></h2>
+	                    <p><%= mjList.get(i).getmRestaurantContent() %></p>
+	                </div>
+	        </div>
+	    <% } %>       
+<% } else { %>
+<div class="caro-container"> <h2>추천 맛집</h2>
     <div class="row">
         <div class="col-md-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
@@ -406,24 +419,7 @@ function removeAllChildNods(el) {
         </div>
     </div>
 </div>
-=======
-				<!--  기원 수정중  삭제 No  -->   
-<h2> 맛집 검색 결과 </h2>                
-                        	
-		<% for( int i = 0; i < mjList.size(); i ++) { %>
-	        <div class="mjList" id="<%= mjList.get(i).getmRestaurantNo() %>">
-                	<div class="imgArea">
-                		<img src="/tastyServer/resources/mjAtt/
-                			<%=mjAttList.get(i).getAttMFileName()%>.jpg" alt="식당사진">
-                			<% System.out.println( mjAttList.get(i).getAttMFileName() ); %>
-                	</div>
-	                <div class="textArea">
-	                    <h2><%= mjList.get(i).getmRestaurantTitle() %></h2>
-	                    <p><%= mjList.get(i).getmRestaurantContent() %></p>
-	                </div>
-	        </div>
-	    <% } %>       
-
+<% } %>  
 <script>
 	
 		$('.mjList').on('click', function(){
@@ -437,7 +433,6 @@ function removeAllChildNods(el) {
 	
 
 
->>>>>>> refs/remotes/origin/dev_giwon
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

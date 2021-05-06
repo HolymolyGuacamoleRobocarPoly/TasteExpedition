@@ -53,14 +53,15 @@ public class AttachmentDAO {
 			name = "t";
 		} else 
 		*/
-		if (fLevel == 4) {
-			name = "e";
+		 if (fLevel == 4) {
+
+			name = "E";
 		} else if (fLevel == 5) {
-			name = "r";
+			name = "R";
 		} else if (fLevel == 6) {
-			name = "cm";
+			name = "CM";
 		} else if (fLevel == 7) {
-			name = "mj";
+			name = "MJ";
 		}
 
 		
@@ -106,10 +107,11 @@ public class AttachmentDAO {
 
 		try {
 			ps = con.prepareStatement(sql);
-			
+
 			ps.setString(1, "MJ"+mjNo);
 
-			System.out.println("'MJ'+mjNo : " + "MJ"+mjNo);
+			System.out.println("'mj'+mjNo : " + "mj"+mjNo);
+
 			
 			rs = ps.executeQuery();
 			if ( rs.next()) {
@@ -241,7 +243,7 @@ public class AttachmentDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, "e"+bNo);
+			ps.setString(1, "E"+bNo);
 			
 			rs = ps.executeQuery();
 			
@@ -303,7 +305,7 @@ public class AttachmentDAO {
 		
 			ps.setString(1, a.getAttMFileName());
 			ps.setInt(2, a.getAttMFlevel());
-			ps.setString(3, "mp" + mNo);
+			ps.setString(3, "MP" + mNo);
 
 			
 			result = ps.executeUpdate();

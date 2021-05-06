@@ -38,8 +38,17 @@
       <h2>맛집탐험단</h2>
        <p>맛집 맛집 탐험단 맛집맛집 맛집 맛집집 맛있는거 많이 먹으면서, 살고싶다 아무리 먹어도
        살 안찌고 배불러도 원할때 다시 배고파지면 좋겠다. 먹는건 제일 좋아 친구들 모여라
-       언제나 즐거워 </p>
-       <a href="#">지도에서 맛집 찾기</a>
+       언제나 즐거워 </p> <br />
+       <br />
+       <br />
+       
+		<form action="/tastyServer/selectList.mj" method="post">
+		  <div class="input-group mb-3">																											<!--  기원 수정 ok -->
+		    <input type="text" class="form-control" placeholder="원하는 맛집 정보를 입력하세요" 
+		    aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+		    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
+		  </div>
+		</form>
      </div>
      
      <div class="imgBox">
