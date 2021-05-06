@@ -65,7 +65,8 @@
 		background-color: white;
 		border: 1px solid #d4e157;
 		border-radius: 0.2em;
-		margin: 0.1em; 
+		margin: 0.1em;
+		padding: 0px 2px 5px;
 	}
 	
 	input[type="checkbox"]:checked + label::before {
@@ -210,7 +211,7 @@
 					<p class="form">
 						<input type="text" name="userId" id="userId" required="required"
 						placeholder="아이디를 입력해주세요."></p>
-					<div id="idCheck">중복 확인</div>
+					<p id="idCheck">중복 확인</p>
 					
 				</li>
 				
@@ -233,7 +234,8 @@
 				<li>
 					<p class="tit">이름</p>
 					<p class="form">
-					<input type="text" maxlength="5" id="userName" name="userName" required="required">
+					<input type="text" maxlength="5" id="userName" name="userName" required="required"
+					placeholder="이름을 입력해주세요.">
 					</p>
 				</li>
 				

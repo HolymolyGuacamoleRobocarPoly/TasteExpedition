@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +59,13 @@
 		margin: 0 0 28px 0;
 	}
 	
+	.inform > li label {
+	left: 12px;
+    top: 17px;
+    font-size: 16px;
+    color: #585858;
+	}
+	
 	ol, ul {
 	list-style: none;
 	padding: 0;
@@ -73,7 +78,9 @@
 	.link-box {
 	margin: 0 0 30px 0;
     font-size: 100%;
-    text-align: center;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-left: 225px;
 	}
 	
 	a {
@@ -90,7 +97,8 @@
 	
 	.option {
 	text-align: left;
-	padding-left: 25%;
+	padding-left: 83px;
+	padding-bottom: 40px;
 	}
 	
 	.option li {
@@ -99,11 +107,9 @@
 	}
 	
 	.option li label {
-	line-height: 30px;
     height: 28px;
     display: inline-block;
     font-size: 16px;
-    color: # 585858;
 	}
 	
 	input[type="checkbox"]{
@@ -119,15 +125,114 @@
 		background-color: white;
 		border: 1px solid #d4e157;
 		border-radius: 0.2em;
-		margin: 0.1em; 
+		margin: 0.1em;
+		padding: 0px 2px 5px;
 	}
 	
 	input[type="checkbox"]:checked + label::before {
 		content: "\2174";
 		background-color: #d4e157;
-		text-indent: 0.1em;
 	}
 	
+	.inform > li input {
+	display: block;
+    padding: 0 10px;
+    width: 80%;
+    height: 50px;
+    font-family: 'Noto-M';
+    font-size: 15px;
+    border: none;
+    border-bottom: solid 1px #353535;
+	}
+	
+	.login1 {
+		background:#d4e157;
+		width: 380px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 auto 10px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    box-shadow: 0 0.5px 0.5px 0 rgb(0 0 0 / 30%);
+    display: block;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+		cursor:pointer;
+	}
+	
+	.inform > li {
+		padding-left: 110px;
+		padding-top: 30px;
+	}
+	
+	.p {
+	display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	}
+	
+	.btn-login.facebook {
+	color: #ffffff;
+    background-color: #4150bf;
+	}
+	
+	.btn-login.kakao {
+	color: #66514c;
+    background-color: #ffe809;
+	}
+	
+	a:link {
+	text-decoration: none;
+	}
+	
+	.btn-login {
+	width: 210px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 auto 10px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    box-shadow: 0 0.5px 0.5px 0 rgb(0 0 0 / 30%);
+    
+    display: block;
+    position: relative;
+    font-size: 0.750rem;
+	}
+	
+	.btn-login.facebook .text1 {
+		border-left: 1px solid rgba(255,255,255,0.3);
+	}
+	
+	.btn-login .text1 {
+	margin-left: 42px;
+    padding-left: 9.5px;
+    font-size: 13px;
+	}
+	
+	span {
+		border:0 none;
+	}
+	
+	.btn-login.facebook:before {
+	background-image: url(/tastyServer/assets/images/indeximg/facebook.PNG);
+	width: 20px;
+    height: 29px;
+    left: 13px;
+	}
+	
+	.btn-login:before {
+	content: '';
+    display: block;
+    position: absolute;
+    bottom: 3px;
+	}
+	
+
 
 
 		
@@ -153,6 +258,7 @@
 									<li>
 										 	<label for="userId">아이디</label>
 											<input type="text" name="userId" id="userId" value="" class="placeholder" autocomplete='new-password' placeholder="아이디를 입력해주세요.">
+											
 									</li>
 									
 									<li>
@@ -171,6 +277,8 @@
 										<label for="auto">로그인 상태 유지</label>
 									</li>
 								</ul>
+						
+								<div class="login1" id="loginBtn" class="btn-1-black" onclick='login()'>SIGN IN</div>
 								
 								<ul class="link-box">
 									<li>
@@ -180,11 +288,20 @@
 										<a href="#">비밀번호찾기</a>
 									</li>
 								</ul>
-						
-								<div class="login1" id="loginBtn" class="btn-1-black" onclick='login()'>로그인</div>
 							</fieldset>
 						</form>
 					
+						</div>
+						
+						<div class="contents-box">
+						<p>
+							<a class="btn-login facebook" href="#">
+								<span class="text1">페이스북 로그인</span>
+							</a>
+							<a class="btn-login kakao" href="#">
+								<span class="text1">카카오톡 로그인</span>
+							</a>
+						</p>
 						</div>
 					
 	
