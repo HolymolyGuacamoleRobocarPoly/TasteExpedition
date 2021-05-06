@@ -117,16 +117,7 @@ int listCount = pi.getListCount();
 		<!-- 페이지 부분끝 -->
 		
 		
-		<!-- 검색창 -->
-		<div class="main-div">
-			<form action="" class="search-form">
-				<input type="text" value="검색" class="search-input"
-					placeholder="search" />
-				<div class="search-history"></div>
-			</form>
-
-		</div>
-		<!-- 검색창끝-->
+		
 		
 		
 		<!-- 검색창 테스트 -->

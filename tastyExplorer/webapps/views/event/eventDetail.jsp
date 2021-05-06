@@ -16,18 +16,6 @@
 <style>
 
 
-.container{
-	width: 600px;
-	height: auto;
-	border: 1px solid  #c8c8c8;
-	border-radius: 3px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 100px;
-	display: inline;
-	
-}
-
 .contentImgArea{
 	width: 600px;
 	height: 1000px;
@@ -73,9 +61,6 @@ button {
   transform: translateY(-7px);
 }
 
-p{
-	font-size: 30px;
-}
 
 
 </style>
