@@ -34,6 +34,7 @@
  
         </ul>
         <div class="action">
+        	<% if ( m== null) { %>
             <div class="profile" onclick="menuToggle();">
                 <img src="/tastyServer/assets/images/no-image.jpg">
             </div>
@@ -46,12 +47,12 @@
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 
 				<% } else { %>
-				 	<label><%= m.getUserName() %></label><br><span>초보 탐험가</span></h3>
+				 	<label><%= m.getUserName() %></label>
 
 				 	<% if ( m.getmProfileAtt() == null) { %>
                     <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/user.png" />Profile</a></li>
                     <% } else { %>
-                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" /></a></li>
+                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" />Profile</a></li>
                     <% } %>
                     <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div>
                     </li>

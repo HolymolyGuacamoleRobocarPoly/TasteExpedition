@@ -390,6 +390,11 @@ a{
                <td><input type="text" id="address2" name="address2"></td>
                <td></td>
             </tr>
+            <tr>
+               <td>프로필 사진 수정</td>
+               <td><input type="file" name="profile" accept="image" /></td>
+               <td></td>
+            </tr>
          </table>
          
       <br>
