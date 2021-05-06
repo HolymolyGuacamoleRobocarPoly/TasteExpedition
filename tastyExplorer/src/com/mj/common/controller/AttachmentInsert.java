@@ -27,8 +27,6 @@ import com.mj.mRestaurant.model.service.MRestaurantService;
 import com.mj.mRestaurant.model.service.MenuService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
 import com.mj.mRestaurant.model.vo.Menu;
-import com.mj.notice.model.service.NoticeService;
-import com.mj.notice.model.vo.Notice;
 import com.mj.review.model.service.ReviewService;
 import com.mj.review.model.vo.Review;
 import com.oreilly.servlet.MultipartRequest;
@@ -81,87 +79,7 @@ public class AttachmentInsert extends HttpServlet {
 			int fLevel = Integer.parseInt(mr.getParameter("attMFlevel"));
 
 
-			if (fLevel == 3) { // 공지사항
-				
-				Notice n = new Notice();
-				Attachment a = new Attachment();
-				ArrayList<String> changeNames = new ArrayList<>();
-				Enumeration<String> tagNames = mr.getFileNames();
-
-				n.setnTitle(mr.getParameter("nTitle"));
-				n.setnContent(mr.getParameter("nContent"));
-				newPath = request.getServletContext()
-				                 .getRealPath("/resources/notice");
-				
-				System.out.println("확인 : " + n.getnTitle() + ", " + n.getnContent());
-				
-				while (tagNames.hasMoreElements()) {
-					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
-					
-					String tagName = tagNames.nextElement();
-					
-					changeNames.add(mr.getFilesystemName(tagName));
-					
-				}
-				
-				ArrayList<Attachment> list = new ArrayList<Attachment>();
-				
-				
-				for (int i = changeNames.size() - 1; i >= 0; i--) {
-					Attachment add = new Attachment();
-					add.setAttMFileName(changeNames.get(i));
-					
-					// 파일 원하는 위치로 이동
-					File file = new File(savePath + "/" + changeNames.get(i));
-					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
-					
-					list.add(add);
-					// System.out.println("for 문 : " + list);
-				}
-				
-				a.setAttList(list);
-				
-				NoticeService nService = new NoticeService();
-				
-				AttachmentService aService = new AttachmentService();
-				
-				int result1 = nService.insertNotice(n);
-				int result2 = 0;
-				
-				if (result1 > 0) {
-				
-					result2 = aService.insertAttachment(a, fLevel);
-					
-				} else {
-					
-					
-					request.setAttribute("error-msg",  "공지사항 글 등록 실패!");
-					
-					request.getRequestDispatcher("views/common/errorPage.jsp")
-						   .forward(request, response);
-					
-				}
-				
-				if (result2 > 0) {
-					response.sendRedirect("index.jsp");
-				} else {
-					// 게시글 등록 실패시 저장되었던 파일 삭제
-					for (int i = 0; i < changeNames.size(); i++) {
-						
-						new File(newPath + "/" + changeNames.get(i)).delete();
-						
-					}
-					
-					request.setAttribute("error-msg",  "공지사항 등록 실패!");
-					
-					request.getRequestDispatcher("views/common/errorPage.jsp")
-						   .forward(request, response);
-				}
-				
-				
-				
-				
-			} else if (fLevel == 4) { // 이벤트
+             if (fLevel == 4) { // 이벤트
 			
 				// Date sql? java.util? 해결 안됨 => 해결 완료 => 해결 안됨
 				EventAdmin e = new EventAdmin();
