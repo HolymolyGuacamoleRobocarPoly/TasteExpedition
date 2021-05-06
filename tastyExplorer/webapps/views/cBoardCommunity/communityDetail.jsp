@@ -24,16 +24,15 @@
 	margin-right:auto;
 	margin-top: 50px;
 	padding: 30px;
-	border: 2px solid #111;
 }
 
 .comuInfo {
-	border: 0.2px solid #111;
+	border-bottom: 0.2px solid #111;
 }
 #tableArea {
 	background : white;
 	color : black;
-	border: 2px solid #111;
+	height : 400px;
 }
 
 #replyArea {
@@ -44,6 +43,7 @@
 	margin-right:auto;
 	padding-bottom : 5px;
 	border: 2px solid #111;
+	margin-top : 10px;
 }
 #replyArea textArea {
 	border-radius: 10px;
@@ -54,7 +54,47 @@ table[class*=replyList] td{
 	color: black;
 }
 
-.replyList1 td{ background : yellow; }
+.replyList1 td{ background : white; }
+
+
+.button {
+  position: relative;
+  width: 90px;
+  height: 30px;
+  border: 2px solid #839903;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #839903;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: scale(0, 1);
+  transform-origin: 50% 0%;
+  /* transform: translateX(100%); */
+  transition: transform 0.35s;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+  transition: color 0.35s;
+  color : black;
+}
+.button:hover::after {
+  transform: scale(1, 1);
+}
+.button:hover .button-text {
+  color: white;
+}
+
 
 </style>
 
@@ -110,12 +150,12 @@ table[class*=replyList] td{
 		
 		<!-- 목록으로 돌아가는 버튼 -->
 		<div align="center">
-			<button onclick="goSelectList();">목록으로 돌아가기</button>
+			<button class="button"  onclick="goSelectList();"><p class="button-text">돌아가기</p></button>
 			<%-- 닉네임 왜 못가져오는데; --%>
-			<button onclick="goDelete();">삭제하기 </button>
+			<button class="button"   onclick="goDelete();"><p class="button-text">삭제하기</p> </button>
 			
 			<% if (c.getcBoardWriter().equals(m.getNickName())) { %>
-			<button onclick="goUpdatePage();">수정하기</button>
+			<button class="button"  onclick="goUpdatePage();"><p class="button-text">수정하기</p></button>
 			<% } %>
 			
 			<script>
@@ -143,14 +183,15 @@ table[class*=replyList] td{
 					<input type="hidden" name="btype" value="2" />	 
 					<table align="center">
 						<tr>
-							<td>댓글 작성</td>
+							<td>댓글</td>
+							<td>작성</td>
 							<td>
 								<textarea name="replyContent" id="replyContent" 
 								          cols="80" rows="3" style=""></textarea>
 							</td>
 							<td>
-								<button type="submit" id="addReply">
-									댓글 등록
+								<button class="button"   type="submit" id="addReply">
+									<p class="button-text">댓글 등록</p>
 								</button>
 							</td>
 							
@@ -176,15 +217,15 @@ table[class*=replyList] td{
  					<%if( m.getmNo() == bco.getmNo() ) { %>
 						<input type="hidden" name="cBoardNo" value="<%=bco.getcBoardNo()%>"/>
 							  
-						<button type="button" class="updateBtn" 
-							onclick="updateReply(this);">수정하기</button>
+						<button class="button"   type="button" class="updateBtn" 
+							onclick="updateReply(this);"><p class="button-text">수정하기</p></button>
 							
-						<button type="button" class="updateConfirm"
+						<button class="button"  type="button" class="updateConfirm"
 							onclick="updateConfirm(this);"
-							style="display:none;" >수정완료</button> &nbsp;&nbsp;
+							style="display:none;" ><p class="button-text">수정완료</p></button> &nbsp;&nbsp;
 							
-						<button type="button" class="deleteBtn"
-							onclick="deleteReply(this);">삭제하기</button>
+						<button class="button"  type="button" class="deleteBtn"
+							onclick="deleteReply(this);"><p class="button-text">삭제하기</p></button>
 							
 					<% } %>
 					</td>
