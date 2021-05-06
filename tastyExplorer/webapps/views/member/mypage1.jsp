@@ -131,13 +131,13 @@ font-size: 20px;
 							</tr>
 						</thead>
 						<tbody>
-						<%--  <% for(EventAdmin e : elist) { %>
+						 <% for(EventAdmin e : elist) { %>
 							<tr>
 								<td><%= e.geteNo() %></td>
 								<td><%= e.geteTitle() %></td>
 								<td><%= e.geteDuration() %></td>
 							</tr>
-					     <% } %>	 --%>
+					     <% } %>	 
 						</tbody>
 					</table>
 				</div>

@@ -27,8 +27,9 @@
 
             <% if( m != null) { %>
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
+            <li><a href="/tastyServer/select.eh?mNo=<%= m.getmNo()%>" onclick="goMypage();">마이페이지</a></li>
+            
             <% } %>
-            <li><a href="/tastyServer/views/member/mypage1.jsp">마이페이지</a></li>
             
 
  
@@ -46,12 +47,12 @@
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 
 				<% } else { %>
-				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>
+				 	<label><%= m.getUserName() %></label><br><span>초보 탐험가</span></h3>
 
 				 	<% if ( m.getmProfileAtt() == null) { %>
-                    <li><a href="/tastyServer/views/member/mypage.jsp"><img src="/tastyServer/resources/profile/user.png" />Profile</a></li>
+                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/user.png" />Profile</a></li>
                     <% } else { %>
-                    <li><a href="/tastyServer/views/member/mypage.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" /></a></li>
+                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" /></a></li>
                     <% } %>
                     <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div>
                     </li>
@@ -94,6 +95,12 @@
         function goCommunity() {
         	location.href="/tastyServer/selectList.co"
         }
+        <% if( m != null) { %>
+        function goMypage() {
+        	location.href="/tastyServer/select.eh?mNo=<%= m.getmNo()%>";
+        }        
+        <% } %>
+       
 
     </script>
 </body>

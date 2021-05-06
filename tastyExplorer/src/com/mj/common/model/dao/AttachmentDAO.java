@@ -53,16 +53,14 @@ public class AttachmentDAO {
 			name = "t";
 		} else 
 		*/
-		if (fLevel == 3) {
-			name = "N";
-		} else if (fLevel == 4) {
-			name = "E";
+		if (fLevel == 4) {
+			name = "e";
 		} else if (fLevel == 5) {
-			name = "R";
+			name = "r";
 		} else if (fLevel == 6) {
-			name = "CM";
+			name = "cm";
 		} else if (fLevel == 7) {
-			name = "MJ";
+			name = "mj";
 		}
 
 		

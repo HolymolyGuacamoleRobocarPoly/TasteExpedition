@@ -107,6 +107,13 @@ button:hover {
 .card{
 	padding: 10px;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 340px;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
 </style>
 </head>
 <body>

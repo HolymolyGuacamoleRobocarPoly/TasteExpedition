@@ -3,7 +3,7 @@
 <%@ page import="com.mj.event.model.vo.*, java.util.*, com.mj.member.model.vo.*" %>	
 <%
 	EventAdmin ev = (EventAdmin)request.getAttribute("event"); 
-	
+	ArrayList<Attachment> eventAttList = (ArrayList<Attachment>)request.getAttribute("eventAttList");
 %>
 
 
@@ -81,15 +81,16 @@ p{
 </style>
 </head>
 <body>
-	<%@ include file="../common/header.jsp" %>
+	<%@ include file="/views/common/header.jsp" %>
 	
 	
    	<p style="text-align: center; margin-top: 70px; margin-bottom: 20px;" >이벤트</p>
     
-   	
+   	<% if (eventAttList != null && eventAttList.size()!= 0 ) { %>
 	   	<div class="contentImgArea">      
-	       	<img class="uploadreviewImg" src="/tastyServer/assets/images/event1.PNG"/>
+	       	<img class="uploadreviewImg" src="/tastyServer/resources/event/<%= eventAttList.get(0).getAttMFileName()%>"/>
 	    </div> 
+	<% } %>
 	<form action="/tastyServer/insert.ev" method="post">
 
 		<input type="hidden" name="eNo" value=<%= ev.geteNo() %> />		
@@ -108,7 +109,7 @@ p{
      
      
      
-    <%@ include file="../common/footer.jsp" %>
+    <%@ include file="/views/common/footer.jsp" %>
      
      
 

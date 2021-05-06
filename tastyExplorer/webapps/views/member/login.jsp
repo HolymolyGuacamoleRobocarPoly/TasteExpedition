@@ -137,7 +137,7 @@
 </style>
 <body>
 
-<%@ include file="../common/header.jsp" %>
+<%@ include file="/views/common/header.jsp" %>
 
 <div class="contents">
 	<h2>Sign In</h2>
@@ -201,7 +201,7 @@
 	 
 	</script>
 
-<%@ include file ="../common/footer.jsp" %>
+<%@ include file ="/views/common/footer.jsp" %>
 
 </body>
 </html>
