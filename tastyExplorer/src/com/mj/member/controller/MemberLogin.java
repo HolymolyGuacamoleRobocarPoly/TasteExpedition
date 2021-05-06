@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
 import com.mj.member.model.service.MemberService;
 import com.mj.member.model.vo.Member;
 
@@ -34,10 +36,12 @@ public class MemberLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
+
 		
 		System.out.println("서블릿 : " + userId + "/" + userPwd);
 		
 		Member loginMember = new Member(userId, userPwd);
+
 		
 		// 3. 로그인 서비스 수행 (업무 로직: biz logic)
 		MemberService service = new MemberService();
@@ -52,15 +56,15 @@ public class MemberLogin extends HttpServlet {
 			session.setAttribute("member", loginMember);
 			
 			response.sendRedirect("index.jsp");
+			
 		} else {
 			// 로그인 실패!
 			
 			request.setAttribute("error-msg", "로그인 실패!");
 			
-			RequestDispatcher view
-			   = request.getRequestDispatcher("views/common/errorPage.jsp");
 			
-			view.forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp")
+				   .forward(request, response);
 		}
 	}
 

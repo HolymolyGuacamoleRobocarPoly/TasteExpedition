@@ -24,8 +24,8 @@ import com.mj.common.model.vo.Attachment;
 import com.mj.event.model.service.EventAdminService;
 import com.mj.event.model.vo.EventAdmin;
 import com.mj.mRestaurant.model.service.MRestaurantService;
-import com.mj.mRestaurant.model.service.MenuService;
 import com.mj.mRestaurant.model.vo.MRestaurant;
+import com.mj.member.model.vo.Member;
 import com.mj.mRestaurant.model.vo.Menu;
 import com.mj.review.model.service.ReviewService;
 import com.mj.review.model.vo.Review;
@@ -186,7 +186,10 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("selectList.ev");
+					// response.sendRedirect("selectList.ev");
+					request.setAttribute("attMFlevel", 4);
+					request.getRequestDispatcher("selectList.ev")
+					       .forward(request, response);
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -257,7 +260,7 @@ public class AttachmentInsert extends HttpServlet {
 				ReviewService rService = new ReviewService();
 				
 				AttachmentService aService = new AttachmentService();
-				
+				System.out.println();
 				int result1 = rService.insertReview(r);
 				int result2 = 0;
 				
@@ -276,7 +279,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("views/mRestaurant/mRestaurantDetail.jsp");
+					response.sendRedirect("views/mRestaurant/selectList.rv?mjNo"+mjNo);
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
@@ -309,6 +312,11 @@ public class AttachmentInsert extends HttpServlet {
 				System.out.println("확인 : " + b.getcBoardTitle() 
 											 + ", " + b.getcBoardContent() + ", " + b.getmNickname());
 
+				b.setcBoardTitle(cBoardTitle);
+				b.setcBoardContent(cBoardContent);
+				b.setmNickname(mNickname);
+				
+				
 				while (tagNames.hasMoreElements()) {
 					// 파일 name 속성을 하나씩 추출하여 해당 파일의 이름을 가져온다.
 					
@@ -493,10 +501,11 @@ public class AttachmentInsert extends HttpServlet {
 						   .forward(request, response);
 				}
 
-			}
-		}
+			} // else if (fLevel == 7)
+				
+		} // first if
 		
-	}
+	} // doGet end
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -320,8 +320,8 @@
 				
 				<% for( int i = 0; i < menu.size(); i ++) { %>
 				<tr>
-					<td><%= menu.getMenuName() %></td>
-					<td><%= menu.getMenuPrice() %></td>
+					<td><%= menu.get(i).getMenuName() %></td>
+					<td><%= menu.get(i).getMenuPrice() %></td>
 				</tr>
 				<% } %>
 				
@@ -362,6 +362,7 @@
 		
 		<div class="rh">
 			<!-- review 연결 -->
+			input:hi
 			<button onclick="reviewGo()" id="rebtn">리뷰 쓰기</button>
 		</div>
 	
@@ -424,8 +425,14 @@
 	<script>
 	
 		function reviewGo() {
+<<<<<<< HEAD
 			
 			location.href = '/tastyServer/views/review/reviewWrite.jsp' + &mjNo= + <%= mj.getmRestaurantNo() %>;
+=======
+
+			location.href = '/tastyServer/insert.review?mjNo=7' <%--= + "&mjNo=" +  mj.getmRestaurantNo() --%>;
+
+>>>>>>> refs/remotes/origin/Moon_Home
 		}
 	
 		function mjUpdateGo() {

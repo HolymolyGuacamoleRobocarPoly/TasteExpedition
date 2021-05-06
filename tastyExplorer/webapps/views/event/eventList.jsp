@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ page import="com.mj.event.model.vo.*, java.util.*"  %>	
+<%@ page import="com.mj.event.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
 <%
-	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기 
+	ArrayList<EventAdmin> elist = (ArrayList<EventAdmin>)request.getAttribute("elist"); // 서블릿이 보낸 ReviewList 받아오기
+	ArrayList<Attachment> alist = (ArrayList<Attachment>)request.getAttribute("alist");
 %>
 <head>
 <meta charset="utf-8">
@@ -111,30 +112,30 @@ button:hover {
 <body>
   
    <%@ include file="../common/header.jsp" %>
-    
+    <input type="hidden" name="attMFlevel" value=4 />
     <p style="text-align:center; margin-bottom: -130px; margin-top: 60px; font-size: 40px; font-weight: normal;">Event<p>
     
-       
+       	
         
         <div class="row" id="row1">
         <!-- 시퀀스 이벤트 번호 가져오기 -->
-          
-          
-          <% for(EventAdmin e : elist) { %>
+        <% if (elist.size() == alist.size()) { %>  
+        
+          <% for(int i = 0; i < elist.size(); i++) { %>
          <div class="col-4" style="padding: 10px;">
           <div class="card">
           <!-- 관리자가 등록한 사진 가져오기 -->
-            <p><%= e.geteNo() %> <%= e.geteTitle() %></p>
-            <img src="/tastyServer/assets/images/no-image.jpg" alt="" class="card-img-top" />
+            <p><%= elist.get(i).geteNo() %> <%= elist.get(i).geteTitle() %></p>
+            <img src="/tastyServer/resources/event/<%= alist.get(i).getAttMFileName() %> "alt="" class="card-img-top" />
             <div class="card-body">
-            	<h5 class="card-title">기간 : <%= e.geteDuration() %></h5>             	
-            	<p class="card-text"><%= e.geteContent() %></p>
-            	<button class="button2" id="<%= e.geteNo() %>">자세히 보기</button>
+            	<h5 class="card-title">기간 : <%= elist.get(i).geteDuration() %></h5>             	
+            	<p class="card-text"><%= elist.get(i).geteContent() %></p>
+            	<button class="button2" id="<%= elist.get(i).geteNo() %>">자세히 보기</button>
             </div>
           </div>
           </div>
           <% } %>
-        
+        <% } %>
         
         </div>
 	

@@ -115,8 +115,8 @@ public class MemberDAO {
 			ps.setString(2, m.getEmail() );
 			ps.setString(3, m.getPhone() );
 			ps.setString(4, m.getAddress() );
-			ps.setString(5, m.getUserId() );
-			
+			ps.setString(5, m.getmProfileAtt() );
+			ps.setString(6, m.getUserId() );
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {

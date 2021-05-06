@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="com.mj.member.model.vo.Member" %>
+    <%@ page import="com.mj.member.model.vo.Member, com.mj.common.model.vo.*" %>
 <%
 	Member m = (Member)session.getAttribute("member");
 %>
@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
 </head>
-
 <body>
     <header>
         <a href="http://localhost:8086/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
@@ -48,7 +47,12 @@
 
 				<% } else { %>
 				 	<lavel><%= m.getUserName() %></lavel><br><span>초보 탐험가</span></h3>
-                    <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/views/member/mypage.jsp">Profile</a></li>
+
+				 	<% if ( m.getmProfileAtt() == null) { %>
+                    <li><a href="/tastyServer/views/member/mypage.jsp"><img src="/tastyServer/resources/profile/user.png" />Profile</a></li>
+                    <% } else { %>
+                    <li><a href="/tastyServer/views/member/mypage.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" /></a></li>
+                    <% } %>
                     <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div>
                     </li>
                 </ul>
@@ -84,11 +88,7 @@
         }
         
         function goEvent(){
-    		location.href="/tastyServer/selectList.ev";
-    	}
-        
-        function goMrestaurant(){
-    		location.href="/tastyServer/selectList.rv";
+    		location.href="/tastyServer/selectList.ev?attMFlevel=4";
     	}
         
         function goCommunity() {

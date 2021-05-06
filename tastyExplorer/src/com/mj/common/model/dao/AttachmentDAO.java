@@ -5,14 +5,16 @@ import static com.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 import com.mj.common.model.vo.Attachment;
+import com.mj.event.model.vo.EventAdmin;
+import com.mj.member.model.vo.Member;
 
 public class AttachmentDAO {
 
@@ -229,4 +231,94 @@ public class AttachmentDAO {
 		return result;
 	}
 
+
+	public Attachment eventSelectList(Connection con, int bNo, int fLevel) {
+		Attachment a = new Attachment();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, "e"+bNo);
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next()) {
+				
+				a.setAttMNo(rs.getInt("ATT_M_NO"));          
+				a.setAttMFileName(rs.getString("ATT_M_FILENAME"));
+				a.setAttBNo(rs.getString("ATT_M_BNO"));
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return a;
+	}
+
+
+
+	public int insertProfile(Connection con, Member m, Attachment a, int fLevel) {
+		
+		int result = 0;
+		int mNo = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String meSql = prop.getProperty("selectProfileMember");
+		String attSql = prop.getProperty("insertAttachment");
+		
+		try {
+			ps = con.prepareStatement(meSql);
+			
+			ps.setString(1, m.getUserId());
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next()) {
+				
+				m.setmNo(rs.getInt("M_NO"));
+				
+			}
+			
+			mNo = m.getmNo();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		try {
+			ps = con.prepareStatement(attSql);
+		
+			ps.setString(1, a.getAttMFileName());
+			ps.setInt(2, a.getAttMFlevel());
+			ps.setString(3, "mp" + mNo);
+
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	
+		}
+	
+	
 }

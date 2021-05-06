@@ -5,9 +5,11 @@ import static com.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.mj.common.model.dao.AttachmentDAO;
 import com.mj.common.model.vo.Attachment;
+import com.mj.member.model.vo.Member;
 import com.mj.review.model.vo.Review;
 
 public class AttachmentService {
@@ -70,23 +72,32 @@ public class AttachmentService {
 	public int insertAttachment(Attachment a, int fLevel) {
 		con = getConnection();
 		ArrayList<Attachment> list = a.getAttList();
-
-		int result = 0;
 		
-		int bNo = dao.getCurrentNo(con, fLevel);
+		int bNo = 0;
+		int result = 0;
 		String name = "";
-
-		if (fLevel == 3) {
-			name = "n";
-		} else if (fLevel == 4) {
-			name = "e";
-		} else if (fLevel == 5) {
-			name = "r";
-		} else if (fLevel == 6) {
-			name = "cm";
-		} else if (fLevel == 7) {
-			name = "mj";
+		
+		if (fLevel < 8) {
+			
+			bNo = dao.getCurrentNo(con, fLevel);
+			
+			if (fLevel == 4) {
+				name = "e";  // 이벤트 첨부파일
+			} else if (fLevel == 5) {
+				name = "r";  // 리뷰 사진
+			} else if (fLevel == 6) {
+				name = "cm"; // 커뮤니티 첨부파일
+			} else if (fLevel == 7) {
+				name = "mj"; // 맛집 소개 사진
+			} else if (fLevel == 8) {
+				name = "mp"; // 회원 프로필
+			}
+			
+		} else {
+			
 		}
+		
+		
 		
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i).setAttBNo(name + String.valueOf(bNo));
@@ -118,5 +129,28 @@ public class AttachmentService {
 		close(con);
 		return result;
 	}
+
+
+	public Attachment eventSelectList(int bNo, int fLevel) {
+		con = getConnection();
+		
+		Attachment a = dao.eventSelectList(con, bNo, fLevel);
+		
+		close(con);
+		
+		return a;
+	}
+
+
+	public int insertProfile(Attachment a, Member m, int fLevel) {
+		con = getConnection();
+		int result = 0;
+		result = dao.insertProfile(con, m, a, fLevel);
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }
