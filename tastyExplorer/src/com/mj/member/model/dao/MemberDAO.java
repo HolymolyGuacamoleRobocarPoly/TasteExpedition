@@ -70,6 +70,9 @@ public class MemberDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
+			System.out.println("loginMember.getUserId() : " + loginMember.getUserId());
+			System.out.println("loginMember.getUserPwd() : " + loginMember.getUserPwd());
+			
 			ps.setString(1, loginMember.getUserId());
 			ps.setString(2, loginMember.getUserPwd());
 			

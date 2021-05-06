@@ -162,7 +162,7 @@ a{
    
    <section class="mainpage">
    
-   <form action="/tastyServer/update.me" method="post" id="updateForm">
+   <form action="/tastyServer/update.me" method="post" id="updateForm" enctype="multipart/form-data">
                 
          <table align="center">
             <tr>
@@ -386,6 +386,11 @@ a{
             <tr>
                <td>상세주소</td>
                <td><input type="text" id="address2" name="address2"></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td>프로필 사진 수정</td>
+               <td><input type="file" name="profile" accept="image" /></td>
                <td></td>
             </tr>
          </table>

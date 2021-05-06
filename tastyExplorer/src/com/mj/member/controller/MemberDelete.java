@@ -69,4 +69,9 @@ public class MemberDelete extends HttpServlet {
 		doGet(request, response);
 	}
 
+	
+	
+	
+	
+	
 }
