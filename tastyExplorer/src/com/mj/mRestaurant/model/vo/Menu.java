@@ -15,14 +15,14 @@ public class Menu implements Serializable {
 	private String [] menuNames;
 	private String [] menuPrices;
 	private String menuName;
-	private String menuPrice;
+	private int menuPrice;
 
 	// 생성자
 	public Menu() {
 	}
 
 
-	public Menu(int mRestaurantNo, String[] menuNames, String[] menuPrices, String menuName, String menuPrice) {
+	public Menu(int mRestaurantNo, String[] menuNames, String[] menuPrices, String menuName, int menuPrice) {
 		super();
 		this.mRestaurantNo = mRestaurantNo;
 		this.menuNames = menuNames;
@@ -39,8 +39,17 @@ public class Menu implements Serializable {
 		this.menuPrices = menuPrices;
 	}
 
-
+	public Menu(int mRestaurantNo, String menuName, int menuPrice) {
+		super();
+		this.mRestaurantNo = mRestaurantNo;
+		this.menuName = menuName;
+		this.menuPrice = menuPrice;
+	}
+	
+	
 	// 메소드
+
+
 
 	@Override
 	public String toString() {
@@ -91,12 +100,12 @@ public class Menu implements Serializable {
 	}
 
 
-	public String getMenuPrice() {
+	public int getMenuPrice() {
 		return menuPrice;
 	}
 
 
-	public void setMenuPrice(String menuPrice) {
+	public void setMenuPrice(int menuPrice) {
 		this.menuPrice = menuPrice;
 	}
 

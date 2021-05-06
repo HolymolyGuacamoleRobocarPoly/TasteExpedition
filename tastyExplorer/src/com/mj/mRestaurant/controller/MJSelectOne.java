@@ -40,7 +40,10 @@ public class MJSelectOne extends HttpServlet {
 		
 		// 식당 번호
 		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
-		int fLevel = 7;
+		int mjFLevel = 7;
+		int rvFlevel = 5;
+		
+		System.out.println("mjSelectOne mjNo : " + mjNo);
 		
 		// 조회한 식당 한개 정보
 		MRestaurantService service = new MRestaurantService();
@@ -52,11 +55,11 @@ public class MJSelectOne extends HttpServlet {
 		
 		// 해당 식당 Attachment 불러오기 
 		AttachmentService aService = new AttachmentService();
-		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, fLevel);
+		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, mjFLevel);
 		
 		// 해당 식당의 리뷰 Attachment 불러오기
-		
-		
+		AttachmentService rvAttService = new AttachmentService();
+		ArrayList<Attachment> reviewAttList = rvAttService.selectList(mjNo, rvFlevel);
 		
 		// 해당 식당 MenuList 불러오기 
 		MenuService mService = new MenuService();
@@ -64,12 +67,19 @@ public class MJSelectOne extends HttpServlet {
 		
 		String page = "";
 		
+		System.out.println("mj 결과 확인 : " + mj);
+		System.out.println("rlist 결과 확인 : " + rlist);
+		System.out.println("mjAttList 결과 확인 : " + mjAttList);
+		System.out.println("reviewAttList 결과 확인 : " + reviewAttList);
+		System.out.println("menuList 결과 확인 : " + menuList);
+		
+		
 		if( mj != null ) {
 			
 			request.setAttribute("mj", mj);
 			request.setAttribute("rlist", rlist);
 			request.setAttribute("mjAttList", mjAttList);
-			//request.setAttribute("reviewAttList", reviewAttList);
+			request.setAttribute("reviewAttList", reviewAttList);
 			request.setAttribute("menuList", menuList);
 			
 			page = "views/mRestaurant/mRestaurantDetail.jsp";

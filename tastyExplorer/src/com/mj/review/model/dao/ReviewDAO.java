@@ -69,9 +69,15 @@ public class ReviewDAO {
 				r.setmNo( rs.getInt("m_no"));
 				r.setmRestaurantNo(rs.getInt("m_restaurant_no"));
 				
+				
+				System.out.println("r : " + r);
 				// 주어진 list에 하나하나씩 차곡차곡 다음
 				list.add(r);
+				
+				
 			}
+			System.out.println("list : " + list);
+			
 			
 		} catch (SQLException e) {
 

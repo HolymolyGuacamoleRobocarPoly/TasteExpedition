@@ -41,9 +41,7 @@ public class MJSelectList extends HttpServlet {
 		System.out.println("keyword 결과 확인 : " + keyword);
 
 		// 맛집 List 불러오기 
-
 		ArrayList<MRestaurant> mjList = new ArrayList<>();
-
 		MRestaurantService service = new MRestaurantService();
 		
 		// 해당 맛집 Attachment List 불러오기
@@ -53,15 +51,17 @@ public class MJSelectList extends HttpServlet {
 		// 맛집 List service 로 
 		mjList = service.selectList(keyword);
 		
+		
 		// 해당 맛집별로 Attachment 불러오는 반복문 
 		for(int i = 0; i < mjList.size(); i ++) {
 			int mjNo = mjList.get(i).getmRestaurantNo();  
-			
+			System.out.println("mjNo 결과 확인 : " + mjNo);
 			mjAttList.add(aservice.selectOne(mjNo, fLevel));
 			
 		}
-
 		
+		System.out.println("mjList 결과 확인 : " + mjList);
+		System.out.println("mjAttList 결과 확인 : " + mjAttList);
 		
 		// 맛집 리스트 
 
@@ -70,7 +70,7 @@ public class MJSelectList extends HttpServlet {
 		// 해당 맛집 첨부파일 리스트 
 		
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);;
+		request.getRequestDispatcher("views/map/map.jsp").forward(request, response);;
 				
 	}
 

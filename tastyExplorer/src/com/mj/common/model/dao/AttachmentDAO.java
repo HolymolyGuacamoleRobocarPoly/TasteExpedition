@@ -52,15 +52,15 @@ public class AttachmentDAO {
 		} else 
 		*/
 		if (fLevel == 3) {
-			name = "n";
+			name = "N";
 		} else if (fLevel == 4) {
-			name = "e";
+			name = "E";
 		} else if (fLevel == 5) {
-			name = "r";
+			name = "R";
 		} else if (fLevel == 6) {
-			name = "cm";
+			name = "CM";
 		} else if (fLevel == 7) {
-			name = "mj";
+			name = "MJ";
 		}
 
 		
@@ -82,9 +82,14 @@ public class AttachmentDAO {
 				
 			}
 			
+			System.out.println("attList" + attList);
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
 		}
 		
 		return attList;
@@ -92,7 +97,7 @@ public class AttachmentDAO {
 	}
 	
 
-	public Attachment selectOne(Connection con, int bNo, int fLevel) {
+	public Attachment selectOne(Connection con, int mjNo, int fLevel) {
 		Attachment att = new Attachment();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -102,8 +107,9 @@ public class AttachmentDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, "mj"+bNo);
+			ps.setString(1, "MJ"+mjNo);
 
+			System.out.println("'MJ'+mjNo : " + "MJ"+mjNo);
 			
 			rs = ps.executeQuery();
 			if ( rs.next()) {
@@ -113,6 +119,7 @@ public class AttachmentDAO {
 				
 			}
 			
+			System.out.println("att 결과 확인 : " + att);
 			
 		} catch (SQLException e) {
 			
