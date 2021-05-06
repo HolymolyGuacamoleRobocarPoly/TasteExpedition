@@ -78,16 +78,21 @@ table[class*=replyList] td{
 					<div class="comuInfo">조회수 : <%= c.getcBoardCount() %>
 					</div>
 					
-				<%-- att의 List가 null이 아니라면 (파일이 있다면) --%>
 				<% if( cAttList != null ) { %>
-					<%--<% for (int i = 0; i < cAttList.size(); i++) { --%>
 				<tr>
+					<%-- 파일이 0이 아니면서 널이아닐때 파일을 보여주고 아니라면 없음을 보여줌 --%>
 					<td>첨부 파일</td>
-					<td colspan="5">		<!-- 파일vo가 없는데 어떻게 받는거지..? -->
+					<% if( cAttList.size() != 0 && cAttList.get(0).getAttMFileName() != null){ %>
+					<td colspan="5">		<!-- 여기서 오류남 -->
 						<a href="/tastyServer/resources/cAtt/<%= cAttList.get(0).getAttMFileName() %>" download>
 						<%= cAttList.get(0).getAttMFileName() %>
 						</a>
 					</td>
+					<% } else { %>
+					<td colspan="5">		
+						없음
+					</td>
+					<% } %>
 				</tr>
 					<%--<% { --%>
 				<% } %>
@@ -198,24 +203,6 @@ table[class*=replyList] td{
 		var cboardno = '<%= c.getcBoardNo() %>';
 		//var btype= 1;
 		
-		function reComment(obj) {
-			// 추가 완료 버튼
-			$(obj).siblings('.insertConfirm').css('display', 'inline');
-			
-			// 현재 클릭한 버튼 숨기기
-			$(obj).css('display', 'none');
-			
-			// 대댓글 입력공간 만들기
-			var htmlForm = 
-				'<tr class="comment"><td></td>'
-					+'<td colspan="3" style="background : transparent;">'
-						+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
-					+ '</td>'
-				+ '</tr>';
-			
-			$(obj).parents('table').append(htmlForm);
-		}
-	
 		
 		function updateReply(obj) {
 			// 현재 버튼의 위치와 가장 가까운 textarea 접근하기

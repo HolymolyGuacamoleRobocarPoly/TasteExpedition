@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/index.css">
+    <link rel="stylesheet" href="/tastyServer/assets/css/searchbar.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
 
 </head>
@@ -39,7 +40,14 @@
        <p>맛집 맛집 탐험단 맛집맛집 맛집 맛집집 맛있는거 많이 먹으면서, 살고싶다 아무리 먹어도
        살 안찌고 배불러도 원할때 다시 배고파지면 좋겠다. 먹는건 제일 좋아 친구들 모여라
        언제나 즐거워 </p>
-       <a href="#">지도에서 맛집 찾기</a>
+       
+       <div class="input-group mb-3">
+       <h1> 오늘 무엇을 먹을지 고민하는 여러분을 위해																								<!--  기원 수정 ok -->
+    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button> 
+</h1>
+</div>
+
      </div>
      
      <div class="imgBox">
@@ -55,24 +63,8 @@
        </div>
      </div>
      
-    <div class="title">
-        <div class="background-video">
-
-        <video width="1000px"height="600px"src="/tastyServer/assets/video/backgroundVideo.mp4" autoplay muted></video>
-            <form action="/tastyServer/selectList.mj" method="post">
-
-        <h1>
-            오늘 무엇을 먹을지 고민하는 여러분을 위해
-
-                <div class="input-group mb-3">																											<!--  기원 수정 ok -->
-
-                    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
-                </div>
-        </h1>
-            </form>
-        </div>
-    </div>
+    
+ </div>
  </div>
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
  <!-- Initialize Swiper -->
