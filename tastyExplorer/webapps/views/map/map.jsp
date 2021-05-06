@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
 <% 
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
@@ -22,6 +23,7 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/searchbar.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/carousel.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
+
 <style>
 .mjList {
 	width: 270px;
@@ -38,6 +40,7 @@
 	cursor: pointer;
 }
 </style>
+
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -419,7 +422,9 @@ function removeAllChildNods(el) {
         </div>
     </div>
 </div>
-<% } %>  
+
+<% } %> 
+ 
 <script>
 	
 		$('.mjList').on('click', function(){
@@ -429,9 +434,6 @@ function removeAllChildNods(el) {
 		});
 	
 </script>
-		   
-	
-
 
 <%@ include file="../common/footer.jsp" %>
 </body>

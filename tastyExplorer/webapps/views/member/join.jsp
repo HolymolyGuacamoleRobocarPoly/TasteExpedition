@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 	section {
 		width : 700px;
@@ -19,7 +18,6 @@
 		margin-right: auto;
 		margin-top: 0px;
 		padding : 0px;
-		font-family: 'Noto Sans KR', sans-serif;
 		}
 		
 		#idCheck {
@@ -46,7 +44,6 @@
 	.contents > h2 {
 		padding: 0 0 45px 0;
 		min-height: 60px;
-		font-family: 'Fredoka One', cursive;
 		font-size: 40px;
 		color:#d4e157;
 		text-align: center;

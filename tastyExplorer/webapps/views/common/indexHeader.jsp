@@ -23,8 +23,8 @@
         <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="/tastyServer/views/map/map.jsp">지도</a></li>
-            <li><a href="#" onclick="goEvent()">이벤트</a></li>
-            <li><a href="#" onclick="goCommunity();">#소통해요</a></li>
+            <li><a href="/tastyServer/selectList.ev">이벤트</a></li>
+            <li><a href="/tastyServer/selectList.co">#소통해요</a></li>
 
             <% if( m != null) { %>
             <li><a href="/tastyServer/views/mRestaurant/mRestaurantInsert.jsp">맛집등록</a></li>
@@ -74,25 +74,6 @@
         	location.href="/tastyServer/logout.me";
         }
         
-        function memberJoin(){
-        	location.href="/tastyServer/views/member/join.jsp";
-        }
-        
-        function changeInfo(){
-        	location.href="/tastyServer/views/member/memberUpdate.jsp";
-        }
-        
-        function goEvent(){
-    		location.href="/tastyServer/selectList.ev";
-    	}
-        
-        function goMrestaurant(){
-    		location.href="/tastyServer/selectList.rv";
-    	}
-        
-        function goCommunity() {
-        	location.href="/tastyServer/selectList.co"
-        }
 
     </script>
 </body>

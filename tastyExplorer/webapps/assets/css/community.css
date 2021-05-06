@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
-
+*{
+    font-weight: normal;
+    font-style: normal;  
+}
 
 .card-container {
     font-weight: normal;

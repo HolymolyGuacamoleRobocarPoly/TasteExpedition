@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/tastyServer/assets/css/header.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/userprofile.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/index.css">
+    <link rel="stylesheet" href="/tastyServer/assets/css/searchbar.css">
     <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
 
 </head>
@@ -49,6 +50,7 @@
 		    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
 		  </div>
 		</form>
+       
      </div>
      
      <div class="imgBox">

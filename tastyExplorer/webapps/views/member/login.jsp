@@ -10,7 +10,6 @@
 <title>로그인 페이지</title>
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .signinMain {
 	width : 700px;
@@ -20,7 +19,6 @@
 	margin-top: 20px;
 	margin-bottom: 130px;
 	padding : 0px;
-	font-family: 'Noto Sans KR', sans-serif;
 }
 		
 	section .signinMain {
@@ -31,7 +29,6 @@
 		padding: 0 0 45px 0;
 		margin-top: 20px;
 		min-height: 60px;
-		font-family: 'Fredoka One', cursive;
 		font-size: 40px;
 		color:#d4e157;
 		text-align: center;
@@ -139,7 +136,6 @@
     padding: 0 10px;
     width: 80%;
     height: 50px;
-    font-family: 'Noto-M';
     font-size: 15px;
     border: none;
     border-bottom: solid 1px #353535;
