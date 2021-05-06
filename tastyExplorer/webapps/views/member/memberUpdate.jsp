@@ -24,6 +24,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <style>
+<<<<<<< HEAD
 .sidebar1 {
     background: #F17153;
     /* For browsers that do not support gradients */
@@ -69,6 +70,26 @@
 }.main-content{
 text-align:center;
 }
+=======
+	section {
+		width : 700px;
+		height: auto;
+		color: black;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		padding : 5px;
+		}
+		
+		#ckZip, #updateBtn {
+		background:#d4e157;
+		border-radius:5px;
+		width:130px;
+		height:25px;
+		text-align:center;
+		cursor:pointer;
+	}
+>>>>>>> refs/remotes/origin/subin
 
 b, strong{
 padding-right: 40px;
@@ -105,7 +126,8 @@ font-size: 20px;
 </style>
 <body>
 
-<%@ include file="../common/header.jsp" %>
+
+	<%@ include file="../common/header.jsp" %>
 
     <div class="container-fluid">
         <div class="row">
