@@ -31,7 +31,10 @@ public class CommunityUpdateView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int cboardno = Integer.parseInt(request.getParameter("cBoardNo"));
+		
+		// System.out.println("updatecboardno" + cboardno);
+		
 		
 		CommunityService service = new CommunityService();
 		
@@ -42,7 +45,7 @@ public class CommunityUpdateView extends HttpServlet {
 		if (c != null) {
 			request.setAttribute("Community", c);
 			
-			page = "views/cBoardCommunityy/communityUpdate.jsp";
+			page = "views/cBoardCommunity/communityUpdate.jsp";
 		} else {
 			
 			request.setAttribute("error-msg", "게시글 수정화면 접근 불가");

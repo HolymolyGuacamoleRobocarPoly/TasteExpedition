@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.mj.cBoardCommunity.model.vo.*"%>
 <%
-	Community c = (Community)request.getAttribute("Communuity");
+	Community c = (Community)request.getAttribute("Community");
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 	
 	<div class="tableArea">
 		<form action="/tastyServer/update.co" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="cboardno" value="<%= c.getcBoardNo() %>" />
+		<input type="hidden" name="cBoardNo" value="<%= c.getcBoardNo() %>" />
 			<table>
 				<tr>
 					<td>제목</td>
@@ -43,18 +43,23 @@
 			</table>
 			<br />
 			<div align="center">
-				<button type="submit">작성 완료</button>
+				<button type="submit" onclick="selectOne();">작성 완료</button>
 				<button type="button" onclick="deleteCommunityBoard();">게시글 삭제</button>
 			</div>
 		</form>
 	</div>
 	<script>
 		function deleteCommunityBoard() {
-			var cboardno = '  <%= c.getcBoardNo() %>  ';
+			var cBoardNo = '  <%= c.getcBoardNo() %>  ';
 			
 			location.href = '/tastyServer/delete.co?cBoardNo=' + cBoardNo;
 		}
-	</script>
+		
+		function selectOne() {
+			location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
+			
+		}
+ 	</script>
 	
 	<%@ include file = "../common/footer.jsp" %>
 </body>

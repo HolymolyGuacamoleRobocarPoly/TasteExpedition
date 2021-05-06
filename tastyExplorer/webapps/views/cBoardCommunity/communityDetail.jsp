@@ -78,16 +78,21 @@ table[class*=replyList] td{
 					<div class="comuInfo">조회수 : <%= c.getcBoardCount() %>
 					</div>
 					
-				<%-- att의 List가 null이 아니라면 (파일이 있다면) --%>
 				<% if( cAttList != null ) { %>
-					<%--<% for (int i = 0; i < cAttList.size(); i++) { --%>
 				<tr>
+					<%-- 파일이 0이 아니면서 널이아닐때 파일을 보여주고 아니라면 없음을 보여줌 --%>
 					<td>첨부 파일</td>
-					<td colspan="5">		<!-- 파일vo가 없는데 어떻게 받는거지..? -->
+					<% if( cAttList.size() != 0 && cAttList.get(0).getAttMFileName() != null){ %>
+					<td colspan="5">		<!-- 여기서 오류남 -->
 						<a href="/tastyServer/resources/cAtt/<%= cAttList.get(0).getAttMFileName() %>" download>
 						<%= cAttList.get(0).getAttMFileName() %>
 						</a>
 					</td>
+					<% } else { %>
+					<td colspan="5">		
+						없음
+					</td>
+					<% } %>
 				</tr>
 					<%--<% { --%>
 				<% } %>
@@ -107,7 +112,9 @@ table[class*=replyList] td{
 		<div align="center">
 			<button onclick="goSelectList();">목록으로 돌아가기</button>
 			<%-- 닉네임 왜 못가져오는데; --%>
-			<% if (c.getcBoardWriter().equals(m.getUserId())) { %>
+			<button onclick="goDelete();">삭제하기 </button>
+			
+			<% if (c.getcBoardWriter().equals(m.getNickName())) { %>
 			<button onclick="goUpdatePage();">수정하기</button>
 			<% } %>
 			
@@ -118,6 +125,10 @@ table[class*=replyList] td{
 				
 				function goUpdatePage(){
 					location.href = '/tastyServer/updateView.co?cBoardNo=' + <%= c.getcBoardNo() %>;
+				}
+				
+				function goDelete() {
+					location.href = '/tastyServer/delete.co';
 				}
 			</script>
 		</div>
@@ -151,7 +162,7 @@ table[class*=replyList] td{
 		<div class="replySelectArea">
 			<!-- 댓글 목록 구현 영역 -->
 			<% if (clist.size() == 0) { %>
-				<span>여러분이 새 댓글의 주인공이 되어 보세요!</span>
+				<span>등록된 댓글이 없습니다.</span>
 			<% } else { %>
 				<% for(BComment bco : clist) { %>
 				
@@ -163,7 +174,7 @@ table[class*=replyList] td{
 					<td><%= bco.getCommentDate() %></td>
 					<td align="center">
  					<%if(m.getNickName().equals(bco.getmNo())) { %>
-						<input type="hidden" name="cno" value="<%=bco.getcBoardNo()%>"/>
+						<input type="hidden" name="commentNo" value="<%=bco.getcBoardNo()%>"/>
 							  
 						<button type="button" class="updateBtn" 
 							onclick="updateReply(this);">수정하기</button>
@@ -198,24 +209,6 @@ table[class*=replyList] td{
 		var cboardno = '<%= c.getcBoardNo() %>';
 		//var btype= 1;
 		
-		function reComment(obj) {
-			// 추가 완료 버튼
-			$(obj).siblings('.insertConfirm').css('display', 'inline');
-			
-			// 현재 클릭한 버튼 숨기기
-			$(obj).css('display', 'none');
-			
-			// 대댓글 입력공간 만들기
-			var htmlForm = 
-				'<tr class="comment"><td></td>'
-					+'<td colspan="3" style="background : transparent;">'
-						+ '<textarea class="reply-content" style="background : ivory;" cols="105" rows="3"></textarea>'
-					+ '</td>'
-				+ '</tr>';
-			
-			$(obj).parents('table').append(htmlForm);
-		}
-	
 		
 		function updateReply(obj) {
 			// 현재 버튼의 위치와 가장 가까운 textarea 접근하기

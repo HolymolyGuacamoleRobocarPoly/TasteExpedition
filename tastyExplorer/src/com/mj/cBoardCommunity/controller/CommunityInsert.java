@@ -1,6 +1,7 @@
 package com.mj.cBoardCommunity.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.mj.bComment.model.service.BCommentService;
+import com.mj.bComment.model.vo.BComment;
 import com.mj.cBoardCommunity.model.service.CommunityService;
 import com.mj.cBoardCommunity.model.vo.Community;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
 
 /**
  * Servlet implementation class CommunityInsert
@@ -47,37 +50,46 @@ public class CommunityInsert extends HttpServlet {
 			       .forward(request, response);
 		}
 		
-		//System.out.println(request);
 		
-		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, 
-				   "UTF-8", new DefaultFileRenamePolicy());
+		//조회
+		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int fLevel = 6;
+
+		// 게시글
+		CommunityService service = new CommunityService();
+		Community c = service.selectOne(cboardno);
 		
-		// 5. 가져오기 (제목, 내용, 닉네임)
-		String title = mr.getParameter("ctitle");
-		String content = mr.getParameter("Ccontent");
-		String mNickname = mr.getParameter("nickName");
+		// 댓글 리스트
+		BCommentService commentService = new BCommentService();
+		ArrayList<BComment> clist = commentService.selectList(cboardno);
+		//System.out.println("cINset clist : " + clist );
 		
-		System.out.println("확인 : " +title + ", " + content + ", " + mNickname);
+		
+		// 파일 리스트
+		AttachmentService aService = new AttachmentService();
+		ArrayList<Attachment> cAttList = aService.selectList(cboardno, fLevel);
+		//System.out.println("cINset cAttList : " + cAttList );
+		
+		
+		System.out.println("communityinsert c : " + c);
+		System.out.println("communityinsert clist : " + clist);
+		System.out.println("communityinsert cAttList : " + cAttList);
+		
+		
+//		 5. 가져오기 (제목, 내용, 닉네임)
+//		String title = mr.getParameter("ctitle");
+//		String content = mr.getParameter("Ccontent");
+//		String mNickname = mr.getParameter("nickName");
+		
+		//System.out.println("확인 : " +title + ", " + content + ", " + mNickname);
 		
 		//6. 함께 저장된 파일의 이름 추출하기
-    	String filename = mr.getFilesystemName("file");
+    	//String filename = mr.getFilesystemName("file");
     	
     	// 7. VO 작성하기
-    	Community c = new Community(title, content, mNickname);
+    	//Community c = new Community(title, content, mNickname);
     	
-    	// 8. 서비스 시작!
-    	CommunityService service = new CommunityService();
-    	
-    	int result = service.insertCommunity(c);
-    	
-    	if( result > 0 ) {
-    		response.sendRedirect("selectList.co");
-    	} else {
-    		request.setAttribute("error-msg", "게시글 작성을 실패했습니다.");
-    		
-    		request.getRequestDispatcher("views/common/errorPage.jsp")
-    		       .forward(request, response);
-    	}
+ 
     	
     	
     	}

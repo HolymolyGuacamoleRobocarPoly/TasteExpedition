@@ -106,12 +106,12 @@ public class BCommentDAO {
 		ArrayList<BComment> clist = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
 		String sql = prop.getProperty("selectList");
 		
 		try {
 			ps = con.prepareStatement(sql);
 			
+			// cboard 번호 가져오기
 			ps.setInt(1, cboardno);
 
 			rs = ps.executeQuery();
@@ -125,10 +125,11 @@ public class BCommentDAO {
 				bco.setcBoardNo(rs.getInt("C_BOARD_NO"));
 				bco.setmNo(rs.getInt("M_NO"));
 				
-				System.out.println("bco : " + bco);
+				System.out.println("cdao bco : " + bco);
 				clist.add(bco);				
 			}
-			System.out.println("clist : " + clist);
+			// clist를 여기서 아예 못가져오는데 쿼리문제?..db에서는 조회가 잘됨
+			System.out.println("cdao clist : " + clist);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

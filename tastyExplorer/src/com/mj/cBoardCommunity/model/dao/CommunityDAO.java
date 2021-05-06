@@ -138,12 +138,14 @@ public class CommunityDAO {
 				
 			}
 			
+			System.out.println("comdao c :" + c);
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		} finally {
 			close(rs);
-			//System.out.println(rs);
+			//\\System.out.println(rs);
 			close(ps);
 		}
 		

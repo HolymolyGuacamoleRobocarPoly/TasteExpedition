@@ -20,7 +20,7 @@
 		
 		<!-- 게시글 작성 틀 -->
 		<div class="tableArea">
-			<form action="/tastyServer/insert.co" method="post"
+			<form action="/tastyServer/insert.att" method="post"
 				enctype="multipart/form-data">
 
 				<input type="hidden" name="attMFlevel" value="6">

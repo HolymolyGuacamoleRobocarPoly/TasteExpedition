@@ -305,9 +305,9 @@ public class AttachmentInsert extends HttpServlet {
 				ArrayList<String> changeNames = new ArrayList<>();
 				Enumeration<String> tagNames = mr.getFileNames();
 
-				String cBoardTitle = mr.getParameter("cBoardTitle");
-				String cBoardContent = mr.getParameter("cBoardNo");
-				String mNickname = mr.getParameter("mNickname");
+				String cBoardTitle = mr.getParameter("ctitle");
+				String cBoardContent = mr.getParameter("Ccontent");
+				String mNickname = mr.getParameter("nickName");
 				newPath = request.getServletContext()
 				         		 .getRealPath("/resources/community");
 				
@@ -366,7 +366,7 @@ public class AttachmentInsert extends HttpServlet {
 				}
 				
 				if (result2 > 0) {
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("/tastyServer/selectList.co");
 				} else {
 					// 게시글 등록 실패시 저장되었던 파일 삭제
 					for (int i = 0; i < changeNames.size(); i++) {
