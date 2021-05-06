@@ -36,21 +36,21 @@
 					<td>내용</td>
 					<td colpan="3">
 						<textarea name="cboardconetent" cols="50" rows="15"
-						 		  style="resize:none;"><%= c.getcBoardContent() %>
-						</textarea>
+						 		  style="resize:none;"><%= c.getcBoardContent() %></textarea>
 					</td>
 				</tr>
 			</table>
 			<br />
 			<div align="center">
-				<button type="submit" onclick="selectOne();">작성 완료</button>
+				<button type="submit">수정 완료</button>
+				<button type="button" onclick="selectOne();">수정 취소</button>
 				<button type="button" onclick="deleteCommunityBoard();">게시글 삭제</button>
 			</div>
 		</form>
 	</div>
 	<script>
 		function deleteCommunityBoard() {
-			var cBoardNo = '  <%= c.getcBoardNo() %>  ';
+			var cBoardNo = '<%= c.getcBoardNo() %>';
 			
 			location.href = '/tastyServer/delete.co?cBoardNo=' + cBoardNo;
 		}

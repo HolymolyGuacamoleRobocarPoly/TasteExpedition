@@ -154,7 +154,7 @@
 
 	<%@ include file="../common/header.jsp"%>
 
-	
+	<div class="mjMain">
 		<table id="MJName">
 			<tr>
 				<th>
@@ -431,7 +431,7 @@
 	</div>
 
 	<% } %>
-
+    </div>
 	<%@ include file="../common/footer.jsp"%>
 
 	

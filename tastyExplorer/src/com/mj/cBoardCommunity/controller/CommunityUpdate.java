@@ -52,6 +52,10 @@ public class CommunityUpdate extends HttpServlet {
 		
 		
 		
+		System.out.println("업데이트 왔니 : " + cboardno);
+		
+		
+		request.getRequestDispatcher("selectOne.co?cboardno=" + cboardno).forward(request, response);
 	}
 
 	/**
