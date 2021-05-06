@@ -76,26 +76,21 @@ public class AttachmentService {
 		int bNo = 0;
 		int result = 0;
 		String name = "";
-		
-		if (fLevel < 8) {
-			
+
 			bNo = dao.getCurrentNo(con, fLevel);
 			
-			if (fLevel == 4) {
-				name = "e";  // 이벤트 첨부파일
-			} else if (fLevel == 5) {
-				name = "r";  // 리뷰 사진
-			} else if (fLevel == 6) {
-				name = "cm"; // 커뮤니티 첨부파일
-			} else if (fLevel == 7) {
-				name = "mj"; // 맛집 소개 사진
-			} else if (fLevel == 8) {
-				name = "mp"; // 회원 프로필
-			}
-			
-		} else {
-			
+		if (fLevel == 4) {
+			name = "e";  // 이벤트 첨부파일
+		} else if (fLevel == 5) {
+			name = "r";  // 리뷰 사진
+		} else if (fLevel == 6) {
+			name = "cm"; // 커뮤니티 첨부파일
+		} else if (fLevel == 7) {
+			name = "mj"; // 맛집 소개 사진
+		} else if (fLevel == 8) {
+			name = "mp"; // 회원 프로필
 		}
+	
 		
 		
 		

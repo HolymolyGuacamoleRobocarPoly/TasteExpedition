@@ -153,7 +153,7 @@ public class AttachmentInsert extends HttpServlet {
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
 					Attachment add = new Attachment();
 					add.setAttMFileName(changeNames.get(i));
-					
+					add.setAttMFlevel(fLevel);
 					// 파일 원하는 위치로 이동
 					File file = new File(savePath + "/" + changeNames.get(i));
 					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
@@ -246,7 +246,7 @@ public class AttachmentInsert extends HttpServlet {
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
 					Attachment add = new Attachment();
 					add.setAttMFileName(changeNames.get(i));
-					
+					add.setAttMFlevel(fLevel);
 					// 파일 원하는 위치로 이동
 					File file = new File(savePath + "/" + changeNames.get(i));
 					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
@@ -331,7 +331,7 @@ public class AttachmentInsert extends HttpServlet {
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
 					Attachment add = new Attachment();
 					add.setAttMFileName(changeNames.get(i));
-					
+					add.setAttMFlevel(fLevel);
 					// 파일 원하는 위치로 이동
 					File file = new File(savePath + "/" + changeNames.get(i));
 					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
@@ -445,7 +445,7 @@ public class AttachmentInsert extends HttpServlet {
 				for (int i = changeNames.size() - 1; i >= 0; i--) {
 					Attachment add = new Attachment();
 					add.setAttMFileName(changeNames.get(i));
-					
+					add.setAttMFlevel(fLevel);
 					// 파일 원하는 위치로 이동
 					File file = new File(savePath + "/" + changeNames.get(i));
 					file.renameTo(new File(newPath + "/" + changeNames.get(i)));
