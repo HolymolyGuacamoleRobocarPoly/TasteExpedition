@@ -33,7 +33,7 @@ public class CommunityUpdateView extends HttpServlet {
 		
 		int cboardno = Integer.parseInt(request.getParameter("cBoardNo"));
 		
-		System.out.println("updatecboardno" + cboardno);
+		// System.out.println("updatecboardno" + cboardno);
 		
 		
 		CommunityService service = new CommunityService();
