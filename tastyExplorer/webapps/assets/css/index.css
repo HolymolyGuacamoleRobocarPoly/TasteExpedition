@@ -29,7 +29,7 @@
 }
 
 .content {
-	postion: relative;
+	position: relative;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -37,7 +37,7 @@
 }
 
 .content .textBox {
-	postion: relaive;
+	position: relaive;
 	max-width: 600px;
 	margin-right: 20px;
 }
