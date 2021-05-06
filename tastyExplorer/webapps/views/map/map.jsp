@@ -65,13 +65,11 @@
     </div>
 </div>
 	<form action="/tastyServer/selectList.mj" method="post">
-		<div>
-			<h1> 오늘 무엇을 먹을지 고민하는 여러분을 위해
+		<div class="searchbar">
 			  <div class="input-group mb-3">																											<!--  기원 수정 ok -->
 			    <input type="text" class="form-control" placeholder="키워드로 맛집 검색하기" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
 			    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
 			  </div>
-			</h1>
 		</div>
 	</form>		
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=145829b4f38274b6165d84e3615be1bf&libraries=services"></script>

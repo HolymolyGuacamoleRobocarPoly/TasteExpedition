@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
-h1 {
+.searchbar {
 	z-index: 50;
 	color: #fff;
 	font-size: 30px;
 	border: 2px solid#fff;
 	padding: 12px 24px;
+	margin-left: 25%;
 	border-radius: 10px;
 	background-color: rgba(0, 0, 0, 0);
 	justify-content: center;
@@ -13,6 +14,6 @@ h1 {
 	bottom: 0.05%;
 	left: 26.5%;
 	right: 25.7%;
-	margin: 0 0 0 -50px;
+	width: 50%;
 	
 }

@@ -28,11 +28,23 @@ int listCount = pi.getListCount();
 	<%@ include file="../common/header.jsp"%>
 	<!-- 게시글 목록임 -->
 	
-	<section>
+	<section class="boardlist">
 		<h2 align="center">#소통해요</h2>
 		<button class="button" onclick="location.href='views/cBoardCommunity/communityInsert.jsp'">
 			<h3 class="button-text">작성하기</h3>
 		</button>
+		<!-- 검색창 테스트 -->
+		<form action="" class="table-form">
+				<label class="hidden">검색 분류</label>
+				<select name="f" >
+					<option ${(param.f == "cBoardTitle")?"selected":"" }selected value="cBoardNo">제목</option>
+					<option ${(param.f == "cBoardWriter")?"selected":"" } value="cBoardWriter">작성자</option>
+				</select>
+				<label class="hidden">검색어</label>
+				<!-- 파라미터에 q가 있으면 출력해달라 -->
+				<input type="text" name="q" value="${param.q}" />
+				<input class="btn btn-search" type="submit" value="검색"  />
+		</form>
 		<!-- 게시판 목록 -->
 		<div class="tableArea">
 			<table align="center" id="listArea">
@@ -121,48 +133,11 @@ int listCount = pi.getListCount();
 		
 		
 		
-		<!-- 검색창 테스트 -->
-		<form action="" class="table-form">
-			<fieldset>
-				<legend class="hidden">#소통해요 검색필드</legend>
-				<label class="hidden">검색 분류</label>
-				<select name="f" >
-					<option ${(param.f == "cBoardTitle")?"selected":"" }selected value="cBoardNo">제목</option>
-					<option ${(param.f == "cBoardWriter")?"selected":"" } value="cBoardWriter">작성자</option>
-				</select>
-				<label class="hidden">검색어</label>
-				<!-- 파라미터에 q가 있으면 출력해달라 -->
-				<input type="text" name="q" value="${param.q}" />
-				<input class="btn btn-search" type="submit" value="검색"  />
-			</fieldset>
-		</form>
 		
 		
 		
-		<!-- 프로필 -->
-		<div class="card">
-			<div class="card-container">
-				<div class="upper-container">
-					<div class="image-container">
-						<img src="/tastyServer/assets/images/boo.png">
-					</div>
-				</div>
-				<div class="lower-container">
-					<div>
-						<h3>효자동불효자</h3>
-						<br>
-						<h4>Lv.금수저</h4>
-					</div>
-					<div>
-						<p>냠냠쩝쩝</p>
-					</div>
-					<div>
-						<a href="/tastyServer/views/member/mypage.jsp"  class="btn">view profile</a> 
-					</div>
-
-				</div>
-			</div>
-		</div>
+		
+		
 		<!-- 프로필 끝 -->
 	
 		<!--script 부분 -->

@@ -33,13 +33,12 @@
     <%@ include file="views/common/indexHeader.jsp" %>
     <div class="content">
      <div class="textBox">
-      <h2>맛집탐험단</h2>
-       <p>맛집 맛집 탐험단 맛집맛집 맛집 맛집집 맛있는거 많이 먹으면서, 살고싶다 아무리 먹어도
-       살 안찌고 배불러도 원할때 다시 배고파지면 좋겠다. 먹는건 제일 좋아 친구들 모여라
-       언제나 즐거워 </p> <br />
+      <h2>맛좀볼래</h2>
+       <p>맛좀볼래란 맛을 사랑하는 사람들이 모여 만든 홈페이지의 이름이다. 
+		이 글을 읽는 사람은 3시간 내로 맛을 봐야 저주에 걸리지 않는다. 
+		당장 맛을 보고 싶다면  원하는 맛집 정보를 아래에 입력하시오
+        </p> <br />
        <br />
-       <br />
-       
 		<form action="/tastyServer/selectList.mj" method="post">
 		  <div class="input-group mb-3">																											<!--  기원 수정 ok -->
 		    <input type="text" class="form-control" placeholder="원하는 맛집 정보를 입력하세요" 
@@ -47,9 +46,8 @@
 		    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
 		  </div>
 		</form>
-       
      </div>
-     
+
      <div class="imgBox">
        <div class="swiper-container mySwiper">
          <div class="swiper-wrapper">
@@ -62,8 +60,6 @@
          </div>
        </div>
      </div>
-     
-    
  </div>
  </div>
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
     <%@ page import="com.mj.member.model.vo.Member, com.mj.common.model.vo.*" %>
 <%
-	Member m = (Member)session.getAttribute("member");
+   Member m = (Member)session.getAttribute("member");
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scroll header</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
@@ -34,26 +36,18 @@
  
         </ul>
         <div class="action">
-        	<% if ( m== null) { %>
             <div class="profile" onclick="menuToggle();">
                 <img src="/tastyServer/assets/images/no-image.jpg">
             </div>
             <div class="menu">
                 <ul>
                 <% if ( m== null) { %>
-                <li><img src="/tastyServer/assets/images/user.png" />
-
-     				 <a href="/tastyServer/views/member/join.jsp">Sign Up</a></li>
+                   <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/views/member/join.jsp">Sign Up</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 
-				<% } else { %>
-				 	<label><%= m.getUserName() %></label>
-
-				 	<% if ( m.getmProfileAtt() == null) { %>
-                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/user.png" />Profile</a></li>
-                    <% } else { %>
-                    <li><a href="/tastyServer/views/member/mypage1.jsp"><img src="/tastyServer/resources/profile/<%= m.getmProfileAtt() %>" />Profile</a></li>
-                    <% } %>
+            <% } else { %>
+                <%= m.getUserName() %>
+                    <li><img src="/tastyServer/assets/images/user.png" /><a href="/tastyServer/select.eh?mNo=<%= m.getmNo()%>">Profile</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png"/><div  onclick='logout()'>Logout</div>
                     </li>
                 </ul>
@@ -77,27 +71,27 @@
         }
          
         function logout(){
-        	location.href="/tastyServer/logout.me";
+           location.href="/tastyServer/logout.me";
         }
         
         function memberJoin(){
-        	location.href="/tastyServer/views/member/join.jsp";
+           location.href="/tastyServer/views/member/join.jsp";
         }
         
         function changeInfo(){
-        	location.href="/tastyServer/views/member/memberUpdate.jsp";
+           location.href="/tastyServer/views/member/memberUpdate.jsp";
         }
         
         function goEvent(){
-    		location.href="/tastyServer/selectList.ev?attMFlevel=4";
-    	}
+          location.href="/tastyServer/selectList.ev?attMFlevel=4";
+       }
         
         function goCommunity() {
-        	location.href="/tastyServer/selectList.co"
+           location.href="/tastyServer/selectList.co"
         }
         <% if( m != null) { %>
         function goMypage() {
-        	location.href="/tastyServer/select.eh?mNo=<%= m.getmNo()%>";
+           location.href="/tastyServer/select.eh?mNo=<%= m.getmNo()%>";
         }        
         <% } %>
        
