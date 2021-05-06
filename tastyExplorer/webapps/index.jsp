@@ -3,7 +3,6 @@
 <!--  기원 수정  ok  -->
 <%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
 <%
-				// Object --> Board
 	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
 %>  
@@ -56,6 +55,23 @@
        </div>
      </div>
      
+    <div class="title">
+        <div class="background-video">
+
+        <video width="1000px"height="600px"src="/tastyServer/assets/video/backgroundVideo.mp4" autoplay muted></video>
+            <form action="/tastyServer/selectList.mj" method="post">
+
+        <h1>
+            오늘 무엇을 먹을지 고민하는 여러분을 위해
+
+                <div class="input-group mb-3">																											<!--  기원 수정 ok -->
+
+                    <input type="text" class="form-control" placeholder="맛집 정보를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">맛좀볼래?</button>
+                </div>
+        </h1>
+            </form>
+        </div>
     </div>
  </div>
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

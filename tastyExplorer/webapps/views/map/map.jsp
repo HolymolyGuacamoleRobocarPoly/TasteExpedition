@@ -1,5 +1,11 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
+<%
+	ArrayList<MRestaurant> mjList = (ArrayList<MRestaurant>)request.getAttribute("mjList"); // 서블릿이 보낸 mjList 받아오기 
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +22,28 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/searchbar.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/carousel.css">
 <link rel="stylesheet" href="/tastyServer/assets/css/footer.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+<style>
+.mjList {
+	width: 270px;
+    height: 260px;
+    display: inline-block;
+    text-align: left;
+    background-color: #fff;
+    color: #111;
+    border-radius: 15px;
+    margin-left : 100px;
+    margin-right : 100px;
+}
+.mjList:hover {
+	cursor: pointer;
+}
+	
+</style>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -378,6 +406,38 @@ function removeAllChildNods(el) {
         </div>
     </div>
 </div>
+=======
+				<!--  기원 수정중  삭제 No  -->   
+<h2> 맛집 검색 결과 </h2>                
+                        	
+		<% for( int i = 0; i < mjList.size(); i ++) { %>
+	        <div class="mjList" id="<%= mjList.get(i).getmRestaurantNo() %>">
+                	<div class="imgArea">
+                		<img src="/tastyServer/resources/mjAtt/
+                			<%=mjAttList.get(i).getAttMFileName()%>.jpg" alt="식당사진">
+                			<% System.out.println( mjAttList.get(i).getAttMFileName() ); %>
+                	</div>
+	                <div class="textArea">
+	                    <h2><%= mjList.get(i).getmRestaurantTitle() %></h2>
+	                    <p><%= mjList.get(i).getmRestaurantContent() %></p>
+	                </div>
+	        </div>
+	    <% } %>       
+
+<script>
+	
+		$('.mjList').on('click', function(){
+			var mjNo = $(this).attr('id');
+			
+			location.href = '/tastyServer/selectOne.mj?mjNo=' + mjNo;
+		});
+	
+</script>
+		   
+	
+
+
+>>>>>>> refs/remotes/origin/dev_giwon
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

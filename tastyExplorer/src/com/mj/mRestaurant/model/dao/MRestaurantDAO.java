@@ -113,7 +113,7 @@ public class MRestaurantDAO {
 				mjList.add(mj);
 			}
 			
-			
+			System.out.println("mjList 결과 확인 : " + mjList);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

@@ -51,10 +51,13 @@ private Properties prop;
 				
 				menu.setmRestaurantNo(rs.getInt("M_RESTAURANT_NO"));
 				menu.setMenuName(rs.getString("MENU_NAME"));
-				menu.setMenuPrice(rs.getString("MENU_PRICE"));
+				menu.setMenuPrice(rs.getInt("MENU_PRICE"));
 				
 				menuList.add(menu);
+				System.out.println("menu(DAO)" + menu);
 			}
+			
+			System.out.println("menuList (MenuDAO)" + menuList);
 			
 		} catch (SQLException e) {
 			

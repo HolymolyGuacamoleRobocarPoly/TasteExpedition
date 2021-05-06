@@ -6,7 +6,7 @@
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("rlist"); // 서블릿이 보낸 ReviewList 받아오기 
 	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
 	ArrayList<Attachment> reviewAttList = (ArrayList<Attachment>)request.getAttribute("attList"); // 서블릿이 보낸 리뷰AttList 받아오기 
-	ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menu");	// 메뉴 List 받아오기
+	ArrayList<Menu> menu = (ArrayList<Menu>)request.getAttribute("menuList");	// 메뉴 List 받아오기
 
 %>
 <!DOCTYPE html>
@@ -155,20 +155,18 @@
 		<table id="MJName">
 			<tr>
 				<th>
-					<h1 id="mjName"><%--= mj.getmRestaurantTitle() --%> 연어롭다</h1> <!-- 맛집 이름 -->
+					<h1 id="mjName"><%= mj.getmRestaurantTitle() %></h1> <!-- 맛집 이름 -->
 				</th>
-
-				<%-- 
-
+				
+				 
 				<!-- 별점 평균 -->
 				<% int sum = 0; 
 				   double avr = 0;
 					for (int i = 0; i < rlist.size(); i++ ) {
 						sum += rlist.get(i).getrScore(); 
 					} 	avr = sum / rlist.size(); int star = (int)avr;%>
-				--%>
+				
 				<th >
-				<%-- 
 					<!-- 별점이 1 아래 일 때 -->
 					<% if ( star < 1 ) { %>
 						<% for ( int i = 0; i < 5; i ++) { %>
@@ -222,24 +220,11 @@
 									width="50px" height="50px"/>
 						<% } %>
 					<% } %>	
-				--%>	
-				<!--  임시 작성 공간 -->
-					<img src="/tastyServer/assets/images/stardot.png" alt="별점사진"  
-						width="40px" height="40px" class="starImg" />
-					<img src="/tastyServer/assets/images/stardot.png" alt="별점사진"  
-						width="40px" height="40px" class="starImg" />
-					<img src="/tastyServer/assets/images/stardot.png" alt="별점사진"  
-						width="40px" height="40px" class="starImg" />
-					<img src="/tastyServer/assets/images/stardot.png" alt="별점사진"  
-						width="40px" height="40px" class="starImg" />
-					<img src="/tastyServer/assets/images/stardotx.png" alt="별점사진"  
-						width="40px" height="40px" class="starImg"/>
-				<!--  임시 작성 공간 -->
-						
+				
 				</th> 
 				<th colspan="2">
 					 <!-- review 에서 가져온 별점의 평균-->
-					<span id="stSco"><%--= avr --%>(4.4)</span>
+					<span id="stSco"><%= avr %></span>
 				</th>
 				<% if (m.getmLoginType() == 1 ) { %>
 					<th>
@@ -254,44 +239,26 @@
 	<div class="bdiv">	
 	<section>
 		<table id="MJImg">
-			<tr><%-- 
+			<tr>
 				<% for ( int i = 0; i < mjAttList.size(); i++) { %>
-                   	<th><img src="/tastyServer/assets/images/<%= mjAttList.get(i).getAttMFileName() %>" 
+                   	<th><img src="/tastyServer/assets/images/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
                    	alt="식당 사진입니다." width="300px" height="200px"></th>
                	<% } %>
-				--%>
 
-				<!-- 식당 첨부파일 불러오는 코드 작성  -->
-
-
-				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
-					width="300px" height="200px"></th>
-				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
-					width="300px" height="200px"></th>
-				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
-					width="300px" height="200px"></th>
-				<th><img src="/tastyServer/assets/images/no-image.jpg" alt="식당 사진입니다."
-					width="300px" height="200px"></th>
-
-				 
 			</tr>
 		</table>
 		<div>
-			<%--
-				<span id="reCount"><i class="far fa-comment-alt"></i><%= rlist.size()%></span>
-				<span id="liCount"><i class="fas fa-heart"></i><%= mj.getmRestaurantLike() %></span>
-				--%>
-			<span id="reCount" class="overview" style="margin-left: 60px;"><i class="far fa-comment-alt"></i>7</span>
-			<span id="liCount" class="overview"><i class="fas fa-heart"></i>35</span>
+				<span id="reCount" class="overview" style="margin-left: 60px;"><i class="far fa-comment-alt"></i><%= rlist.size()%></span>
+				<span id="liCount" class="overview"><i class="fas fa-heart"></i><%= mj.getmRestaurantLike() %></span>
 		</div>
 		<div class="info">
 			<table id="icon">
 				<tr>
-					<!-- if else 로  있으면 띄우고 없으면 빈공간-->
-					<%-- 
+					<%--  if else 로  있으면 띄우고 없으면 빈공간 
 					<% for ( int i = 0; i < 8; i ++) { %>
-						<%if ( mj.getmRestaurantInfo()) %>
-					
+						<%if ( mj.getmRestaurantInfo() ) { %>
+						
+						<% } %>
 					<% } %>
 					--%>
 					<td><img src="/tastyServer/assets/images/take out2.png" alt="식당 편의시설"
@@ -320,23 +287,23 @@
 			<table id="infoDetail">
 				<tr>
 					<td>주소 :</td>
-					<td><%--= mj.getmRestaurantAdrress() --%>서울 마포구</td>
+					<td><%= mj.getmRestaurantAdrress() %></td>
 				</tr>
 				<tr>
 					<td>전화번호 :</td>
-					<td><%--= mj.getmRestaurantTel() --%>02-111-2222</td>
+					<td><%= mj.getmRestaurantTel() %></td>
 				</tr>
 				<tr>
 					<td>영업시간 :</td>
-					<td><%--= mj.getOpenTime() --%>매일 12:00 - 02:00</td>
+					<td><%= mj.getOpenTime()%></td>
 				</tr>
 				<tr>
 					<td>Break Time : </td>
-					<td><%--= mj.getBrTime() --%>15:00 - 16:00</td>
+					<td><%= mj.getBrTime() %></td>
 				</tr>
 				<tr>
 					<td>휴무일 :</td>
-					<td><%--= mj.getHoliday() --%>월요일 휴무</td>
+					<td><%= mj.getHoliday() %></td>
 				</tr>
 			</table>
 		</div>
@@ -350,14 +317,14 @@
 					<th>메뉴명</th>
 					<th>가격</th>
 				</tr>
-				<%-- 
+				
 				<% for( int i = 0; i < menu.size(); i ++) { %>
 				<tr>
 					<td><%= menu.getMenuName() %></td>
 					<td><%= menu.getMenuPrice() %></td>
 				</tr>
 				<% } %>
-				--%>
+				
 				<tr>
 					<td>생연어 모듬</td>
 					<td>33,000원</td>
@@ -383,6 +350,7 @@
 
 
 	</section>
+
 	<aside>
 		<!-- 오른쪽에 최근본 목록 구현 or 광고-->
 	</aside>
@@ -400,15 +368,15 @@
 	
 		<div id="reviewImgPack">
 		
-		<%-- 
+		<%-- --%> 
 		<% for ( int i = 0; i < reviewAttList.size(); i ++) { %>
 			<div class="imgArea">
-			<img src="/tastyServer/assets/images/<%= reviewAttList.get(i).getAttMFileName() %>" alt="리뷰 첨부파일"
+			<img src="/tastyServer/resources/review/<%=reviewAttList.get(i).getAttMFileName()%>.jpg" alt="리뷰 첨부파일"
 				width="150px" height="90px" class="rImg">
 			</div>	
 		<% } %>
-		--%>
 		
+		<!--  
 			<div class="imgArea">
 				<img src="/tastyServer/assets/images/no-image.jpg" alt="리뷰 첨부파일"
 					width="150px" height="90px" class="rImg">
@@ -425,28 +393,30 @@
 				<img src="/tastyServer/assets/images/no-image.jpg" alt="리뷰 첨부파일"
 					width="150px" height="90px" class="rImg">
 			</div>
+			-->
 		</div>
-
+					
 
 	
 	<!--  리뷰 페이지 연결해서 list 받아오기  -->
 	 
-	<%-- for(Review r : rlist) { --%>
+	<% for(Review r : rlist) { %>
 	
 		<div id="reviewHash">
-			<div class="reviewHashTag" id="hash1">#<%--= r.getrHashTag() --%></div>
+			<div class="reviewHashTag" id="hash1">#<%= r.getrHashTag() %></div>
+			
+			<!--  
 			<div class="reviewHashTag" id="hash1">#연어맛집</div>
 			<div class="reviewHashTag" id="hash2">#곰</div>
+			-->
 		</div>
 		<textarea name="rContent" id="rcontent" cols="80" rows="10" style="resize: none;" readonly="readonly">
-           <%--= rlist.getrContent() --%>
-            연어가 정말 맛있고 싱싱합니다. 노르웨이 강에서 먹던 그 맛이 납니다. 
-            둘이 먹다 하나 죽어도 모를 맛입니다. 잘 먹고 잘~ 놀다 갑니다. 
+           <%= r.getrContent() %> 
         </textarea>
 	
 	</div>
 
-	<%-- } --%>
+	<% } %>
 
 	<%@ include file="../common/footer.jsp"%>
 
@@ -455,18 +425,18 @@
 	
 		function reviewGo() {
 			
-			location.href = '/tastyServer/views/review/reviewWrite.jsp' <%--= + "&mjNo=" +  mj.getmRestaurantNo() --%>;
+			location.href = '/tastyServer/views/review/reviewWrite.jsp' + &mjNo= + <%= mj.getmRestaurantNo() %>;
 		}
 	
 		function mjUpdateGo() {
 					
-			location.href = '/tastyServer/updateview.mj?mjNo='  <%--= mj.getmRestaurantNo() --%>;
+			location.href = '/tastyServer/updateview.mj?mjNo='  <%= mj.getmRestaurantNo() %>;
 			
 		}
 		
 		function mjDeleteGo() {
 			
-			location.href = '/tastyServer/delete.mj?mjNo='  <%--= mj.getmRestaurantNo() --%>;
+			location.href = '/tastyServer/delete.mj?mjNo='  <%= mj.getmRestaurantNo() %>;
 			
 		}
 		

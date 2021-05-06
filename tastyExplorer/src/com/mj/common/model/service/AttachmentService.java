@@ -27,10 +27,10 @@ public class AttachmentService {
 	}
 	
 
-	public Attachment selectOne(int bNo, int fLevel) {
+	public Attachment selectOne(int mjNo, int fLevel) {
 		con = getConnection();
 		
-		Attachment a = dao.selectOne(con, bNo, fLevel);
+		Attachment a = dao.selectOne(con, mjNo, fLevel);
 		
 		close(con);
 		
