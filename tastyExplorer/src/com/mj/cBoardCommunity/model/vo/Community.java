@@ -40,6 +40,7 @@ public class Community implements Serializable{
 		this.mNickname = mNickname;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Community [cBoardNo=" + cBoardNo + ", cBoardTitle=" + cBoardTitle + ", cBoardContent=" + cBoardContent

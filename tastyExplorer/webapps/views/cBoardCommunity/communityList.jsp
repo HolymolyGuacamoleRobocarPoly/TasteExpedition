@@ -1,10 +1,9 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.mj.cBoardCommunity.model.vo.*, java.util.*"%>
 <%
 ArrayList<Community> list = (ArrayList<Community>) request.getAttribute("list");
-PageInfo pi = (PageInfo) request.getAttribute("pi");
+com.mj.cBoardCommunity.model.vo.PageInfo pi = (com.mj.cBoardCommunity.model.vo.PageInfo) request.getAttribute("pi");
 
 int st = pi.getStartPage();
 int ed = pi.getEndPage();
@@ -13,6 +12,7 @@ int cur = pi.getCurrentPage();
 int limit = pi.getLimit();
 int listCount = pi.getListCount();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -30,7 +30,10 @@ public class CommunityDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+		int cboardno = Integer.parseInt(request.getParameter("cBoardNo"));
+		
+
+		System.out.println("deletecboardno" + cboardno);
 		
 		CommunityService service = new CommunityService();
 		
@@ -43,8 +46,6 @@ public class CommunityDelete extends HttpServlet {
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		
 		
 		
 		

@@ -59,13 +59,13 @@ public class CommunitySelectOne extends HttpServlet {
 		AttachmentService aService = new AttachmentService();
 		ArrayList<Attachment> cAttList = aService.selectList(cboardno, fLevel);
 		
-		System.out.println("cboardno : " + cboardno);
+		System.out.println("communityselect cboardno : " + cboardno);
 		String page = "";
 		
 		
-		System.out.println("c : " + c);
-		System.out.println("clist : " + clist);
-		System.out.println("cAttList : " + cAttList);
+		System.out.println("communityselect c : " + c);
+		System.out.println("communityselect clist : " + clist);
+		System.out.println("communityselect cAttList : " + cAttList);
 		
 		if (c != null) {
 			request.setAttribute("Community", c);

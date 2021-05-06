@@ -36,7 +36,7 @@ public class CommunityUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String savePath = request.getServletContext()
-		          .getRealPath("/resources/CommunityUploadFiles");
+		          .getRealPath("/resources/temp");
 
 		int maxSize = 1024 * 1024 * 10; 
 
@@ -48,7 +48,7 @@ public class CommunityUpdate extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize,
 				   "UTF-8", new DefaultFileRenamePolicy());
 		
-		int cboardno = Integer.parseInt(mr.getParameter("cboardno"));
+		int cboardno = Integer.parseInt(mr.getParameter("cBoardNo"));
 		
 		
 		
