@@ -147,8 +147,18 @@
 	
 	.login1 {
 		background:#d4e157;
-		border-radius: 0.8em;
-		text-align: center;
+		width: 380px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 auto 10px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    box-shadow: 0 0.5px 0.5px 0 rgb(0 0 0 / 30%);
+    display: block;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
 		cursor:pointer;
 	}
 	
@@ -156,7 +166,73 @@
 		padding-left: 110px;
 		padding-top: 30px;
 	}
-		
+	
+	.p {
+	display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	}
+	
+	.btn-login.facebook {
+	color: #ffffff;
+    background-color: #4150bf;
+	}
+	
+	.btn-login.kakao {
+	color: #66514c;
+    background-color: #ffe809;
+	}
+	
+	a:link {
+	text-decoration: none;
+	}
+	
+	.btn-login {
+	width: 210px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0 auto 10px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    box-shadow: 0 0.5px 0.5px 0 rgb(0 0 0 / 30%);
+    
+    display: block;
+    position: relative;
+    font-size: 0.750rem;
+	}
+	
+	.btn-login.facebook .text1 {
+		border-left: 1px solid rgba(255,255,255,0.3);
+	}
+	
+	.btn-login .text1 {
+	margin-left: 42px;
+    padding-left: 9.5px;
+    font-size: 13px;
+	}
+	
+	span {
+		border:0 none;
+	}
+	
+	.btn-login.facebook:before {
+	background-image: url(/tastyServer/assets/images/indeximg/facebook.PNG);
+	width: 20px;
+    height: 29px;
+    left: 13px;
+	}
+	
+	.btn-login:before {
+	content: '';
+    display: block;
+    position: absolute;
+    bottom: 3px;
+	}
+	
+
 
 
 		
@@ -202,7 +278,7 @@
 									</li>
 								</ul>
 						
-								<div class="login1" id="loginBtn" class="btn-1-black" onclick='login()'>로그인</div>
+								<div class="login1" id="loginBtn" class="btn-1-black" onclick='login()'>SIGN IN</div>
 								
 								<ul class="link-box">
 									<li>
@@ -215,6 +291,17 @@
 							</fieldset>
 						</form>
 					
+						</div>
+						
+						<div class="contents-box">
+						<p>
+							<a class="btn-login facebook" href="#">
+								<span class="text1">페이스북 로그인</span>
+							</a>
+							<a class="btn-login kakao" href="#">
+								<span class="text1">카카오톡 로그인</span>
+							</a>
+						</p>
 						</div>
 					
 	
