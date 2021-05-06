@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 <style>
+
+body {
+	width : 100%;
+}
 .commu {
 	width : 800px;
 	height: auto;
@@ -24,16 +28,16 @@
 	margin-right:auto;
 	margin-top: 50px;
 	padding: 30px;
-	border: 2px solid #111;
 }
 
 .comuInfo {
-	border: 0.2px solid #111;
+	border-bottom: 0.2px solid #111;
 }
 #tableArea {
 	background : white;
 	color : black;
-	border: 2px solid #111;
+	height : 400px;
+	
 }
 
 #replyArea {
@@ -44,6 +48,7 @@
 	margin-right:auto;
 	padding-bottom : 5px;
 	border: 2px solid #111;
+	margin-top : 10px;
 }
 #replyArea textArea {
 	border-radius: 10px;
@@ -54,7 +59,47 @@ table[class*=replyList] td{
 	color: black;
 }
 
-.replyList1 td{ background : yellow; }
+.replyList1 td{ background : white; }
+
+
+.button {
+  position: relative;
+  width: 90px;
+  height: 30px;
+  border: 2px solid #839903;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #839903;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: scale(0, 1);
+  transform-origin: 50% 0%;
+  /* transform: translateX(100%); */
+  transition: transform 0.35s;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+  transition: color 0.35s;
+  color : black;
+}
+.button:hover::after {
+  transform: scale(1, 1);
+}
+.button:hover .button-text {
+  color: white;
+}
+
 
 </style>
 
@@ -70,7 +115,7 @@ table[class*=replyList] td{
 		
 		<!-- 글 틀 -->
 		<div id="tableArea">
-			
+			<table>
 					<div class="comuInfo">작성자 : <%= c.getcBoardWriter() %>
 					</div>
 					<div class="comuInfo">작성일 : <%= c.getcBoardDate() %>
@@ -99,10 +144,15 @@ table[class*=replyList] td{
 				<tr>
 					<td colspan="6">
 						<p id="content">
-							<%= c.getcBoardContent() %>
+						<% for ( int i = 0; i < cAttList.size(); i++) { %>
+                   	<th><img src="/tastyServer/resources/cAtt/<%=cAttList.get(i).getAttMFileName()%>.jpg" 
+                   	alt="게시판이미지" width="300px" height="300px" >
+                   	<%= c.getcBoardContent() %>  
+                   	
+                   	</th>
+               	<% } %>
 						</p>
 					</td>
- 
 				</tr>
 			</table>
 		</div>
@@ -110,12 +160,12 @@ table[class*=replyList] td{
 		
 		<!-- 목록으로 돌아가는 버튼 -->
 		<div align="center">
-			<button onclick="goSelectList();">목록으로 돌아가기</button>
+			<button class="button" onclick="goSelectList();"><p class="button-text">돌아가기</p></button>
 			<%-- 닉네임 왜 못가져오는데; --%>
-			<button onclick="goDelete();">삭제하기 </button>
+			<%--<button onclick="goDelete();">삭제하기 </button> --%>
 			
 			<% if (c.getcBoardWriter().equals(m.getNickName())) { %>
-			<button onclick="goUpdatePage();">수정하기</button>
+			<button class="button" onclick="goUpdatePage();"><p class="button-text">수정하기</p></button>
 			<% } %>
 			
 			<script>
@@ -143,14 +193,15 @@ table[class*=replyList] td{
 					<input type="hidden" name="commentNo" value="0" />	 
 					<table align="center">
 						<tr>
-							<td>댓글 작성</td>
+							<td>댓글</td>
+							<td>작성</td>
 							<td>
 								<textarea name="replyContent" id="replyContent" 
 								          cols="80" rows="3" style=""></textarea>
 							</td>
 							<td>
-								<button type="submit" id="addReply">
-									댓글 등록
+								<button class="button"  type="submit" id="addReply">
+									<p class="button-text">댓글 등록</p>
 								</button>
 							</td>
 							
@@ -162,6 +213,7 @@ table[class*=replyList] td{
 		<div class="replySelectArea">
 			<!-- 댓글 목록 구현 영역 -->
 			<% if (clist.size() == 0) { %>
+				<br />
 				<span>등록된 댓글이 없습니다.</span>
 			<% } else { %>
 				<% for(BComment bco : clist) { %>
@@ -173,8 +225,8 @@ table[class*=replyList] td{
 					<td><b><%= bco.getmNo() %></b></td>
 					<td><%= bco.getCommentDate() %></td>
 					<td align="center">
- 					<%if(m.getNickName().equals(bco.getmNo())) { %>
-						<input type="hidden" name="commentNo" value="<%=bco.getcBoardNo()%>"/>
+ 					<%if(m.getmNo() == (bco.getmNo())) { %>
+						<input type="hidden" name="cno" value="<%=bco.getCommentNo()%>"/>
 							  
 						<button type="button" class="updateBtn" 
 							onclick="updateReply(this);">수정하기</button>
@@ -207,7 +259,7 @@ table[class*=replyList] td{
 		<script>
 		// 게시글 번호 가져오기
 		var cboardno = '<%= c.getcBoardNo() %>';
-		//var btype= 1;
+		var btype= 2;
 		
 		
 		function updateReply(obj) {
@@ -223,24 +275,24 @@ table[class*=replyList] td{
 		
 		function updateConfirm(obj) {
 			// 수정을 마친 댓글 내용 가져오기
-			var commentContent = $(obj).parent().parent().next().find('textarea').val();
+			var content = $(obj).parent().parent().next().find('textarea').val();
 			
 			// 댓글 번호 가져오기
-			var commentNo = $(obj).siblings('input').val();
+			var cno = $(obj).siblings('input').val();
 			
-			location.href = "/tastyServer/update.co?"
+			location.href = "/tastyServer/update.bc?"
 					      + "cboardno=" + cboardno 				// 게시판 번호
-					      + "&commentNo=" + commentNo			// 코멘트 번호
-					      + "&commentContent=" + commentContent //코멘트내용
-	
+					      + "&commentno=" + commentno			// 코멘트 번호
+					      + "&commentContent=" + content //코멘트내용
+					      + '&btype=' +btype;		// btype
 		
 		function deleteReply(obj){
 			// 댓글 번호 가져오기
-			var commentNo = $(obj).siblings('input').val();
+			var bno = $(obj).siblings('input').val();
 			
-			//console.log("삭제 댓글 번호 : " + cno + " / " + bno);
+			console.log("삭제 댓글 번호 : " + cno + " / " + cboardno);
 			
-			location.href="/tastyServer/delete.co" + "?commentNo=" + commentNo + "&cboardno=" + cboardno;
+			location.href="/tastyServer/delete.bc" + "?cno=" + cno + "&bno=" + cboardno;
 			
 		}
 	</script>
