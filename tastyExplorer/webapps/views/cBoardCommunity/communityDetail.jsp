@@ -15,46 +15,91 @@
 <link rel="stylesheet" href="/tastyServer/assets/css/header.css" />
 <script src="/tastyServer/assets/js/jquery-3.6.0.min.js"></script>
 <style>
+
+body {
+width : 100%;
+}
 .commu {
-	width : 800px;
-	height: auto;
-	background : white;
-	color : #111;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top: 50px;
-	padding: 30px;
-	border: 2px solid #111;
+width : 800px;
+height: auto;
+background : white;
+color : #111;
+margin-left:auto;
+margin-right:auto;
+margin-top: 50px;
+padding: 30px;
 }
 
 .comuInfo {
-	border: 0.2px solid #111;
+border-bottom: 0.2px solid #111;
 }
 #tableArea {
-	background : white;
-	color : black;
-	border: 2px solid #111;
+background : white;
+color : black;
+height : 400px;
+
 }
 
 #replyArea {
-	width:auto;
-	color:black;;
-	background:white;
-	margin-left:auto;
-	margin-right:auto;
-	padding-bottom : 5px;
-	border: 2px solid #111;
+width:auto;
+color:black;;
+background:white;
+margin-left:auto;
+margin-right:auto;
+padding-bottom : 5px;
+border: 2px solid #111;
+margin-top : 10px;
 }
 #replyArea textArea {
-	border-radius: 10px;
-	resize: none;
+border-radius: 10px;
+resize: none;
 }
 
 table[class*=replyList] td{
-	color: black;
+color: black;
 }
 
-.replyList1 td{ background : yellow; }
+.replyList1 td{ background : white; }
+
+
+.button {
+position: relative;
+width: 90px;
+height: 30px;
+border: 2px solid #839903;
+border-radius: 10px;
+background-color: #fff;
+cursor: pointer;
+overflow: hidden;
+}
+.button::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+background-color: #839903;
+width: 100%;
+height: 100%;
+z-index: 1;
+transform: scale(0, 1);
+transform-origin: 50% 0%;
+/* transform: translateX(100%); */
+transition: transform 0.35s;
+}
+
+.button-text {
+position: relative;
+z-index: 2;
+transition: color 0.35s;
+color : black;
+}
+.button:hover::after {
+transform: scale(1, 1);
+}
+.button:hover .button-text {
+color: white;
+}
+
 
 </style>
 
