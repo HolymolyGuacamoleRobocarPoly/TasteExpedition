@@ -32,15 +32,18 @@ public class BCommentUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		int cno = Integer.parseInt(request.getParameter("cno"));	// 수정할 댓글 번호		
-		String content = request.getParameter("content");			// 수정할 내용 받아온 값 
+		int cno = Integer.parseInt(request.getParameter("commentNo"));	// 수정할 댓글 번호		
+		String content = request.getParameter("commentContent");			// 수정할 내용 받아온 값 
 			
+		int bno = Integer.parseInt(request.getParameter("cboardno"));	// 해당 댓글이 달린 게시글 번호
 		int btype = Integer.parseInt(request.getParameter("btype"));// 해당 댓글이 달린 게시글의 타입
-		int bno = Integer.parseInt(request.getParameter("bno"));	// 해당 댓글이 달린 게시글 번호
+		
+		 
 		
 		BComment bc = new BComment();		
 		bc.setCommentNo(cno);			
 		bc.setCommentContent(content);
+		
 		
 		BCommentService service = new BCommentService();
 		int result = service.updateComment(bc);

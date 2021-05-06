@@ -148,6 +148,7 @@
 	margin-left: 20px;
 	
 }
+
 </style>
 </head>
 <body>
@@ -236,6 +237,7 @@
 					<span id="stSco"><%= avr %></span>
 				</th>
 				<% if (m.getmLoginType() == 1 ) { %>
+				<% System.out.println("로그인 타입 확인 ::"+ m.getmLoginType()); %>
 					<th>
 						<button onclick="mjUpdateGo();" id="mjUpdateGo">정보 수정</button>
 						<button onclick="mjDeleteGo();" id="mjDeleteGo"> 삭제 </button>
@@ -250,7 +252,7 @@
 		<table id="MJImg">
 			<tr>
 				<% for ( int i = 0; i < mjAttList.size(); i++) { %>
-                   	<th><img src="/tastyServer/resources/mjAtt/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
+                   	<th><img src="/tastyServer/resources/temp/<%=mjAttList.get(i).getAttMFileName()%>" 
                    	alt="식당 사진입니다." width="300px" height="200px"></th>
                	<% } %>
 
@@ -336,28 +338,7 @@
 				<% System.out.println(menu.get(i).getMenuPrice()); %>
 				
 				<% } %>
-				<!-- 
-				<tr>
-					<td>생연어 모듬</td>
-					<td>33,000원</td>
-				</tr>
-				<tr>
-					<td>생연어 사시미</td>
-					<td>23,000원</td>
-				</tr>
-				<tr>
-					<td>생연어 타다끼</td>
-					<td>18,000원</td>
-				</tr>
-				<tr>
-					<td>구운연어와 오일파스타</td>
-					<td>18,000원</td>
-				</tr>
-				<tr>
-					<td>명란 로제 파스타</td>
-					<td>18,000원</td>
-				</tr>
-				 -->
+				
 			</table>
 		</div>
 
@@ -411,23 +392,28 @@
 	 
 	<% for(Review r : rlist) { %>
 		<% for ( int i = 0; i < reviewAttList.size(); i ++) { %>
-			<div class="imgArea">
+		<div class="wrap">
+			<div class="imgArea reviewArea">
 			<img src="/tastyServer/resources/review/<%=reviewAttList.get(i).getAttMFileName()%>" alt="리뷰 첨부파일"
 				width="150px" height="90px" class="rImg">
+				<%System.out.println("reviewAttList(i)번째 :: " + reviewAttList.get(i)); %>
+				<%System.out.println("reviewAttList :: " + reviewAttList.get(i).getAttMFileName()); %>
 			</div>	
 		<% } %>
-		<div id="reviewHash">
-			<div class="reviewHashTag" id="hash1">#<%= r.getrHashTag() %></div>
-			
-			<!--  
-			<div class="reviewHashTag" id="hash1">#연어맛집</div>
-			<div class="reviewHashTag" id="hash2">#곰</div>
-			-->
+			<div id="reviewHash" class="reviewArea">
+				<div class="reviewHashTag" id="hash1">#<%= r.getrHashTag() %></div>
+				
+				<!--  
+				<div class="reviewHashTag" id="hash1">#연어맛집</div>
+				<div class="reviewHashTag" id="hash2">#곰</div>
+				-->
+			</div>
+			<div class="reviewArea">
+				<textarea name="rContent" id="rcontent" cols="80" rows="10" style="resize: none;" readonly="readonly">
+		           <%= r.getrContent() %> 
+		        </textarea>
+	        </div>
 		</div>
-		<textarea name="rContent" id="rcontent" cols="80" rows="10" style="resize: none;" readonly="readonly">
-           <%= r.getrContent() %> 
-        </textarea>
-	
 	</div>
 
 	<% } %>
@@ -435,7 +421,7 @@
 	<%@ include file="../common/footer.jsp"%>
 
 	
-	<% System.out.println( "::::::::" +mj.getmRestaurantNo()); %>
+	
 
 	<script>
 	

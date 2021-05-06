@@ -63,7 +63,7 @@ public class BCommentDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, bc.getCommentContent());
-			ps.setInt(2, bc.getcBoardNo());
+			ps.setInt(2, bc.getCommentNo());
 			
 			result = ps.executeUpdate();
 			

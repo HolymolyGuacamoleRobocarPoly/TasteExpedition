@@ -63,6 +63,7 @@ int listCount = pi.getListCount();
 		<div class="btnArea" align="center">
 			<br>
 			<!--<button href='views/cBoardCommunity/communityInsert.jsp'>작성하기</button>-->
+		</div>
 			<script>
 				$('#listArea td').on('mouseenter', function() {
 					$(this).parent().css({'background' : 'white',
@@ -74,6 +75,7 @@ int listCount = pi.getListCount();
 				}).on('click', function(){
 					var cboardno = $(this).parent().children().first().attr('id');
 					
+					
 					console.log(cboardno);
 					location.href = "/tastyServer/selectOne.co?cboardno=" + cboardno;
 					
@@ -81,7 +83,6 @@ int listCount = pi.getListCount();
 				});
 			</script>
 			<%	} %>
-		</div>
 		<!-- 게시물 클릭 끝 -->
 
 		<!-- 페이지 부분 -->
@@ -168,7 +169,7 @@ int listCount = pi.getListCount();
 		<script>
 			//작성하기로 이동하는 함수
 			function goInsert() {
-				location.href="/tastyServer/Insert.co";
+				location.href="/tastyServer/insert.co";
 			}
 			
 			// 프로필 마이페이지 누르면 이동하는 함수

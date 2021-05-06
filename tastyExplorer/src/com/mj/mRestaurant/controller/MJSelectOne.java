@@ -57,9 +57,30 @@ public class MJSelectOne extends HttpServlet {
 		AttachmentService aService = new AttachmentService();
 		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, mjFLevel);
 		
+		
+		
 		// 해당 식당의 리뷰 Attachment 불러오기
 		AttachmentService rvAttService = new AttachmentService();
-		ArrayList<Attachment> reviewAttList = rvAttService.selectList(mjNo, rvFlevel);
+		
+		
+		
+//		for (Review r : rlist) {
+//			ArrayList<Attachment> reviewAttList = rvAttService.selectList(r.getrNo(), rvFlevel);
+//			
+//		}
+		
+		ArrayList<Attachment> reviewAttList = new ArrayList<>();
+		
+		for ( int i = 0; i < rlist.size(); i ++) {
+			
+			int rNo = rlist.get(i).getrNo();
+			reviewAttList = rvAttService.selectList(rNo, rvFlevel);
+			
+			System.out.println("MJSelectOne :: rNo ::" + rNo);
+		}
+		
+		
+		
 		
 		// 해당 식당 MenuList 불러오기 
 		MenuService mService = new MenuService();

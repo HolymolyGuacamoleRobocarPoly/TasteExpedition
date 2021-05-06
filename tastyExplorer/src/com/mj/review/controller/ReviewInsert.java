@@ -1,11 +1,18 @@
 package com.mj.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mj.common.model.service.AttachmentService;
+import com.mj.common.model.vo.Attachment;
+import com.mj.mRestaurant.model.service.MRestaurantService;
+import com.mj.mRestaurant.model.vo.MRestaurant;
 
 /**
  * Servlet implementation class ReviewInsert
@@ -27,8 +34,17 @@ public class ReviewInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
+		int mjFLevel = 7;
 		
-		request.setAttribute("mjNo", mjNo);
+		MRestaurantService service = new MRestaurantService();
+		MRestaurant mj = service.selectOne(mjNo);
+		
+		AttachmentService aService = new AttachmentService();
+		ArrayList<Attachment> mjAttList = aService.selectList(mjNo, mjFLevel);
+		
+		
+		request.setAttribute("mj", mj);
+		request.setAttribute("mjAttList", mjAttList);
 		request.getRequestDispatcher("views/review/reviewWrite.jsp")
 		       .forward(request, response);
 	}

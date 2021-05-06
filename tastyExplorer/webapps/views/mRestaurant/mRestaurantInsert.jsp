@@ -115,25 +115,25 @@
 					<tr>
 						<th>
 							<div id="contentImgArea1">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="titleImg" class="inImg"
-									width="200" height="150" />
-							</div>
-						</th>
-						<th>
-							<div id="contentImgArea2">
 								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg1" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
-							<div id="contentImgArea3">
+							<div id="contentImgArea2">
 								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg2" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
 						<th>
-							<div id="contentImgArea4">
+							<div id="contentImgArea3">
 								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg3" class="inImg"
+									width="200" height="150" />
+							</div>
+						</th>
+						<th>
+							<div id="contentImgArea4">
+								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg4" class="inImg"
 									width="200" height="150" />
 							</div>
 						</th>
@@ -320,16 +320,16 @@
 
 					switch (num) {
 					case 1: 
-						$('#titleImg').attr('src', e.target.result); 
+						$('#contentImg1').attr('src', e.target.result); 
 						break;
 					case 2:
-						$('#contentImg1').attr('src', e.target.result);
-						break;
-					case 3:
 						$('#contentImg2').attr('src', e.target.result);
 						break;
-					case 4:
+					case 3:
 						$('#contentImg3').attr('src', e.target.result);
+						break;
+					case 4:
+						$('#contentImg4').attr('src', e.target.result);
 						break;
 					}
 				}

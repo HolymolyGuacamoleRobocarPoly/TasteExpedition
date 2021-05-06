@@ -162,7 +162,7 @@ a{
    
    <section class="mainpage">
    
-   <form action="/tastyServer/update.me" method="post" id="updateForm">
+   <form action="/tastyServer/update.me" method="post" id="updateForm" enctype="multipart/form-data">
                 
          <table align="center">
             <tr>

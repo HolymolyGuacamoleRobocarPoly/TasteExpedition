@@ -108,7 +108,7 @@
 				<tr>
 					<th>
 						<h2>
-							<input type="text" id="mjName" value="<%--= mj.getmRestaurantTitle() --%>연어롭다">
+							<input type="text" id="mjName" value="<%= mj.getmRestaurantTitle() %>">
 						</h2> 
 					</th>
 				</tr>
@@ -118,63 +118,25 @@
 				<table id="MJImg">
 					<span>사진은 첫번째 사진이 대표사진입니다. 좋은 사진으로 골라서 입력해주세요~</span>
 					<tr>
-					
-						<%-- 
+
 						<% for (int i = 0; i < mjAttList.size(); i ++) { %>
 						<th>
 							<div id="contentImgArea<%=i%>">
-								<img src="/tastyServer/assets/images/<%= mjAttList.get(i).getAttMFileName() %>" 
+								<img src="/tastyServer/assets/images/<%=mjAttList.get(i).getAttMFileName()%>" 
 								id="contentImg<%=i%>" class="inImg" width="200" height="150" />
 							</div>
 							<input type="file" accept="image/*" name="thumbImg<%=i%>" id="thumbImg<%=i%>" class="fileArea"
 								onchange="loadImg(this, <%=i%>);" /> 
 						</th>
-						<% } %>
-						--%>
 						
-						<!--  임시  -->
-						<th>
-							<div id="contentImgArea1">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg1" class="inImg"
-									width="200" height="150" />
-							</div>
-						</th>
-						<th>
-							<div id="contentImgArea2">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg2" class="inImg"
-									width="200" height="150" />
-							</div>
-						</th>
-						<th>
-							<div id="contentImgArea3">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg3" class="inImg"
-									width="200" height="150" />
-							</div>
-						</th>
-						<th>
-							<div id="contentImgArea4">
-								<img src="/tastyServer/assets/images/no-image.jpg" id="contentImg4" class="inImg"
-									width="200" height="150" />
-							</div>
-						</th>
-						<!--  임시  -->
+						<% } %>
+						
+						
+						
 					</tr>
 				</table>
 			</div>
-			<!--  임시  -->
-			<div class="fileArea" id="fileArea">
-				<!--  첨부 사진 추가 영역 -->
-				<!-- (input:file#thumbImg$[name=thumbImg$ onchange=loadImg(this,$)])*4  -->
-				<input type="file" accept="image/*" name="thumbImg1" id="thumbImg1" 
-					onchange="loadImg(this, 1);" /> 
-				<input type="file" accept="image/*" name="thumbImg2" id="thumbImg2" 
-					onchange="loadImg(this, 2);" /> 
-				<input type="file" accept="image/*" name="thumbImg3" id="thumbImg3" 
-					onchange="loadImg(this, 3);" /> 
-				<input type="file" accept="image/*" name="thumbImg4" id="thumbImg4" 
-					onchange="loadImg(this, 4);" />
-			</div>
-			<!--  임시  -->
+
 			<br>
 			<br>
 			<br>
@@ -197,36 +159,27 @@
 				<fieldset>
 					<legend>식당 정보 입력</legend>
 					<table id="address">
-						<tr>
-							<td>우편번호 : </td>
-							<td><input type="text" id="zipCode" name="zipCode" class="inin" required size="30"></td>
-							<td><div id="ckZip" onclick="addrSearch();"> 검색</div></td>
-						</tr>
+						
 						<tr>
 							<td style="text-align : center;">주소</td>
-							<td><input type="text" id="address1" name="address1" class="inin" required size="30"></td>
-							<td></td>
+							<td><%= mj.getmRestaurantAdrress() %></td>
 						</tr>
-						<tr>
-							<td style="text-align : center;">상세주소</td>
-							<td><input type="text" id="address2" name="address2" class="inin" required size="30"></td>
-							<td></td>
-						</tr>
+						
 						<tr>
 							<td>전화번호 :</td>
-							<td><input type="tel" name="tel" id="tel" class="inin" size="30" value="<%--= mj.getmRestaurantTel()--%>"></td>
+							<td><input type="tel" name="tel" id="tel" class="inin" size="30" value="<%= mj.getmRestaurantTel()%>"></td>
 						</tr>
 						<tr>
 							<td>영업시간 :</td>
-							<td><input type="datetime" name="openTime" id="openTime" class="inin" size="30" value="<%--= mj.getOpenTime()--%>"></td>
+							<td><input type="datetime" name="openTime" id="openTime" class="inin" size="30" value="<%= mj.getOpenTime()%>"></td>
 						</tr>
 						<tr>
 							<td>Break Time :</td>
-							<td><input type="datetime" name="brTime" id="brTime" class="inin" size="30" value="<%--= mj.getBrTime()--%>"></td>
+							<td><input type="datetime" name="brTime" id="brTime" class="inin" size="30" value="<%= mj.getBrTime()%>"></td>
 						</tr>
 						<tr>
 							<td>휴무일 :</td>
-							<td><input type="text" name="holiday" id="holiday" class="inin" size="30" value="<%--= mj.getHoliday()--%>"></td>
+							<td><input type="text" name="holiday" id="holiday" class="inin" size="30" value="<%= mj.getHoliday()%>"></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -247,7 +200,7 @@
 				                 </select> <br /><br />
 				                 
 					<textarea rows="8" cols="18" name="mjContent" style="resize:none;"> 
-					<%--= mj.getmRestaurantContent() --%>  연어롭다, 이태원, 연어맛집, 혼술
+					<%= mj.getmRestaurantContent() %>
 					</textarea>
 				</fieldset>
 			</div>
@@ -342,7 +295,7 @@
 		};
 	
 	
-        $('#contentImgArea1').on('click', function() { 
+		$('#contentImgArea1').on('click', function() { 
 			$('#thumbImg1').click();
 		});
 		
@@ -358,7 +311,7 @@
 			$('#thumbImg4').click();
 		});
 		
-		$('.fileArea').hide();
+		$('#fileArea').hide();
 
         function loadImg(img, num) {
 			if (img.files && img.files[0]) {
@@ -369,16 +322,16 @@
 
 					switch (num) {
 					case 1: 
-						$('#titleImg').attr('src', e.target.result); 
+						$('#contentImg1').attr('src', e.target.result); 
 						break;
 					case 2:
-						$('#contentImg1').attr('src', e.target.result);
-						break;
-					case 3:
 						$('#contentImg2').attr('src', e.target.result);
 						break;
-					case 4:
+					case 3:
 						$('#contentImg3').attr('src', e.target.result);
+						break;
+					case 4:
+						$('#contentImg4').attr('src', e.target.result);
 						break;
 					}
 				}
@@ -388,48 +341,7 @@
 			
 		}
         
-        function addrSearch() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var fullAddr = ''; // 최종 주소 변수
-                    var extraAddr = ''; // 조합형 주소 변수
-
-                    // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                        fullAddr = data.roadAddress;
-
-                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                        fullAddr = data.jibunAddress;
-                    }
-
-                    // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
-                    if(data.userSelectedType === 'R'){
-                        //법정동명이 있을 경우 추가한다.
-                        if(data.bname !== ''){
-                            extraAddr += data.bname;
-                        }
-                        // 건물명이 있을 경우 추가한다.
-                        if(data.buildingName !== ''){
-                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                        }
-                        // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                        fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-                    }
-
-                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    $('#zipCode').val(data.zonecode); //5자리 새우편번호 사용
-                    
-                    $('#address1').val(fullAddr);
-
-                    // 커서를 상세주소 필드로 이동한다.
-                    $('#address2').focus();
-                }
-            }).open();
-        };
     </script>
 
 
