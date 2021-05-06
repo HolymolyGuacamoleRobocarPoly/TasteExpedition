@@ -33,14 +33,20 @@ public class CommunityDelete extends HttpServlet {
 		int cboardno = Integer.parseInt(request.getParameter("cBoardNo"));
 		
 
-		System.out.println("deletecboardno" + cboardno);
+		// System.out.println("deletecboardno" + cboardno);
 		
 		CommunityService service = new CommunityService();
 		
 		int result = service.deleteCommunityBoard(cboardno);
 		
+		System.out.println("삭제 : " + cboardno);
+		
+		String page = "";
+		
 		if (result > 0) {
 			response.sendRedirect("selectList.co");
+			
+		
 		} else {
 			request.setAttribute("error-msg", "게시글 삭제를 실패했습니다.");
 			

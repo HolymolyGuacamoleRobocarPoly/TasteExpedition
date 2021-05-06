@@ -51,30 +51,30 @@ public class CommunityInsert extends HttpServlet {
 		}
 		
 		
-		//조회
-		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
-		int fLevel = 6;
-
-		// 게시글
-		CommunityService service = new CommunityService();
-		Community c = service.selectOne(cboardno);
-		
-		// 댓글 리스트
-		BCommentService commentService = new BCommentService();
-		ArrayList<BComment> clist = commentService.selectList(cboardno);
-		//System.out.println("cINset clist : " + clist );
-		
-		
-		// 파일 리스트
-		AttachmentService aService = new AttachmentService();
-		ArrayList<Attachment> cAttList = aService.selectList(cboardno, fLevel);
-		//System.out.println("cINset cAttList : " + cAttList );
-		
-		
-		System.out.println("communityinsert c : " + c);
-		System.out.println("communityinsert clist : " + clist);
-		System.out.println("communityinsert cAttList : " + cAttList);
-		
+//		//조회
+//		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
+//		int fLevel = 6;
+//
+//		// 게시글
+//		CommunityService service = new CommunityService();
+//		Community c = service.selectOne(cboardno);
+//		
+//		// 댓글 리스트
+//		BCommentService commentService = new BCommentService();
+//		ArrayList<BComment> clist = commentService.selectList(cboardno);
+//		//System.out.println("cINset clist : " + clist );
+//		
+//		
+//		// 파일 리스트
+//		AttachmentService aService = new AttachmentService();
+//		ArrayList<Attachment> cAttList = aService.selectList(cboardno, fLevel);
+//		//System.out.println("cINset cAttList : " + cAttList );
+//		
+//		
+//		System.out.println("communityinsert c : " + c);
+//		System.out.println("communityinsert clist : " + clist);
+//		System.out.println("communityinsert cAttList : " + cAttList);
+//		
 		
 //		 5. 가져오기 (제목, 내용, 닉네임)
 //		String title = mr.getParameter("ctitle");

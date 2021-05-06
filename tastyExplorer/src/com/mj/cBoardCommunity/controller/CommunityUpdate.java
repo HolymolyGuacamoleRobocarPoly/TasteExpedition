@@ -48,13 +48,22 @@ public class CommunityUpdate extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize,
 				   "UTF-8", new DefaultFileRenamePolicy());
 		
+		// 수정할 정보
 		int cboardno = Integer.parseInt(mr.getParameter("cBoardNo"));
+		String cBoardTitle = mr.getParameter("cBoardTitle");
+		String cBoardContent = mr.getParameter("cBoardContent");
 		
+		CommunityService service = new CommunityService();
+		Community c = service.selectOne(cboardno);
 		
+		c.setcBoardTitle(cBoardTitle);
+		c.setcBoardContent(cBoardContent);
 		
 		System.out.println("업데이트 왔니 : " + cboardno);
 		
+		int result = service.updateCommunityBoard(c);
 		
+	
 		request.getRequestDispatcher("selectOne.co?cboardno=" + cboardno).forward(request, response);
 	}
 
