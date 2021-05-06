@@ -24,7 +24,7 @@
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #FFF0F0;
+  background-color: #839903;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -40,7 +40,7 @@
   }
 
 .button:hover {
-  background-color: #FFBEBE;
+  background-color: #cddc39;
   box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
   color: #fff;
   transform: translateY(-7px);

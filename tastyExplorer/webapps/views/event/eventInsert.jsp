@@ -186,13 +186,12 @@ input[type=text]::placeholder{
                   		
                		</div>
                     <%-- 관리자가 로그인했을 경우 --%>    
-                    <%-- <% if(m.getmLoginType() == 1) { %> --%>   
+                      
                     <div class="button_area">
                     	<button class="button" type="reset">작성 취소</button>	
                     	<button class="button" type="submit">이벤트 등록</button>
                     </div>
-                    <%-- <% } %> --%>
-                    <%-- else: 회원이 로그인했을 경우 -> button hidden --%>
+                    
                 </div>
           	</div>
        	</div>

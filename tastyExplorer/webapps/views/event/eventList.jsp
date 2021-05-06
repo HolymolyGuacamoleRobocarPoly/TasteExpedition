@@ -45,7 +45,7 @@ p { margin:20px 0px; }
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #d4e157;
+  background-color: #839903;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -59,6 +59,7 @@ p { margin:20px 0px; }
   float: right;   
   margin-right: 13px;
   cursor: pointer;
+  color: white;
  
   }
 
@@ -68,7 +69,7 @@ p { margin:20px 0px; }
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #d4e157;
+  background-color: #839903;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -82,12 +83,12 @@ p { margin:20px 0px; }
   float: right;   
   margin-right: -13px;
   cursor: pointer;
+  color: white;
 }
 
 button:hover {
-  background-color: #8AE634;
-  box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
-  color: #fff;
+  background-color: #cddc39;
+  color: black;
   transform: translateY(-7px);
 }
 
@@ -114,6 +115,17 @@ button:hover {
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
 }
+
+.card-title{
+	margin-left: -17px;
+	margin-top: -10px;
+	text-align: right;
+}
+
+.card-text{
+	margin-left: -17px;
+	margin-top: -2px;
+	}
 </style>
 </head>
 <body>
@@ -129,13 +141,13 @@ button:hover {
         <% if (elist.size() == alist.size()) { %>  
         
           <% for(int i = 0; i < elist.size(); i++) { %>
-         <div class="col-4" style="padding: 10px;">
+         <div class="col-4" style="padding: 12px;">
           <div class="card">
           <!-- 관리자가 등록한 사진 가져오기 -->
-            <p><%= elist.get(i).geteNo() %> <%= elist.get(i).geteTitle() %></p>
+            <p><%= elist.get(i).geteNo() %>. <%= elist.get(i).geteTitle() %></p>
             <img src="/tastyServer/resources/event/<%= alist.get(i).getAttMFileName() %> "alt="" class="card-img-top" />
             <div class="card-body">
-            	<h5 class="card-title">기간 : <%= elist.get(i).geteDuration() %></h5>             	
+            	<p class="card-title">기간 : <%= elist.get(i).geteDuration() %></p>             	
             	<p class="card-text"><%= elist.get(i).geteContent() %></p>
             	<button class="button2" id="<%= elist.get(i).geteNo() %>">자세히 보기</button>
             </div>
@@ -145,10 +157,10 @@ button:hover {
         <% } %>
         
         </div>
-	
+	   <% if(m.getmLoginType() == 1) { %>
 		<button class="button1" type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">등록하기</button>
        	<button class="button1" type="button" onclick="location.href='/tastyServer/views/event/eventInsert.jsp'">삭제하기</button>
-      
+    	<% } %>
      
       <!-- 관리자인 경우, 버튼 2개 보임-->
   

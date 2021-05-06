@@ -33,7 +33,7 @@
     /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#F17153, #F58D63, #f1ab53);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#F17153, #F58D63, #f1ab53);
+    background: #839903;
     /* Standard syntax */
     padding: 0px;
     min-height: 100%;
@@ -65,7 +65,7 @@
 h5{
 	margin-top: 30px;
 	padding: 5px 0px 5px 40px;
-	font-size: 20px;
+	font-size: 25px;
 	margin-bottom: 50px;
 }
 .list>li:hover {
@@ -82,23 +82,32 @@ b, strong{
 padding-right: 40px;
 }
 
-.container{
+.container1{
 margin-top: 60px;
+width: 1000px;
+margin-left: auto;
+margin-right: auto;
 }
 
 .table{
 height: 200px;
+
 font-size: 20px;
 }
 
 a{
 	color: white;
+	
 }
 
 .logo>img{
-	height:150px;
-	width: 150px;		
+	height:160px;
+	width: 160px;		
 }
+
+ a:link {text-decoration: none;}
+
+
 
 </style>
 <body>
@@ -123,7 +132,7 @@ a{
                     <br>
                 </div>
             </div>
-            <div class="col-md-10 col-sm-8 main-content">
+            <div class="col-md-10 col-sm-8 main-content" >
             <!--Main content code to be written here -->
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -136,7 +145,7 @@ a{
 					src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 					integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 					crossorigin="anonymous"></script>
-				<div class="container">
+				<div class="container1">
 					<h2>이벤트 참여 내역</h2> <br><br /><br /><br />
 					<table class="table">
 						<thead>

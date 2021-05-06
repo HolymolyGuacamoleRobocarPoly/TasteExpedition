@@ -33,7 +33,7 @@
     /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#F17153, #F58D63, #f1ab53);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#F17153, #F58D63, #f1ab53);
+    background: #839903;
     /* Standard syntax */
     padding: 0px;
     min-height: 100%;
@@ -96,9 +96,8 @@ a{
 }
 
 .logo>img{
-	height:150px;
-	width: 150px;	
-	
+	height:160px;
+	width: 160px;		
 }
 
 section .myPage {
@@ -122,7 +121,8 @@ section .myPage {
 	#deleteBtn:hover {
 		cursor:pointer;
 	}
-
+	
+ a:link {text-decoration: none;}
 </style>
 <body>
 

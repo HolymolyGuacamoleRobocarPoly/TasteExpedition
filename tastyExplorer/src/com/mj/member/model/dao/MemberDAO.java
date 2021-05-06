@@ -87,6 +87,8 @@ public class MemberDAO {
 				result.setPhone(rs.getString("M_PHONE"));
 				result.setEmail( rs.getString("M_EMAIL"));
 				result.setAddress(rs.getString("M_ADDR"));
+				result.setmLoginType(rs.getInt("M_LOGIN_TYPE"));
+
 				
 			}	
 			

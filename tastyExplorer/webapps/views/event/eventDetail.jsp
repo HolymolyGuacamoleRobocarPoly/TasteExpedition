@@ -39,7 +39,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 600; 
-  background-color: #FFF0F0;
+  background-color: #839903;
   border: none;
   border-radius: 5px;
   /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
@@ -52,12 +52,12 @@ button {
   margin-right: auto;
   margin-left: auto;
   cursor: pointer;
+  color: white;
   }
 
 .button:hover {
-  background-color: #FFBEBE;
-  box-shadow: 0px 15px 20px rgba(255, 234, 255, 0.4);
-  color: #fff;
+  background-color: #cddc39;
+  color: black;
   transform: translateY(-7px);
 }
 
@@ -69,7 +69,7 @@ button {
 	<%@ include file="/views/common/header.jsp" %>
 	
 	
-   	<p style="text-align: center; margin-top: 70px; margin-bottom: 20px;" >이벤트</p>
+   	<p style="text-align: center; margin-top: 60px; margin-bottom: 50px; font-size:40px;" >Event</p>
     
    	<% if (eventAttList != null && eventAttList.size()!= 0 ) { %>
 	   	<div class="contentImgArea">      
