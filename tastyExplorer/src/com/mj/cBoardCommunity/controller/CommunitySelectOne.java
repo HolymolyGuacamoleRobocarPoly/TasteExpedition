@@ -40,7 +40,7 @@ public class CommunitySelectOne extends HttpServlet {
 		int cboardno = Integer.parseInt(request.getParameter("cboardno"));
 		int fLevel = 6;
 		
-		//System.out.println(cboardno);
+		System.out.println("cboardno ::::::::::::::::::"+cboardno);
 		
 	
 		// 게시글 서비스 객체 생성
@@ -64,7 +64,7 @@ public class CommunitySelectOne extends HttpServlet {
 		
 		
 		System.out.println("communityselect c : " + c);
-		System.out.println("communityselect clist : " + clist);
+		System.out.println("communityselect clist :::::::::::::::::::::::::::::::::::::::::: " + clist);
 		System.out.println("communityselect cAttList : " + cAttList);
 		
 		if (c != null) {

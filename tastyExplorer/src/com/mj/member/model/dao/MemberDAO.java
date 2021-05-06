@@ -89,7 +89,6 @@ public class MemberDAO {
 				result.setAddress(rs.getString("M_ADDR"));
 				result.setmLoginType(rs.getInt("M_LOGIN_TYPE"));
 
-				
 			}	
 			
 			System.out.print("조회 결과 : " + result);

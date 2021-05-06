@@ -137,10 +137,10 @@ table[class*=replyList] td{
 		<!-- 댓글 달기 -->
 		<div id="replyArea">
 			<div id="replyWriteArea">
-				<form action="<%= request.getContextPath() %>/insert.co" method="post">
-					<input type="hidden" name="writer" value="<%= m.getNickName() %>">
+				<form action="<%= request.getContextPath() %>/insert.bc" method="post">
+					<input type="hidden" name="mNo" value="<%= m.getmNo()%>">
 					<input type="hidden" name="cboardno" value="<%= c.getcBoardNo() %>" />
-					<input type="hidden" name="commentNo" value="0" />	 
+					<input type="hidden" name="btype" value="2" />	 
 					<table align="center">
 						<tr>
 							<td>댓글 작성</td>
@@ -173,8 +173,8 @@ table[class*=replyList] td{
 					<td><b><%= bco.getmNo() %></b></td>
 					<td><%= bco.getCommentDate() %></td>
 					<td align="center">
- 					<%if(m.getNickName().equals(bco.getmNo())) { %>
-						<input type="hidden" name="commentNo" value="<%=bco.getcBoardNo()%>"/>
+ 					<%if( m.getmNo() == bco.getmNo() ) { %>
+						<input type="hidden" name="cBoardNo" value="<%=bco.getcBoardNo()%>"/>
 							  
 						<button type="button" class="updateBtn" 
 							onclick="updateReply(this);">수정하기</button>
@@ -207,7 +207,7 @@ table[class*=replyList] td{
 		<script>
 		// 게시글 번호 가져오기
 		var cboardno = '<%= c.getcBoardNo() %>';
-		//var btype= 1;
+		var btype= 2;
 		
 		
 		function updateReply(obj) {
@@ -228,11 +228,13 @@ table[class*=replyList] td{
 			// 댓글 번호 가져오기
 			var commentNo = $(obj).siblings('input').val();
 			
-			location.href = "/tastyServer/update.co?"
+			location.href = "/tastyServer/update.bc?"
 					      + "cboardno=" + cboardno 				// 게시판 번호
 					      + "&commentNo=" + commentNo			// 코멘트 번호
 					      + "&commentContent=" + commentContent //코멘트내용
+					      + "&btype=" + btype // 게시글 타입
 	
+		}			      
 		
 		function deleteReply(obj){
 			// 댓글 번호 가져오기
@@ -240,7 +242,7 @@ table[class*=replyList] td{
 			
 			//console.log("삭제 댓글 번호 : " + cno + " / " + bno);
 			
-			location.href="/tastyServer/delete.co" + "?commentNo=" + commentNo + "&cboardno=" + cboardno;
+			location.href="/tastyServer/delete.bc?commentNo=" + commentNo + "&cboardno=" + cboardno;
 			
 		}
 	</script>

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ page import="com.mj.mRestaurant.model.vo.*, com.mj.review.model.vo.*, com.mj.common.model.vo.*, java.util.*"  %>	
 <%
-	int mjNo = Integer.parseInt(request.getParameter("mjNo")); // 서블릿이 보낸 mjNo 받아오기
+	MRestaurant mj = (MRestaurant)request.getAttribute("mj"); // 서블릿이 보낸 MRestaurant 받아오기
+	ArrayList<Attachment> mjAttList = (ArrayList<Attachment>)request.getAttribute("mjAttList"); // 서블릿이 보낸 mjAttList 받아오기
 %>
 <!DOCTYPE html>
 <html>
@@ -143,7 +145,10 @@ input[type=text]::placeholder{
     <div class="temporary">      
        <div class="mjImgArea" 
           style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 50px; ">
-          이미지
+         		<% for ( int i = 0; i < mjAttList.size(); i++) { %>
+                   	<img src="/tastyServer/resources/temp/<%=mjAttList.get(i).getAttMFileName()%>" 
+                   	alt="식당 사진입니다." width="300px" height="200px">
+               	<% } %>
        </div>
        <div></div>
     </div>
@@ -158,7 +163,7 @@ input[type=text]::placeholder{
     			<div class="review_write">   			
     				<input type="hidden" name="mNo" value="<%= m.getmNo() %>" />
             		<input type="hidden" name="attMFlevel" value="5"/>
-            		<input type="hidden" name="mRestaurantNo" value="<%=mjNo%>"/>
+            		<input type="hidden" name="mRestaurantNo" value="<%= mj.getmRestaurantNo()%>"/>
             		<p style="text-align:center; margin-top: 50px; font-size: 25px; font-weight: bold;">당신의 평점은?</p>
 	                <P id="star" style="text-align:center; margin-top: 40px;">        
 		               <a href="#" class="rScore_star" data="1">★</a> <!-- 부모 -->

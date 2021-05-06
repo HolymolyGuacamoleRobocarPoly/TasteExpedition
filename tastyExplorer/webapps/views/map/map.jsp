@@ -301,7 +301,7 @@ function removeAllChildNods(el) {
 		<% for( int i = 0; i < mjList.size(); i ++) { %>
 	        <div class="mjList" id="<%= mjList.get(i).getmRestaurantNo() %>">
                 	<div class="imgArea">
-                		<img src="/tastyServer/resources/mjAtt/<%=mjAttList.get(i).getAttMFileName()%>.jpg" 
+                		<img src="/tastyServer/resources/temp/<%=mjAttList.get(i).getAttMFileName()%>" 
                 		alt="식당사진" style="width:400px; height:300px;">
                 	</div>
 	                <div class="textArea">
