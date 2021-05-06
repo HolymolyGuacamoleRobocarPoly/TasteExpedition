@@ -43,7 +43,7 @@
     max-height: 130px;
 }
 .logo>img {
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 3px;
     border: 3px solid white;
     border-radius: 100%;
@@ -56,9 +56,17 @@
 .list::first-line {
     color: rgba(255, 255, 255, 0.5);
 }
-.list> li, h5 {
+.list> li {
     padding: 5px 0px 5px 40px;
-    font-size: 25px;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+h5{
+	margin-top: 30px;
+	padding: 5px 0px 5px 40px;
+	font-size: 20px;
+	margin-bottom: 50px;
 }
 .list>li:hover {
     background-color: rgba(255, 255, 255, 0.2);
@@ -81,6 +89,16 @@ margin-top: 60px;
 .table{
 height: 200px;
 font-size: 20px;
+}
+
+a{
+	color: white;
+}
+
+.logo>img{
+	height:150px;
+	width: 150px;	
+	
 }
 
 section .myPage {
@@ -114,15 +132,14 @@ section .myPage {
         <div class="row">
             <div class="col-md-2 col-sm-4 sidebar1">
                 <div class="logo">
-                    <img src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo">
+                    <img src="/tastyServer/assets/images/미모지.png" class="img-responsive center-block" alt="Logo">
                 </div>
                 <br>
                 <div class="left-navigation" style="height: 700px;">
                     <ul class="list">
                         <h5 style="text-align: center"><strong><%= m.getNickName() %> 님</strong></h5>
-                        <li><a href="/tastyServer/views/member/memberUpdate.jsp">정보수정</a></li>
-                        <li>찜하기</li>
-                        <li>이벤트 내역</li>
+                        <li><a href="/tastyServer/views/member/memberUpdate.jsp">정보수정</a></li>                       
+                        <li><a href="/tastyServer/select.eh">이벤트 내역</a></li>
                         <li><a href="/tastyServer/views/member/memberDelete.jsp">회원탈퇴</a></li>
                     </ul>
 
