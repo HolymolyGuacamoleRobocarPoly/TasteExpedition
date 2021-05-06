@@ -49,19 +49,21 @@ public class Menu implements Serializable {
 	
 	// 메소드
 
-
-
 	@Override
 	public String toString() {
-		return "Menu [mRestaurantNo=" + mRestaurantNo + ", menuName=" + Arrays.toString(menuNames) + ", menuPrice="
-				+ Arrays.toString(menuPrices) + "]";
+		return "Menu [mRestaurantNo=" + mRestaurantNo + ", menuNames=" + Arrays.toString(menuNames) + ", menuPrices="
+				+ Arrays.toString(menuPrices) + ", menuName=" + menuName + ", menuPrice=" + menuPrice + "]";
 	}
 
+
+	
 
 	// getter & setter
 	public int getmRestaurantNo() {
 		return mRestaurantNo;
 	}
+
+
 
 
 

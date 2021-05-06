@@ -27,9 +27,8 @@ public class ReviewInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mjNo = Integer.parseInt(request.getParameter("mjNo"));
-		int fLevel = 5;
 		
-		request.setAttribute("attMFlevel", fLevel);
+		request.setAttribute("mjNo", mjNo);
 		request.getRequestDispatcher("views/review/reviewWrite.jsp")
 		       .forward(request, response);
 	}

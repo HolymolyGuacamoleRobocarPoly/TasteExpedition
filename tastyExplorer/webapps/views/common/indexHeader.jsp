@@ -20,13 +20,10 @@
 
 <body>
     <header>
-        <a href="http://localhost:8088/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="/tastyServer/views/map/map.jsp">지도</a></li>
-            <li><a href="/tastyServer/views/review/reviewWrite.jsp">리뷰</a></li> <!--  삭제 ??  -->
-
             <li><a href="#" onclick="goEvent()">이벤트</a></li>
-            <li><a href="#" onclick="goMrestaurant()">맛집</a></li>
             <li><a href="#" onclick="goCommunity();">#소통해요</a></li>
 
             <% if( m != null) { %>
@@ -46,7 +43,7 @@
                 <% if ( m== null) { %>
                 <li><img src="/tastyServer/assets/images/user.png" />
 
-     				 <a href="http://localhost:8087/tastyServer/views/member/join.jsp">Sign Up</a></li>
+     				 <a href="/tastyServer/views/member/join.jsp">Sign Up</a></li>
                     <li><img src="/tastyServer/assets/images/log-out.png" /><a href="/tastyServer/views/member/login.jsp">Sign In</a></li>
 
 				<% } else { %>

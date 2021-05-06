@@ -19,7 +19,7 @@
 </head>
 <body>
     <header>
-        <a href="http://localhost:8086/tastyServer/" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
+        <a href="/tastyServer/index.jsp" class="logo">ㅁㅈ</br>ㅂㄹ<span class="question">?</span></a>
         <ul>
             <li><a href="/tastyServer/views/map/map.jsp">지도</a></li>
             <li><a href="#" onclick="goEvent()">이벤트</a></li>
