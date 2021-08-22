@@ -35,7 +35,7 @@ public class BCommentUpdate extends HttpServlet {
 		int cno = Integer.parseInt(request.getParameter("commentNo"));	// 수정할 댓글 번호		
 		String content = request.getParameter("commentContent");			// 수정할 내용 받아온 값 
 			
-		int bno = Integer.parseInt(request.getParameter("cboardno"));	// 해당 댓글이 달린 게시글 번호
+		int cboardno = Integer.parseInt(request.getParameter("cboardno"));	// 해당 댓글이 달린 게시글 번호
 		int btype = Integer.parseInt(request.getParameter("btype"));// 해당 댓글이 달린 게시글의 타입
 		
 		 
@@ -50,8 +50,8 @@ public class BCommentUpdate extends HttpServlet {
 		
 		if( result > 0) {
 			
-			if(btype == 1) response.sendRedirect("selectOne.em?bno="+bno); 		// eventMember 로 연결
-			else if(btype == 2) response.sendRedirect("selectOne.co?bno="+bno);	// community 로 연결
+			// if(btype == 1) response.sendRedirect("selectOne.em?bno="+bno); 		// eventMember 로 연결
+			if(btype == 1) response.sendRedirect("selectOne.co?cboardno="+ cboardno);	// community 로 연결
 			
 		} else {
 			

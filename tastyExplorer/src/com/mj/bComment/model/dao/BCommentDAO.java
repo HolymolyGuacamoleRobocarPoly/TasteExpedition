@@ -88,6 +88,7 @@ public class BCommentDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, cno);
+		
 			
 			result = ps.executeUpdate();
 			

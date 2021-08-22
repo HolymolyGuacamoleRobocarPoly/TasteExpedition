@@ -53,18 +53,30 @@ public class CommunityUpdate extends HttpServlet {
 		String cBoardTitle = mr.getParameter("cBoardTitle");
 		String cBoardContent = mr.getParameter("cBoardContent");
 		
+		// 수정 전 원본 데이터 가져오기
 		CommunityService service = new CommunityService();
+		
 		Community c = service.selectOne(cboardno);
 		
 		c.setcBoardTitle(cBoardTitle);
 		c.setcBoardContent(cBoardContent);
 		
-		System.out.println("업데이트 왔니 : " + cboardno);
+		System.out.println("communutyUpdate 업데이트 왔니 : " + cboardno);
+		System.out.println("communutyUpdate 제목은 : " + cBoardTitle);
+		System.out.println("communutyUpdate 내용은 : " + cBoardContent);
 		
 		int result = service.updateCommunityBoard(c);
 		
-	
-		request.getRequestDispatcher("selectOne.co?cboardno=" + cboardno).forward(request, response);
+		if (result > 0 ) {
+			response.sendRedirect("selectList.co");
+		} else {
+			request.setAttribute("error-msg", "게시글 수정 실패!");
+			
+			//request.getRequestDispatcher("selectOne.co?cboardno=" + cboardno).forward(request, response);
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
+		
+		
 	}
 
 	/**

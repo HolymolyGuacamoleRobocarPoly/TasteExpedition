@@ -32,8 +32,8 @@ public class CommunityDelete extends HttpServlet {
 		
 		int cboardno = Integer.parseInt(request.getParameter("cBoardNo"));
 		
-
-		// System.out.println("deletecboardno" + cboardno);
+		// 게시판 번호 가져오는지 확인
+		System.out.println("deletecboardno 확인 : " + cboardno);
 		
 		CommunityService service = new CommunityService();
 		
@@ -41,7 +41,6 @@ public class CommunityDelete extends HttpServlet {
 		
 		System.out.println("삭제 : " + cboardno);
 		
-		String page = "";
 		
 		if (result > 0) {
 			response.sendRedirect("selectList.co");

@@ -66,7 +66,7 @@ public class CommunityDAO {
 				
 				
 				list.add(c);
-				//System.out.println(list);
+				
 			}
 		} catch (SQLException e) {
 			

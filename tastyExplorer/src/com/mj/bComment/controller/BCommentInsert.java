@@ -33,11 +33,11 @@ public class BCommentInsert extends HttpServlet {
 	
 		// 작성자, 게시글 번호, 댓글 내용
 		String content = request.getParameter("replyContent");			// comment 내용
-		int bno = Integer.parseInt(request.getParameter("cboardno"));		// comment 작성된 게시글번호(event or community)
+		int cboardno = Integer.parseInt(request.getParameter("cboardno"));		// comment 작성된 게시글번호(event or community)
 		int mNo = Integer.parseInt(request.getParameter("mNo"));	// comment 작성자 회원번호 ( mNo ) ( 연결하고 식별하기 위한 값)
 		int btype = Integer.parseInt(request.getParameter("btype"));	// 1 이면 eventMember, 2 면 community(해당 jsp 에서 btype 설정)
 		
-		BComment comment = new BComment(content, bno, mNo);
+		BComment comment = new BComment(content, cboardno, mNo);
 		
 		BCommentService service = new BCommentService();
 		
@@ -45,8 +45,8 @@ public class BCommentInsert extends HttpServlet {
 		
 		if( result > 0) {
 			
-			if(btype == 1) response.sendRedirect("selectOne.em?bno="+bno); 		// eventMember 로 연결
-			else if(btype == 2) response.sendRedirect("selectOne.co?cboardno="+bno);	// community 로 연결
+			//  if(btype == 1) response.sendRedirect("selectOne.em?bno="+bno); 		// eventMember 로 연결
+			if(btype == 1) response.sendRedirect("selectOne.co?cboardno="+ cboardno);	// community 로 연결
 			
 			
 			

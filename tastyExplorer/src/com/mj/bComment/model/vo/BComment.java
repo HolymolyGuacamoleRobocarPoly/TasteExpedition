@@ -28,6 +28,7 @@ public class BComment implements Serializable {
 		this.commentDate = commentDate;
 		this.cBoardNo = cBoardNo;
 		this.mNo = mNo;
+		
 	}
 
 	

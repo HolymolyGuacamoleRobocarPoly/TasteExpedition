@@ -86,7 +86,7 @@ title {
 				<tr>
 					<td>제목  </td>
 					<td colspan="3">
-						<input type="text" name="ctitle" 
+						<input type="text" name="cBoardTitle" 
 						       size="40" value="<%= c.getcBoardTitle() %>" />
 					</td>
 				</tr>
@@ -100,7 +100,7 @@ title {
 				<tr>
 					<td>내용</td>
 					<td colpan="3">
-						<textarea name="cboardconetent" cols="80" rows="20"
+						<textarea name="cBoardContent" cols="80" rows="20"
 						 		  style="resize:none;"><%= c.getcBoardContent() %></textarea>
 					</td>
 				</tr>
@@ -108,22 +108,20 @@ title {
 			<br />
 			<div align="center" class="rpArea">
 				<button type="submit" class="button">수정 완료</button>
-				<button type="button"  class="button" onclick="selectOne();"><p class="button-text">수정 취소</p></button>
 				<button type="button"  class="button" onclick="deleteCommunityBoard();"><p class="button-text">게시글 삭제</p></button>
 			</div>
 		</form>
 	</div>
 	<script>
+		// 게시글 삭제 버튼
 		function deleteCommunityBoard() {
 			var cBoardNo = '<%= c.getcBoardNo() %>';
 			
 			location.href = '/tastyServer/delete.co?cBoardNo=' + cBoardNo;
 		}
 		
-		function selectOne() {
-			location.href = "/tastyServer/selectOne.co?cBoardNo=" + cBoardNo;
-			
-		}
+	
+	
  	</script>
 	
 	<%@ include file = "../common/footer.jsp" %>

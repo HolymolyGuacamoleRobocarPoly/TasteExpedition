@@ -151,8 +151,10 @@ table[class*=replyList] td{
 		<!-- 목록으로 돌아가는 버튼 -->
 		<div align="center">
 			<button class="button"  onclick="goSelectList();"><p class="button-text">돌아가기</p></button>
-			<%-- 닉네임 왜 못가져오는데; --%>
+			
+			<% if (c.getcBoardWriter().equals(m.getNickName())) { %>
 			<button class="button"   onclick="goDelete();"><p class="button-text">삭제하기</p> </button>
+			<% } %>
 			
 			<% if (c.getcBoardWriter().equals(m.getNickName())) { %>
 			<button class="button"  onclick="goUpdatePage();"><p class="button-text">수정하기</p></button>
@@ -168,7 +170,10 @@ table[class*=replyList] td{
 				}
 				
 				function goDelete() {
-					location.href = '/tastyServer/delete.co';
+					var cBoardNo = '<%= c.getcBoardNo() %>';
+					
+					location.href = '/tastyServer/delete.co?cBoardNo=' + cBoardNo;
+					
 				}
 			</script>
 		</div>
@@ -180,7 +185,7 @@ table[class*=replyList] td{
 				<form action="<%= request.getContextPath() %>/insert.bc" method="post">
 					<input type="hidden" name="mNo" value="<%= m.getmNo()%>">
 					<input type="hidden" name="cboardno" value="<%= c.getcBoardNo() %>" />
-					<input type="hidden" name="btype" value="2" />	 
+					<input type="hidden" name="btype" value="1" />	 
 					<table align="center">
 						<tr>
 							<td>댓글</td>
@@ -211,16 +216,16 @@ table[class*=replyList] td{
 		      	 class="replyList<%=bco.getCommentNo()%>">
 		  		<tr>
 		  			<td rowspan="2"> </td>
-					<td><b><%= bco.getmNo() %></b></td>
+					<td><b><%= c.getmNickname() %></b></td>
 					<td><%= bco.getCommentDate() %></td>
-					<td align="center">
+					<td align="center" class="cBox">
  					<%if( m.getmNo() == bco.getmNo() ) { %>
-						<input type="hidden" name="cBoardNo" value="<%=bco.getcBoardNo()%>"/>
+						<input type="hidden" name="commentNo" value="<%=bco.getCommentNo()%>"/>
 							  
-						<button class="button"   type="button" class="updateBtn" 
+						<button class="button"   type="button" class="updateBtn" id="upbt"
 							onclick="updateReply(this);"><p class="button-text">수정하기</p></button>
 							
-						<button class="button"  type="button" class="updateConfirm"
+						<button class="button"  type="button" class="updateConfirm" id="cmbt"
 							onclick="updateConfirm(this);"
 							style="display:none;" ><p class="button-text">수정완료</p></button> &nbsp;&nbsp;
 							
@@ -232,8 +237,8 @@ table[class*=replyList] td{
 				</tr>
 				<tr class="comment replyList<%=bco.getCommentNo()%>">
 					<td colspan="3" style="background : transparent;">
-					<textarea class="reply-content" cols="88" rows="3"
-					 readonly="readonly" style="resize: none;" ><%= bco.getCommentContent() %></textarea>
+					<textarea class="reply-content" cols="70" rows="3"
+					 readonly="readonly" style="resize: none;" id="replyContent"><%= bco.getCommentContent() %></textarea>
 					</td>
 				</tr>
 			</table>		
@@ -244,11 +249,11 @@ table[class*=replyList] td{
 			</div>
 		<!-- 댓글 목록 끝 -->
 		
-		<!-- 게시글 번호 가져오기 -->
+		
 		<script>
-		// 게시글 번호 가져오기
+		
 		var cboardno = '<%= c.getcBoardNo() %>';
-		var btype= 2;
+		var btype= 1;
 		
 		
 		function updateReply(obj) {
@@ -256,15 +261,17 @@ table[class*=replyList] td{
 			$(obj).parent().parent().next().find('textarea').removeAttr('readonly');
 			
 			// 수정 완료 버튼 보이게 하기
-			$(obj).siblings('.updateConfirm').css('display', 'inline');
+			$(obj).parent().parent().find('#cmbt').css('display', 'inline');
 			
 			// 현재 클릭한 수정 버튼 숨기기
 			$(obj).css('display', 'none');
+			
 		}
+		
 		
 		function updateConfirm(obj) {
 			// 수정을 마친 댓글 내용 가져오기
-			var commentContent = $(obj).parent().parent().next().find('textarea').val();
+			var content = $(obj).parent().parent().next().find('textarea').val();
 			
 			// 댓글 번호 가져오기
 			var commentNo = $(obj).siblings('input').val();
@@ -272,20 +279,23 @@ table[class*=replyList] td{
 			location.href = "/tastyServer/update.bc?"
 					      + "cboardno=" + cboardno 				// 게시판 번호
 					      + "&commentNo=" + commentNo			// 코멘트 번호
-					      + "&commentContent=" + commentContent //코멘트내용
+					      + "&commentContent=" + content   //코멘트내용 
 					      + "&btype=" + btype // 게시글 타입
-	
-		}			      
+					     
+		}
 		
 		function deleteReply(obj){
 			// 댓글 번호 가져오기
 			var commentNo = $(obj).siblings('input').val();
-			
 			//console.log("삭제 댓글 번호 : " + cno + " / " + bno);
 			
-			location.href="/tastyServer/delete.bc?commentNo=" + commentNo + "&cboardno=" + cboardno;
+			location.href="/tastyServer/delete.bc?commentNo="
+					+ commentNo + "&cboardno=" + cboardno + "&btype=" + btype;
 			
 		}
+		
+		
+		
 	</script>
 	</div>
 		

@@ -68,6 +68,7 @@ public class CommunityService {
 		return c;
 	}
 
+	// 게시글 수정하기
 	public int updateCommunityBoard(Community c) {
 		con = getConnection();
 		
@@ -80,7 +81,8 @@ public class CommunityService {
 		
 		return result;
 	}
-
+	
+	// 게시글 삭제하기
 	public int deleteCommunityBoard(int cboardno) {
 		con = getConnection();
 		
@@ -96,7 +98,8 @@ public class CommunityService {
 		
 		return result;
 	}
-
+	
+	// 조회수
 	public int getListCount() {
 		con = getConnection();
 		

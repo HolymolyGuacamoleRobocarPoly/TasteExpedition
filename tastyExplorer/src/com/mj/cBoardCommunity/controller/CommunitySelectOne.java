@@ -64,7 +64,7 @@ public class CommunitySelectOne extends HttpServlet {
 		
 		
 		System.out.println("communityselect c : " + c);
-		System.out.println("communityselect clist :::::::::::::::::::::::::::::::::::::::::: " + clist);
+		System.out.println("communityselectOne clist :::: " + clist);
 		System.out.println("communityselect cAttList : " + cAttList);
 		
 		if (c != null) {
