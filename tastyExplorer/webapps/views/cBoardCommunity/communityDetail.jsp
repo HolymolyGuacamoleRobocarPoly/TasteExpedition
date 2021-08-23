@@ -185,7 +185,8 @@ table[class*=replyList] td{
 				<form action="<%= request.getContextPath() %>/insert.bc" method="post">
 					<input type="hidden" name="mNo" value="<%= m.getmNo()%>">
 					<input type="hidden" name="cboardno" value="<%= c.getcBoardNo() %>" />
-					<input type="hidden" name="btype" value="1" />	 
+					<input type="hidden" name="btype" value="1" />	
+					<input type="hidden" name="bcoWriter" value="<%= m.getNickName() %>" /> 
 					<table align="center">
 						<tr>
 							<td>댓글</td>
@@ -216,7 +217,7 @@ table[class*=replyList] td{
 		      	 class="replyList<%=bco.getCommentNo()%>">
 		  		<tr>
 		  			<td rowspan="2"> </td>
-					<td><b><%= c.getmNickname() %></b></td>
+		  			<td><b><%= bco.getBcoWriter() %></b></td>
 					<td><%= bco.getCommentDate() %></td>
 					<td align="center" class="cBox">
  					<%if( m.getmNo() == bco.getmNo() ) { %>

@@ -40,6 +40,7 @@ public class BCommentDAO {
 			ps.setString(1, comment.getCommentContent());
 			ps.setInt(2, comment.getcBoardNo());
 			ps.setInt(3, comment.getmNo());
+			ps.setString(4, comment.getBcoWriter());
 			
 			result = ps.executeUpdate();
 			
@@ -125,11 +126,12 @@ public class BCommentDAO {
 				bco.setCommentDate( rs.getDate("COMMENT_DATE"));
 				bco.setcBoardNo(rs.getInt("C_BOARD_NO"));
 				bco.setmNo(rs.getInt("M_NO"));
+				bco.setBcoWriter(rs.getString("COMMENT_WRITER"));
 				
 				System.out.println("cdao bco : " + bco);
 				clist.add(bco);				
 			}
-			// clist를 여기서 아예 못가져오는데 쿼리문제?..db에서는 조회가 잘됨
+			
 			System.out.println("cdao clist : " + clist);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

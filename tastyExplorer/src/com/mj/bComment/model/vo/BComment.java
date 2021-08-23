@@ -17,37 +17,38 @@ public class BComment implements Serializable {
 	private Date commentDate;
 	private int cBoardNo;
 	private int mNo;
+	private String bcoWriter;
 	
 	// 생성자
 	public BComment () { }
 
-	public BComment(int commentNo, String commentContent, Date commentDate, int cBoardNo, int mNo) {
+	public BComment(int commentNo, String commentContent, Date commentDate, int cBoardNo, int mNo, String bcoWriter) {
 		super();
 		this.commentNo = commentNo;
 		this.commentContent = commentContent;
 		this.commentDate = commentDate;
 		this.cBoardNo = cBoardNo;
 		this.mNo = mNo;
+		this.bcoWriter = bcoWriter;
 		
 	}
-
-	
 	// 메소드
 	
-	public BComment(String commentContent, int cBoardNo, int mNo) {
+	public BComment(String commentContent, int cBoardNo, int mNo, String bcoWriter) {
 		super();
 		this.commentContent = commentContent;
 		this.cBoardNo = cBoardNo;
 		this.mNo = mNo;
+		this.bcoWriter = bcoWriter;
 	}
 
 	// toString
 	@Override
 	public String toString() {
 		return "BComment [commentNo=" + commentNo + ", commentContent=" + commentContent + ", commentDate="
-				+ commentDate + ", cBoardNo=" + cBoardNo + ", mNo=" + mNo + "]";
+				+ commentDate + ", cBoardNo=" + cBoardNo + ", mNo=" + mNo + ", bcoWriter=" + bcoWriter + "]";
 	}
-
+	
 	// getter & setter
 	public int getCommentNo() {
 		return commentNo;
@@ -88,8 +89,14 @@ public class BComment implements Serializable {
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
-	
-	
-	
+
+	public String getBcoWriter() {
+		return bcoWriter;
+	}
+
+	public void setBcoWriter(String bcoWriter) {
+		this.bcoWriter = bcoWriter;
+	}
+
 	
 }

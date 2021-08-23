@@ -36,8 +36,9 @@ public class BCommentInsert extends HttpServlet {
 		int cboardno = Integer.parseInt(request.getParameter("cboardno"));		// comment 작성된 게시글번호(event or community)
 		int mNo = Integer.parseInt(request.getParameter("mNo"));	// comment 작성자 회원번호 ( mNo ) ( 연결하고 식별하기 위한 값)
 		int btype = Integer.parseInt(request.getParameter("btype"));	// 1 이면 eventMember, 2 면 community(해당 jsp 에서 btype 설정)
+		String bcoWriter = request.getParameter("bcoWriter");
 		
-		BComment comment = new BComment(content, cboardno, mNo);
+		BComment comment = new BComment(content, cboardno, mNo, bcoWriter);
 		
 		BCommentService service = new BCommentService();
 		
